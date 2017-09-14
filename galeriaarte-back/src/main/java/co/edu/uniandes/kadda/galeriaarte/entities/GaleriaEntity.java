@@ -25,13 +25,93 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author ISIS2603
  */
 @Entity
-public class GaleriaEntity extends BaseEntity implements Serializable {
+public class GaleriaEntity extends BaseEntity implements Serializable 
+{
+   private Long id;
+   private String nombre;
+   private String direccion;
+   private int telefono;
+   
+   @OneToMany(mappedBy = "artistasGaleria")
+   private List<ArtistaEntity> artistas;
+   
+   @OneToMany(mappedBy = "catalogoGaleria")
+   private List<CatalogoEntity> catalogos;
+   
+   @OneToMany(mappedBy = "clienteGaleria")
+   private List<ClienteEntity> clientes;
+   
+   @Override
+   public Long getId()
+   {
+       return id;
+   }
+
+    /**
+     *
+     * @param pId
+     */
+    @Override
+   public void setId(Long pId)
+   {
+       this.id = pId;
+   }
+   public String getNombre()
+   {
+       return nombre;
+   }
+   public void setNombre(String pNombre)
+   {
+       this.nombre = pNombre;
+   }
+   public String getDireccion()
+   {
+       return direccion;
+   }
+   public void setDireccion(String pDireccion)
+   {
+       this.direccion = pDireccion;
+   }
+   public int getTelefono()
+   {
+       return telefono;
+   }
+   public void setTelefono(int pTelefono)
+   {
+       this.telefono = pTelefono;
+   }
+   public List<ArtistaEntity> getArtistas()
+   {
+       return artistas;
+   }
+   public void setArtistas(List<ArtistaEntity> pArtistas)
+   {
+       this.artistas = pArtistas;
+   }
+   public List<CatalogoEntity> getCatalogos()
+   {
+       return catalogos;
+   }
+   public void setCatalogos(List<CatalogoEntity> pCatalogos)
+   {
+       this.catalogos = pCatalogos;
+   }
+   public List<ClienteEntity> getClientes()
+   {
+       return clientes;
+   }
+   public void setClientes(List<ClienteEntity> pClientes)
+   {
+       this.clientes = pClientes;
+   }
    
 }
