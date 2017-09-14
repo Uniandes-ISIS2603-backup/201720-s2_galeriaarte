@@ -7,7 +7,12 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -16,7 +21,15 @@ import javax.persistence.Entity;
 @Entity
 public class CompraEntity extends BaseEntity implements Serializable {
     
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private PagoEntity pago; 
     
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @OneToMany
+    private List<ObraEntity> obras;
+            
     private double valor;
     
     private Date fecha;
@@ -30,6 +43,14 @@ public class CompraEntity extends BaseEntity implements Serializable {
         this.valor = valor;
     }
 
+    public PagoEntity getPago() {
+        return pago;
+    }
+
+    public void setPago(PagoEntity pago) {
+        this.pago = pago;
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -37,4 +58,22 @@ public class CompraEntity extends BaseEntity implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ObraEntity> getObras() {
+        return obras;
+    }
+
+    public void setObras(List<ObraEntity> obras) {
+        this.obras = obras;
+    }
+    
+    
 }

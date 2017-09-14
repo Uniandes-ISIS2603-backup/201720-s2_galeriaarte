@@ -7,6 +7,7 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -15,6 +16,8 @@ import javax.persistence.Entity;
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable{
     
+    @OneToOne
+    private CompraEntity compra;
 
     private double total;
     
@@ -36,4 +39,13 @@ public class PagoEntity extends BaseEntity implements Serializable{
     public void setImpuesto(double impuesto) {
         this.impuesto = impuesto;
     }
+
+    public CompraEntity getCompra() {
+        return compra;
+    }
+
+    public void setCompra(CompraEntity compra) {
+        this.compra = compra;
+    }
+    
 }
