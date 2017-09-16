@@ -17,6 +17,8 @@ public class MarcoEntity extends BaseEntity implements Serializable{
     
     private double valor;
     
+    private ObraEntity obra;
+    
     public double getValor(){
        return valor;
     }
@@ -24,5 +26,15 @@ public class MarcoEntity extends BaseEntity implements Serializable{
     public void setValor(double valor){
         this.valor = valor;
     }
+    
+    public ObraEntity getObra(){
+        return obra;
+    }
+    
+    public void setObra(ObraEntity obra){
+        this.obra = obra;
+    }
+    
+    
             
 }
