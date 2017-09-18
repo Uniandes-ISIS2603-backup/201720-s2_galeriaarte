@@ -104,16 +104,16 @@ public class PagoPersistenceTest {
     }
     
 
-    /**
-     * Test of find method, of class PagoPersistence.
-     */
-    @Test
-    public void testFind() {
-        PagoEntity entity = data.get(0);
-        PagoEntity newEntity = persistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
-    }
+//    /**
+//     * Test of find method, of class PagoPersistence.
+//     */
+//    @Test
+//    public void testFind() {
+//        PagoEntity entity = data.get(0);
+//        PagoEntity newEntity = persistence.find(entity.getId());
+//        Assert.assertNotNull(newEntity);
+//        Assert.assertEquals(entity.getId(), newEntity.getId());
+//    }
 
     /**
      * Test of findAll method, of class PagoPersistence.

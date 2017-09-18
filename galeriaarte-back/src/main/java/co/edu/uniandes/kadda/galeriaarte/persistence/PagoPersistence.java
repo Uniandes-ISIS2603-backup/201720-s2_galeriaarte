@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -26,11 +27,22 @@ public class PagoPersistence {
     @PersistenceContext(unitName = "galeriadeartePU")
     protected EntityManager em;
 
-    public PagoEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando pago con id={0}", id);
-        return em.find(PagoEntity.class, id);
-    }
+   public PagoEntity find(Long compraid, Long pagoid) {
+        TypedQuery<PagoEntity> q = em.createQuery("select p from PagoEntity p where (p.compra.id = :compraid) and (p.id = :pagoid)", PagoEntity.class);
+        q.setParameter("compraid", compraid);
+        q.setParameter("pagoid", pagoid);
+        List<PagoEntity> results = q.getResultList();
+        PagoEntity pago = null;
+        if (results == null) {
+            pago = null;
+        } else if (results.isEmpty()) {
+            pago = null;
+        } else if (results.size() >= 1) {
+            pago = results.get(0);
+        }
 
+        return pago;
+    }
 
     public List<PagoEntity> findAll() {
         LOGGER.info("Consultando todos los pagos");

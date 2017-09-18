@@ -6,6 +6,7 @@
 package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class CompraEntity extends BaseEntity implements Serializable {
     private ClienteEntity cliente;
     
     @OneToMany
-    private List<ObraEntity> obras;
+    private List<ObraEntity> obras = new ArrayList<ObraEntity>();
             
     private double valor;
     
