@@ -9,8 +9,8 @@
     <name>galeriaarte</name>
  
     <modules>
-        <module>galeriaarte-back</module>
         <module>galeriaarte-web</module>
+        <module>galeriaarte-back</module>
     </modules>
 	
     <properties>
