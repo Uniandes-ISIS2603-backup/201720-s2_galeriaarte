@@ -6,7 +6,12 @@
 package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,7 +22,24 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 
     private String tipoTarjeta;
     private int numTarjeta;
-
+    
+    
+   @PodamExclude
+   @OneToMany(mappedBy = "cliente")
+   private List<CompraEntity> compra;
+   
+   @PodamExclude
+   @ManyToOne
+   private GaleriaEntity clienteGaleria;
+      
+   @PodamExclude
+   @OneToMany(mappedBy = "clienteComentario")
+   private List<ComentarioEntity> comentarios;
+   
+   @PodamExclude
+   @OneToMany(mappedBy = "cliente")
+   private List<ObraEntity> obra;
+    
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }

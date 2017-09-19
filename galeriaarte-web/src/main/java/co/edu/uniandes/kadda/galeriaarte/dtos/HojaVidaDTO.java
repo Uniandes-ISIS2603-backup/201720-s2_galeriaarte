@@ -3,29 +3,64 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.kadda.galeriaarte.entities;
+package co.edu.uniandes.kadda.galeriaarte.dtos;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import uk.co.jemos.podam.common.PodamExclude;
+import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 
 /**
  *
  * @author jd.carrillor
  */
-
-@Entity
-public class HojaVidaEntity extends BaseEntity implements Serializable
+public class HojaVidaDTO
 {
+    private Long id;
+    
     private String trayectoria;
     
     private String almaMater;
     
     private String nacionalidad;
-    @PodamExclude
-    @OneToOne
-    private ArtistaEntity artista;
+    
+     public HojaVidaDTO()
+    {
+        
+    }
+    
+    public HojaVidaDTO(HojaVidaEntity hoja) {
+        this.id = hoja.getId();
+        this.trayectoria = hoja.getTrayectoria();
+        this.almaMater  =  hoja.getAlmaMater();
+        this.nacionalidad = hoja.getNacionalidad();
+        
+        
+    }
+    
+    
+     public HojaVidaEntity toEntity() {
+        HojaVidaEntity entity = new HojaVidaEntity();
+        entity.setId(this.getId());
+        entity.setTrayectoria(this.getTrayectoria());
+        entity.setAlmaMater(this.getAlmaMater());
+        entity.setNacionalidad(this.getNacionalidad());
+        
+        
+        
+        return entity;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * @return the trayectoria
@@ -68,20 +103,9 @@ public class HojaVidaEntity extends BaseEntity implements Serializable
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-
-    /**
-     * @return the artista
-     */
-    public ArtistaEntity getArtista() {
-        return artista;
-    }
-
-    /**
-     * @param artista the artista to set
-     */
-    public void setArtista(ArtistaEntity artista) {
-        this.artista = artista;
-    }
+     
+     
+    
     
     
     

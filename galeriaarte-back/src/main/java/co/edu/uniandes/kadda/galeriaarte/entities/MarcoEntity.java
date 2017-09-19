@@ -7,6 +7,8 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,8 +18,9 @@ import javax.persistence.Entity;
 public class MarcoEntity extends BaseEntity implements Serializable{
     
     private double valor;
-    
-//    private ObraEntity obra;
+    @PodamExclude
+    @OneToOne
+    private ObraEntity obra;
     
     public double getValor(){
        return valor;
@@ -27,11 +30,14 @@ public class MarcoEntity extends BaseEntity implements Serializable{
         this.valor = valor;
     }
     
-//    public ObraEntity getObra(){
-//        return obra;
-//    }
-//    
-//    public void setObra(ObraEntity obra){
-//        this.obra = obra;
-//    }
+    public ObraEntity getObra(){
+        return obra;
+    }
+    
+    public void setObra(ObraEntity obra){
+        this.obra = obra;
+    }
+    
+    
+            
 }

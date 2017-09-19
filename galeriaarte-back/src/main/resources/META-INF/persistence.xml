@@ -3,9 +3,17 @@
   <persistence-unit name="galeriadeartePU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/galeriadearte</jta-data-source>
-    <class>co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity</class>
     <class>co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity</class>
     <class>co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.MarcoEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity</class>
+    <class>co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.cache.type.default" value="NONE"/>

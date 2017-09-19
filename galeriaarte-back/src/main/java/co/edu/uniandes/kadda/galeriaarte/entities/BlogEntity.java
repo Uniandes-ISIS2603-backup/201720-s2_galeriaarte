@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,9 +19,9 @@ import javax.persistence.ManyToOne;
 public class BlogEntity extends BaseEntity implements Serializable {
     
     private String contenido;
-    
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private ArtistaEntity artista;
+    @PodamExclude
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ArtistaEntity artista;
     
     public String getContenido(){
         return contenido;
@@ -30,11 +31,11 @@ public class BlogEntity extends BaseEntity implements Serializable {
         this.contenido = contenido;
     }
     
-//    public ArtistaEntity getArtista(){
-//        return artista;
-//    }
-//    
-//    public void setArtista(ArtistaEntity artista){
-//        this.artista = artista;
-//    }
+    public ArtistaEntity getArtista(){
+        return artista;
+    }
+    
+    public void setArtista(ArtistaEntity artista){
+        this.artista = artista;
+    }
 }

@@ -37,47 +37,18 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class GaleriaEntity extends BaseEntity implements Serializable 
 {
-//    @Id
-//   private Long id;
-   //private String nombre;
    private String direccion;
    private int telefono;
-   
-//   @PodamExclude
-//   @OneToMany(mappedBy = "artistasGaleria")
-//   private List<ArtistaEntity> artistas;
-//   
-//   @PodamExclude
-//   @OneToMany(mappedBy = "catalogoGaleria")
-//   private List<CatalogoEntity> catalogos;
-//   
-//   @PodamExclude
-//   @OneToMany(mappedBy = "clienteGaleria")
-//   private List<ClienteEntity> clientes;
-   
-//   @Override
-//   public Long getId()
-//   {
-//       return id;
-//   }
-//
-//    /**
-//     *
-//     * @param pId
-//     */
-//    @Override
-//   public void setId(Long pId)
-//   {
-//       this.id = pId;
-//   }
-//   public String getNombre()
-//   {
-//       return nombre;
-//   }
-//   public void setNombre(String pNombre)
-//   {
-//       this.nombre = pNombre;
-//   }
+   @PodamExclude
+   @OneToMany(mappedBy = "galeria")
+   private List<ArtistaEntity> artistas;
+   @PodamExclude
+   @OneToMany(mappedBy = "galeria")
+   private List<CatalogoEntity> catalogos;
+   @PodamExclude
+   @OneToMany(mappedBy = "clienteGaleria")
+   private List<ClienteEntity> clientes;
+
    public String getDireccion()
    {
        return direccion;
@@ -94,29 +65,29 @@ public class GaleriaEntity extends BaseEntity implements Serializable
    {
        this.telefono = pTelefono;
    }
-//   public List<ArtistaEntity> getArtistas()
-//   {
-//       return artistas;
-//   }
-//   public void setArtistas(List<ArtistaEntity> pArtistas)
-//   {
-//       this.artistas = pArtistas;
-//   }
-//   public List<CatalogoEntity> getCatalogos()
-//   {
-//       return catalogos;
-//   }
-//   public void setCatalogos(List<CatalogoEntity> pCatalogos)
-//   {
-//       this.catalogos = pCatalogos;
-//   }
-//   public List<ClienteEntity> getClientes()
-//   {
-//       return clientes;
-//   }
-//   public void setClientes(List<ClienteEntity> pClientes)
-//   {
-//       this.clientes = pClientes;
-//   }
+   public List<ArtistaEntity> getArtistas()
+   {
+       return artistas;
+   }
+   public void setArtistas(List<ArtistaEntity> pArtistas)
+   {
+       this.artistas = pArtistas;
+   }
+   public List<CatalogoEntity> getCatalogos()
+   {
+       return catalogos;
+   }
+   public void setCatalogos(List<CatalogoEntity> pCatalogos)
+   {
+       this.catalogos = pCatalogos;
+   }
+   public List<ClienteEntity> getClientes()
+   {
+       return clientes;
+   }
+   public void setClientes(List<ClienteEntity> pClientes)
+   {
+       this.clientes = pClientes;
+   }
    
 }

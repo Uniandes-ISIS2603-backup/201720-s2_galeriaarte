@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class CatalogoPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(GaleriaPersistence.class.getName());
+      private static final Logger LOGGER = Logger.getLogger(GaleriaPersistence.class.getName());
 
     @PersistenceContext(unitName = "galeriadeartePU")
     protected EntityManager em;

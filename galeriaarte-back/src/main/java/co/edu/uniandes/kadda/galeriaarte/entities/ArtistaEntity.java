@@ -6,8 +6,14 @@
 package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author jd.carrillor
@@ -17,6 +23,78 @@ import javax.persistence.Entity;
 
 public class ArtistaEntity extends BaseEntity implements Serializable
 {
- 
+    @PodamExclude
+    @OneToMany(mappedBy = "artista")
+    private List<ObraEntity> obras = new ArrayList<ObraEntity>();
+    @PodamExclude
+    @ManyToOne
+    private GaleriaEntity galeria;
+    @PodamExclude
+    @OneToOne(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HojaVidaEntity> hojaVida =new ArrayList<HojaVidaEntity>();
+    @PodamExclude
+    @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BlogEntity> blogs = new ArrayList<BlogEntity>();
+
+    /**
+     * @return the obras
+     */
+    public List<ObraEntity> getObras() {
+        return obras;
+    }
+
+    /**
+     * @param obras the obras to set
+     */
+    public void setObras(List<ObraEntity> obras) {
+        this.obras = obras;
+    }
+
+    /**
+     * @return the galeria
+     */
+    public GaleriaEntity getGaleria() {
+        return galeria;
+    }
+
+    /**
+     * @param galeria the galeria to set
+     */
+    public void setGaleria(GaleriaEntity galeria) {
+        this.galeria = galeria;
+    }
+
+    /**
+     * @return the hojaVida
+     */
+    public List<HojaVidaEntity> getHojaVida() {
+        return hojaVida;
+    }
+
+    /**
+     * @param hojaVida the hojaVida to set
+     */
+    public void setHojaVida(List<HojaVidaEntity> hojaVida) {
+        this.hojaVida = hojaVida;
+    }
+
+    /**
+     * @return the blogs
+     */
+    public List<BlogEntity> getBlogs() {
+        return blogs;
+    }
+
+    /**
+     * @param blogs the blogs to set
+     */
+    public void setBlogs(List<BlogEntity> blogs) {
+        this.blogs = blogs;
+    }
+    
+    
+     
+    
+    
     
 }
