@@ -33,6 +33,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.UnsupportedOperationExceptionMapper.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.WebApplicationExceptionMapper.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.CatalogoResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.CompraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.GaleriaResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.HojaVidaResource.class);

@@ -103,4 +103,5 @@ public class CatalogoPersistence {
         
         return query.getResultList();
     }
+    
 }
