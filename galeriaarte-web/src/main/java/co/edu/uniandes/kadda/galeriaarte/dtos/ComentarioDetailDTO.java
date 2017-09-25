@@ -28,7 +28,7 @@ public class ComentarioDetailDTO extends ComentarioDTO
      * @param entity
      */
     public ComentarioDetailDTO(ComentarioEntity entity) {
-                super(entity);
+        super(entity);
         if (entity.getClienteComentario()!= null) {
             this.cliente = new ClienteDTO(entity.getClienteComentario());
         } else {
@@ -38,11 +38,11 @@ public class ComentarioDetailDTO extends ComentarioDTO
 
     @Override
     public ComentarioEntity toEntity() {
-        ComentarioEntity comentarioE = super.toEntity();
+        ComentarioEntity entity = super.toEntity();
         if (this.getCliente() != null) {
-            comentarioE.setClienteComentario(this.getCliente().toEntity());
+            entity.setClienteComentario(this.getCliente().toEntity());
         }
-        return comentarioE;
+        return entity;
     }
     
     public void setCliente(ClienteDTO cliente) {

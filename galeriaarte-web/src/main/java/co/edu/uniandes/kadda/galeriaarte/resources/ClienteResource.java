@@ -37,15 +37,6 @@ public class ClienteResource {
     @Inject
     private ClienteLogic clienteLogic;
 
-
-    private List<ClienteDetailDTO> listEntity2DTO(List<ClienteEntity> entityList) {
-        List<ClienteDetailDTO> list = new ArrayList<>();
-        for (ClienteEntity entity : entityList) {
-            list.add(new ClienteDetailDTO(entity));
-        }
-        return list;
-    }
-
     /**
      * Obtiene la lista de los registros de Author
      *
@@ -53,7 +44,7 @@ public class ClienteResource {
      *
      */
     @GET
-    public List<ClienteDetailDTO> getClientes()throws BusinessLogicException{
+    public List<ClienteDetailDTO> getClientes() throws BusinessLogicException {
         return listEntity2DTO(clienteLogic.getClientes());
     }
 
@@ -66,7 +57,7 @@ public class ClienteResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ClienteDetailDTO getAuthor(@PathParam("id") Long id)throws BusinessLogicException{
+    public ClienteDetailDTO getAuthor(@PathParam("id") Long id) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
             throw new WebApplicationException("El Cliente no existe", 404);
@@ -80,8 +71,7 @@ public class ClienteResource {
      * @return
      */
     @POST
-    public ClienteDetailDTO createCliente(ClienteDetailDTO dto) throws BusinessLogicException 
-    {
+    public ClienteDetailDTO createCliente(ClienteDetailDTO dto) throws BusinessLogicException {
         return new ClienteDetailDTO(clienteLogic.createCliente(dto.toEntity()));
     }
 
@@ -95,7 +85,7 @@ public class ClienteResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO dto)throws BusinessLogicException{
+    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO dto) throws BusinessLogicException {
         ClienteEntity entity = dto.toEntity();
         entity.setId(id);
         ClienteEntity oldEntity = clienteLogic.getCliente(id);
@@ -120,6 +110,14 @@ public class ClienteResource {
             throw new WebApplicationException("El Cliente no existe", 404);
         }
         clienteLogic.deleteCliente(id);
+    }
+
+    private List<ClienteDetailDTO> listEntity2DTO(List<ClienteEntity> entityList) {
+        List<ClienteDetailDTO> list = new ArrayList<>();
+        for (ClienteEntity entity : entityList) {
+            list.add(new ClienteDetailDTO(entity));
+        }
+        return list;
     }
 
 //    @Path("{authorsId: \\d+}/books")

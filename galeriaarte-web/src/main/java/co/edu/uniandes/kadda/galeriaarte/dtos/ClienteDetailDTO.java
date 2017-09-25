@@ -19,17 +19,20 @@ public class ClienteDetailDTO extends ClienteDTO {
     //private List<ObraDTO> obras;
     private List<ComentarioDTO> comentarios;
 
-    public ClienteDetailDTO()
-    {
-    }
-    public ClienteDetailDTO(ClienteEntity entity) {
+    public ClienteDetailDTO() {
         super();
-        if (entity != null && entity.getComentarios() != null) {
-            comentarios = new ArrayList<>();
-            for (ComentarioEntity entityComentarios : entity.getComentarios()) {
-                comentarios.add(new ComentarioDTO(entityComentarios));
-            }
+    }
 
+    public ClienteDetailDTO(ClienteEntity entity) {
+        super(entity);
+        if (entity != null) {
+            if (entity.getComentarios() != null) {
+                comentarios = new ArrayList<>();
+                for (ComentarioEntity entityComentarios : entity.getComentarios()) {
+                    comentarios.add(new ComentarioDTO(entityComentarios));
+                }
+
+            }
         }
     }
 
@@ -40,6 +43,7 @@ public class ClienteDetailDTO extends ClienteDTO {
 //    public void setObras(List<ObraDTO> obras) {
 //        this.obras = obras;
 //    }
+    @Override
     public ClienteEntity toEntity() {
         ClienteEntity entity = super.toEntity();
         if (comentarios != null) {
@@ -52,6 +56,7 @@ public class ClienteDetailDTO extends ClienteDTO {
 
         return entity;
     }
+
     public List<ComentarioDTO> getComentarios() {
         return comentarios;
     }
@@ -59,6 +64,5 @@ public class ClienteDetailDTO extends ClienteDTO {
     public void setComentarios(List<ComentarioDTO> comentarios) {
         this.comentarios = comentarios;
     }
-
 
 }
