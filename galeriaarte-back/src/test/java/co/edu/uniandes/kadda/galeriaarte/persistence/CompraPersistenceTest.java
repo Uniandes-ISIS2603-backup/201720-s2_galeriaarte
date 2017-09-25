@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
@@ -22,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -29,9 +31,10 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author ma.abril
  */
+@RunWith(Arquillian.class)
 public class CompraPersistenceTest {
     
-        @Inject
+    @Inject
     private CompraPersistence persistence;
     
     @PersistenceContext(unitName = "galeriadeartePU")

@@ -66,7 +66,7 @@ public class CompraLogic {
      * @return Instancia de PagoEntity con los datos actualizados.
      * 
      */
-   public CompraEntity updateCompra(Long id, CompraEntity entity) {
+   public CompraEntity updateCompra(Long id, CompraEntity entity) {                                                                                         
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar compra con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         CompraEntity newEntity = persistence.update(entity);

@@ -65,7 +65,7 @@ public class CompraDetailDTO extends CompraDTO {
             }
             compraE.setObras(obrasEntity);
         }
-        if(getPago() != null) {
+        if(this.getPago() != null) {
             compraE.setPago(this.getPago().toEntity());
         }
         return compraE;
