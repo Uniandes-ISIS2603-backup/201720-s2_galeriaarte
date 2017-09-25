@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class CompraDetailDTO extends CompraDTO {
     
-    private ClienteDTO cliente;
+   private ClienteDTO cliente;
     
     private List<ObraDTO> obras;
     
@@ -58,14 +58,14 @@ public class CompraDetailDTO extends CompraDTO {
         if(this.getCliente() != null) {
             compraE.setCliente(this.getCliente().toEntity());
         }
-        if (getObras() != null) {
+        if (obras != null) {
             List<ObraEntity> obrasEntity = new ArrayList<>();
             for (ObraDTO dtoObra : getObras()) {
                 obrasEntity.add(dtoObra.toEntity());
             }
             compraE.setObras(obrasEntity);
         }
-        if(this.getPago() != null) {
+        if(getPago() != null) {
             compraE.setPago(this.getPago().toEntity());
         }
         return compraE;
@@ -86,14 +86,14 @@ public class CompraDetailDTO extends CompraDTO {
     }
 
     /**
-     * @return the authors
+     * @return el pago
      */
     public PagoDTO getPago() {
         return pago;
     }
 
     /**
-     * @param authors the authors to set
+     * @param pago the pago to set
      */
     public void setPago(PagoDTO pago) {
         this.pago = pago;
@@ -102,7 +102,7 @@ public class CompraDetailDTO extends CompraDTO {
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
-
+ 
     public ClienteDTO getCliente() {
         return cliente;
     }

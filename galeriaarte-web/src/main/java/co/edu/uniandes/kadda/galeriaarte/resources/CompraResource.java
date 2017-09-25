@@ -27,7 +27,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author ma.abril
  */
-@Path("books")
+@Path("compras")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -46,19 +46,14 @@ public class CompraResource {
     public CompraDetailDTO getCompra(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Compras/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
         }
         return new CompraDetailDTO(entity);
     }
 
     /**
-     * Ejemplo: { "description": "La comunicación en arquitectos de software.",
-     * "editorial": { "id": 200, "name": "Oveja Negra 2" }, "image":
-     * "https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg",
-     * "isbn": "930330149-8", "name": "La comunicación en el software",
-     * "publishingdate": "2017-08-20T00:00:00-05:00" }
-     *
-     * @param Compra
+     
+     * @param compra
      * @return
      * @throws BusinessLogicException
      */
@@ -69,14 +64,9 @@ public class CompraResource {
 
     /**
      *
-     * Ejemplo: { "description": "Las habilidades gerenciales en arquitectos de
-     * software.", "editorial": { "id": 200, "name": "Oveja Negra 2" }, "image":
-     * "https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg",
-     * "isbn": "930330149-8", "name": "La comunicación en el software",
-     * "publishingdate": "2017-08-20T00:00:00-05:00" }
-     *
+     
      * @param id
-     * @param Compra
+     * @param compra
      * @return
      * @throws BusinessLogicException
      */
@@ -86,28 +76,37 @@ public class CompraResource {
         compra.setId(id);
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Compras/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
         }
         return new CompraDetailDTO(compraLogic.updateCompra(id, compra.toEntity()));
     }
 
     @DELETE
-    @Path("{ComprasId: \\d+}")
-    public void deleteCompra(@PathParam("ComprasId") Long id) throws BusinessLogicException {
+    @Path("{comprasId: \\d+}")
+    public void deleteCompra(@PathParam("comprasId") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Compras/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
         }
         compraLogic.deleteCompra(id);
     }
 
-    @Path("{idCompra: \\d+}/obras")
-    public Class<ObraResource> getObraResource(@PathParam("idCompra") Long comprasId) {
+  @Path("{comprasId: \\d+}/obras")
+    public Class<CompraObrasResource> getCompraObrasResource(@PathParam("comprasId") Long comprasId) {
         CompraEntity entity = compraLogic.getCompra(comprasId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Compras/" + comprasId + "/obras no existe.", 404);
+            throw new WebApplicationException("El recurso /compras/" + comprasId + " no existe.", 404);
         }
-        return ObraResource.class;
+        return CompraObrasResource.class;
+    }
+    
+    @Path("{idCompra: \\d+}/pago")
+    public Class<PagoResource> getPagoResource(@PathParam("idCompra") Long comprasId) {
+        CompraEntity entity = compraLogic.getCompra(comprasId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /compras/" + comprasId + "/pago no existe.", 404);
+        }
+        return PagoResource.class;
     }
 
     

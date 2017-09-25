@@ -6,6 +6,7 @@
 package co.edu.uniandes.kadda.galeriaarte.persistence;
 
 
+import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class PagoPersistenceTest {
     UserTransaction utx;
 
     private List<PagoEntity> data = new ArrayList<PagoEntity>();
+    
+    private List<CompraEntity> data2 = new ArrayList<CompraEntity>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -104,16 +107,17 @@ public class PagoPersistenceTest {
     }
     
 
-//    /**
-//     * Test of find method, of class PagoPersistence.
-//     */
-//    @Test
-//    public void testFind() {
-//        PagoEntity entity = data.get(0);
-//        PagoEntity newEntity = persistence.find(entity.getId());
-//        Assert.assertNotNull(newEntity);
-//        Assert.assertEquals(entity.getId(), newEntity.getId());
-//    }
+    /**
+     * Test of find method, of class PagoPersistence.
+     */
+    @Test
+    public void testFind() {
+        CompraEntity entity = data2.get(0);
+        PagoEntity entity2 = entity.getPago();
+        PagoEntity newEntity = persistence.find(entity.getId(), entity2.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity2.getId(), newEntity.getId());
+    }
 
     /**
      * Test of findAll method, of class PagoPersistence.

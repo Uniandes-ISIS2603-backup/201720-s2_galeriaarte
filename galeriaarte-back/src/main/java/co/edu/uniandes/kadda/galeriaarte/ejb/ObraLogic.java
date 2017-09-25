@@ -9,6 +9,8 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -18,7 +20,8 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ObraLogic {
- @Inject
+
+     @Inject
  
  private ObraPersistence persistence; 
  

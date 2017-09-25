@@ -27,6 +27,9 @@ public class CompraLogic {
     @Inject
     private CompraPersistence persistence;
     
+    @Inject
+    private ObraLogic obraLogic;
+    
   public List<CompraEntity> getCompras() {
         LOGGER.info("Inicia proceso de consultar todas las compras");
         List<CompraEntity> compras = persistence.findAll();
@@ -59,7 +62,7 @@ public class CompraLogic {
      * Actualiza la información de una instancia de Pago.
      *
      * @param entity Instancia de PagoEntity con los nuevos datos.
-     * @param Compraid id del Compra el cual sera padre del Pago actualizado.
+     * @param id id del Compra el cual sera padre del Pago actualizado.
      * @return Instancia de PagoEntity con los datos actualizados.
      * 
      */
@@ -77,81 +80,82 @@ public class CompraLogic {
         LOGGER.log(Level.INFO, "Termina proceso de borrar compra con id={0}", id);
     }
     
-//        /**
-//         * Agregar un Obra a la compra
-//         *
-//         * @param ObraId del Obra a asociar
-//         * @param compraId
-//         * @return
-//         */
-//    public ObraEntity addObra(Long ObraId, Long compraId) {
-//        CompraEntity compraEntity = getCompra(compraId);
-//        ObraEntity ObraEntity = ObraLogic.getObra(ObraId);
-//        ObraEntity.setCompra(compraEntity);
-//        return ObraEntity;
-//    }
-//
-//    /**
-//     * Borrar un Obra de una compra
-//     *
-//     * @param ObraId
-//     * @param compraId
-//     */
-//    public void removeObra(Long ObraId, Long compraId) {
-//        CompraEntity compraEntity = getCompra(compraId);
-//        ObraEntity Obra = ObraLogic.getObra(ObraId);
-//        Obra.setcompra(null);
-//        compraEntity.getObras().remove(Obra);
-//    }
-//
-//    /**
-//     * Remplazar Obras de una compra
-//     *
-//     * @param Obras
-//     * @param compraId
-//     * @return
-//     */
-//    public List<ObraEntity> replaceObras(Long compraId, List<ObraEntity> Obras) {
-//        CompraEntity compra = getCompra(compraId);
-//        List<ObraEntity> ObraList = ObraLogic.getObras();
-//        for (ObraEntity Obra : ObraList) {
-//            if (Obras.contains(Obra)) {
-//                Obra.setCompra(compra);
-//            } else if (Obra.getCompra() != null && Obra.getCompra().equals(compra)) {
-//                Obra.setCompra(null);
-//            }
-//        }
-//        return Obras;
-//    }
-//
-//    /**
-//     * Retorna todos los Obras asociados a una compra
-//     *
-//     * @param compraId
-//     * @return
-//     */
-//    public List<ObraEntity> getObras(Long compraId) {
-//        return getCompra(compraId).getObras();
-//    }
-//
-//    /**
-//     * Retorna un Obra asociado a una compra
-//     *
-//     * @param compraId
-//     * @param ObraId
-//     * @return
-//     * @throws BusinessLogicException
-//     */
-//    public ObraEntity getObra(Long compraId, Long ObraId) throws BusinessLogicException {
-//        List<ObraEntity> Obras = getCompra(compraId).getObras();
-//        ObraEntity Obra = ObraLogic.getObra(ObraId);
-//        int index = Obras.indexOf(Obra);
-//        if (index >= 0) {
-//            return Obras.get(index);
-//        }
-//        throw new BusinessLogicException("La obra no está asociado a la compra");
-//
-//    }
+
+         /**
+         * Agregar un Obra a la Compra
+         *
+         * @param obraId del Obra a asociar
+         * @param compraId
+         * @return
+         */
+    public ObraEntity addObra(Long obraId, Long compraId) {
+        CompraEntity compraEntity = getCompra(compraId);
+        ObraEntity obraEntity = obraLogic.findObra(obraId);
+        obraEntity.setCompra(compraEntity);
+        return obraEntity;
+    }
+
+    /**
+     * Borrar un Obra de una Compra
+     *
+     * @param obraId
+     * @param compraId
+     */
+    public void removeObra(Long obraId, Long compraId) {
+        CompraEntity compraEntity = getCompra(compraId);
+        ObraEntity obra = obraLogic.findObra(obraId);
+        obra.setCompra(null);
+        compraEntity.getObras().remove(obra);
+    }
+
+    /**
+     * Remplazar Obras de una Compra
+     *
+     * @param obras
+     * @param compraId
+     * @return
+     */
+    public List<ObraEntity> replaceObras(Long compraId, List<ObraEntity> obras) {
+        CompraEntity compra = getCompra(compraId);
+        List<ObraEntity> obraList = obraLogic.getObras();
+        for (ObraEntity obra : obraList) {
+            if (obras.contains(obra)) {
+                obra.setCompra(compra);
+            } else if (obra.getCompra() != null && obra.getCompra().equals(compra)) {
+                obra.setCompra(null);
+            }
+        }
+        return obras;
+    }
+
+    /**
+     * Retorna todos los Obras asociados a una Compra
+     *
+     * @param compraId
+     * @return
+     */
+    public List<ObraEntity> getObras(Long compraId) {
+        return getCompra(compraId).getObras();
+    }
+
+    /**
+     * Retorna un Obra asociado a una Compra
+     *
+     * @param compraId
+     * @param obraId
+     * @return
+     * @throws BusinessLogicException
+     */
+    public ObraEntity getObra(Long compraId, Long obraId) throws BusinessLogicException {
+        List<ObraEntity> obras = getCompra(compraId).getObras();
+        ObraEntity obra = obraLogic.findObra(obraId);
+        int index = obras.indexOf(obra);
+        if (index >= 0) {
+            return obras.get(index);
+        }
+        throw new BusinessLogicException("La obra no está asociada a la Compra");
+
+    }
 
     /**
      * Obtiene una colección de instancias de ObraEntity asociadas a una
