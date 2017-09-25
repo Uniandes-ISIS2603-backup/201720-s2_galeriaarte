@@ -23,10 +23,12 @@ public class ClienteDTO {
     }
 
     public ClienteDTO(ClienteEntity entidad) {
+        if(entidad != null){
         this.id = entidad.getId();
         this.name = entidad.getName();
         this.tipoTarjeta = entidad.getTipoTarjeta();
         this.numTarjeta = entidad.getNumTarjeta();
+        }
     }
 
     public Long getId() {

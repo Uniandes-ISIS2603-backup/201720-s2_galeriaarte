@@ -27,4 +27,20 @@ public class ComentarioEntity extends BaseEntity implements Serializable {
    @ManyToOne
    private ObraEntity obra;
 
+    public ClienteEntity getClienteComentario() {
+        return clienteComentario;
+    }
+
+    public void setClienteComentario(ClienteEntity clienteComentario) {
+        this.clienteComentario = clienteComentario;
+    }
+
+    public ObraEntity getObra() {
+        return obra;
+    }
+
+    public void setObra(ObraEntity obra) {
+        this.obra = obra;
+    }
+
 }
