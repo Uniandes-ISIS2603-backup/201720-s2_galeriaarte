@@ -25,6 +25,7 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -37,18 +38,27 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class GaleriaEntity extends BaseEntity implements Serializable 
 {
+   private String nombre;
    private String direccion;
    private int telefono;
    @PodamExclude
    @OneToMany(mappedBy = "galeria")
-   private List<ArtistaEntity> artistas;
+   private ArrayList<ArtistaEntity> artistas;
    @PodamExclude
    @OneToMany(mappedBy = "galeria")
-   private List<CatalogoEntity> catalogos;
+   private ArrayList<CatalogoEntity> catalogos;
    @PodamExclude
    @OneToMany(mappedBy = "clienteGaleria")
-   private List<ClienteEntity> clientes;
+   private ArrayList<ClienteEntity> clientes;
 
+   public String getNombre()
+   {
+       return nombre;
+   }
+   public void setNombre(String pNombre)
+   {
+       this.nombre = pNombre;
+   }
    public String getDireccion()
    {
        return direccion;
@@ -65,29 +75,29 @@ public class GaleriaEntity extends BaseEntity implements Serializable
    {
        this.telefono = pTelefono;
    }
-   public List<ArtistaEntity> getArtistas()
+   public ArrayList<ArtistaEntity> getArtistas()
    {
        return artistas;
    }
-   public void setArtistas(List<ArtistaEntity> pArtistas)
+   public void setArtistas(ArrayList<ArtistaEntity> pArtistas)
    {
        this.artistas = pArtistas;
    }
-   public List<CatalogoEntity> getCatalogos()
+   public ArrayList<CatalogoEntity> getCatalogos()
    {
        return catalogos;
    }
-   public void setCatalogos(List<CatalogoEntity> pCatalogos)
+   public void setCatalogos(ArrayList<CatalogoEntity> pCatalogos)
    {
        this.catalogos = pCatalogos;
    }
-   public List<ClienteEntity> getClientes()
+   public ArrayList<ClienteEntity> getClientes()
    {
        return clientes;
    }
-   public void setClientes(List<ClienteEntity> pClientes)
+   public void setClientes(ArrayList<ClienteEntity> pClientes)
    {
        this.clientes = pClientes;
    }
-   
+
 }

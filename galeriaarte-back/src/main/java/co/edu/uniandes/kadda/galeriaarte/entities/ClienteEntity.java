@@ -22,24 +22,45 @@ public class ClienteEntity extends BaseEntity implements Serializable {
 
     private String tipoTarjeta;
     private int numTarjeta;
-    
-    
-   @PodamExclude
-   @OneToMany(mappedBy = "cliente")
-   private List<CompraEntity> compra;
-   
-   @PodamExclude
-   @ManyToOne
-   private GaleriaEntity clienteGaleria;
-      
-   @PodamExclude
-   @OneToMany(mappedBy = "clienteComentario")
-   private List<ComentarioEntity> comentarios;
-   
-   @PodamExclude
-   @OneToMany(mappedBy = "cliente")
-   private List<ObraEntity> obra;
-    
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<CompraEntity> compra;
+
+    @PodamExclude
+    @ManyToOne
+    private GaleriaEntity clienteGaleria;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "clienteComentario")
+    private List<ComentarioEntity> comentarios;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "cliente")
+    private List<ObraEntity> obra;
+
+    public List<CompraEntity> getCompra() {
+        return compra;
+    }
+
+    public void setCompra(List<CompraEntity> compra) {
+        this.compra = compra;
+    }
+
+    public List<ObraEntity> getObra() {
+        return obra;
+    }
+
+    public void setObra(List<ObraEntity> obra) {
+        this.obra = obra;
+    }
+
+    public List<ComentarioEntity> getComentarios() {
+        return comentarios;
+    }
+    public void setComentarios(List<ComentarioEntity> comentarios) {
+        this.comentarios = comentarios;
+    }
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }

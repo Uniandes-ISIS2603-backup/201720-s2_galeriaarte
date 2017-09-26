@@ -18,6 +18,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class MarcoEntity extends BaseEntity implements Serializable{
     
     private double valor;
+    
+    private String material;
+    
+    private double ancho;
+    
+    private double alto;
+    
     @PodamExclude
     @OneToOne
     private ObraEntity obra;
@@ -28,6 +35,30 @@ public class MarcoEntity extends BaseEntity implements Serializable{
     
     public void setValor(double valor){
         this.valor = valor;
+    }
+    
+    public String getMaterial(){
+        return material;
+    }
+    
+    public void setMaterial(String material){
+        this.material = material;
+    }
+    
+    public double getAncho(){
+        return ancho;
+    }
+    
+    public void setAncho(double ancho){
+        this.ancho = ancho;
+    }
+    
+    public double getAlto(){
+        return alto;
+    }
+    
+    public void setAlto(double alto){
+        this.alto = alto;
     }
     
     public ObraEntity getObra(){
