@@ -23,10 +23,17 @@ public class HojaVidaEntity extends BaseEntity implements Serializable
     private String almaMater;
     
     private String nacionalidad;
+    
     @PodamExclude
     @OneToOne
     private ArtistaEntity artista;
 
+    
+    
+    public HojaVidaEntity()
+    {
+        
+    }
     /**
      * @return the trayectoria
      */

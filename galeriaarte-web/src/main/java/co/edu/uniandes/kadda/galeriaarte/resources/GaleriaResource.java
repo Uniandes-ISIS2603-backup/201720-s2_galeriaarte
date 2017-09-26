@@ -63,6 +63,8 @@ public class GaleriaResource {
 
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    
+         
 
     private static final Logger LOGGER = Logger.getLogger(GaleriaResource.class.getName());
 
@@ -153,5 +155,7 @@ public class GaleriaResource {
         }
         return list;
     }
+    
+   
 
 }

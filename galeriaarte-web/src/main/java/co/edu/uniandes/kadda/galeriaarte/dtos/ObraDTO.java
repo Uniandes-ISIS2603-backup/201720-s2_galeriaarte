@@ -30,7 +30,9 @@ public class ObraDTO
         
     }
     
-    public ObraDTO(ObraEntity obra) {
+    public ObraDTO(ObraEntity obra)
+    {
+        if(obra!=null){
         this.id = obra.getId();
         this.nombre = obra.getName();
         this.tipo  =  obra.getTipo();
@@ -38,7 +40,7 @@ public class ObraDTO
         this.valor =  obra.getValor();
         
         
-        
+        }
     }
     
     
