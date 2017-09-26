@@ -31,7 +31,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     private GaleriaEntity galeria;
     @PodamExclude
     @OneToOne(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HojaVidaEntity> hojaVida =new ArrayList<HojaVidaEntity>();
+    private HojaVidaEntity hojaVida;
     @PodamExclude
     @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BlogEntity> blogs = new ArrayList<BlogEntity>();
@@ -67,14 +67,14 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     /**
      * @return the hojaVida
      */
-    public List<HojaVidaEntity> getHojaVida() {
+    public HojaVidaEntity getHojaVida() {
         return hojaVida;
     }
 
     /**
      * @param hojaVida the hojaVida to set
      */
-    public void setHojaVida(List<HojaVidaEntity> hojaVida) {
+    public void setHojaVida(HojaVidaEntity hojaVida) {
         this.hojaVida = hojaVida;
     }
 

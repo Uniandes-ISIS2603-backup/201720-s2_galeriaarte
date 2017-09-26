@@ -26,13 +26,17 @@ public class HojaVidaDTO
         
     }
     
-    public HojaVidaDTO(HojaVidaEntity hoja) {
+    public HojaVidaDTO(HojaVidaEntity hoja)
+    {
+        
+        if(hoja!=null){
+            
         this.id = hoja.getId();
         this.trayectoria = hoja.getTrayectoria();
         this.almaMater  =  hoja.getAlmaMater();
         this.nacionalidad = hoja.getNacionalidad();
         
-        
+        }
     }
     
     
