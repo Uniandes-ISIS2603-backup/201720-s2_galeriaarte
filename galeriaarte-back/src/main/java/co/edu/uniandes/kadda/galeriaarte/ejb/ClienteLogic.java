@@ -10,6 +10,7 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -110,6 +111,7 @@ public class ClienteLogic {
         ClienteEntity entity = getCliente(clienteId);
         ComentarioEntity comentario = comentarioLogic.getComentario(comentarioId);
         comentario.setClienteComentario(entity);
+        entity.setComentario(comentario);
         return comentarioLogic.getComentario(comentarioId);
     }
     
@@ -192,6 +194,24 @@ public class ClienteLogic {
             }
         }
         return list;
+    }
+    
+        public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) {
+        ClienteEntity cliente = getCliente(clienteId);
+        List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
+        
+        ComentarioEntity actual = null;
+        Iterator<ComentarioEntity> it = comentarioList.iterator();
+        while(it.hasNext())
+        {
+            actual = it.next();
+            if(actual.getId().equals(entidad.getId()))
+            {
+                actual.setName(entidad.getName());
+                break;
+            }
+        }
+        return actual;
     }
     
     /**
