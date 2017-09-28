@@ -114,17 +114,11 @@ public class ClienteComentarioResource
      * @param clienteId
      * @param comentarios
      * @return 
-     */
-//    @PUT
-//    public List<ComentarioDetailDTO> replaceComentarios(@PathParam("clienteId") Long clienteId, List<ComentarioDetailDTO> comentarios) {
-//        return comentariosListEntity2DTO(clienteLogic.replaceComentarios(clienteId, comentariosListDTO2Entity(comentarios)));
-//    }
-    
+     */    
     @PUT
     public ComentarioDetailDTO replaceComentarios(@PathParam("clienteId") Long clienteId, ComentarioDetailDTO comentario) throws BusinessLogicException {
         
         return new ComentarioDetailDTO(comentarioLogic.updateComentario(clienteId, clienteLogic.replaceComentario(clienteId, comentario.toEntity())));
-        //return comentariosListEntity2DTO(clienteLogic.replaceComentarios(clienteId, comentariosListDTO2Entity(comentarios)));
     }
 
     /**
