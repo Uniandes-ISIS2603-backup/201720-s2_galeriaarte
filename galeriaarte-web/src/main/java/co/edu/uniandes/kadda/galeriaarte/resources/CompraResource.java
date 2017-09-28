@@ -73,12 +73,14 @@ public class CompraResource {
     @PUT
     @Path("{id: \\d+}")
     public CompraDetailDTO updateCompra(@PathParam("id") Long id, CompraDetailDTO compra) throws BusinessLogicException {
-        compra.setId(id);
-        CompraEntity entity = compraLogic.getCompra(id);
-        if (entity == null) {
+        CompraEntity entity = compra.toEntity();
+        entity.setId(id);
+        CompraEntity oldCompra = compraLogic.getCompra(id);
+        if (oldCompra == null) {
             throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
         }
-        return new CompraDetailDTO(compraLogic.updateCompra(id, compra.toEntity()));
+        entity.setPago(oldCompra.getPago());
+        return new CompraDetailDTO(compraLogic.updateCompra(entity));
     }
 
     @DELETE

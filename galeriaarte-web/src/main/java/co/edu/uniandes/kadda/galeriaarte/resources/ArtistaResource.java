@@ -28,6 +28,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+
 /**
  *
  * @author jd.carrillor
@@ -75,33 +76,24 @@ public class ArtistaResource
         
     }
     
-   
     @PUT
     @Path("{id: \\d+}")
-    public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDetailDTO artista) throws BusinessLogicException, UnsupportedOperationException {
-         
-        
-        if (artistaLogic.findArtista(id)!=null)
-        {
-            ArtistaEntity artistaEntity = artista.toEntity();
-            
-            artistaLogic.update(artistaEntity);
+    public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDetailDTO dto) {
+        ArtistaEntity entity = dto.toEntity();
+        entity.setId(id);
+        entity.setName(dto.getName());
+        ArtistaEntity oldEntity = artistaLogic.findArtista(id);
+        if (oldEntity == null) {
+            throw new WebApplicationException("El author no existe", 404);
         }
         
-        else{
-            
-        
-        throw new WebApplicationException("Error");
-        }
-        
-        if (!artista.getId().equals(id))
-        {
-            throw new BusinessLogicException("Error2");
-        }
-        
-        return artista;
-      
+        return new ArtistaDetailDTO(artistaLogic.update(entity));
     }
+    
+   
+    
+      
+    
 
     /**
      * DELETE http://localhost:8080/estudiante-web/api/estudiantes/1
@@ -145,6 +137,24 @@ public class ArtistaResource
             list.add(new ArtistaDetailDTO(entity));
         }
         return list;
+    }
+    
+    @Path("{id: \\d+}/hojaVida")
+    public Class<ArtistaHojaVidaResource> getArtistaHojaVidaResource(@PathParam("id") Long artistaId) {
+        ArtistaEntity entity = artistaLogic.findArtista(artistaId);
+        if (entity == null) {
+            throw new WebApplicationException("El artista no existe", 404);
+        }
+        return ArtistaHojaVidaResource.class;
+    }
+    
+    @Path("{id: \\d+}/obras")
+    public Class<ArtistaObraResource> getArtistaObraResource(@PathParam("id") Long artistaId) {
+        ArtistaEntity entity = artistaLogic.findArtista(artistaId);
+        if (entity == null) {
+            throw new WebApplicationException("El artista no existe", 404);
+        }
+        return ArtistaObraResource.class;
     }
     
 }

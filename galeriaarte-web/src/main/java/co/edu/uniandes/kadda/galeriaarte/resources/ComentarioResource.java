@@ -104,24 +104,6 @@ public class ComentarioResource {
         ComentarioLogic.deleteComentario(id);
     }
 
-//    @Path("{idBook: \\d+}/reviews")
-//    public Class<ReviewResource> getReviewResource(@PathParam("idBook") Long booksId) {
-//        BookEntity entity = ComentarioLogic.getBook(booksId);
-//        if (entity == null) {
-//            throw new WebApplicationException("El recurso /books/" + booksId + "/reviews no existe.", 404);
-//        }
-//        return ReviewResource.class;
-//    }
-
-//    @Path("{booksId: \\d+}/authors")
-//    public Class<BookAuthorsResource> getBookAuthorsResource(@PathParam("booksId") Long booksId) {
-//        ComentarioEntity entity = ComentarioLogic.getComentario (booksId);
-//        if (entity == null) {
-//            throw new WebApplicationException("El recurso /books/" + booksId + "/reviews no existe.", 404);
-//        }
-//        return BookAuthorsResource.class;
-//    }
-
     private List<ComentarioDetailDTO> listComentarioEntity2DetailDTO(List<ComentarioEntity> entityList) {
         List<ComentarioDetailDTO> list = new ArrayList<>();
         for (ComentarioEntity entity : entityList) {

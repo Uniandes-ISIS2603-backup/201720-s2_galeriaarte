@@ -6,6 +6,7 @@
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.HojaVidaPersistence;
@@ -21,7 +22,8 @@ import javax.inject.Inject;
 public class HojaVidaLogic
 {
  @Inject
-    private HojaVidaPersistence persistence; 
+    private HojaVidaPersistence persistence;
+
  
     /**
      *
@@ -84,6 +86,33 @@ public class HojaVidaLogic
         }
         
     }
+/*/
+    public ArtistaEntity addArtista(Long artistaId, Long hojaVidaId) 
+    {
+        
+        HojaVidaEntity hojaVidaEntity = findHoja(hojaVidaId);
+        ArtistaEntity artistaEntity = artistaLogic.findArtista(artistaId) ;
+        if (hojaVidaEntity!=null) {
+           hojaVidaEntity.setArtista(artistaEntity);
+            return artistaEntity; 
+        }
+        
+        return null;
+    }
+    
+    public ArtistaEntity replaceArtista(Long artistaId, HojaVidaEntity hoja)
+    {
+        HojaVidaEntity hojaVidaEntity = hoja;
+        ArtistaEntity artistaEntity = artistaLogic.findArtista(artistaId);
+         if (hojaVidaEntity!=null) {
+           hojaVidaEntity.setArtista(artistaEntity);
+            return artistaEntity;
+            
+        }
+        
+        return null;
+    }
  
+    /*/
     
 }

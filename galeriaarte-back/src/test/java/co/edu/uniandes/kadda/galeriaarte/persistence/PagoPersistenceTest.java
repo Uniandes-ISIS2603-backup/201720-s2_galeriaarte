@@ -100,14 +100,20 @@ public class PagoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PagoEntity entity = factory.manufacturePojo(PagoEntity.class);
-
+            CompraEntity entityC = factory.manufacturePojo(CompraEntity.class);
+            
+            entity.setCompra(entityC);
+            entityC.setPago(entity);
             em.persist(entity);
+            em.persist(entityC);
             data.add(entity);
+            data2.add(entityC);
+            
         }
     }
     
 
-    /**
+    /*i
      * Test of find method, of class PagoPersistence.
      */
     @Test

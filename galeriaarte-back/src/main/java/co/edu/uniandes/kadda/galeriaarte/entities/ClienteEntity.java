@@ -61,6 +61,11 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     public void setComentarios(List<ComentarioEntity> comentarios) {
         this.comentarios = comentarios;
     }
+    public void setComentario(ComentarioEntity comentario)
+    {
+        this.comentarios.add(comentario);
+    }
+    
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }

@@ -25,7 +25,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
+
 
 
 /**
@@ -33,8 +33,8 @@ import javax.ws.rs.core.MediaType;
  * @author jd.carrillor
  */
 @Path("hojaVida")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Produces("application/json")
+@Consumes("application/json")
 @Stateless
 public class HojaVidaResource 
 {

@@ -33,22 +33,14 @@ public class CompraDetailDTO extends CompraDTO {
      * @param entity
      */
     public CompraDetailDTO(CompraEntity entity) {
-        super(entity);
-        if (entity.getCliente() != null) {
+       super(entity);
+        if (entity != null) {
             this.cliente = new ClienteDTO(entity.getCliente());
-        } else {
-            entity.setCliente(null);
-        }
-        if (entity.getObras() != null) {
             obras = new ArrayList<>();
             for (ObraEntity entityReview : entity.getObras()) {
                 obras.add(new ObraDTO(entityReview));
             }
-        }
-       if (entity.getPago() != null) {
             this.pago = new PagoDTO(entity.getPago());
-        } else {
-            entity.setPago(null);
         }
     }
 
@@ -65,7 +57,7 @@ public class CompraDetailDTO extends CompraDTO {
             }
             compraE.setObras(obrasEntity);
         }
-        if(getPago() != null) {
+        if(this.getPago() != null) {
             compraE.setPago(this.getPago().toEntity());
         }
         return compraE;

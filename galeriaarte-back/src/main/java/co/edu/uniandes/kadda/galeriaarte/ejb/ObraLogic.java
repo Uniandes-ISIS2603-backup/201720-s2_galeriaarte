@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
@@ -22,7 +23,6 @@ import javax.inject.Inject;
 public class ObraLogic {
 
      @Inject
- 
  private ObraPersistence persistence; 
  
     /**
@@ -85,6 +85,15 @@ public class ObraLogic {
             persistence.update(x);
         }
         
+    }
+    
+    
+    
+     public ArtistaEntity getAuthor(Long bookId, Long authorsId) {
+       
+        ArtistaEntity artista = findObra(bookId).getArtista();
+        
+        return artista;
     }
  
 }

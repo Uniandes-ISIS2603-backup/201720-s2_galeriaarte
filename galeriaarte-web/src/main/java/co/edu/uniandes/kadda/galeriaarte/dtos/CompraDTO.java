@@ -25,23 +25,12 @@ public class CompraDTO {
     
     public CompraDTO(CompraEntity compraE)
     {
-        if(compraE != null)
-        {
             this.id = compraE.getId();
             this.valor = compraE.getValor();
             this.fecha = compraE.getFecha();
-        }
+        
     }
     
-    public CompraEntity toEntity()
-    {
-        CompraEntity compraE = new CompraEntity();
-        compraE.setId(this.id);
-        compraE.setValor(this.valor);
-        compraE.setFecha(this.fecha);
-        
-        return compraE;
-    }
     
     public Long getId()
     {
@@ -86,6 +75,15 @@ public class CompraDTO {
         this.fecha = fecha;
     }
 
+    public CompraEntity toEntity()
+    {
+        CompraEntity compraE = new CompraEntity();
+        compraE.setId(this.id);
+        compraE.setValor(this.valor);
+        compraE.setFecha(this.fecha);
+        
+        return compraE;
+    }
     
     
 }
