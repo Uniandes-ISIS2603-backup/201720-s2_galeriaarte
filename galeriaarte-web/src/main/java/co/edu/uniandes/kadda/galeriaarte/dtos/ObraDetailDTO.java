@@ -24,7 +24,7 @@ public class ObraDetailDTO extends ObraDTO
     public ObraDetailDTO(ObraEntity entity)
     {
          super(entity);
-        if (entity.getArtista() != null) {
+       if (entity.getArtista() != null) {
             this.artista = new ArtistaDTO(entity.getArtista());
         } 
     }

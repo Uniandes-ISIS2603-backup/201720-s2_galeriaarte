@@ -15,7 +15,7 @@ public class HojaVidaDetailDTO extends HojaVidaDTO
 {
     public HojaVidaDetailDTO()
     {
-        
+        super();
     }
     
     public HojaVidaDetailDTO(HojaVidaEntity entity)

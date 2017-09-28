@@ -80,25 +80,15 @@ public class HojaVidaResource
     public HojaVidaDetailDTO updateHojaVida(@PathParam("id") Long id, HojaVidaDetailDTO hoja) throws BusinessLogicException, UnsupportedOperationException {
          
         
-        if (hojaVidaLogic.findHoja(id)!=null)
-        {
-            HojaVidaEntity hojaVidaEntity = hoja.toEntity();
-            
-            hojaVidaLogic.update(hojaVidaEntity);
+       HojaVidaEntity entity = hoja.toEntity();
+        entity.setId(id);
+        
+        HojaVidaEntity oldEntity = hojaVidaLogic.findHoja(id);
+        if (oldEntity == null) {
+            throw new WebApplicationException("El author no existe", 404);
         }
-        
-        else{
-            
-        
-        throw new WebApplicationException("Error");
-        }
-        
-        if (!hoja.getId().equals(id))
-        {
-            throw new BusinessLogicException("Error2");
-        }
-        
-        return hoja;
+       
+        return new HojaVidaDetailDTO(hojaVidaLogic.update(entity));
       
     }
 

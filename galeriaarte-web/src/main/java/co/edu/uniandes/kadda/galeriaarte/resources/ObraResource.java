@@ -52,6 +52,7 @@ public class ObraResource
         return new ObraDetailDTO(nuevaObra);
     }
 
+
     
    @GET
     public List<ObraDetailDTO> getObras() throws BusinessLogicException {
@@ -80,26 +81,15 @@ public class ObraResource
     public ObraDetailDTO updateObra(@PathParam("id") Long id, ObraDetailDTO obra) throws BusinessLogicException, UnsupportedOperationException {
          
         
-        if (obraLogic.findObra(id)!=null)
-        {
-            ObraEntity obraEntity = obra.toEntity();
-            
-            obraLogic.update(obraEntity);
+      ObraEntity entity = obra.toEntity();
+        entity.setId(id);
+        
+        ObraEntity oldEntity = obraLogic.findObra(id);
+        if (oldEntity == null) {
+            throw new WebApplicationException("El author no existe", 404);
         }
-        
-        else{
-            
-        
-        throw new WebApplicationException("Error");
-        }
-        
-        if (!obra.getId().equals(id))
-        {
-            throw new BusinessLogicException("Error2");
-        }
-        
-        return obra;
-      
+       
+        return new ObraDetailDTO(obraLogic.update(entity));
     }
 
     /**

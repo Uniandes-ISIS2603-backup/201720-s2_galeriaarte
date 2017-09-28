@@ -76,14 +76,12 @@ public class ObraLogic {
     }
     
     
-    public void update(ObraEntity entity)
+    public ObraEntity  update(ObraEntity entity)
     {
         
-        ObraEntity x = findObra(entity.getId());
-        if (x!=null)
-        {
-            persistence.update(x);
-        }
+       
+           return persistence.update(entity);
+        
         
     }
     
@@ -95,5 +93,25 @@ public class ObraLogic {
         
         return artista;
     }
+     
+     public ArtistaEntity addArtista(Long artistaId, Long obraId) {
+        
+        ObraEntity obraEntity = findObra(obraId);
+        ArtistaEntity artistaEntity = new ArtistaEntity();
+        artistaEntity.setId(artistaId);
+        obraEntity.setArtista(artistaEntity);
+        return getArtista(obraId);
+    }
  
+     
+     public ArtistaEntity getArtista(Long obraId) {
+        
+        ArtistaEntity artista = findObra(obraId).getArtista();
+        return artista;
+    }
+     
+     
+     
+
+     
 }

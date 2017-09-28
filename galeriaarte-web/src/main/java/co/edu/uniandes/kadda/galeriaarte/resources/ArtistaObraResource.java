@@ -27,6 +27,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -36,10 +37,10 @@ import javax.ws.rs.WebApplicationException;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Stateless
+@RequestScoped
 public class ArtistaObraResource
 {
-   
+   /*/
     final ArtistaObraLogic artistaObraLogic; 
     
     @Inject
@@ -76,9 +77,11 @@ public class ArtistaObraResource
         
         return booksListEntity2DTO(artistaObraLogic.listObras(authorsId));
     }
-/*/
+
         
          throw new WebApplicationException("Error");
     }
- /*/
+ 
+
+/*/
 }

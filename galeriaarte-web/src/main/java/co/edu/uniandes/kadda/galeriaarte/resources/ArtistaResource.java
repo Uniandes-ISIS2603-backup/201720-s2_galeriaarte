@@ -36,7 +36,7 @@ import javax.ws.rs.core.MediaType;
 @Path("artistas")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Stateless
+
 public class ArtistaResource 
 {
     
@@ -81,12 +81,12 @@ public class ArtistaResource
     public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDetailDTO dto) {
         ArtistaEntity entity = dto.toEntity();
         entity.setId(id);
-        entity.setName(dto.getName());
+        
         ArtistaEntity oldEntity = artistaLogic.findArtista(id);
         if (oldEntity == null) {
             throw new WebApplicationException("El author no existe", 404);
         }
-        
+       
         return new ArtistaDetailDTO(artistaLogic.update(entity));
     }
     
@@ -147,7 +147,7 @@ public class ArtistaResource
         }
         return ArtistaHojaVidaResource.class;
     }
-    
+    /*/
     @Path("{id: \\d+}/obras")
     public Class<ArtistaObraResource> getArtistaObraResource(@PathParam("id") Long artistaId) {
         ArtistaEntity entity = artistaLogic.findArtista(artistaId);
@@ -156,5 +156,5 @@ public class ArtistaResource
         }
         return ArtistaObraResource.class;
     }
-    
+    /*/
 }

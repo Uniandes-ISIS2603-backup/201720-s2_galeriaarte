@@ -76,14 +76,12 @@ public class HojaVidaLogic
     }
     
     
-    public void update(HojaVidaEntity entity)
+    public HojaVidaEntity update(HojaVidaEntity entity)
     {
         
-        HojaVidaEntity x = findHoja(entity.getId());
-        if (x!=null)
-        {
-            persistence.update(x);
-        }
+        
+           return persistence.update(entity);
+        
         
     }
 /*/
