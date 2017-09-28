@@ -7,6 +7,8 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ObraDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaObraLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ObraLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -25,6 +27,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -36,14 +39,19 @@ import javax.ejb.Stateless;
 @Stateless
 public class ArtistaObraResource
 {
-    @Inject 
-    private ArtistaLogic artistaLogic; 
+   
+    final ArtistaObraLogic artistaObraLogic; 
     
     @Inject
-    public ArtistaObraResource()
-    {
-        
-    }
+     public ArtistaObraResource(ArtistaObraLogic x)
+     {
+         artistaObraLogic = x;
+     }
+     
+     public ArtistaObraResource()
+     {
+         artistaObraLogic = new ArtistaObraLogic();
+     }
     
  private List<ObraDetailDTO> booksListEntity2DTO(List<ObraEntity> entityList){
         List<ObraDetailDTO> list = new ArrayList<>();
@@ -63,8 +71,14 @@ public class ArtistaObraResource
     }
  
   @GET
-    public List<ObraDetailDTO> listObras(@PathParam("id") Long authorsId) {
-        return booksListEntity2DTO(artistaLogic.listObras(authorsId));
+    public List<ObraDetailDTO> listObras(@PathParam("id") Long authorsId) throws Exception
+    {
+        
+        return booksListEntity2DTO(artistaObraLogic.listObras(authorsId));
     }
- 
+/*/
+        
+         throw new WebApplicationException("Error");
+    }
+ /*/
 }

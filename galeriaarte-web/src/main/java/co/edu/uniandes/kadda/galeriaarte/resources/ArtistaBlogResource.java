@@ -33,8 +33,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class ArtistaBlogResource 
 {
-    @Inject 
-    private ArtistaLogic artistaLogic;
     
     
     

@@ -33,19 +33,15 @@ import javax.ws.rs.core.MediaType;
 public class ArtistaHojaVidaResource 
 {
    
-  private static ArtistaLogic artistaLogic;
+    
+    /*/
+  private  ArtistaLogic artistaLogic;
   
   
   
     
 
-    /**
-     * Convierte una lista de BookEntity a una lista de BookDetailDTO.
-     *
-     * @param entityList Lista de BookEntity a convertir.
-     * @return Lista de BookDetailDTO convertida.
-     * 
-     */
+  
     private HojaVidaDetailDTO hojaVidaEntity2DTO(HojaVidaEntity entity){
     
       return new HojaVidaDetailDTO(entity);
@@ -56,13 +52,7 @@ public class ArtistaHojaVidaResource
         
     }
 
-    /**
-     * Convierte una lista de BookDetailDTO a una lista de BookEntity.
-     *
-     * @param dtos Lista de BookDetailDTO a convertir.
-     * @return Lista de BookEntity convertida.
-     * 
-     */
+    
     private HojaVidaEntity  hojaVidaDTO2Entity(HojaVidaDetailDTO  dtos){
        
        
@@ -71,15 +61,7 @@ public class ArtistaHojaVidaResource
        
     }
 
-    /**
-     * Obtiene una colección de instancias de BookDetailDTO asociadas a una
-     * instancia de Author
-     *
-     * 
-     * @param artistaId
-     * @return Colección de instancias de BookDetailDTO asociadas a la instancia de Author
-     * 
-     */
+   
     @GET
     public  HojaVidaDetailDTO getHojaVida(@PathParam("id") Long artistaId)
     {
@@ -116,7 +98,7 @@ public class ArtistaHojaVidaResource
         artistaLogic.removeHojaVida(artistaId);
     } 
     
-     
+     /*/
     
     
 }
