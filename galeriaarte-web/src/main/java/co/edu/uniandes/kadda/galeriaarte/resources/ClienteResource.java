@@ -57,7 +57,7 @@ public class ClienteResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ClienteDetailDTO getAuthor(@PathParam("id") Long id) throws BusinessLogicException {
+    public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
             throw new WebApplicationException("El Cliente no existe", 404);
@@ -120,12 +120,12 @@ public class ClienteResource {
         return list;
     }
 
-//    @Path("{authorsId: \\d+}/books")
-//    public Class<AuthorBooksResource> getAuthorBooksResource(@PathParam("authorsId") Long authorsId) {
-//        AuthorEntity entity = authorLogic.getAuthor(authorsId);
-//        if (entity == null) {
-//            throw new WebApplicationException("El author no existe", 404);
-//        }
-//        return AuthorBooksResource.class;
-//    }
+    @Path("{clienteId: \\d+}/comentarios")
+    public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("clienteId") Long clienteId) {
+        ClienteEntity entity = clienteLogic.getCliente(clienteId);
+        if (entity == null) {
+            throw new WebApplicationException("El cliente no existe", 404);
+        }
+        return ClienteComentarioResource.class;
+    }
 }
