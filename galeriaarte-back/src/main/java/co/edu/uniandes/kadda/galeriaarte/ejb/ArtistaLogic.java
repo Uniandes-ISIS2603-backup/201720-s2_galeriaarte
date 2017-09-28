@@ -25,8 +25,7 @@ public class ArtistaLogic
  @Inject
     private ArtistaPersistence persistence;
  
- @Inject
- private HojaVidaLogic hojaVidaLogic;
+
 
     /**
      *
@@ -104,7 +103,7 @@ public class ArtistaLogic
         
       
     }
-   
+   /*/
     public HojaVidaEntity addHojaVida(Long artistaId, Long hojaVidaId) 
          
     {
@@ -116,7 +115,7 @@ public class ArtistaLogic
        }
         return hoja;
     }
-    
+    /*/
      public HojaVidaEntity replaceHojaVida(Long artistaId, HojaVidaEntity hoja) {
         
        ArtistaEntity artista = findArtista(artistaId);
@@ -144,6 +143,19 @@ public class ArtistaLogic
       {
         return findArtista(authorId).getObras();
       }
+      
+      public ObraEntity getObra(Long authorId, Long obraId) {
+        
+        List<ObraEntity> list = findArtista(authorId).getObras();
+        ObraEntity obraEntity = new ObraEntity();
+        obraEntity.setId(obraId);
+        int index = list.indexOf(obraEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
       
       
       

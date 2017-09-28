@@ -13,6 +13,9 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
  */
 public class ObraDetailDTO extends ObraDTO
 {
+    
+    private ArtistaDTO artista;
+    
      public ObraDetailDTO()
     {
         
@@ -20,13 +23,35 @@ public class ObraDetailDTO extends ObraDTO
     
     public ObraDetailDTO(ObraEntity entity)
     {
-        super(entity);
+         super(entity);
+        if (entity.getArtista() != null) {
+            this.artista = new ArtistaDTO(entity.getArtista());
+        } 
     }
     @Override
     
     public ObraEntity toEntity() {
         ObraEntity obraE = super.toEntity();
+        if (this.getArtista() != null) {
+            obraE.setArtista(this.getArtista().toEntity());
+        }
+        
+        
         return obraE;
+    }
+
+    /**
+     * @return the artista
+     */
+    public ArtistaDTO getArtista() {
+        return artista;
+    }
+
+    /**
+     * @param artista the artista to set
+     */
+    public void setArtista(ArtistaDTO artista) {
+        this.artista = artista;
     }
     
 }
