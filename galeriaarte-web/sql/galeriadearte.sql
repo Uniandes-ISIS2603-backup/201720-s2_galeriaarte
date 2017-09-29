@@ -14,3 +14,5 @@ insert into PagoEntity (id, total, impuesto) values (27, 40, 8);
 insert into ArtistaEntity (id, name) values (1, 'Pedro');
 insert into ArtistaEntity (id, name) values (2, 'Pablo');
 insert into ArtistaEntity (id, name) values (3, 'pepe');
+
+
