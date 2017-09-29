@@ -17,6 +17,15 @@ public class ComentarioDetailDTO extends ComentarioDTO
     * Relación a una editorial
      */
     private ClienteDTO cliente;
+    private ObraDTO obra;
+
+    public ObraDTO getObra() {
+        return obra;
+    }
+
+    public void setObra(ObraDTO obra) {
+        this.obra = obra;
+    }
 
     public ComentarioDetailDTO() {
         super();
@@ -33,7 +42,12 @@ public class ComentarioDetailDTO extends ComentarioDTO
             this.cliente = new ClienteDTO(entity.getClienteComentario());
         } else {
             entity.setClienteComentario(null);
-        }                
+        } 
+        if (entity.getObra()!= null) {
+            this.obra = new ObraDTO(entity.getObra());
+        } else {
+            entity.setObra(null);
+        } 
     }
 
     @Override
@@ -41,6 +55,9 @@ public class ComentarioDetailDTO extends ComentarioDTO
         ComentarioEntity entity = super.toEntity();
         if (this.getCliente() != null) {
             entity.setClienteComentario(this.getCliente().toEntity());
+        }
+        if (this.getObra() != null) {
+            entity.setObra(this.getObra().toEntity());
         }
         return entity;
     }

@@ -7,6 +7,7 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class ClienteDetailDTO extends ClienteDTO {
 
-    //private List<ObraDTO> obras;
+    private List<ObraDTO> obras;
     private List<ComentarioDTO> comentarios;
 
     public ClienteDetailDTO() {
@@ -33,16 +34,23 @@ public class ClienteDetailDTO extends ClienteDTO {
                 }
 
             }
+            if (entity.getObra()!= null) {
+                obras = new ArrayList<>();
+                for (ObraEntity entityObras : entity.getObra()) {
+                    obras.add(new ObraDTO(entityObras));
+                }
+
+            }
         }
     }
 
-//    public List<ObraDTO> getObras() {
-//        return obras;
-//    }
-//
-//    public void setObras(List<ObraDTO> obras) {
-//        this.obras = obras;
-//    }
+    public List<ObraDTO> getObras() {
+        return obras;
+    }
+
+    public void setObras(List<ObraDTO> obras) {
+        this.obras = obras;
+    }
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity entity = super.toEntity();
@@ -52,6 +60,13 @@ public class ClienteDetailDTO extends ClienteDTO {
                 comentariosEntity.add(comentarioDto.toEntity());
             }
             entity.setComentarios(comentariosEntity);
+        }
+        if (obras != null) {
+            List<ObraEntity> obraEntity = new ArrayList<>();
+            for (ObraDTO obraDto : obras) {
+                obraEntity.add(obraDto.toEntity());
+            }
+            entity.setObra(obraEntity);
         }
 
         return entity;
