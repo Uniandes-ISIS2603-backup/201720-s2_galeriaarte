@@ -24,6 +24,8 @@ public class ObraLogic {
 
      @Inject
  private ObraPersistence persistence; 
+     @Inject
+     private ArtistaLogic artistaLogic;
  
     /**
      *
@@ -94,13 +96,15 @@ public class ObraLogic {
         return artista;
     }
      
-     public ArtistaEntity addArtista(Long artistaId, Long obraId) {
+     public ArtistaEntity addArtista(Long obraId, ArtistaEntity artista) throws BusinessLogicException {
         
         ObraEntity obraEntity = findObra(obraId);
-        ArtistaEntity artistaEntity = new ArtistaEntity();
-        artistaEntity.setId(artistaId);
-        obraEntity.setArtista(artistaEntity);
-        return getArtista(obraId);
+        ArtistaEntity artistaNuevo= artistaLogic.createArtista(artista);
+        List<ObraEntity> listaObras = artistaNuevo.getObras();
+        listaObras.add(obraEntity);
+        obraEntity.setArtista(artista);
+       
+        return artistaNuevo;
     }
  
      

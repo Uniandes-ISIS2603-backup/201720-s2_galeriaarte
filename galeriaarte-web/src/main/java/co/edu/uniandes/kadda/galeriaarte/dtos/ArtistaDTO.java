@@ -24,10 +24,10 @@ public class ArtistaDTO
     
     public ArtistaDTO(ArtistaEntity artista)
     {
-        
+        if(artista!=null){
         this.id = artista.getId();
         this.name = artista.getName();
-        
+        }
     }
 
     /**
