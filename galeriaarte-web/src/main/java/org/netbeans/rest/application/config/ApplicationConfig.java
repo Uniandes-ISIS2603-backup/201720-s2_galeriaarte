@@ -32,6 +32,9 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.BusinessLogicExceptionMapper.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.UnsupportedOperationExceptionMapper.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.WebApplicationExceptionMapper.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaBlogResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaGaleriaResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaHojaVidaResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaObraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.BlogResource.class);
@@ -45,6 +48,9 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.HojaVidaResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.MarcoResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ObraArtistaResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ObraClienteResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ObraComentarioResource.class);
+        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ObraCompraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ObraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.PagoResource.class);
     }

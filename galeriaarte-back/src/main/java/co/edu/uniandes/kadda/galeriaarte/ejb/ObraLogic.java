@@ -6,8 +6,15 @@
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ComentarioPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.CompraPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,10 +29,24 @@ import javax.inject.Inject;
 @Stateless
 public class ObraLogic {
 
+    
      @Inject
- private ObraPersistence persistence; 
+     private ObraPersistence persistence; 
      @Inject
-     private ArtistaLogic artistaLogic;
+     private CompraPersistence compraPersistence; 
+     
+     @Inject
+     private ArtistaPersistence artistaPersistence; 
+     
+     @Inject
+     private ClientePersistence clientePersistence; 
+     
+    @Inject
+     private ComentarioPersistence comentarioPersistence; 
+      
+     
+     
+     
  
     /**
      *
@@ -99,12 +120,79 @@ public class ObraLogic {
      public ArtistaEntity addArtista(Long obraId, ArtistaEntity artista) throws BusinessLogicException {
         
         ObraEntity obraEntity = findObra(obraId);
-        ArtistaEntity artistaNuevo= artistaLogic.createArtista(artista);
+        ArtistaEntity artistaNuevo= createArtista(artista);
         List<ObraEntity> listaObras = artistaNuevo.getObras();
         listaObras.add(obraEntity);
         obraEntity.setArtista(artista);
        
         return artistaNuevo;
+    }
+     
+     public ArtistaEntity createArtista(ArtistaEntity entity) throws BusinessLogicException 
+    {
+        // Verifica la regla de negocio que dice que no puede haber dos Estudiantees con el mismo nombre
+        if (artistaPersistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe un id con el id \"" + entity.getId() + "\"");
+        }
+        // Invoca la persistencia para crear la Estudiante
+        artistaPersistence.create(entity);
+        return entity;
+    }
+     
+      public ComentarioEntity addComentario(Long obraId, ComentarioEntity comentario) throws BusinessLogicException
+      {
+        ObraEntity obra = findObra(obraId);
+        ComentarioEntity comentarioNueva= createComentario(comentario);
+        comentarioNueva.setObra(obra);
+        List<ComentarioEntity> comentariosObra = obra.getComentarios();
+        comentariosObra.add(comentario);
+        return comentarioNueva;
+    }
+      
+      public ComentarioEntity createComentario(ComentarioEntity entity) throws BusinessLogicException {
+        comentarioPersistence.create(entity);
+        return entity;
+    }
+     
+     
+     public ClienteEntity addCliente(Long obraId, ClienteEntity cliente) throws BusinessLogicException {
+        
+        ObraEntity obraEntity = findObra(obraId);
+        ClienteEntity clienteNuevo= createCliente(cliente);
+        List<ObraEntity> listaObras = clienteNuevo.getObra();
+        listaObras.add(obraEntity);
+        obraEntity.setCliente(cliente);
+       
+        return clienteNuevo;
+    }
+     
+     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException 
+    {
+        if(clientePersistence.find(entity.getId())!=null){
+            throw new BusinessLogicException("Ya existe un cliente con el id \"" + entity.getId() + "\"");
+        }
+        return clientePersistence.create(entity);
+    }
+     
+     
+     public CompraEntity addCompra(Long obraId, CompraEntity compra) throws BusinessLogicException
+     {
+        ObraEntity obraEntity = findObra(obraId);
+        CompraEntity compraNuevo= createCompra(compra);
+        List<ObraEntity> listaObras = compraNuevo.getObras();
+        listaObras.add(obraEntity);
+        obraEntity.setCompra(compra);
+       
+        return compraNuevo;
+     }
+     
+     public CompraEntity createCompra(CompraEntity entity) throws BusinessLogicException {
+       
+        if (compraPersistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una compra con el id \"" + entity.getId() + "\"");
+        }
+       
+        return compraPersistence.create(entity);
     }
  
      
@@ -113,6 +201,13 @@ public class ObraLogic {
         ArtistaEntity artista = findObra(obraId).getArtista();
         return artista;
     }
+     
+     
+      public List<ComentarioEntity> listComentarios(Long obraId)
+      {
+        return findObra(obraId).getComentarios();
+      }
+      
      
      
      

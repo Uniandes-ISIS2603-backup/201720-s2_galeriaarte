@@ -6,6 +6,8 @@
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.BlogLogic;
+import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +24,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 
 
 /**
@@ -30,9 +33,20 @@ import javax.ejb.Stateless;
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Stateless
+@Path("artistas/{id: \\d+}/blogs")
+@RequestScoped
 public class ArtistaBlogResource 
 {
+    /*/
+  @Inject
+  ArtistaLogic artistaLogic;
+  
+  @Inject
+  BlogLogic blogLogic;
+  /*/
+ 
+    
+    
     
     
     

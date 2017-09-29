@@ -36,6 +36,7 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ArtistaObraResource
 {
+   
 @Inject
   ArtistaLogic artistaLogic;
 @Inject

@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class HojaVidaLogic
 {
  @Inject
-    private HojaVidaPersistence persistence;
+ private HojaVidaPersistence persistence;
 
  
     /**

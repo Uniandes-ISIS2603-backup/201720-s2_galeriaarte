@@ -103,5 +103,7 @@ public class ComentarioLogic {
         ClienteEntity clienteEntity = new ClienteEntity();
         clienteEntity.setId(clienteId);
         entity.setClienteComentario(null);
-    }    
+    }
+
+    
 }

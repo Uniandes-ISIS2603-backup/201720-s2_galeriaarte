@@ -7,10 +7,14 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.HojaVidaLogic;
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
+import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -29,76 +33,76 @@ import javax.ws.rs.core.MediaType;
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Stateless
+@Path("artistas/{id: \\d+}/hojaVida")
+@RequestScoped
 public class ArtistaHojaVidaResource 
 {
    
     
-    /*/
+   @Inject
   private  ArtistaLogic artistaLogic;
   
+   @Inject
+  private  HojaVidaLogic hojaVidaLogic;
   
-  
-    
-
-  
-    private HojaVidaDetailDTO hojaVidaEntity2DTO(HojaVidaEntity entity){
-    
-      return new HojaVidaDetailDTO(entity);
-        
-      
-           
-        
-        
-    }
-
-    
-    private HojaVidaEntity  hojaVidaDTO2Entity(HojaVidaDetailDTO  dtos){
-       
-       
-           return (dtos.toEntity());
-        
-       
-    }
-
-   
-    @GET
-    public  HojaVidaDetailDTO getHojaVida(@PathParam("id") Long artistaId)
+    @GET 
+    public  HojaVidaDetailDTO getHoja (@PathParam("id") Long artista) throws BusinessLogicException
     {
-        if(artistaLogic.getHojaVida(artistaId)!=null){
-        return new HojaVidaDetailDTO(artistaLogic.getHojaVida(artistaId));
-     }
-        System.out.println("ssasa");
-        HojaVidaDetailDTO x= new HojaVidaDetailDTO();
-        x.setId(artistaId);
-        return x;
-                
+          if (artistaLogic.findArtista(artista)!=null) 
+        {
+            ArtistaEntity ent = artistaLogic.findArtista(artista);
+            HojaVidaEntity hoja = ent.getHojaVida();
+          return new HojaVidaDetailDTO(hoja);
+         
+        }
+          else
+          {
+              throw new BusinessLogicException("error");
+          }
+        
+        
     }
-
     
-
-    @POST
-    @Path("{hojVidaId: \\d+}")
-    public HojaVidaDetailDTO addHojaVida(@PathParam("artistaId") Long artistaId, @PathParam("hojaVidaId") Long hojaVidaId) {
-        return new HojaVidaDetailDTO(artistaLogic.addHojaVida(artistaId, hojaVidaId));
+     @POST   
+    public HojaVidaDetailDTO addHoja(@PathParam("id") Long artistaId, HojaVidaDetailDTO dto) throws BusinessLogicException 
+    {
+        HojaVidaEntity hoja = dto.toEntity();
+         return new HojaVidaDetailDTO(artistaLogic.addHoja(artistaId, hoja));
+        
     }
-
-    
     
     @PUT
-    public HojaVidaDetailDTO replaceHojaVida (@PathParam("artistaId") Long artistaId, HojaVidaDetailDTO hoja) {
-        return hojaVidaEntity2DTO(artistaLogic.replaceHojaVida(artistaId, hojaVidaDTO2Entity(hoja)));
+    public HojaVidaDetailDTO replaceHoja(@PathParam("id") Long artistaId, HojaVidaDetailDTO dto) throws BusinessLogicException
+    {
+        
+        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        HojaVidaEntity oldHoja = artista.getHojaVida();
+        HojaVidaEntity hojaNueva = dto.toEntity();
+          hojaNueva.setId(oldHoja.getId());
+          hojaNueva.setArtista(artista);
+             
+           return new HojaVidaDetailDTO(hojaVidaLogic.update(hojaNueva));
+            
+      
+    
     }
+    
+     @DELETE
+    public void removeHoja(@PathParam("id") Long artistaId) throws BusinessLogicException
+    {
+        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        HojaVidaEntity hojaEliminar = artista.getHojaVida();
+        
+        hojaVidaLogic.delete(hojaEliminar.getId());
+    }
+    
+    
+    
+    
 
-   
+  
     
-    @DELETE
-    @Path("{booksId: \\d+}")
-    public void removeBooks(@PathParam("authorsId") Long artistaId) {
-        artistaLogic.removeHojaVida(artistaId);
-    } 
-    
-     /*/
+     
     
     
 }

@@ -72,5 +72,20 @@ public class GaleriaLogic {
         return galerias;
     }
 
+    public GaleriaEntity  update(GaleriaEntity entity)
+    {
+        
+       
+           return persistence.update(entity);
+        
+        
+    }
+    
+    
+     public void delete(Long id)
+    {
+       persistence.delete(id);
+    }
+
 
 }

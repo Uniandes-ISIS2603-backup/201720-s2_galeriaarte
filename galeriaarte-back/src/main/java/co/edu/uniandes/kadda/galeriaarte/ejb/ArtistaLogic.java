@@ -6,10 +6,14 @@
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.HojaVidaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
@@ -23,10 +27,19 @@ import javax.inject.Inject;
 public class ArtistaLogic 
 {
  @Inject
-    private ArtistaPersistence persistence;
+ private ArtistaPersistence persistence;
+ 
+
+ @Inject 
+ private ObraPersistence obraPersistence;
  
  @Inject
- private ObraLogic obraLogic;
+ private HojaVidaPersistence hojaVidaPersistence;
+ 
+@Inject
+ private GaleriaPersistence galeriaPersistence;
+ 
+
 
 
     /**
@@ -160,12 +173,66 @@ public class ArtistaLogic
       public ObraEntity addObra(Long artistaId, ObraEntity obra) throws BusinessLogicException
       {
         ArtistaEntity artista = findArtista(artistaId);
-        ObraEntity obraNueva= obraLogic.createObra(obra);
+        ObraEntity obraNueva= createObra(obra);
         obraNueva.setArtista(artista);
         List<ObraEntity> obrasArtista = artista.getObras();
         obrasArtista.add(obra);
         return obraNueva;
     }
+      
+      public ObraEntity createObra(ObraEntity entity) throws BusinessLogicException 
+      {
+      if (obraPersistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una obra con el id \"" + entity.getId() + "\"");
+        }
+        // Invoca la persistencia para crear la Estudiante
+        obraPersistence.create(entity);
+        return entity;
+      }
+      
+      
+      
+      public HojaVidaEntity addHoja(Long artistaId, HojaVidaEntity hoja) throws BusinessLogicException
+      {
+        ArtistaEntity artista = findArtista(artistaId);
+        HojaVidaEntity hojaNueva= createHojaVida(hoja);
+        hojaNueva.setArtista(artista);
+        artista.setHojaVida(hojaNueva);
+        return hojaNueva;
+      }
+      
+       public HojaVidaEntity createHojaVida(HojaVidaEntity entity) throws BusinessLogicException 
+    {
+        // Verifica la regla de negocio que dice que no puede haber dos Estudiantees con el mismo nombre
+        if (hojaVidaPersistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una Hoja de vida con el id \"" + entity.getId() + "\"");
+        }
+        // Invoca la persistencia para crear la Estudiante
+        hojaVidaPersistence.create(entity);
+        return entity;
+    }
+      
+      
+      public GaleriaEntity addGaleria(Long artistaId, GaleriaEntity gal) throws BusinessLogicException
+      {
+        ArtistaEntity artistaEntity = findArtista(artistaId);
+        GaleriaEntity galNueva = createGaleria(gal);
+        List<ArtistaEntity> listaArtistas = galNueva.getArtistas();
+        listaArtistas.add(artistaEntity);
+        artistaEntity.setGaleria(gal);
+        
+        return galNueva;
+          
+        
+      }
+      
+      public GaleriaEntity createGaleria(GaleriaEntity entity) throws BusinessLogicException {
+        
+        galeriaPersistence.create(entity);
+       
+        return entity;
+    }
+
       
       public ObraEntity replaceObra(Long artistaId, Long obraId)
       {
