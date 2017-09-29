@@ -16,6 +16,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -105,6 +106,24 @@ ObraLogic obraLogic;
       return null;
     
     }
+    
+    @DELETE
+    @Path(("/{idObra:\\d+}"))
+    public void removeObra(@PathParam("id") Long artistaId, @PathParam(("idObra"))Long idObra) throws BusinessLogicException
+    {
+        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        List<ObraEntity> obrasArtista =artista.getObras();
+        for(int i =0;i<obrasArtista.size();i++)
+        {
+            ObraEntity obraActual = obrasArtista.get(i);
+            if(obraActual.getId().equals(idObra))
+            {
+                obraLogic.delete(idObra);
+            }
+        }
+    }
+    
+    
     
  
 
