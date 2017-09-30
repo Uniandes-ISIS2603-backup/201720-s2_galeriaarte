@@ -1,0 +1,245 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Marco",
+		"_postman_id": "3dec484b-9f27-244d-412c-dce9c86288b1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consulta todos los marcos (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getMarcos\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Consulta todos los marcos de la Galeria de Arte"
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta un marco en especifico (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getMarco\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/9",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Consulta un marco que no existe en la Galeria de Arte y esta le devuelve un mensaje diciendo que no esta"
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta un marco especifico (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getMarco\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/4",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Consulta un marco existente en la Galeria de Arte"
+			},
+			"response": []
+		},
+		{
+			"name": "Agrega un marco existente (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postMarco\"]=responseCode.code==412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\n\"material\":\"madera\",\n\"ancho\":10,\n\"alto\":20,\n\"valor\":20000}"
+				},
+				"description": "Agrega un marco existente y el sismtema le dice que ya hay un marco con ese id"
+			},
+			"response": []
+		},
+		{
+			"name": "Agrega un nuevo marco (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postMarco\"]=responseCode.code==500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":7,\n\"material\":\"madera\",\n\"ancho\":10,\n\"alto\":20,\n\"valor\":20000}"
+				},
+				"description": "Agrega un nuevo marco al sitema"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza la informacion de un marco (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putMarco\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\n\"material\":\"metal\",\n\"ancho\":10,\n\"alto\":20,\n\"valor\":20000}"
+				},
+				"description": "Actualiz la informacion de un marco existente"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza el contenido de un marco no existente (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putMarco\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/11",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":11,\n\"material\":\"metal\",\n\"ancho\":10,\n\"alto\":20,\n\"valor\":20000}"
+				},
+				"description": "Trata de actualizar la informacion de un marco, pero este no existe en el sistma"
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina un marco que no existe (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteMarco\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/10",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Trata de eliminar un marco, pero este no existe en el sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina un marco del sistema (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteMarco\"]=responseCode.code==204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/marcos/3",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Elimina un marco existente del sistema"
+			},
+			"response": []
+		}
+	]
+}
