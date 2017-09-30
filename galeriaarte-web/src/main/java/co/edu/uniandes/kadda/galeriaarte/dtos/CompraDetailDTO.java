@@ -7,7 +7,6 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
-import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import java.util.ArrayList;
 import java.util.List;
 

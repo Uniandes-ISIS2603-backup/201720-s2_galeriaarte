@@ -9,7 +9,7 @@ import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.PagoPersistence;
-import co.edu.uniandes.kadda.galeriaarte.ejb.CompraLogic;
+import co.edu.uniandes.kadda.galeriaarte.persistence.CompraPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,11 +25,11 @@ public class PagoLogic {
     
      private static final Logger LOGGER = Logger.getLogger(PagoLogic.class.getName());
 
-      @Inject
+    @Inject
     private PagoPersistence persistence;
 
     @Inject
-    private CompraLogic compraLogic;
+    private CompraPersistence compraPersistence;
 
     /**
      * Obtiene la lista de los registros de Pago que pertenecen a un compra.
@@ -49,7 +49,7 @@ public class PagoLogic {
      *
      * @param compraid
      * @pre La existencia del elemento padre compra se debe garantizar.
-     * @param Pagoid) Identificador del Pago a consultar
+     * @param pagoid) Identificador del Pago a consultar
      * @return Instancia de PagoEntity con los datos del Pago consultado.
      * 
      */
@@ -67,7 +67,7 @@ public class PagoLogic {
      */
     public PagoEntity createPago(Long compraid, PagoEntity entity) {
         LOGGER.info("Inicia proceso de crear Pago");
-        CompraEntity compra = compraLogic.getCompra(compraid);
+        CompraEntity compra = compraPersistence.find(compraid);
         entity.setCompra(compra);
         return persistence.create(entity);
     }
@@ -82,7 +82,7 @@ public class PagoLogic {
      */
     public PagoEntity updatePago(Long compraid, PagoEntity entity) {
         LOGGER.info("Inicia proceso de actualizar Pago");
-        CompraEntity compra = compraLogic.getCompra(compraid);
+        CompraEntity compra = compraPersistence.find(compraid);
         entity.setCompra(compra);
         return persistence.update(entity);
     }

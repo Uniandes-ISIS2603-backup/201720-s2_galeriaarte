@@ -1,0 +1,261 @@
+{
+	"id": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+	"name": "pruebas compra",
+	"description": "Pruebas iniciales del recurso Compra",
+	"order": [
+		"cd755213-6882-69dc-23fb-ab69c9d8a689",
+		"d42ee235-b1d5-4874-9054-684f5ffec948",
+		"bed0becb-25c2-ef0c-1780-3aa909eb93be",
+		"9a014fea-c044-25f4-c95d-e2afe63526c4",
+		"e97726c0-434b-060d-ba40-e784e4933676",
+		"e54efacf-5066-0fe2-35c6-52b8fbde8810",
+		"1de64cb2-bf53-583a-c659-640e948f656b",
+		"3017cc69-a567-5f26-825f-4abb1f12c89a"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506370831805,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "1de64cb2-bf53-583a-c659-640e948f656b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/12/obras/2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Consultar obras de una compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506737019723,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Consultó obras de una compra\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 80,\n\t\"fecha\" : \"2005-04-02T00:00:00-05:00\",\n\t\"obras\" : [{\n\t\t\"tipo\" : \"cubismo\",\n\t\t\"cantidad\" : 2,\n\t\t\"valor\" : 80\n\t}]\n}"
+		},
+		{
+			"id": "3017cc69-a567-5f26-825f-4abb1f12c89a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/14/obras/4",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Eliminar obra de una compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506737520824,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Eliminó obra de una compra\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": ""
+		},
+		{
+			"id": "9a014fea-c044-25f4-c95d-e2afe63526c4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Modificar compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506723172658,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Modificó compra\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 97,\n\t\"fecha\" : \"01/06/2008\"\n}"
+		},
+		{
+			"id": "bed0becb-25c2-ef0c-1780-3aa909eb93be",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": null,
+			"dataMode": "params",
+			"name": "Eliminar compra por id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506723031649,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Eliminó compra\"] = responseCode.code === 404;",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "cd755213-6882-69dc-23fb-ab69c9d8a689",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1506721894582,
+			"name": "Consultar todas las compras ",
+			"description": "",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"responses": [],
+			"rawModeData": "{ \"valor\" : 70,\n\"fecha\" : \"07/09/2005\"}"
+		},
+		{
+			"id": "d42ee235-b1d5-4874-9054-684f5ffec948",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Crear compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506722875371,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Creó compra\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 94,\n\t\"fecha\" : \"03/08/2006\"\n}"
+		},
+		{
+			"id": "e54efacf-5066-0fe2-35c6-52b8fbde8810",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Agregar obras a una compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506736934883,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Agregó obras\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 80,\n\t\"fecha\" : \"2005-04-02T00:00:00-05:00\",\n\t\"obras\" : [{\n\t\t\"tipo\" : \"cubismo\",\n\t\t\"cantidad\" : 2,\n\t\t\"valor\" : 80\n\t}]\n}"
+		},
+		{
+			"id": "e97726c0-434b-060d-ba40-e784e4933676",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/4",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "30353d7d-d18f-f082-62e0-4f7fbe6d8fc9",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Consultar compra por id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506723968043,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Consultó compra por id\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 97,\n\t\"fecha\" : \"01/06/2008\"\n}"
+		}
+	]
+}
