@@ -1,0 +1,263 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Artista",
+		"_postman_id": "cc3c9b50-23da-75f9-7789-abe857c529dc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consulta todos los artistas (Prueba Positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getArtistas\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Retorna los artistas de la Galeria de Arte"
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Artista especifico (Prueba Positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getArtista\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Artista especifico (Prueba Negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getArtista\"]=responseCode.code==500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/50",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Agrega Artista especifico (Prueba Positiva) ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postArtistas\"]=responseCode.code==500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":6,\n\"name\":\"Andrés\",\n\"obras\":[]\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Agrega Artista especifico (Prueba Negativa)  ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postArtistas\"]=responseCode.code==405;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/25",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":25,\n\"name\":\"Melvin\",\n\"obras\":[]\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza Artista especifico (Prueba Positiva)   ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putArtistas\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":2,\n\"name\":\"Hector\",\n\"obras\":[]\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza Artista especifico (Prueba Negativa)    ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putArtistas\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/98",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":98,\n\"name\":\"Hector\",\n\"obras\":[]\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina Artista especifico (Prueba Negativa)   ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteArtistas\"]=responseCode.code==500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/101",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina Artista especifico (Prueba Positivo)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteArtistas\"]=responseCode.code==204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
