@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
-import co.edu.uniandes.kadda.galeriaarte.dtos.MarcoDTO;
+import co.edu.uniandes.kadda.galeriaarte.dtos.MarcoDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.MarcoLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.MarcoEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
@@ -37,29 +37,29 @@ public class MarcoResource {
     MarcoLogic marcoLogic;
     
     /**
-     * Convierte una lista de MarcoEntity a una lista de MarcoDTO.
+     * Convierte una lista de MarcoEntity a una lista de MarcoDetailDTO.
      *
      * @param entityList Lista de MarcoEntity a convertir.
-     * @return Lista de MarcoDTO convertida.
+     * @return Lista de MarcoDetailDTO convertida.
      * 
      */
-    private List<MarcoDTO> listEntity2DTO(List<MarcoEntity> entityList) {
-        List<MarcoDTO> list = new ArrayList<>();
+    private List<MarcoDetailDTO> listEntity2DetailDTO(List<MarcoEntity> entityList) {
+        List<MarcoDetailDTO> list = new ArrayList<>();
         for (MarcoEntity entity : entityList) {
-            list.add(new MarcoDTO(entity));
+            list.add(new MarcoDetailDTO(entity));
         }
         return list;
     }
     
     /**
-     * Obtiene la lista de los registros de Blogs
+     * Obtiene la lista de los registros de Marcos
      *
-     * @return Colección de objetos de BlogDTO
+     * @return Colección de objetos de MarcoDetailDTO
      * 
      */
     @GET
-    public List<MarcoDTO> getMarcos() {
-        return listEntity2DTO(marcoLogic.getMarcos());
+    public List<MarcoDetailDTO> getMarcos() {
+        return listEntity2DetailDTO(marcoLogic.getMarcos());
     }
     
     /**
@@ -71,45 +71,45 @@ public class MarcoResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public MarcoDTO getMarco(@PathParam("id") Long id) {
+    public MarcoDetailDTO getMarco(@PathParam("id") Long id) {
         MarcoEntity entity = marcoLogic.getMarco(id);
         if (entity == null) {
             throw new WebApplicationException("El marco no existe", 404);
         }
-        return new MarcoDTO(entity);
+        return new MarcoDetailDTO(entity);
     }
     
     /**
      * Se encarga de crear un Marco en la base de datos
      *
-     * @param dto Objeto de MarcoDTO con los datos nuevos
-     * @return Objeto de MarcoTO con los datos nuevos y su ID
+     * @param dto Objeto de MarcoDetailDTO con los datos nuevos
+     * @return Objeto de MarcoDetailDTO con los datos nuevos y su ID
      * @throws co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
      * 
      */
     @POST
-    public MarcoDTO createMarco(MarcoDTO dto) throws BusinessLogicException {
-        return new MarcoDTO(marcoLogic.createMarco(dto.toEntity()));
+    public MarcoDetailDTO createMarco(MarcoDetailDTO dto) throws BusinessLogicException {
+        return new MarcoDetailDTO(marcoLogic.createMarco(dto.toEntity()));
     }
     
     /**
-     * Actualiza la información de una instancia de Blog
+     * Actualiza la información de una instancia de Marco
      *
-     * @param id Identificador de la instancia de Blog a modificar
-     * @param blog
-     * @return Instancia de BlogDTO con los datos actualizados
+     * @param id Identificador de la instancia de Marco a modificar
+     * @param marco
+     * @return Instancia de MarcoDetailDTO con los datos actualizados
      * @throws co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
      * 
      */
     @PUT
     @Path("{id: \\d+}")
-    public MarcoDTO updateMarco(@PathParam("id") Long id, MarcoDTO marco) throws BusinessLogicException {
+    public MarcoDetailDTO updateMarco(@PathParam("id") Long id, MarcoDetailDTO marco) throws BusinessLogicException {
         marco.setId(id);
         MarcoEntity entity = marcoLogic.getMarco(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /marco/" + id + " no existe.", 404);
         }
-        return new MarcoDTO(marcoLogic.updateMarco(id, marco.toEntity()));
+        return new MarcoDetailDTO(marcoLogic.updateMarco(id, marco.toEntity()));
     }
     
     /**
