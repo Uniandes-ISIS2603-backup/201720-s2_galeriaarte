@@ -250,11 +250,12 @@ public class ClienteLogic {
         return list;
     }
 
-    public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) {
+    public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) throws BusinessLogicException {
+        ComentarioEntity actual = null;
+        if(entidad != null && getComentario(clienteId, entidad.getId())!= null ){
         ClienteEntity cliente = getCliente(clienteId);
         List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
 
-        ComentarioEntity actual = null;
         Iterator<ComentarioEntity> it = comentarioList.iterator();
         while (it.hasNext()) {
             actual = it.next();
@@ -262,7 +263,7 @@ public class ClienteLogic {
                 actual.setName(entidad.getName());
                 break;
             }
-        }
+        }}
         return actual;
     }
 

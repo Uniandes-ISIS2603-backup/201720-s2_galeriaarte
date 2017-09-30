@@ -6,11 +6,13 @@
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.BlogPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.HojaVidaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
@@ -38,6 +40,9 @@ public class ArtistaLogic
  
 @Inject
  private GaleriaPersistence galeriaPersistence;
+
+@Inject
+ private BlogPersistence blogPersistence;
  
 
 
@@ -157,6 +162,11 @@ public class ArtistaLogic
         return findArtista(authorId).getObras();
       }
       
+      public List<BlogEntity> listBlogs(Long authorId)
+      {
+        return findArtista(authorId).getBlogs();
+      }
+      
       public ObraEntity getObra(Long authorId, Long obraId) {
         
         List<ObraEntity> list = findArtista(authorId).getObras();
@@ -179,6 +189,27 @@ public class ArtistaLogic
         obrasArtista.add(obra);
         return obraNueva;
     }
+      
+       public BlogEntity addBlog(Long artistaId, BlogEntity blog) throws BusinessLogicException
+      {
+        ArtistaEntity artista = findArtista(artistaId);
+        BlogEntity blogNueva= createBlog(blog);
+        blogNueva.setArtista(artista);
+        List<BlogEntity> blogsArtista = artista.getBlogs();
+        blogsArtista.add(blog);
+        return blogNueva;
+    }
+       
+       
+       public BlogEntity createBlog(BlogEntity entity) throws BusinessLogicException 
+      {
+      if (blogPersistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una obra con el id \"" + entity.getId() + "\"");
+        }
+        // Invoca la persistencia para crear la Estudiante
+        blogPersistence.create(entity);
+        return entity;
+      }
       
       public ObraEntity createObra(ObraEntity entity) throws BusinessLogicException 
       {

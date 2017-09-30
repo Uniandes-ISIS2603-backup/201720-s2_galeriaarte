@@ -37,12 +37,15 @@ public class MarcoDTO {
      * objeto.
      * 
      */
-    public MarcoDTO(MarcoEntity entity) {
+    public MarcoDTO(MarcoEntity entity) 
+    {
+        if(entity!=null){
             this.id = entity.getId();
             this.valor = entity.getValor();
             this.material = entity.getMaterial();
             this.ancho = entity.getAncho();
             this.alto = entity.getAlto();
+        }
     }
     
     /**

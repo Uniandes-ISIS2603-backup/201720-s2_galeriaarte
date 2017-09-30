@@ -101,6 +101,14 @@ public class BlogLogic {
         LOGGER.log(Level.INFO, "Termina proceso de actualizar blog con id={0}", entity.getId());
         return newEntity;
     }
+    
+    public BlogEntity updateBlog(BlogEntity entity) {
+       
+        
+        BlogEntity newEntity = persistence.update(entity);
+        
+        return newEntity;
+    }
 
     
 }

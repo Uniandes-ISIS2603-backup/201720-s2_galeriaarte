@@ -80,7 +80,7 @@ ObraLogic obraLogic;
     public ObraDetailDTO addObra(@PathParam("id") Long artistaId, ObraDetailDTO dto) throws BusinessLogicException 
     {
         ObraEntity obra = dto.toEntity();
-         return new ObraDetailDTO(artistaLogic.addObra(artistaId, obra));
+        return new ObraDetailDTO(artistaLogic.addObra(artistaId, obra));
         
     }
     
