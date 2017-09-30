@@ -7,6 +7,7 @@ package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
@@ -30,6 +31,9 @@ public class ClienteLogic {
 
     @Inject
     private ObraLogic obraLogic;
+
+    @Inject
+    private CompraLogic compraLogic;
 
     /**
      *
@@ -101,6 +105,15 @@ public class ClienteLogic {
     /**
      *
      * @param clienteId
+     * @return
+     */
+    public List<CompraEntity> listCompras(Long clienteId) {
+        return getCliente(clienteId).getCompra();
+    }
+
+    /**
+     *
+     * @param clienteId
      * @param comentarioId
      * @return
      */
@@ -129,6 +142,20 @@ public class ClienteLogic {
     /**
      *
      * @param clienteId
+     * @param compraId
+     * @return
+     */
+    public CompraEntity addCompra(Long clienteId, Long compraId) {
+        ClienteEntity entity = getCliente(clienteId);
+        CompraEntity compra = compraLogic.getCompra(compraId);
+        compra.setCliente(entity);
+        entity.setCompra(compra);
+        return compraLogic.getCompra(compraId);
+    }
+
+    /**
+     *
+     * @param clienteId
      * @return
      */
     public List<ComentarioEntity> getComentarios(Long clienteId) {
@@ -142,6 +169,15 @@ public class ClienteLogic {
      */
     public List<ObraEntity> getObras(Long clienteId) {
         return getCliente(clienteId).getObra();
+    }
+
+    /**
+     *
+     * @param clienteId
+     * @return
+     */
+    public List<CompraEntity> getCompras(Long clienteId) {
+        return getCliente(clienteId).getCompra();
     }
 
     /**
@@ -175,6 +211,24 @@ public class ClienteLogic {
             return list.get(index);
         }
         throw new BusinessLogicException("La obra no está asociado al cliente");
+    }
+
+    public CompraEntity getCompra(Long clienteId, Long compraId) throws BusinessLogicException {
+        List<CompraEntity> list = getCliente(clienteId).getCompra();
+        CompraEntity compraEntity = compraLogic.getCompra(compraId);
+        int index = list.indexOf(compraEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        throw new BusinessLogicException("La compra no está asociado al cliente");
+    }
+
+    public CompraLogic getCompraLogic() {
+        return compraLogic;
+    }
+
+    public void setCompraLogic(CompraLogic compraLogic) {
+        this.compraLogic = compraLogic;
     }
 
     /**

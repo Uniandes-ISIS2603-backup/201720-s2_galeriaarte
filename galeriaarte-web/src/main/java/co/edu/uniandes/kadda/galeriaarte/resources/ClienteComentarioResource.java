@@ -22,24 +22,25 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+
 /**
  *
  * @author ks.estupinan
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ClienteComentarioResource 
-{
+public class ClienteComentarioResource {
+
     @Inject
     private ClienteLogic clienteLogic;
-    
+
     @Inject
     private ComentarioLogic comentarioLogic;
 
     /**
-     * 
+     *
      * @param entityList
-     * @return 
+     * @return
      */
     private List<ComentarioDetailDTO> comentariosListEntity2DTO(List<ComentarioEntity> entityList) {
         List<ComentarioDetailDTO> list = new ArrayList<>();
@@ -50,9 +51,9 @@ public class ClienteComentarioResource
     }
 
     /**
-     * 
+     *
      * @param dtos
-     * @return 
+     * @return
      */
     private List<ComentarioEntity> comentariosListDTO2Entity(List<ComentarioDetailDTO> dtos) {
         List<ComentarioEntity> list = new ArrayList<>();
@@ -63,9 +64,9 @@ public class ClienteComentarioResource
     }
 
     /**
-     * 
+     *
      * @param clienteId
-     * @return 
+     * @return
      */
     @GET
     public List<ComentarioDetailDTO> listComentarios(@PathParam("clienteId") Long clienteId) {
@@ -73,11 +74,11 @@ public class ClienteComentarioResource
     }
 
     /**
-     * 
+     *
      * @param clienteId
      * @param comentarioId
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{comentarioId: \\d+}")
@@ -86,52 +87,39 @@ public class ClienteComentarioResource
     }
 
     /**
-     * 
-     * @param clienteId
-     * @param comentarioId
-     * @return 
-     */
-//    @POST
-//    @Path("{comentarioId: \\d+}")
-//    public ComentarioDetailDTO addComentarios(@PathParam("clienteId") Long clienteId, @PathParam("comentarioId") Long comentarioId) {
-//        return new ComentarioDetailDTO(clienteLogic.addComentario(comentarioId,clienteId));
-//    }
-    /**
-     * 
+     *
      * @param clienteId
      * @param comentario
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @POST
     public ComentarioDetailDTO addComentarios(@PathParam("clienteId") Long clienteId, ComentarioDetailDTO comentario) throws BusinessLogicException {
         ComentarioEntity c = comentario.toEntity();
-        return new ComentarioDetailDTO(clienteLogic.addComentario(clienteId,comentarioLogic.createComentario(c).getId()));
+        return new ComentarioDetailDTO(clienteLogic.addComentario(clienteId, comentarioLogic.createComentario(c).getId()));
+    }
+
+    /**
+     *
+     * @param clienteId
+     * @param comentarios
+     * @return
+     */
+    @PUT
+    public ComentarioDetailDTO replaceComentarios(@PathParam("clienteId") Long clienteId, ComentarioDetailDTO comentario) throws BusinessLogicException {
+
+        return new ComentarioDetailDTO(comentarioLogic.updateComentario(clienteId, clienteLogic.replaceComentario(clienteId, comentario.toEntity())));
     }
 
     /**
      * 
      * @param clienteId
-     * @param comentarios
-     * @return 
-     */    
-    @PUT
-    public ComentarioDetailDTO replaceComentarios(@PathParam("clienteId") Long clienteId, ComentarioDetailDTO comentario) throws BusinessLogicException {
-        
-        return new ComentarioDetailDTO(comentarioLogic.updateComentario(clienteId, clienteLogic.replaceComentario(clienteId, comentario.toEntity())));
-    }
-
-    /**
-     * Desasocia un Book existente de un Editorial existente
-     *
-     * @param editorialsId Identificador de la instancia de Editorial
-     * @param booksId Identificador de la instancia de Book
-     * 
+     * @param comentarioId 
      */
     @DELETE
     @Path("{comentarioId: \\d+}")
     public void removeComentario(@PathParam("clienteId") Long clienteId, @PathParam("comentarioId") Long comentarioId) {
-        clienteLogic.removeComentario(comentarioId,clienteId);
+        clienteLogic.removeComentario(comentarioId, clienteId);
     }
-    
+
 }
