@@ -116,7 +116,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 4,\n        \"id\": 8,\n        \"nombre\": \"Las mendas\",\n        \"tipo\": \"Pintura\",\n        \"valor\": 20000,\n        \"artista\": {\n            \"id\": 1,\n            \"name\": \"Pedro\"\n        },\n        \"comentarios\": []\n    }"
+					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 4,\n        \"id\": 6,\n        \"nombre\": \"Las mendas\",\n        \"tipo\": \"Pintura\",\n        \"valor\": 20000,\n        \"comentarios\": []\n    }"
 				},
 				"description": ""
 			},
