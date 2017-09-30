@@ -26,11 +26,13 @@ public class MarcoDetailDTO extends MarcoDTO {
      */
     public MarcoDetailDTO(MarcoEntity entity) {
         super(entity);
+        if(entity!=null){
         if (entity.getObra()!= null) {
             this.obra = new ObraDTO(entity.getObra());
         } else {
             entity.setObra(null);
-        }                
+        } 
+        }
     }
     
     @Override

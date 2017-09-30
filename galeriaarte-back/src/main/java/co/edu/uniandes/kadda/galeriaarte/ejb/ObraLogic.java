@@ -9,12 +9,15 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.MarcoEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ComentarioPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.CompraPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.MarcoPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -45,7 +48,8 @@ public class ObraLogic {
      private ComentarioPersistence comentarioPersistence; 
       
      
-     
+     @Inject
+     private MarcoPersistence marcoPersistence;
      
  
     /**
@@ -185,6 +189,26 @@ public class ObraLogic {
        
         return compraNuevo;
      }
+     
+     
+     public MarcoEntity addMarco(Long obraId, MarcoEntity gal) throws BusinessLogicException
+      {
+        ObraEntity obraEntity = findObra(obraId);
+        MarcoEntity galNueva = createMarco(gal);
+        galNueva.setObra(obraEntity);
+        obraEntity.setMarco(galNueva);
+        
+        return galNueva;
+          
+        
+      }
+     
+     public MarcoEntity createMarco(MarcoEntity entity) throws BusinessLogicException {
+        
+        marcoPersistence.create(entity);
+       
+        return entity;
+    }
      
      public CompraEntity createCompra(CompraEntity entity) throws BusinessLogicException {
        

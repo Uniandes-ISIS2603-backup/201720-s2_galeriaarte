@@ -102,4 +102,13 @@ public class MarcoLogic {
         return newEntity;
     }
     
+    
+    public MarcoEntity updateMarco(MarcoEntity entity) {
+       
+        
+        MarcoEntity newEntity = persistence.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar marco con id={0}", entity.getId());
+        return newEntity;
+    }
+    
 }

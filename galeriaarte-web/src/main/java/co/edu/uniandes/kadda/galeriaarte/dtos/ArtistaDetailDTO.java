@@ -36,13 +36,19 @@ public class ArtistaDetailDTO extends ArtistaDTO
                 obras.add(new ObraDTO(entityBooks));
             }
         }
+        
+       if (entity != null) {
+           if (entity.getGaleria() != null) {
+            this.galeria = new GaleriaDTO(entity.getGaleria());
+        }
+       }
+           if (entity != null) {
          if (entity.getHojaVida() != null) {
             this.hoja = new HojaVidaDTO(entity.getHojaVida());
         }
-          if (entity.getGaleria() != null) {
-            this.galeria = new GaleriaDTO(entity.getGaleria());
-        }
-          
+           }
+       
+        
             
             if (entity != null) {
             blogs = new ArrayList<>();

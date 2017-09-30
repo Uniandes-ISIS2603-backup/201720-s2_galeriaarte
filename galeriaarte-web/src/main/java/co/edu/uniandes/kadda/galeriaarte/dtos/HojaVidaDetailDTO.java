@@ -23,11 +23,13 @@ public class HojaVidaDetailDTO extends HojaVidaDTO
     
     public HojaVidaDetailDTO(HojaVidaEntity entity)
     {
+        
         super(entity);
+        if(entity!=null){
         if (entity.getArtista() != null) {
             this.artista = new ArtistaDTO(entity.getArtista());
         }
-        
+        }
     }
     @Override
     

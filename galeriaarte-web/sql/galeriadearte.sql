@@ -1,10 +1,13 @@
 
+delete from ClienteEntity;
+ALTER TABLE ClienteEntity ALTER COLUMN id RESTART WITH 1;
 delete from CompraEntity;
 ALTER TABLE CompraEntity ALTER COLUMN id RESTART WITH 1;
 delete from PagoEntity;
 ALTER TABLE PagoEntity ALTER COLUMN id RESTART WITH 1;
 delete from ArtistaEntity;
 ALTER TABLE ArtistaEntity ALTER COLUMN id RESTART WITH 1;
+
 delete from ObraEntity;
 ALTER TABLE ObraEntity ALTER COLUMN id RESTART WITH 1;
 delete from HojaVidaEntity;
@@ -13,8 +16,6 @@ delete from MarcoEntity;
 ALTER TABLE MarcoEntity ALTER COLUMN id RESTART WITH 1;
 delete from BlogEntity;
 ALTER TABLE BlogEntity ALTER COLUMN id RESTART WITH 1;
-delete from ClienteEntity;
-ALTER TABLE ClienteEntity ALTER COLUMN id RESTART WITH 1;
 delete from ComentarioEntity;
 ALTER TABLE ComentarioEntity ALTER COLUMN id RESTART WITH 1;
 
@@ -32,11 +33,11 @@ insert into ArtistaEntity (id, name) values (3, 'Pepe');
 insert into ArtistaEntity (id, name) values (4, 'Juan');
 insert into ArtistaEntity (id, name) values (5, 'Carlos');
 
-insert into ObraEntity (id, cantidad, name, tipo, valor) values (1, 5, 'Las meninas', 'Pintura', 20000);
-insert into ObraEntity (id, cantidad, name, tipo, valor) values (2, 4, 'La últimma', 'Pintura', 30000);
-insert into ObraEntity (id, cantidad, name, tipo, valor) values (3, 3, 'La noche estrellada', 'Pintura', 40000);
-insert into ObraEntity (id, cantidad, name, tipo, valor) values (4, 2, 'El nacimiento de Venus', 'Pintura', 50000);
-insert into ObraEntity (id, cantidad, name, tipo, valor) values (5, 1, 'La creación de Adán', 'Pintura', 60000);
+insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (1, 5, 'Las meninas', 'Pintura', 20000, 1);
+insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (2, 4, 'La últimma', 'Pintura', 30000,2);
+insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (3, 3, 'La noche estrellada', 'Pintura', 40000,3);
+insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (4, 2, 'El nacimiento de Venus', 'Pintura', 50000,4);
+insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (5, 1, 'La creación de Adán', 'Pintura', 60000,5);
 
 insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (1, 'Universidad de los Andes', 'Colombiano', 'Kelvin', 'Recibí el premio Mejor Artista 2010');
 insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (2, 'Universidad del Rosario', 'Venezolano', 'Juan Daniel', 'Recibí el premio Mejor Artista 2011');
@@ -67,4 +68,6 @@ insert into ComentarioEntity (id, name) values (2, 'Comentario2');
 insert into ComentarioEntity (id, name) values (3, 'Comentario3');
 insert into ComentarioEntity (id, name) values (4, 'Comentario4');
 insert into ComentarioEntity (id, name) values (5, 'Comentario5');
+
+
 
