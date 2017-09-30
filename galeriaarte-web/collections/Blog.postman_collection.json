@@ -1,0 +1,245 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Blog",
+		"_postman_id": "f759610a-f121-df47-6652-620c426fbec6",
+		"description": "Tests del recuro Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consulta de todos los blogs (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getBlogs\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Consulta todos los blogs de la Galeria de Arte"
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta blog en especifico (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getBlog\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta blog especifico (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getBlog\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/5",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Consulta un blog existente en la Galeria de Arte."
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar un blog existente (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postBlog\"]=responseCode.code==412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\n\"contenido\":\"Contenido1\",\n\"name\": \"Blog1\"}"
+				},
+				"description": "Agrega un blog existent y el sistema le envia un error diciendo que el blog ya esta creado con ese id"
+			},
+			"response": []
+		},
+		{
+			"name": "Agrega un blog nuevo (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"postBlog\"]=responseCode.code==500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 6,\n\"contenido\": \"Contenido8\"\n}"
+				},
+				"description": "Agrega un blog nuevo y el sistema le permite hacerlo"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza el contenido del blog (Prueba positiva)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putBlog\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\n\"contenido\":\"Contenido1Nuevo\"}"
+				},
+				"description": "Actuliza el contenido del blog de un blog en particular y este es actualizado con exito"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualiza el contenido de un blog no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"putBlog\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/11",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":11,\n\"contenido\":\"Contenido11\"}"
+				},
+				"description": "Trata de actualizar la información de un blog no existenete y el sistema le notifica que dicho blog no existe"
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina un blog no existente (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteBlog\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Elimina un blog que no esta en el sitema y este le retorna un mensjae que el blog no existe"
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina un blog existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"deleteBlog\"]=responseCode.code==204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/blogs/4",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Elimina un blog del sistema "
+			},
+			"response": []
+		}
+	]
+}

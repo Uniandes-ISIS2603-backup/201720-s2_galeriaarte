@@ -1,0 +1,170 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ClienteObraResource",
+		"_postman_id": "d9a1d739-fe0d-73bd-c28b-ff2db039d8af",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/cliente/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/cliente/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"0\",\"name\":\"Pepe\",\"tipoTarjeta\":\"Debito\",\"numTarjeta\":8085}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/obras",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"1\",\"name\":\"La mona lisa Replica\",\"tipo\":\"Pintura\",\"cantidad\":5,\"valor\":5000000}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"status code is 204\"]=responseCode.code==204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/cliente/1/obras/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

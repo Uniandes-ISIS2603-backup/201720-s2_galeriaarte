@@ -128,7 +128,7 @@ public class ClienteResource {
         }
         return ClienteComentarioResource.class;
     }
-    
+
     @Path("{clienteId: \\d+}/obras")
     public Class<ClienteObraResource> getClienteObraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
@@ -136,5 +136,14 @@ public class ClienteResource {
             throw new WebApplicationException("El cliente no existe", 404);
         }
         return ClienteObraResource.class;
+    }
+
+    @Path("{clienteId: \\d+}/compras")
+    public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("clienteId") Long clienteId) {
+        ClienteEntity entity = clienteLogic.getCliente(clienteId);
+        if (entity == null) {
+            throw new WebApplicationException("El cliente no existe", 404);
+        }
+        return ClienteCompraResource.class;
     }
 }

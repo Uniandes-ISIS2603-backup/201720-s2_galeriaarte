@@ -1,0 +1,110 @@
+{
+	"id": "4c0edd36-d46b-e0a6-6368-e6fce5b539f6",
+	"name": "pruebas pago",
+	"description": "",
+	"order": [
+		"d427ee16-de5b-6dcd-a122-e50752bdacd6",
+		"3f08acec-1590-959c-192f-f906ea923249",
+		"864e8c29-c249-1f2b-f731-a3b2286a6556"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1506549366611,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "3f08acec-1590-959c-192f-f906ea923249",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/7/pago",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "4c0edd36-d46b-e0a6-6368-e6fce5b539f6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Consultar pago por id de compra ",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506728590046,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Consultó pago\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : \n}"
+		},
+		{
+			"id": "864e8c29-c249-1f2b-f731-a3b2286a6556",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras/7/pago/2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "4c0edd36-d46b-e0a6-6368-e6fce5b539f6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Eliminar pago de una compra ",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506728666658,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Eliminó pago\"] = responseCode.code === 404;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": ""
+		},
+		{
+			"id": "d427ee16-de5b-6dcd-a122-e50752bdacd6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/galeriaarte-web/api/compras",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "4c0edd36-d46b-e0a6-6368-e6fce5b539f6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Agregar pago a una compra",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1506724281919,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Agregó compra\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"valor\" : 87,\n\t\"fecha\" : \"05/08/2009\",\n\t\"pago\" : {\n\t\t\"total\" : 90,\n\t\t\"impuesto\" : 3\n\t}\n}"
+		}
+	]
+}

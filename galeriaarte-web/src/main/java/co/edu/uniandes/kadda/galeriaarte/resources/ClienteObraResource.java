@@ -86,36 +86,12 @@ public class ClienteObraResource {
         return new ObraDetailDTO(clienteLogic.getObra(clienteId, obraId));
     }
 
-    /**
-     *
-     * @param clienteId
-     * @param obra
-     * @return
-     * @throws BusinessLogicException
-     */
-//    @POST
-//    public ObraDetailDTO addObras(@PathParam("clienteId") Long clienteId, ObraDetailDTO obra) throws BusinessLogicException {
-//        ObraEntity c = obra.toEntity();
-//        return new ObraDetailDTO(clienteLogic.addObra(clienteId,obraLogic.createObra(c).getId()));
-//    }
     @POST
     @Path("{obraId: \\d+}")
     public ObraDetailDTO addObra(@PathParam("clienteId") Long clienteId, @PathParam("obraId") Long obraId) {
         return new ObraDetailDTO(clienteLogic.addObra(obraId, clienteId));
     }
 
-//    /**
-//     * 
-//     * @param clienteId
-//     * @param comentarios
-//     * @return 
-//     */    
-//    @PUT
-//    public ObraDetailDTO replaceObras(@PathParam("clienteId") Long clienteId, ObraDetailDTO obra) throws BusinessLogicException {
-//        
-//        obraLogic.update(obra.toEntity());
-//        return new ObraDetailDTO(clienteLogic.replaceObra(clienteId, obra.toEntity()));
-//    }
     /**
      * 
      * @param clienteId

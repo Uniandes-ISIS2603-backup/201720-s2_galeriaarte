@@ -31,6 +31,14 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private GaleriaEntity clienteGaleria;
 
+    public GaleriaEntity getClienteGaleria() {
+        return clienteGaleria;
+    }
+
+    public void setClienteGaleria(GaleriaEntity clienteGaleria) {
+        this.clienteGaleria = clienteGaleria;
+    }
+
     @PodamExclude
     @OneToMany(mappedBy = "clienteComentario")
     private List<ComentarioEntity> comentarios;
@@ -58,17 +66,23 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     public List<ComentarioEntity> getComentarios() {
         return comentarios;
     }
+
     public void setComentarios(List<ComentarioEntity> comentarios) {
         this.comentarios = comentarios;
     }
-    public void setComentario(ComentarioEntity comentario)
-    {
+
+    public void setComentario(ComentarioEntity comentario) {
         this.comentarios.add(comentario);
     }
-    public void setObra(ObraEntity obra)
-    {
+
+    public void setObra(ObraEntity obra) {
         this.obra.add(obra);
     }
+
+    public void setCompra(CompraEntity compra) {
+        this.compra.add(compra);
+    }
+
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }

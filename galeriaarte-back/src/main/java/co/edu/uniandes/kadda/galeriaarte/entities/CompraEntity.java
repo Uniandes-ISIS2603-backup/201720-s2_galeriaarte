@@ -31,7 +31,7 @@ public class CompraEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private ClienteEntity cliente;
     @PodamExclude
-    @OneToMany(mappedBy = "compra")
+    @OneToMany(mappedBy = "compra",cascade = CascadeType.PERSIST)
     private List<ObraEntity> obras = new ArrayList<ObraEntity>();
             
     private double valor;

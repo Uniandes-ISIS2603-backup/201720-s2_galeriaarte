@@ -25,10 +25,11 @@ public class CompraDTO {
     
     public CompraDTO(CompraEntity compraE)
     {
+        if(compraE != null){
             this.id = compraE.getId();
             this.valor = compraE.getValor();
             this.fecha = compraE.getFecha();
-        
+        }
     }
     
     
@@ -74,6 +75,7 @@ public class CompraDTO {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
 
     public CompraEntity toEntity()
     {
@@ -81,7 +83,6 @@ public class CompraDTO {
         compraE.setId(this.id);
         compraE.setValor(this.valor);
         compraE.setFecha(this.fecha);
-        
         return compraE;
     }
     
