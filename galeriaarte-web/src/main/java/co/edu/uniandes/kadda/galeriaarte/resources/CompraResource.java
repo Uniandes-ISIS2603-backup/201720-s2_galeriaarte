@@ -22,14 +22,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author ma.abril
  */
 @Path("compras")
-@Produces("application/json")
-@Consumes("application/json")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class CompraResource {
     
@@ -58,7 +59,7 @@ public class CompraResource {
      * @throws BusinessLogicException
      */
     @POST
-    public CompraDetailDTO createCompra(CompraDetailDTO compra) throws BusinessLogicException {        
+    public CompraDetailDTO createCompra(CompraDetailDTO compra) throws BusinessLogicException {   
          return new CompraDetailDTO(compraLogic.createCompra(compra.toEntity()));
     }
 

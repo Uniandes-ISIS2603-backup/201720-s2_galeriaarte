@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.dtos;
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 
 /**
@@ -13,6 +14,8 @@ import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
  */
 public class HojaVidaDetailDTO extends HojaVidaDTO
 {
+    private ArtistaDTO artista;
+    
     public HojaVidaDetailDTO()
     {
         super();
@@ -21,12 +24,34 @@ public class HojaVidaDetailDTO extends HojaVidaDTO
     public HojaVidaDetailDTO(HojaVidaEntity entity)
     {
         super(entity);
+        if (entity.getArtista() != null) {
+            this.artista = new ArtistaDTO(entity.getArtista());
+        }
+        
     }
     @Override
     
     public HojaVidaEntity toEntity() {
         HojaVidaEntity artistaE = super.toEntity();
+        
+          if (this.getArtista() != null) {
+            artistaE.setArtista(this.getArtista().toEntity());
+        }
         return artistaE;
+    }
+
+    /**
+     * @return the artista
+     */
+    public ArtistaDTO getArtista() {
+        return artista;
+    }
+
+    /**
+     * @param artista the artista to set
+     */
+    public void setArtista(ArtistaDTO artista) {
+        this.artista = artista;
     }
     
     

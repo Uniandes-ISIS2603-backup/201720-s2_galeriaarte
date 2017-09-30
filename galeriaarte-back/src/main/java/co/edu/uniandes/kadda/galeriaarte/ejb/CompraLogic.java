@@ -9,6 +9,7 @@ import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.CompraPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class CompraLogic {
     private CompraPersistence persistence;
     
     @Inject
-    private ObraLogic obraLogic;
+    private ObraPersistence obraPersistence;
     
   public List<CompraEntity> getCompras() {
         LOGGER.info("Inicia proceso de consultar todas las compras");
@@ -50,8 +51,10 @@ public class CompraLogic {
     public CompraEntity createCompra(CompraEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de compra");
         // Verifica la regla de negocio que dice que no puede haber dos editoriales con el mismo nombre
-        if (persistence.find(entity.getId()) != null) {
+        if (entity.getId()!=null){
+            if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("Ya existe una compra con el id \"" + entity.getId() + "\"");
+        }
         }
         // Invoca la persistencia para crear la editorial
 
@@ -90,7 +93,7 @@ public class CompraLogic {
          */
     public ObraEntity addObra(Long obraId, Long compraId) {
         CompraEntity compraEntity = getCompra(compraId);
-        ObraEntity obraEntity = obraLogic.findObra(obraId);
+        ObraEntity obraEntity = obraPersistence.find(obraId);
         obraEntity.setCompra(compraEntity);
         return obraEntity;
     }
@@ -103,7 +106,7 @@ public class CompraLogic {
      */
     public void removeObra(Long obraId, Long compraId) {
         CompraEntity compraEntity = getCompra(compraId);
-        ObraEntity obra = obraLogic.findObra(obraId);
+        ObraEntity obra = obraPersistence.find(obraId);
         obra.setCompra(null);
         compraEntity.getObras().remove(obra);
     }
@@ -117,7 +120,7 @@ public class CompraLogic {
      */
     public List<ObraEntity> replaceObras(Long compraId, List<ObraEntity> obras) {
         CompraEntity compra = getCompra(compraId);
-        List<ObraEntity> obraList = obraLogic.getObras();
+        List<ObraEntity> obraList = obraPersistence.findAll();
         for (ObraEntity obra : obraList) {
             if (obras.contains(obra)) {
                 obra.setCompra(compra);
@@ -148,7 +151,7 @@ public class CompraLogic {
      */
     public ObraEntity getObra(Long compraId, Long obraId) throws BusinessLogicException {
         List<ObraEntity> obras = getCompra(compraId).getObras();
-        ObraEntity obra = obraLogic.findObra(obraId);
+        ObraEntity obra = obraPersistence.find(obraId);
         int index = obras.indexOf(obra);
         if (index >= 0) {
             return obras.get(index);
