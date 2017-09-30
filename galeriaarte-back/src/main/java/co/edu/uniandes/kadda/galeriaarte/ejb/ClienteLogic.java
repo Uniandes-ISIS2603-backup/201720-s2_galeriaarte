@@ -27,7 +27,7 @@ public class ClienteLogic {
 
     @Inject
     private ComentarioLogic comentarioLogic;
-    
+
     @Inject
     private ObraLogic obraLogic;
 
@@ -36,9 +36,8 @@ public class ClienteLogic {
      * @param entity
      * @return
      */
-    public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException 
-    {
-        if(persistence.find(entity.getId())!=null){
+    public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
+        if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("Ya existe un cliente con el id \"" + entity.getId() + "\"");
         }
         return persistence.create(entity);
@@ -81,8 +80,6 @@ public class ClienteLogic {
         persistence.delete(id);
     }
 
-    
-    
     /**
      *
      * @param clienteId
@@ -91,8 +88,8 @@ public class ClienteLogic {
     public List<ComentarioEntity> listComentarios(Long clienteId) {
         return getCliente(clienteId).getComentarios();
     }
-    
-        /**
+
+    /**
      *
      * @param clienteId
      * @return
@@ -114,7 +111,7 @@ public class ClienteLogic {
         entity.setComentario(comentario);
         return comentarioLogic.getComentario(comentarioId);
     }
-    
+
     /**
      *
      * @param clienteId
@@ -125,21 +122,23 @@ public class ClienteLogic {
         ClienteEntity entity = getCliente(clienteId);
         ObraEntity obra = obraLogic.findObra(obraId);
         obra.setCliente(entity);
+        entity.setObra(obra);
         return obraLogic.findObra(obraId);
     }
 
     /**
-     * 
+     *
      * @param clienteId
-     * @return 
+     * @return
      */
     public List<ComentarioEntity> getComentarios(Long clienteId) {
         return getCliente(clienteId).getComentarios();
     }
+
     /**
-     * 
+     *
      * @param clienteId
-     * @return 
+     * @return
      */
     public List<ObraEntity> getObras(Long clienteId) {
         return getCliente(clienteId).getObra();
@@ -160,12 +159,13 @@ public class ClienteLogic {
         }
         throw new BusinessLogicException("El comentario no está asociado al cliente");
     }
+
     /**
-     * 
+     *
      * @param clienteId
      * @param obraId
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     public ObraEntity getObra(Long clienteId, Long obraId) throws BusinessLogicException {
         List<ObraEntity> list = getCliente(clienteId).getObra();
@@ -195,30 +195,28 @@ public class ClienteLogic {
         }
         return list;
     }
-    
-        public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) {
+
+    public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) {
         ClienteEntity cliente = getCliente(clienteId);
         List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
-        
+
         ComentarioEntity actual = null;
         Iterator<ComentarioEntity> it = comentarioList.iterator();
-        while(it.hasNext())
-        {
+        while (it.hasNext()) {
             actual = it.next();
-            if(actual.getId().equals(entidad.getId()))
-            {
+            if (actual.getId().equals(entidad.getId())) {
                 actual.setName(entidad.getName());
                 break;
             }
         }
         return actual;
     }
-    
+
     /**
-     * 
+     *
      * @param clienteId
      * @param list
-     * @return 
+     * @return
      */
     public List<ObraEntity> replaceObras(Long clienteId, List<ObraEntity> list) {
         ClienteEntity cliente = getCliente(clienteId);
@@ -244,7 +242,7 @@ public class ClienteLogic {
         comentario.setClienteComentario(null);
         clienteEntity.getComentarios().remove(comentario);
     }
-    
+
     public void removeObra(Long clienteId, Long obraId) {
         ClienteEntity clienteEntity = getCliente(clienteId);
         ObraEntity obra = obraLogic.findObra(obraId);

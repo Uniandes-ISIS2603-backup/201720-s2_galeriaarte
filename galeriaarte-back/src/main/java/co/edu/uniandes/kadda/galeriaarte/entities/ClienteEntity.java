@@ -65,7 +65,10 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     {
         this.comentarios.add(comentario);
     }
-    
+    public void setObra(ObraEntity obra)
+    {
+        this.obra.add(obra);
+    }
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }

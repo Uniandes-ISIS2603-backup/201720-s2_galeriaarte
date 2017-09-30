@@ -14,11 +14,10 @@ import java.util.List;
  *
  * @author jd.carrillor
  */
-public class ObraDetailDTO extends ObraDTO
-{
-    
+public class ObraDetailDTO extends ObraDTO {
+
     private ArtistaDTO artista;
-    
+
     private MarcoDTO marco;
     
     private CompraDTO compra;
@@ -33,14 +32,25 @@ public class ObraDetailDTO extends ObraDTO
     public ObraDetailDTO()
     {
         
+
     }
-    
-    public ObraDetailDTO(ObraEntity entity)
-    {
-         super(entity);
-       if (entity.getArtista() != null) {
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+
+    }
+
+
+    public ObraDetailDTO(ObraEntity entity) {
+        super(entity);
+        if (entity.getArtista() != null) {
             this.artista = new ArtistaDTO(entity.getArtista());
         }
+
        if (entity.getMarco()!= null) {
             this.marco = new MarcoDTO(entity.getMarco());
         }
@@ -60,14 +70,21 @@ public class ObraDetailDTO extends ObraDTO
        if (entity.getCatalogo() != null) {
             this.catalogo = new CatalogoDTO(entity.getCatalogo());
         }          
+
+        if (entity.getCliente() != null) {
+            this.cliente = new ClienteDTO(entity.getCliente());
+        }
+
     }
+
     @Override
-    
+
     public ObraEntity toEntity() {
         ObraEntity obraE = super.toEntity();
         if (this.getArtista() != null) {
             obraE.setArtista(this.getArtista().toEntity());
         }
+
         
          if (this.getCatalogo() != null) {
             obraE.setCatalogo(this.getCatalogo().toEntity());
@@ -94,6 +111,12 @@ public class ObraDetailDTO extends ObraDTO
         }
         
         
+
+        if (this.getCliente() != null) {
+            obraE.setCliente(this.getCliente().toEntity());
+        }
+
+
         return obraE;
     }
 
@@ -110,6 +133,7 @@ public class ObraDetailDTO extends ObraDTO
     public void setArtista(ArtistaDTO artista) {
         this.artista = artista;
     }
+
 
     /**
      * @return the marco
@@ -139,19 +163,8 @@ public class ObraDetailDTO extends ObraDTO
         this.compra = compra;
     }
 
-    /**
-     * @return the cliente
-     */
-    public ClienteDTO getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(ClienteDTO cliente) {
-        this.cliente = cliente;
-    }
+   
+   
 
     /**
      * @return the comentarios
@@ -181,4 +194,5 @@ public class ObraDetailDTO extends ObraDTO
         this.catalogo = catalogo;
     }
     
+
 }
