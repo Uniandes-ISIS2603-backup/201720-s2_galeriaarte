@@ -7,6 +7,8 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 
+
+
 /**
  *
  * @author jd.carrillor

@@ -42,6 +42,13 @@ public class ComentarioLogic {
         ComentarioEntity newEntity = persistence.update(entity);
         return newEntity;
     }
+    
+     public ComentarioEntity updateComentario(ComentarioEntity entity) throws BusinessLogicException {
+        ComentarioEntity newEntity = persistence.update(entity);
+        return newEntity;
+    }
+     
+     
 
     public void deleteComentario(Long id) {
         persistence.delete(id);

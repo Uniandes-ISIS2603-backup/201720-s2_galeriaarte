@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "TestObra",
-		"_postman_id": "c2d26fbd-ab09-37c7-34eb-19c3368a8606",
+		"name": "TestObraComentario",
+		"_postman_id": "06b97f2c-e736-d99a-ebc4-89131b6c90a5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "TestGetObra(All)",
+			"name": "TestGet(All)",
 			"event": [
 				{
 					"listen": "test",
@@ -21,16 +21,25 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras",
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/comentarios",
 				"method": "GET",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "TestPutObra",
+			"name": "TestGet",
 			"event": [
 				{
 					"listen": "test",
@@ -43,7 +52,38 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/4",
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/2/comentarios/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/2/comentarios/2",
 				"method": "PUT",
 				"header": [
 					{
@@ -54,14 +94,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":4, \"nombre\" :\"ObraMia\", \"tipo\" : \"Maqueta\", \"cantidad\": 4, \"valor\" : 3 \t\t\n}"
+					"raw": " {\n        \"type\": \"comentarioDetailDTO\",\n        \"contenido\": \"ComentarioNuevo\",\n        \"id\": 2,\n        \"obra\": {\n            \"cantidad\": 5,\n            \"id\": 1,\n            \"nombre\": \"Las meninas\",\n            \"tipo\": \"Pintura\",\n            \"valor\": 20000\n        }\n    }"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "TestDeleteObra(Exito)",
+			"name": "TestDelete",
 			"event": [
 				{
 					"listen": "test",
@@ -74,7 +114,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/1",
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/comentarios/1",
 				"method": "DELETE",
 				"header": [
 					{
@@ -92,7 +132,7 @@
 			"response": []
 		},
 		{
-			"name": "TestPostObras(LEER LA DESCRIPCION)",
+			"name": "TestPost(LEER DESCRIPCION)",
 			"event": [
 				{
 					"listen": "test",
@@ -105,7 +145,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras",
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/comentarios",
 				"method": "POST",
 				"header": [
 					{
@@ -116,31 +156,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 4,\n        \"id\": 6,\n        \"nombre\": \"Las mendas\",\n        \"tipo\": \"Pintura\",\n        \"valor\": 20000,\n        \"comentarios\": []\n    }"
+					"raw": "{\n    \n    \"contenido\": \"Comentario6\",\n    \"id\": 6\n   \n    ,\"name\" : \"cc\"\n    \n}"
 				},
-				"description": "SI NO FUNCIONA, PRESIONAR VARIAS VECES EL BOTON DE SEND PARA ESTE SERVICIO"
-			},
-			"response": []
-		},
-		{
-			"name": "TestGetObra",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Exito\"]=responseCode.code==200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/3",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
+				"description": "SI NO FUNCIONA PRESIONAR VARIAS VECES SEND HASTA QUE SRIVA"
 			},
 			"response": []
 		}

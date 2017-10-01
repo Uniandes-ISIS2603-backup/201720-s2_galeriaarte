@@ -16,8 +16,10 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -60,7 +62,7 @@ ComentarioLogic cometarioLogic;
     }
     
     @GET
-    @Path(("/{idObra:\\d+}"))
+    @Path(("/{idComentario:\\d+}"))
     public ComentarioDetailDTO getComentario( @PathParam("id") Long artistaId, @PathParam("idComentario") Long idComentario) throws BusinessLogicException
     {
         ObraEntity ent = obraLogic.findObra(artistaId);
@@ -79,6 +81,52 @@ ComentarioLogic cometarioLogic;
         ComentarioEntity comentario = dto.toEntity();
          return new ComentarioDetailDTO(obraLogic.addComentario(obraId, comentario));
         
+    }
+    
+     @PUT
+    @Path(("/{idComentario:\\d+}"))
+    public ComentarioDetailDTO replaceComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto, @PathParam(("idComentario"))Long idComentario) throws BusinessLogicException
+    {
+        
+        ObraEntity obra = obraLogic.findObra(obraId);
+        List<ComentarioEntity> comen = obra.getComentarios();
+        for(int i =0; i<comen.size();i++)
+        {
+            ComentarioEntity actual = comen.get(i);
+            if (actual.getId().equals(idComentario))
+            {
+             ComentarioEntity mod = dto.toEntity();
+             mod.setId(idComentario);
+             mod.setObra(obra);
+             return new ComentarioDetailDTO(cometarioLogic.updateComentario(mod));
+            }
+        }
+            
+      return null;
+    
+    } 
+    
+  
+    
+    
+    
+    
+    
+    
+    @DELETE
+    @Path(("/{idComentario:\\d+}"))
+    public void removeComentario(@PathParam("id") Long obraId, @PathParam(("idComentario"))Long idComentario) throws BusinessLogicException
+    {
+        ObraEntity obra = obraLogic.findObra(obraId);
+        List<ComentarioEntity> comen =obra.getComentarios();
+        for(int i =0;i<comen.size();i++)
+        {
+            ComentarioEntity comenActual = comen.get(i);
+            if(comenActual.getId().equals(idComentario))
+            {
+                cometarioLogic.deleteComentario(idComentario);
+            }
+        }
     }
  
  

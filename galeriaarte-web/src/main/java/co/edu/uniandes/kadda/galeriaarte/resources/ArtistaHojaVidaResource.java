@@ -87,6 +87,7 @@ public class ArtistaHojaVidaResource
     
     }
     
+    
      @DELETE
     public void removeHoja(@PathParam("id") Long artistaId) throws BusinessLogicException
     {

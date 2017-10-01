@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestArtistaHojaVida",
+		"_postman_id": "4998be6c-269e-eee3-b7f5-573530763a07",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TestGet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/hojaVida",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPost(LEER DESCRIPCION)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/hojaVida",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":6, \"trayectoria\" :\"BUENA\", \"almamater\" :\"dad\", \"nacionalidad\" :\"Colombiana\"}"
+				},
+				"description": "SI NO FUNCIONA, PRESIONAR VARIAS VECES EL BOTON DE SEND HASTA QUE FUNCIONE"
+			},
+			"response": []
+		}
+	]
+}

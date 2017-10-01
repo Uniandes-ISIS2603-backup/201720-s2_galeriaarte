@@ -49,13 +49,14 @@ insert into MarcoEntity (id, alto, ancho, material, name, valor) values (1, 10, 
 insert into MarcoEntity (id, alto, ancho, material, name, valor) values (2, 15, 10, 'Metal','Marco Italiano', 55000);
 insert into MarcoEntity (id, alto, ancho, material, name, valor) values (3, 20, 15, 'Madera','Marco Francés', 75000);
 insert into MarcoEntity (id, alto, ancho, material, name, valor) values (4, 25, 20, 'Metal','Marco Chileno', 95000);
-insert into MarcoEntity (id, alto, ancho, material, name, valor) values (5, 30, 25, 'Madera','Marco Italiano', 500000);
+insert into MarcoEntity (id, alto, ancho, material, name, valor ) values (5, 30, 25, 'Madera','Marco Italiano', 500000);
 
-insert into BlogEntity (id, contenido, name) values (1,'Contenido1', 'Como entender el arte abstracta');
-insert into BlogEntity (id, contenido, name) values (2,'Contenido2', 'Como aprender a pintar');
-insert into BlogEntity (id, contenido, name) values (3,'Contenido3', 'Aprendiendo analizar el arte');
-insert into BlogEntity (id, contenido, name) values (4,'Contenido4', 'El arte de las esculturas');
-insert into BlogEntity (id, contenido, name) values (5,'Contenido5', 'Las esculturas vs las obras de arte');
+insert into BlogEntity (id, contenido, name, artista_id ) values (1,'Contenido1', 'Como entender el arte abstracta',1);
+insert into BlogEntity (id, contenido, name, artista_id ) values (2,'Contenido2', 'Como aprender a pintar',2);
+insert into BlogEntity (id, contenido, name, artista_id ) values (3,'Contenido3', 'Aprendiendo analizar el arte',3);
+insert into BlogEntity (id, contenido, name, artista_id ) values (4,'Contenido4', 'El arte de las esculturas',4);
+insert into BlogEntity (id, contenido, name, artista_id ) values (5,'Contenido5', 'Las esculturas vs las obras de arte',5);
+
 
 insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (1, 'Kelvin', 10, 'Visa');
 insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (2, 'Andrés', 11, 'Master Card');
@@ -64,10 +65,10 @@ insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (4, 'Daniel
 insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (5, 'Maria', 14, 'Visa');
 
 insert into ComentarioEntity (id, name) values (1, 'Comentario1');
-insert into ComentarioEntity (id, name) values (2, 'Comentario2');
-insert into ComentarioEntity (id, name) values (3, 'Comentario3');
-insert into ComentarioEntity (id, name) values (4, 'Comentario4');
-insert into ComentarioEntity (id, name) values (5, 'Comentario5');
+insert into ComentarioEntity (id, name, obra_id) values (2, 'Comentario2',2);
+insert into ComentarioEntity (id, name, obra_id) values (3, 'Comentario3',3);
+insert into ComentarioEntity (id, name, obra_id) values (4, 'Comentario4',4);
+insert into ComentarioEntity (id, name, obra_id) values (5, 'Comentario5',5);
 
 
 

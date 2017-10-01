@@ -1,14 +1,14 @@
 {
 	"variables": [],
 	"info": {
-		"name": "TestObra",
-		"_postman_id": "c2d26fbd-ab09-37c7-34eb-19c3368a8606",
+		"name": "TestArtistaObra",
+		"_postman_id": "eabe7ebb-7a2e-9d5d-d7b3-6545ec775098",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "TestGetObra(All)",
+			"name": "TestGet",
 			"event": [
 				{
 					"listen": "test",
@@ -21,7 +21,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/obras",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -30,7 +30,7 @@
 			"response": []
 		},
 		{
-			"name": "TestPutObra",
+			"name": "TestGetAll",
 			"event": [
 				{
 					"listen": "test",
@@ -43,7 +43,60 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/4",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/obras",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/obras",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 7,\n        \"id\": 7,\n        \"nombre\": \"Las men\",\n        \"tipo\": \"PinturaXL\",\n        \"valor\": 200000,\n        \"name\":\"asda\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/obras/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -54,14 +107,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":4, \"nombre\" :\"ObraMia\", \"tipo\" : \"Maqueta\", \"cantidad\": 4, \"valor\" : 3 \t\t\n}"
+					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 7,\n        \"id\": 1,\n        \"nombre\": \"Las meninas\",\n        \"tipo\": \"Pintura\",\n        \"valor\": 20000000,\n        \"artista\": {\n            \"id\": 1,\n            \"name\": \"Pedro\"\n        },\n        \"comentarios\": []\n    }"
 				},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "TestDeleteObra(Exito)",
+			"name": "TestDelete",
 			"event": [
 				{
 					"listen": "test",
@@ -74,7 +127,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/1",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/obras/1",
 				"method": "DELETE",
 				"header": [
 					{
@@ -87,59 +140,6 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "TestPostObras(LEER LA DESCRIPCION)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Exito\"]=responseCode.code==200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": " {\n        \"type\": \"obraDetailDTO\",\n        \"cantidad\": 4,\n        \"id\": 6,\n        \"nombre\": \"Las mendas\",\n        \"tipo\": \"Pintura\",\n        \"valor\": 20000,\n        \"comentarios\": []\n    }"
-				},
-				"description": "SI NO FUNCIONA, PRESIONAR VARIAS VECES EL BOTON DE SEND PARA ESTE SERVICIO"
-			},
-			"response": []
-		},
-		{
-			"name": "TestGetObra",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Exito\"]=responseCode.code==200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/obras/3",
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"description": ""
 			},
 			"response": []

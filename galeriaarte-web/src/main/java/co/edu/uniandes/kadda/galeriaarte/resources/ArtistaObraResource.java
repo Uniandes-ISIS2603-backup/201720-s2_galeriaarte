@@ -42,6 +42,13 @@ public class ArtistaObraResource
 @Inject
 ObraLogic obraLogic;
 
+
+ 
+
+
+
+
+
  @GET 
     public  List<ObraDetailDTO> getObras (@PathParam("id") Long artista) throws BusinessLogicException
     {
@@ -123,6 +130,17 @@ ObraLogic obraLogic;
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
