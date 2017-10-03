@@ -7,6 +7,7 @@ package co.edu.uniandes.kadda.galeriaarte.persistence;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -58,7 +59,6 @@ public class ArtistaPersistence {
         return em.find(ArtistaEntity.class, id);
     }
 
-    
     public List<ArtistaEntity> findAll() {
         
        

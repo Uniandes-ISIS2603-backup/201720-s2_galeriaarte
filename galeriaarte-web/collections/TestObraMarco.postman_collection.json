@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestObraMarco",
+		"_postman_id": "be0771aa-4410-a8d8-0ca3-da6bd97788f1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TestGet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/marco",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " \"type\": \"marcoDetailDTO\",\n    \"alto\": 0,\n    \"ancho\": 0,\n    \"valor\": 0"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPost(LEER DESCRIPCION)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/marco",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"type\": \"marcoDetailDTO\",\n    \"alto\": 0,\n    \"ancho\": 0,\n    \"valor\": 0}"
+				},
+				"description": "SI NO SIRVE PRESIONAR VARIAS VECES EL BOTON DE SEND HASTA QUE FUNCIONE"
+			},
+			"response": []
+		}
+	]
+}

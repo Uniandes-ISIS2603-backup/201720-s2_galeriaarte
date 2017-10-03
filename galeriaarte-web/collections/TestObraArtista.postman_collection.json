@@ -1,0 +1,135 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestObraArtista",
+		"_postman_id": "e0dfd341-aeb9-84ce-5f59-e8549c049ae9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TestGet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/artista",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"type\": \"artistaDetailDTO\",\n    \"id\": 6,\n    \"name\": \"Pablo Jaramillo\",\n    \"blogs\": [\n        {\n            \"contenido\": \"Contenido1\",\n            \"id\": 1\n        }\n    ],\n    \"obras\": [\n        {\n            \"cantidad\": 5,\n            \"id\": 1,\n            \"nombre\": \"Las meninas\",\n            \"tipo\": \"Pintura\",\n            \"valor\": 20000\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "TestPUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/artista",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"type\": \"artistaDetailDTO\",\n    \"id\": 1,\n    \"name\": \"PaFGBFGSD\",\n    \"blogs\": [\n        {\n            \"contenido\": \"Contenido1\",\n            \"id\": 1\n        }\n    ],\n    \"obras\": [\n        {\n            \"cantidad\": 5,\n            \"id\": 1,\n            \"nombre\": \"Las meninas\",\n            \"tipo\": \"Pintura\",\n            \"valor\": 20000\n        }\n    ]\n}"
+				},
+				"description": "SI NO FUNCIONA PRESIONAR VARIAS VECES EL BOTON DE SEND PARA ESTE TEST"
+			},
+			"response": []
+		},
+		{
+			"name": "TestPost(LEER DESCRIPCION)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/artista",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"type\": \"artistaDetailDTO\",\n    \"id\": 6,\n    \"name\": \"Pablo Jaramillo\",\n    \"blogs\": [\n        {\n            \"contenido\": \"Contenido1\",\n            \"id\": 1\n        }\n    ],\n    \"obras\": [\n        {\n            \"cantidad\": 5,\n            \"id\": 1,\n            \"nombre\": \"Las meninas\",\n            \"tipo\": \"Pintura\",\n            \"valor\": 20000\n        }\n    ]\n}"
+				},
+				"description": "SI NO FUNCIONA PRESIONAR VARIAS VECES EL BOTON DE SEND PARA ESTE TEST"
+			},
+			"response": []
+		},
+		{
+			"name": "TestDelete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Exito\"]=responseCode.code==204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/obras/1/artista",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

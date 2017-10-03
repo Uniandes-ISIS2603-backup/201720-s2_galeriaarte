@@ -30,6 +30,11 @@ import javax.ws.rs.core.MediaType;
  * @author jd.carrillor
  */
 
+
+
+
+
+
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("obras/{id: \\d+}/marco")
