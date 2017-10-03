@@ -34,6 +34,7 @@ public class ClienteLogic {
 
     @Inject
     private CompraLogic compraLogic;
+    
 
     /**
      *

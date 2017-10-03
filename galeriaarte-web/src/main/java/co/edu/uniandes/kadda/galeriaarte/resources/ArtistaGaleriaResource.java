@@ -79,7 +79,7 @@ GaleriaLogic galeriaLogic;
         GaleriaEntity nuevo = dto.toEntity();
         nuevo.setId(viejo.getId());
         nuevo.setArtistas(viejo.getArtistas());
-        return new GaleriaDetailDTO(galeriaLogic.update(nuevo));
+        return new GaleriaDetailDTO(galeriaLogic.updateGaleria(nuevo));
         
     
     }    

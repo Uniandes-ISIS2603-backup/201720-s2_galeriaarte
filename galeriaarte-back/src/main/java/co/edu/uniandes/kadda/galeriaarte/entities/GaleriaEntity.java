@@ -41,6 +41,7 @@ public class GaleriaEntity extends BaseEntity implements Serializable
    private String nombre;
    private String direccion;
    private int telefono;
+   
    @PodamExclude
    @OneToMany(mappedBy = "galeria")
    private ArrayList<ArtistaEntity> artistas;

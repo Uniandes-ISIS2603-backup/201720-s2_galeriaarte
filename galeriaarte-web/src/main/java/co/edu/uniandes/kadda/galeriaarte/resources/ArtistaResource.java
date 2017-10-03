@@ -5,9 +5,12 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+import co.edu.uniandes.kadda.galeriaarte.dtos.ArtistaDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.ArtistaDetailDTO;
+import co.edu.uniandes.kadda.galeriaarte.dtos.CatalogoDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,4 +160,18 @@ public class ArtistaResource
         return ArtistaObraResource.class;
     }
     /*/
+    
+    public ArrayList<ArtistaEntity> listDTO2Entity(List<ArtistaDTO> dtoList)
+    {
+        ArrayList<ArtistaEntity> lista = new ArrayList<ArtistaEntity>();
+        for(ArtistaDTO dto : dtoList)
+        {
+            ArtistaEntity e = new ArtistaEntity();
+            e.setId(dto.getId());
+            e.setName(dto.getName());
+            lista.add(e);
+        }
+        return lista;
+    }
+    
 }

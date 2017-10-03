@@ -25,12 +25,14 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.CatalogoLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ClienteLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
-import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
+import java.util.Objects;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
@@ -64,8 +66,12 @@ public class GaleriaResource {
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
-         
-
+    CatalogoResource catalogoRes;
+    
+    ClienteResource clienteRes;
+    
+    ArtistaResource artistaRes;
+    
     private static final Logger LOGGER = Logger.getLogger(GaleriaResource.class.getName());
 
     /**
@@ -96,7 +102,8 @@ public class GaleriaResource {
      * @throws BusinessLogicException
      */
     @GET
-    public List<GaleriaDetailDTO> getGalerias() throws BusinessLogicException {
+    public List<GaleriaDetailDTO> getGalerias() throws BusinessLogicException 
+    {
         return listEntity2DetailDTO(galeriaLogic.getGalerias());
     }
 
@@ -116,9 +123,20 @@ public class GaleriaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException 
+    {
+        List<GaleriaEntity> galerias = galeriaLogic.getGalerias();
+        for (int i = 0; i < galerias.size(); i++)
+        {
+            if(Objects.equals(galerias.get(i).getId(), id))
+            {
+                GaleriaEntity nuevo = galeriaDetailDTO2Entity(galeriadearte);
+                galerias.remove(i);
+                galerias.add(nuevo);
+                
+            }
+        }
+        return galeriadearte;
     }
 
     /**
@@ -156,6 +174,27 @@ public class GaleriaResource {
         return list;
     }
     
+    private GaleriaDetailDTO galeriaEntity2DetailDTO(GaleriaEntity entity)
+    {
+        GaleriaDetailDTO resp = new GaleriaDetailDTO(entity);
+        return resp;
+    }
+    
+    private GaleriaEntity galeriaDetailDTO2Entity(GaleriaDetailDTO dto)
+    {
+        GaleriaEntity entity = new GaleriaEntity();
+        entity.setId(dto.getId());
+        entity.setNombre(dto.getNombre());
+        entity.setDireccion(dto.getDireccion());
+        entity.setTelefono(dto.getTelefono());
+        entity.setArtistas(artistaRes.listDTO2Entity(dto.getArtistas()));
+        entity.setCatalogos(catalogoRes.listDTO2Entity(dto.getCatalogos()));
+        entity.setClientes(clienteRes.listDTO2Entity(dto.getClientes()));
+        return entity;
+        
+    }
+    
+   
    
 
 }

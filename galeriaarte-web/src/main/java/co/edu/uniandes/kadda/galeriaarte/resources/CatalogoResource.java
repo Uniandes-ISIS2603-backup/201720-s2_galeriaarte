@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+import co.edu.uniandes.kadda.galeriaarte.dtos.CatalogoDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.CatalogoDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.CatalogoLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
@@ -94,6 +95,19 @@ public class CatalogoResource {
             list.add(new CatalogoDetailDTO(entity));
         }
         return list;
+    }
+    
+    public ArrayList<CatalogoEntity> listDTO2Entity(List<CatalogoDTO> dtoList)
+    {
+        ArrayList<CatalogoEntity> lista = new ArrayList<CatalogoEntity>();
+        for(CatalogoDTO dto : dtoList)
+        {
+            CatalogoEntity e = new CatalogoEntity();
+            e.setCategoria(dto.getCategoria());
+            e.setId(dto.getId());
+            lista.add(e);
+        }
+        return lista;
     }
 }
     

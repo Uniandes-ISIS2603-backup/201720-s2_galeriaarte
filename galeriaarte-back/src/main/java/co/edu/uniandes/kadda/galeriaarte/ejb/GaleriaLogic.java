@@ -23,8 +23,14 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.CatalogoPersistence;
+import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,10 +45,19 @@ import javax.inject.Inject;
 @Stateless
 public class GaleriaLogic {
 
-    private static final Logger LOGGER = Logger.getLogger(GaleriaLogic.class.getName());
+   private static final Logger LOGGER = Logger.getLogger(GaleriaLogic.class.getName());
 
     @Inject
-    private GaleriaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    private GaleriaPersistence persistence; // Variable para acceder a la persistencia de la aplicaciÃ³n. Es una inyecciÃ³n de dependencias.
+
+    @Inject
+    private CatalogoPersistence persistenceCat; //Variable para acceder a la persistencia del catÃƒÂ¡logo;
+    
+    @Inject
+    private ClientePersistence persistenceCli;
+    
+    @Inject 
+    private ArtistaPersistence persistenceArt;
 
     /**
      *
@@ -51,13 +66,27 @@ public class GaleriaLogic {
      * @throws BusinessLogicException
      */
     public GaleriaEntity createGaleria(GaleriaEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de Galeria");
+        LOGGER.info("Inicia proceso de creaciÃ³n de Galeria");
         // Invoca la persistencia para crear la Galeria
         persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de Galeria");
+        LOGGER.info("Termina proceso de creaciÃ³n de Galeria");
         return entity;
     }
 
+    public GaleriaEntity getGaleria()
+    {
+        LOGGER.info("Inicia procesod de consultar Galeria");
+        GaleriaEntity galeria = null;
+        List<GaleriaEntity> galerias = persistence.findAll();
+        for (int i = 0; i < galerias.size(); i++)
+        {
+            if(galerias.get(i) != null)
+            {
+                galeria = galerias.get(i);
+            }
+        }
+        return galeria;
+    }
     /**
      * 
      * Obtener todas las Galerias existentes en la base de datos.
@@ -66,26 +95,60 @@ public class GaleriaLogic {
      */
     public List<GaleriaEntity> getGalerias() {
         LOGGER.info("Inicia proceso de consultar todas las Galerias");
-        // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
+        // Note que, por medio de la inyecciÃ³n de dependencias se llama al mÃ©todo "findAll()" que se encuentra en la persistencia.
         List<GaleriaEntity> galerias = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Galerias");
         return galerias;
     }
 
-    public GaleriaEntity  update(GaleriaEntity entity)
-    {
-        
-       
+    public GaleriaEntity  updateGaleria(GaleriaEntity entity)
+    {      
            return persistence.update(entity);
-        
-        
     }
     
+
     
-     public void delete(Long id)
+    
+     public void deleteGaleria(Long id)
     {
        persistence.delete(id);
     }
-
+     
+     public List<ClienteEntity> getClientes() 
+    {
+        LOGGER.info("Inicia proceso de consultar todos los clientes");
+        List<ClienteEntity> clientes = persistenceCli.findAll();
+        LOGGER.info("Termina proceso de consultar todos los clientes");
+        return clientes;
+    }
+    
+    
+    
+    public List<ArtistaEntity> getArtistas()
+    {
+        LOGGER.info("Inicia proceso de consultar todos los artistas");
+        List<ArtistaEntity> artistas = persistenceArt.findAll();
+        LOGGER.info("Termina proceso de consultar todos los artistas");
+        return artistas;
+    }
+    
+    public List<CatalogoEntity> getCatalogos()
+    {
+        LOGGER.info("Inicia proceso de consultar todos los catÃ¡logos");
+        List<CatalogoEntity> catalogos = persistenceCat.findAll();
+        LOGGER.info("Termina proceso de consultar todos los artistas");
+        return catalogos;
+    }
+    
+    //No solo agrega una galeria al cliente sino que además agrega un cliente a una galeria.
+    public void addGaleriaACliente(long idCliente)
+    {
+        LOGGER.info("Inicia proceso de agragar la galería al cliente");
+        ClienteEntity cliente = persistenceCli.find(idCliente);
+        GaleriaEntity galeria = getGaleria();
+        List<ClienteEntity> clientes = galeria.getClientes();
+        clientes.add(cliente);
+        cliente.setClienteGaleria(galeria);
+    }
 
 }
