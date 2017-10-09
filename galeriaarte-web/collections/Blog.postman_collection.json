@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Blog",
-		"_postman_id": "f759610a-f121-df47-6652-620c426fbec6",
+		"_postman_id": "9882c872-6e7f-782a-bc6f-981bed4e5f8e",
 		"description": "Tests del recuro Blog",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -24,7 +24,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta todos los blogs de la Galeria de Arte"
 			},
 			"response": []
@@ -46,7 +49,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -68,7 +74,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/blogs/5",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta un blog existente en la Galeria de Arte."
 			},
 			"response": []
@@ -213,8 +222,17 @@
 			"request": {
 				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Elimina un blog que no esta en el sitema y este le retorna un mensjae que el blog no existe"
 			},
 			"response": []
@@ -235,8 +253,17 @@
 			"request": {
 				"url": "http://localhost:8080/galeriaarte-web/api/blogs/4",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Elimina un blog del sistema "
 			},
 			"response": []

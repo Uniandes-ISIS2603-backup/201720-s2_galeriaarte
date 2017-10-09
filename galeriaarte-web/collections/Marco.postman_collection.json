@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Marco",
-		"_postman_id": "3dec484b-9f27-244d-412c-dce9c86288b1",
+		"_postman_id": "0599345b-1143-ad89-7ea5-7c3fe1f0dcb9",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -24,7 +24,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/marcos",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta todos los marcos de la Galeria de Arte"
 			},
 			"response": []
@@ -46,7 +49,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/marcos/9",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta un marco que no existe en la Galeria de Arte y esta le devuelve un mensaje diciendo que no esta"
 			},
 			"response": []
@@ -68,7 +74,10 @@
 				"url": "http://localhost:8080/galeriaarte-web/api/marcos/4",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta un marco existente en la Galeria de Arte"
 			},
 			"response": []
@@ -213,8 +222,17 @@
 			"request": {
 				"url": "http://localhost:8080/galeriaarte-web/api/marcos/10",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Trata de eliminar un marco, pero este no existe en el sistema"
 			},
 			"response": []
@@ -235,8 +253,17 @@
 			"request": {
 				"url": "http://localhost:8080/galeriaarte-web/api/marcos/3",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Elimina un marco existente del sistema"
 			},
 			"response": []
