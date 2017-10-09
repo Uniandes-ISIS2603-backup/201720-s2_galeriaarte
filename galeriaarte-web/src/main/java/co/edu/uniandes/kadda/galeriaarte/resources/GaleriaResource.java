@@ -23,6 +23,9 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+/**
+ * @TODO: Quitar los import que no se utilizan
+ */
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
@@ -51,8 +54,8 @@ import javax.ws.rs.WebApplicationException;
  * Clase que implementa el recurso REST correspondiente a "Galerias".
  *
  * Note que la aplicación (definida en RestConfig.java) define la ruta "/api" y
- * este recurso tiene la ruta "Galerias". Al ejecutar la aplicación, el
- * recurso será accesibe a través de la ruta "/api/Galerias"
+ * este recurso tiene la ruta "Galerias". Al ejecutar la aplicación, el recurso
+ * será accesibe a través de la ruta "/api/Galerias"
  *
  * @author ISIS2603
  *
@@ -65,13 +68,17 @@ public class GaleriaResource {
 
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-    
+
+    /**
+     * @TODO: Los recursos no se llaman entre si. Llaman a la lógica
+     * correspondiente.
+     */
     CatalogoResource catalogoRes;
-    
+
     ClienteResource clienteRes;
-    
+
     ArtistaResource artistaRes;
-    
+
     private static final Logger LOGGER = Logger.getLogger(GaleriaResource.class.getName());
 
     /**
@@ -102,38 +109,43 @@ public class GaleriaResource {
      * @throws BusinessLogicException
      */
     @GET
-    public List<GaleriaDetailDTO> getGalerias() throws BusinessLogicException 
-    {
+    public List<GaleriaDetailDTO> getGalerias() throws BusinessLogicException {
         return listEntity2DetailDTO(galeriaLogic.getGalerias());
     }
 
-   
     /**
-     * PUT http://localhost:8080/galeriadearte-web/api/galerias/1 Ejemplo
-     * json { "id": 1, "atirbuto1": "Valor nuevo" }
+     * PUT http://localhost:8080/galeriadearte-web/api/galerias/1 Ejemplo json {
+     * "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Galeria a actualizar.
-     * @param galeriadearte corresponde  al objeto con los cambios que se van a
+     * @param galeriadearte corresponde al objeto con los cambios que se van a
      * realizar.
      * @return La Galeria actualizada.
      * @throws BusinessLogicException
      *
-     * En caso de no existir el id de la Galeria a actualizar se retorna un
-     * 404 con el mensaje.
+     * En caso de no existir el id de la Galeria a actualizar se retorna un 404
+     * con el mensaje.
      */
     @PUT
     @Path("{id: \\d+}")
-    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException 
-    {
+    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException {
+
+        /**
+         * @TODO: Está mal implementado el método. Se debe llamar al método de
+         * la lógica que busca si existe una galeria con el id dado. SI no
+         * existe se debe disparar WebApplicationException.
+         */
         List<GaleriaEntity> galerias = galeriaLogic.getGalerias();
-        for (int i = 0; i < galerias.size(); i++)
-        {
-            if(Objects.equals(galerias.get(i).getId(), id))
-            {
+        /**
+         * @TODO: No se hacen Búsquedas en memoria. Para eso está la lógica que
+         * llama a la persistencia.
+         */
+        for (int i = 0; i < galerias.size(); i++) {
+            if (Objects.equals(galerias.get(i).getId(), id)) {
                 GaleriaEntity nuevo = galeriaDetailDTO2Entity(galeriadearte);
                 galerias.remove(i);
                 galerias.add(nuevo);
-                
+
             }
         }
         return galeriadearte;
@@ -145,14 +157,14 @@ public class GaleriaResource {
      * @param id corresponde a la Galeria a borrar.
      * @throws BusinessLogicException
      *
-     * En caso de no existir el id de la Galeria a actualizar se retorna un
-     * 404 con el mensaje.
-     *
+     * En caso de no existir el id de la Galeria a actualizar se retorna un 404
+     * con el mensaje.
+     * @TODO Implementar el método
      */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteGaleria(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+        throw new UnsupportedOperationException("Este servicio no está implementado");
     }
 
     /**
@@ -162,8 +174,8 @@ public class GaleriaResource {
      * Este método convierte una lista de objetos GaleriaEntity a una lista de
      * objetos GaleriaDetailDTO (json)
      *
-     * @param entityList corresponde a la lista de Galerias de tipo Entity
-     * que vamos a convertir a DTO.
+     * @param entityList corresponde a la lista de Galerias de tipo Entity que
+     * vamos a convertir a DTO.
      * @return la lista de Galerias en forma DTO (json)
      */
     private List<GaleriaDetailDTO> listEntity2DetailDTO(List<GaleriaEntity> entityList) {
@@ -173,15 +185,17 @@ public class GaleriaResource {
         }
         return list;
     }
-    
-    private GaleriaDetailDTO galeriaEntity2DetailDTO(GaleriaEntity entity)
-    {
+
+    /**
+     * @TODO: Estas conversiones son responsabilidad de los DTO no de los
+     * recursos
+     */
+    private GaleriaDetailDTO galeriaEntity2DetailDTO(GaleriaEntity entity) {
         GaleriaDetailDTO resp = new GaleriaDetailDTO(entity);
         return resp;
     }
-    
-    private GaleriaEntity galeriaDetailDTO2Entity(GaleriaDetailDTO dto)
-    {
+
+    private GaleriaEntity galeriaDetailDTO2Entity(GaleriaDetailDTO dto) {
         GaleriaEntity entity = new GaleriaEntity();
         entity.setId(dto.getId());
         entity.setNombre(dto.getNombre());
@@ -191,10 +205,7 @@ public class GaleriaResource {
         entity.setCatalogos(catalogoRes.listDTO2Entity(dto.getCatalogos()));
         entity.setClientes(clienteRes.listDTO2Entity(dto.getClientes()));
         return entity;
-        
+
     }
-    
-   
-   
 
 }
