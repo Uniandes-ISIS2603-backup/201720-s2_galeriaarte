@@ -16,57 +16,56 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 public class ArtistaDTO 
 {
     private Long id;
-    
     private String name;
     
-    public ArtistaDTO()
-    {
-        
+     /**
+     * Constructor por defecto
+     */
+    public ArtistaDTO() {
     }
-    
-    public ArtistaDTO(ArtistaEntity artista)
-    {
-        if(artista!=null){
-        this.id = artista.getId();
-        this.name = artista.getName();
+
+    public ArtistaDTO(ArtistaEntity artistaE) {
+        if (artistaE != null) {
+            this.id = artistaE.getId();
+            this.name = artistaE.getName(); 
         }
     }
 
-    /**
-     * @return the id
-     */
-    public Long getId() {
+    public ArtistaEntity toEntity() {
+
+        ArtistaEntity ArtistaE = new ArtistaEntity();
+        ArtistaE.setId(this.id);
+        ArtistaE.setName(this.name);
+    
+        return ArtistaE;
+    }
+    
+        public Long getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * Establece el valor del atributo id.
+     *
+     * @param id nuevo valor del atributo
+     * @generated
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the nombre
+     * @return the name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param name the name to set
      */
-    public void setName(String nombre) {
-        this.name = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
-    
-     public ArtistaEntity toEntity() {
-        ArtistaEntity entity = new ArtistaEntity();
-        entity.setId(this.id);
-        entity.setName(this.name);
-        
-        return entity;
-    }
-    
     
 }

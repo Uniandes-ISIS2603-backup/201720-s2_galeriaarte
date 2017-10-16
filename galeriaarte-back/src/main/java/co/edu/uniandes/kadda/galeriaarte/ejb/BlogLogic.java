@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.BlogPersistence;
@@ -26,89 +27,81 @@ public class BlogLogic {
     @Inject
     private BlogPersistence persistence;
     
+    @Inject
+    private ArtistaLogic artistaLogic;
+    
     /**
+     * Obtiene la lista de los registros de Blog que pertenecen a un Artista.
      *
-     * @param entity
-     * @return
-     * @throws BusinessLogicException
+     * @param artistaid id del Artista el cual es padre de los Blogs.
+     * @return Colección de objetos de BlogEntity.
      */
-    public BlogEntity createBlog(BlogEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de un blog");
-        
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe un Blog con el id \"" + entity.getId() + "\"");
+    public List<BlogEntity> getBlogs(Long artistaid) throws BusinessLogicException {
+        LOGGER.info("Inicia proceso de consultar todos los blogs");
+        ArtistaEntity artista = artistaLogic.getArtista(artistaid);
+        if (artista.getBlogs() == null) {
+            throw new BusinessLogicException("El artista que consulta aún no tiene blogs");
         }
-        // Invoca la persistencia para crear el blog
+        if (artista.getBlogs().isEmpty()) {
+            throw new BusinessLogicException("El artista que consulta aún no tiene blogs");
+        }
+        return artista.getBlogs();
+    }
 
-        LOGGER.info("Termina proceso de creación del blog");
+    /**
+     * Obtiene los datos de una instancia de Blog a partir de su ID.
+     *
+     * @param artistaid
+     * @pre La existencia del elemento padre Artista se debe garantizar.
+     * @param blogid Identificador del Blog a consultar
+     * @return Instancia de BlogEntity con los datos del Blog consultado.
+     * 
+     */
+    public BlogEntity getBlog(Long artistaid, Long blogid) {
+        return persistence.find(artistaid, blogid);
+    }
+
+    /**
+     * Se encarga de crear un Blog en la base de datos.
+     *
+     * @param entity Objeto de BlogEntity con los datos nuevos
+     * @param artistaid id del Artista el cual sera padre del nuevo Blog.
+     * @return Objeto de BlogEntity con los datos nuevos y su ID.
+     * 
+     */
+    public BlogEntity createBlog(Long artistaid, BlogEntity entity) {
+        LOGGER.info("Inicia proceso de crear blog");
+        ArtistaEntity artista = artistaLogic.getArtista(artistaid);
+        entity.setArtista(artista);
         return persistence.create(entity);
     }
-    
-     /**
-     * Borrar un blog
-     *
-     * @param id: id del blog a borrar
-     */
-    public void deleteBlog(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar el blog con id={0}", id);
-        persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar el blog con id={0}", id);
-    }
-    
+
     /**
+     * Actualiza la información de una instancia de Blog.
      *
-     * Obtener todas los blogs existentes en la base de datos.
-     *
-     * @return una lista de blogs.
+     * @param entity Instancia de ReviewEntity con los nuevos datos.
+     * @param artistaid id del Artista el cual sera padre del Blog actualizado.
+     * @return Instancia de BlogEntity con los datos actualizados.
+     * 
      */
-    public List<BlogEntity> getBlogs() {
-        LOGGER.info("Inicia proceso de consultar todos los blogs");
-        List<BlogEntity> blogs = persistence.findAll();
-        LOGGER.info("Termina proceso de consultar todos los blogs");
-        return blogs;
-    }
-    
-    /**
-     *
-     * Obtener un blog por medio de su id.
-     *
-     * @param id: id del blog para ser buscada.
-     * @return el blog solicitada por medio de su id.
-     */
-    public BlogEntity getBlog(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar blog con id={0}", id);
-        BlogEntity blog = persistence.find(id);
-        if (blog == null) {
-            LOGGER.log(Level.SEVERE, "El blog con el id {0} no existe", id);
-        }
-        LOGGER.log(Level.INFO, "Termina proceso de consultar blog con id={0}", id);
-        return blog;
-    }
-    
-    /**
-     *
-     * Actualizar un blog.
-     *
-     * @param id: id del blog para buscarla en la base de datos.
-     * @param entity: blog con los cambios para ser actualizada, por
-     * ejemplo el contenido.
-     * @return el blog con los cambios actualizados en la base de datos.
-     */
-    public BlogEntity updateBlog(Long id, BlogEntity entity) {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar blog con id={0}", id);
-        
-        BlogEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar blog con id={0}", entity.getId());
-        return newEntity;
-    }
-    
-    public BlogEntity updateBlog(BlogEntity entity) {
-       
-        
-        BlogEntity newEntity = persistence.update(entity);
-        
-        return newEntity;
+    public BlogEntity updateBlog(Long artistaid, BlogEntity entity) {
+        LOGGER.info("Inicia proceso de actualizar blog");
+        ArtistaEntity artista = artistaLogic.getArtista(artistaid);
+        entity.setArtista(artista);
+        return persistence.update(entity);
     }
 
+    /**
+     * Elimina una instancia de Blog de la base de datos.
+     *
+     * @param id Identificador de la instancia a eliminar.
+     * @param artistaid id del Artista el cual es padre del Blog.
+     * 
+     */
+    public void deleteBlog(Long artistaid, Long id) {
+        LOGGER.info("Inicia proceso de borrar blog");
+        BlogEntity old = getBlog(artistaid, id);
+        persistence.delete(old.getId());
+    }
     
 }

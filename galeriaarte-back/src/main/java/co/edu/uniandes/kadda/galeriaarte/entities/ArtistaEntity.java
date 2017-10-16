@@ -20,7 +20,6 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-
 public class ArtistaEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
@@ -32,7 +31,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToOne(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
     private HojaVidaEntity hojaVida;
-    @PodamExclude
+    
     @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BlogEntity> blogs = new ArrayList<BlogEntity>();
 
@@ -86,15 +85,10 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     }
 
     /**
-     * @param blogs the blogs to set
+     * @param blogs the reviews to set
      */
     public void setBlogs(List<BlogEntity> blogs) {
         this.blogs = blogs;
     }
-    
-    
-     
-    
-    
-    
+  
 }

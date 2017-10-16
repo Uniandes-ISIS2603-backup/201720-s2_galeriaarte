@@ -119,6 +119,7 @@ public class BlogPersistenceTest {
     /**
      * Test of find method, of class BlogPersistence.
      */
+    /**
     @Test
     public void testFind() {
         BlogEntity entity = data.get(0);
@@ -126,10 +127,11 @@ public class BlogPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
     }
-    
+    */
     /**
      * Test of findAll method, of class BlogPersistence.
      */
+    /**
     @Test
     public void testFindAll() {
         List<BlogEntity> list = persistence.findAll();
@@ -144,7 +146,7 @@ public class BlogPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
+    */
     /**
      * Test of update method, of class BlogPersistence.
      */

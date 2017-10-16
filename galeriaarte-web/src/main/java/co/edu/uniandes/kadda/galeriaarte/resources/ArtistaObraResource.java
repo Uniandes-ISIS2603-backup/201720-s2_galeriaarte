@@ -42,19 +42,12 @@ public class ArtistaObraResource
 @Inject
 ObraLogic obraLogic;
 
-
- 
-
-
-
-
-
  @GET 
     public  List<ObraDetailDTO> getObras (@PathParam("id") Long artista) throws BusinessLogicException
     {
-          if (artistaLogic.findArtista(artista)!=null) 
+          if (artistaLogic.getArtista(artista)!=null) 
         {
-            ArtistaEntity ent = artistaLogic.findArtista(artista);
+            ArtistaEntity ent = artistaLogic.getArtista(artista);
             if (ent == null) throw new BusinessLogicException("No existe el proveedor con id " + artista);
         List<ObraDetailDTO> list = new ArrayList();
         for (ObraEntity fbEntity : artistaLogic.listObras(artista))
@@ -73,7 +66,7 @@ ObraLogic obraLogic;
     @Path(("/{idObra:\\d+}"))
     public ObraDetailDTO getObra ( @PathParam("id") Long idProveedor, @PathParam("idObra") Long idFeedBack) throws BusinessLogicException
     {
-        ArtistaEntity ent = artistaLogic.findArtista(idProveedor);
+        ArtistaEntity ent = artistaLogic.getArtista(idProveedor);
         if (ent == null) throw new BusinessLogicException("No existe el proveedor con id " + idProveedor);
         ObraDetailDTO fbDetail = null;
         for (ObraEntity fb : ent.getObras())
@@ -97,7 +90,7 @@ ObraLogic obraLogic;
     public ObraDetailDTO replaceBooks(@PathParam("id") Long artistaId, ObraDetailDTO dto, @PathParam(("idObra"))Long idObra) throws BusinessLogicException
     {
         
-        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         List<ObraEntity> obras = artista.getObras();
         for(int i =0; i<obras.size();i++)
         {
@@ -119,7 +112,7 @@ ObraLogic obraLogic;
     @Path(("/{idObra:\\d+}"))
     public void removeObra(@PathParam("id") Long artistaId, @PathParam(("idObra"))Long idObra) throws BusinessLogicException
     {
-        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         List<ObraEntity> obrasArtista =artista.getObras();
         for(int i =0;i<obrasArtista.size();i++)
         {
