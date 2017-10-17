@@ -109,7 +109,7 @@ public class GaleriaCatalogoResource
      * 
      */
     
-    // NO ENTIENDO POR QUE ME SALE ERROR EN ESTE MÉTODO SI EL MÉTODO CATALOGOLISTDTO2ENTITY YA ESTA HECHO CON LAS ESPECIFÍCACIONES NECESARIAS.
+    
     // Además tenicamente no lo puedo hacer porque no puedo cambiar las obras que estan dentro de catálogo.
    @PUT
    public List<CatalogoDTO> replaceCatalogos(@PathParam("galeriaId") Long galeriaId, List<CatalogoDTO> catalogos) 

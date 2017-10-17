@@ -32,8 +32,8 @@ import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.CatalogoPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
-import java.util.List;
-import java.util.logging.Level;
+import java.util.ArrayList;
+import java.util.List;  
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -101,7 +101,7 @@ public class GaleriaLogic {
         return galerias;
     }
 
-    public GaleriaEntity  updateGaleria(GaleriaEntity entity)
+    public GaleriaEntity updateGaleria(GaleriaEntity entity)
     {      
            return persistence.update(entity);
     }
@@ -143,12 +143,67 @@ public class GaleriaLogic {
     //No solo agrega una galeria al cliente sino que además agrega un cliente a una galeria.
     public void addGaleriaACliente(long idCliente)
     {
-        LOGGER.info("Inicia proceso de agragar la galería al cliente");
+        LOGGER.info("Inicia proceso de agregar la galería al cliente");
         ClienteEntity cliente = persistenceCli.find(idCliente);
         GaleriaEntity galeria = getGaleria();
         List<ClienteEntity> clientes = galeria.getClientes();
         clientes.add(cliente);
         cliente.setClienteGaleria(galeria);
     }
-
+    
+    public List<ArtistaEntity> replaceArtistas(long idGaleria, List<ArtistaEntity> artistas)
+    {
+        LOGGER.info("Inicia proceso de cambiar los artistas a la galeria");
+        GaleriaEntity galeria = getGaleria();
+        for (int i = 0; i < galeria.getArtistas().size(); i++)
+        {
+            galeria.getArtistas().get(i).setGaleria(null);
+        }
+        
+        ArrayList<ArtistaEntity> nuevosAr = new ArrayList<ArtistaEntity>(artistas);
+        galeria.setArtistas(
+              nuevosAr);
+        for (int i = 0; i < artistas.size(); i++) 
+        {
+            artistas.get(i).setGaleria(galeria);
+        }
+        return artistas;
+    }
+    
+    public List<ClienteEntity> replaceClientes(long idGaleria, List<ClienteEntity> clientes)
+    {
+        LOGGER.info("Inicia proceso de cambiar los clientes a la galeria");
+        GaleriaEntity galeria = getGaleria();
+        for (int i = 0; i < galeria.getClientes().size(); i++)
+        {
+            galeria.getClientes().get(i).setClienteGaleria(null);
+        }
+        
+        ArrayList<ClienteEntity> nuevosCli = new ArrayList<ClienteEntity>(clientes);
+        galeria.setClientes(
+              nuevosCli);
+        for (int i = 0; i < clientes.size(); i++) 
+        {
+            clientes.get(i).setClienteGaleria(galeria);
+        }
+        return clientes;
+    }
+    
+     public List<CatalogoEntity> replaceCatalogos(long idGaleria, List<CatalogoEntity> catalogos)
+    {
+        LOGGER.info("Inicia proceso de cambiar los catalogos a la galeria");
+        GaleriaEntity galeria = getGaleria();
+        for (int i = 0; i < galeria.getCatalogos().size(); i++)
+        {
+            galeria.getCatalogos().get(i).setGaleria(null);
+        }
+        
+        ArrayList<CatalogoEntity> nuevosCat = new ArrayList<CatalogoEntity>(catalogos);
+        galeria.setCatalogos(nuevosCat);
+        for (int i = 0; i < catalogos.size(); i++) 
+        {
+            catalogos.get(i).setGaleria(galeria);
+        }
+        return catalogos;
+    }
 }

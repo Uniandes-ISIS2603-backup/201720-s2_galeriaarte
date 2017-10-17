@@ -7,13 +7,20 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ArtistaDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.ArtistaDetailDTO;
+import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -48,9 +55,8 @@ public class GaleriaArtistaResource
         return list;
     }
     
-    /**dx
+    /**
      * Convierte una lista de ArtistaDTO a una lista de ArtistaEntity.
-     *
      * @param dtos Lista de ArtistaDetailDTO a convertir.
      * @return Lista de ArtistaEntity convertida.
      * 
@@ -73,45 +79,41 @@ public class GaleriaArtistaResource
      * instancia de Galeria
      * 
      */
-    //@GET
-    //public List<CatalogoDetailDTO> listCatalogo(@PathParam("galeriaId") Long galeriaId) {
-    //    return catalogoListEntity2DTO(galeriaLogic.listCatalogo(galeriaId));
-    //List<CatalogoDetailDTO> resp = new ArrayList<CatalogoDetailDTO>();
-    //return resp;
-    //}
+    @GET
+    public List<ArtistaDetailDTO> listArtistas(@PathParam("galeriaId") Long galeriaId)
+    {
+        return artistaListEntity2DTO(galeriaLogic.getArtistas());
+    }
     
     /**
      * Asocia una Galeria existente a una Catalogo
      *
+     * @param artistaId
      * @param catalogoId Identificador de la instancia de catálogo
      * @param galeriaId Identificador de la instancia de galería
-     * @return Instancia de galeriaDetailDTO que fue asociada a catálogo
+     * @return Instancia de galeriaDetailDTO que fue asociada a artista
      * 
      */
-    //@POST
-    //@Path("{catalogoId: \\d+}")
-    //public GaleriaDetailDTO addGaleria(@PathParam("catalogoId") Long catalogoId, @PathParam("galeriaId") Long galeriaId) {
-    //    return new GaleriaDetailDTO(catalogoLogic.addGaleria(catalogoId, galeriaId));
-    //GaleriaDetailDTO resp = new GaleriaDetailDTO(); 
-    //return resp;
-    //}
+    @POST
+    @Path("{artistaId: \\d+}")
+    public GaleriaDetailDTO addGaleria(@PathParam("artistaId") Long artistaId, @PathParam("galeriaId") Long galeriaId) throws BusinessLogicException
+    {
+        return new GaleriaDetailDTO(artistaLogic.addGaleria(artistaId, galeriaLogic.getGaleria()));
+    }
 
     /**
-     * Remplaza las instancias de Catalogos asociadas a una instancia de Galeria
+     * Remplaza las instancias de Artistas asociadas a una instancia de Galeria
      *
      * @param galeriaId Identificador de la instancia de Galeria
-     * @param List<CatalogoDTO> Colección de instancias de CatalogoDTO a asociar a instancia
+     * @param List<ArtistaDTO> Colección de instancias de ArtistaDTO a asociar a instancia
      * de Galeria
-     * @return Nueva colección de CatalogoDTO asociada a la instancia de Galeria
+     * @return Nueva colección de ArtistaDTO asociada a la instancia de Galeria
      * 
      */
-    
-    // NO ENTIENDO POR QUE ME SALE ERROR EN ESTE MÉTODO SI EL MÉTODO CATALOGOLISTDTO2ENTITY YA ESTA HECHO CON LAS ESPECIFÍCACIONES NECESARIAS.
-    // Además tenicamente no lo puedo hacer porque no puedo cambiar las obras que estan dentro de catálogo.
-   //@PUT
-   //public List<CatalogoDTO> replaceCatalogos(@PathParam("galeriaId") Long galeriaId, List<CatalogoDTO> catalogos) 
-   //{
-    //   return catalogoListEntity2DTO(galeriaLogic.replaceCatalogos(galeriaId, catalogoListDTO2Entity(catalogos)));
-     //  return null;
-  // }   
+   
+   @PUT
+   public List<ArtistaDetailDTO> replaceArtistas(@PathParam("galeriaId") Long galeriaId, List<ArtistaDTO> artistas) 
+   {
+       return artistaListEntity2DTO(galeriaLogic.replaceArtistas(galeriaId, artistaListDTO2Entity(artistas)));
+   }   
 }

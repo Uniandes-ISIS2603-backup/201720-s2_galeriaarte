@@ -5,15 +5,19 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+import co.edu.uniandes.kadda.galeriaarte.dtos.ClienteDTO;
+import co.edu.uniandes.kadda.galeriaarte.dtos.ClienteDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ClienteLogic;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
+import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -41,7 +45,6 @@ public class GaleriaClienteResource {
      *
      * Este método convierte una lista de objetos GaleriaEntity a una lista de
      * objetos GaleriaDetailDTO (json)
-     *
      * @param entityList corresponde a la lista de Galerias de tipo Entity
      * que vamos a convertir a DTO.
      * @return la lista de Galerias en forma DTO (json)
@@ -60,6 +63,36 @@ public class GaleriaClienteResource {
         return resp;
     }
     
+    /**
+     * Convierte una lista de ClienteDTO a una lista de ClienteEntity.
+     *
+     * @param dtos Lista de ClienteDetailDTO a convertir.
+     * @return Lista de ClienteEntity convertida.
+     * 
+     */
+    private List<ClienteEntity> clienteListDTO2Entity(List<ClienteDTO> dtos) {
+        List<ClienteEntity> list = new ArrayList<>();
+        for (ClienteDTO dto : dtos) 
+        {
+            list.add(dto.toEntity());
+        }
+        return list;
+    }
+    
+    /**
+     * Convierte una lista de ClienteEntity a una lista de ClienteDetailDTO.
+     *
+     * @param entityList Lista de ClienteEntity a convertir.
+     * @return Lista de ClienteDetailDTO convertida.
+     * 
+     */
+    private List<ClienteDetailDTO> clienteListEntity2DTO(List<ClienteEntity> entityList) {
+        List<ClienteDetailDTO> list = new ArrayList<>();
+        for (ClienteEntity entity : entityList) {
+            list.add(new ClienteDetailDTO(entity));
+        }
+        return list;
+    }
     
      /**
      * Asocia una Galeria existente a una Cliente
@@ -78,5 +111,11 @@ public class GaleriaClienteResource {
         galeriaLogic.addGaleriaACliente(clienteId);  
         return resp;
     }
+    
+     @PUT
+   public List<ClienteDetailDTO> replaceClientes(@PathParam("galeriaId") Long galeriaId, List<ClienteDTO> clientes) 
+   {
+       return clienteListEntity2DTO(galeriaLogic.replaceClientes(galeriaId, clienteListDTO2Entity(clientes)));
+   }
 }
 

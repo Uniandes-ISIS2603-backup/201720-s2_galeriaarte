@@ -66,13 +66,13 @@ public class GaleriaDTO
      *
      * @param galeria: Es la entidad que se va a convertir a DTO
      */
-    public GaleriaDTO(GaleriaEntity galeria) {
+    public GaleriaDTO(GaleriaEntity galeria){
+        if(galeria != null){
         this.id = galeria.getId();
         this.nombre = galeria.getNombre();
         this.direccion = galeria.getDireccion();
         this.telefono = galeria.getTelefono();
-        
-  
+        }
     }
 
      /** Convertir DTO a Entity
