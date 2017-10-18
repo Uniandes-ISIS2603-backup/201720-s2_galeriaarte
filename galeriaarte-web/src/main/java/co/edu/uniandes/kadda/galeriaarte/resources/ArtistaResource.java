@@ -66,12 +66,14 @@ public class ArtistaResource
     @PUT
     @Path("{id: \\d+}")
     public ArtistaDetailDTO updateArtista(@PathParam("id") Long id, ArtistaDetailDTO artista) throws BusinessLogicException {
-        artista.setId(id);
-        ArtistaEntity entity = artistaLogic.getArtista(id);
-        if (entity == null) {
+        ArtistaEntity entity = artista.toEntity();
+        entity.setId(id);
+        ArtistaEntity oldEntity = artistaLogic.getArtista(id);
+        if (oldEntity == null) {
             throw new WebApplicationException("El recurso /artistas/" + id + " no existe.", 404);
         }
-        return new ArtistaDetailDTO(artistaLogic.updateArtista(id, artista.toEntity()));
+        entity.setBlogs(oldEntity.getBlogs());
+        return new ArtistaDetailDTO(artistaLogic.updateArtista(id, entity));
     }
     
     @DELETE
