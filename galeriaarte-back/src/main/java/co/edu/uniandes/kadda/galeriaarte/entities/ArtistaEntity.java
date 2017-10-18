@@ -19,8 +19,10 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jd.carrillor
  */
 
-@Entity
 
+
+
+@Entity
 public class ArtistaEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
@@ -86,15 +88,10 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     }
 
     /**
-     * @param blogs the blogs to set
+     * @param blogs the reviews to set
      */
     public void setBlogs(List<BlogEntity> blogs) {
         this.blogs = blogs;
     }
-    
-    
-     
-    
-    
-    
+  
 }

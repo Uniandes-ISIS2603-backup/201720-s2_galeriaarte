@@ -44,13 +44,16 @@ public class ArtistaHojaVidaResource
   
    @Inject
   private  HojaVidaLogic hojaVidaLogic;
+   
   
+   
+   
     @GET 
     public  HojaVidaDetailDTO getHoja (@PathParam("id") Long artista) throws BusinessLogicException
     {
-          if (artistaLogic.findArtista(artista)!=null) 
+          if (artistaLogic.getArtista(artista)!=null) 
         {
-            ArtistaEntity ent = artistaLogic.findArtista(artista);
+            ArtistaEntity ent = artistaLogic.getArtista(artista);
             HojaVidaEntity hoja = ent.getHojaVida();
           return new HojaVidaDetailDTO(hoja);
          
@@ -62,6 +65,8 @@ public class ArtistaHojaVidaResource
         
         
     }
+    
+    
     
      @POST   
     public HojaVidaDetailDTO addHoja(@PathParam("id") Long artistaId, HojaVidaDetailDTO dto) throws BusinessLogicException 
@@ -75,7 +80,7 @@ public class ArtistaHojaVidaResource
     public HojaVidaDetailDTO replaceHoja(@PathParam("id") Long artistaId, HojaVidaDetailDTO dto) throws BusinessLogicException
     {
         
-        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         HojaVidaEntity oldHoja = artista.getHojaVida();
         HojaVidaEntity hojaNueva = dto.toEntity();
           hojaNueva.setId(oldHoja.getId());
@@ -91,7 +96,7 @@ public class ArtistaHojaVidaResource
      @DELETE
     public void removeHoja(@PathParam("id") Long artistaId) throws BusinessLogicException
     {
-        ArtistaEntity artista = artistaLogic.findArtista(artistaId);
+        ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         HojaVidaEntity hojaEliminar = artista.getHojaVida();
         
         hojaVidaLogic.delete(hojaEliminar.getId());

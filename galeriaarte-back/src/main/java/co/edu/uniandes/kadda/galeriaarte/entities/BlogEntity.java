@@ -20,7 +20,7 @@ public class BlogEntity extends BaseEntity implements Serializable {
     
     private String contenido;
     @PodamExclude
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private ArtistaEntity artista;
     
     public String getContenido(){

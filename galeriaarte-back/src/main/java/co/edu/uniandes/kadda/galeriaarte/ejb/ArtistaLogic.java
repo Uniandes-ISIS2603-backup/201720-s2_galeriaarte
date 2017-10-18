@@ -18,6 +18,7 @@ import co.edu.uniandes.kadda.galeriaarte.persistence.HojaVidaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -28,10 +29,12 @@ import javax.inject.Inject;
 @Stateless
 public class ArtistaLogic 
 {
+    
+private static final Logger LOGGER = Logger.getLogger(ArtistaLogic.class.getName());
+    
  @Inject
  private ArtistaPersistence persistence;
  
-
  @Inject 
  private ObraPersistence obraPersistence;
  
@@ -42,84 +45,49 @@ public class ArtistaLogic
  private GaleriaPersistence galeriaPersistence;
 
 @Inject
- private BlogPersistence blogPersistence;
+private BlogPersistence blogPersistence;
+
  
-
-
-
-    /**
-     *
-     * @param entity
-     * @return
-     * @throws BusinessLogicException
-     */
-    public ArtistaEntity createArtista(ArtistaEntity entity) throws BusinessLogicException 
-    {
-        // Verifica la regla de negocio que dice que no puede haber dos Estudiantees con el mismo nombre
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe un id con el id \"" + entity.getId() + "\"");
-        }
-        // Invoca la persistencia para crear la Estudiante
+     public ArtistaEntity createArtista(ArtistaEntity entity) throws BusinessLogicException {
+        LOGGER.info("Inicia proceso de creación de artista");
         persistence.create(entity);
+        LOGGER.info("Termina proceso de creación de artista");
         return entity;
     }
 
-    /**
-     * 
-     * Obtener todas las Estudiantees existentes en la base de datos.
-     *
-     * @return una lista de Estudiantees.
-     */
     public List<ArtistaEntity> getArtistas() {
-        
-        // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
+        LOGGER.info("Inicia proceso de consultar todos los artistas");
         List<ArtistaEntity> artistas = persistence.findAll();
-        
+        LOGGER.info("Termina proceso de consultar todos los artistas");
         return artistas;
     }
     
-    public ArtistaEntity findArtista(Long id)
-    {
-        ArtistaEntity artistas = persistence.find(id);
-       return artistas;
-    }
-    
-    public ArtistaEntity findArtista(int id)
-    {
-        List<ArtistaEntity> artistas = persistence.findAll();
-        for(int i=0;i<artistas.size();i++)
-        {
-            ArtistaEntity actual =artistas.get(i);
-            if (actual.getId().equals(id))
-            {
-              return actual;  
-            }
+    public ArtistaEntity getArtista(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar artista con id={0}", id);
+        ArtistaEntity artista = persistence.find(id);
+        if (artista == null) {
+            LOGGER.log(Level.SEVERE, "El artista con el id {0} no existe", id);
         }
-        return null;
+        LOGGER.log(Level.INFO, "Termina proceso de consultar artista con id={0}", id);
+        return artista;
     }
     
-    public void delete(Long id)
-    {
-       persistence.delete(id);
+   public void deleteArtista(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar artista con id={0}", id);
+        persistence.delete(id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar artista con id={0}", id);
     }
-    
-    
-    public ArtistaEntity update(ArtistaEntity entity)
-    {
-        
-       
-           return persistence.update(entity);
-        
-        
+   
+    public ArtistaEntity updateArtista(Long id, ArtistaEntity entity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar artista con id={0}", id);
+        ArtistaEntity newEntity = persistence.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar artista con id={0}", entity.getId());
+        return newEntity;
     }
     
 
     public HojaVidaEntity getHojaVida(Long artistaId) {
-       
-    
-        return findArtista(artistaId).getHojaVida();
-        
-      
+        return getArtista(artistaId).getHojaVida();
     }
    /*/
     public HojaVidaEntity addHojaVida(Long artistaId, Long hojaVidaId) 
@@ -136,7 +104,7 @@ public class ArtistaLogic
     /*/
      public HojaVidaEntity replaceHojaVida(Long artistaId, HojaVidaEntity hoja) {
         
-       ArtistaEntity artista = findArtista(artistaId);
+       ArtistaEntity artista = getArtista(artistaId);
        HojaVidaEntity hojaNueva = hoja;
        
        if(artista!= null && hoja!=null)
@@ -148,7 +116,7 @@ public class ArtistaLogic
      
       public void removeHojaVida(Long artistaId)
       {
-       ArtistaEntity artista = findArtista(artistaId);
+       ArtistaEntity artista = getArtista(artistaId);
           if (artista!=null)
           {
            artista.setHojaVida(null);
@@ -159,17 +127,17 @@ public class ArtistaLogic
       
       public List<ObraEntity> listObras(Long authorId)
       {
-        return findArtista(authorId).getObras();
+        return getArtista(authorId).getObras();
       }
       
       public List<BlogEntity> listBlogs(Long authorId)
       {
-        return findArtista(authorId).getBlogs();
+        return getArtista(authorId).getBlogs();
       }
       
       public ObraEntity getObra(Long authorId, Long obraId) {
         
-        List<ObraEntity> list = findArtista(authorId).getObras();
+        List<ObraEntity> list = getArtista(authorId).getObras();
         ObraEntity obraEntity = new ObraEntity();
         obraEntity.setId(obraId);
         int index = list.indexOf(obraEntity);
@@ -182,34 +150,13 @@ public class ArtistaLogic
      
       public ObraEntity addObra(Long artistaId, ObraEntity obra) throws BusinessLogicException
       {
-        ArtistaEntity artista = findArtista(artistaId);
+        ArtistaEntity artista = getArtista(artistaId);
         ObraEntity obraNueva= createObra(obra);
         obraNueva.setArtista(artista);
         List<ObraEntity> obrasArtista = artista.getObras();
         obrasArtista.add(obra);
         return obraNueva;
     }
-      
-       public BlogEntity addBlog(Long artistaId, BlogEntity blog) throws BusinessLogicException
-      {
-        ArtistaEntity artista = findArtista(artistaId);
-        BlogEntity blogNueva= createBlog(blog);
-        blogNueva.setArtista(artista);
-        List<BlogEntity> blogsArtista = artista.getBlogs();
-        blogsArtista.add(blog);
-        return blogNueva;
-    }
-       
-       
-       public BlogEntity createBlog(BlogEntity entity) throws BusinessLogicException 
-      {
-      if (blogPersistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una obra con el id \"" + entity.getId() + "\"");
-        }
-        // Invoca la persistencia para crear la Estudiante
-        blogPersistence.create(entity);
-        return entity;
-      }
       
       public ObraEntity createObra(ObraEntity entity) throws BusinessLogicException 
       {
@@ -225,7 +172,7 @@ public class ArtistaLogic
       
       public HojaVidaEntity addHoja(Long artistaId, HojaVidaEntity hoja) throws BusinessLogicException
       {
-        ArtistaEntity artista = findArtista(artistaId);
+        ArtistaEntity artista = getArtista(artistaId);
         HojaVidaEntity hojaNueva= createHojaVida(hoja);
         hojaNueva.setArtista(artista);
         artista.setHojaVida(hojaNueva);
@@ -246,7 +193,7 @@ public class ArtistaLogic
       
       public GaleriaEntity addGaleria(Long artistaId, GaleriaEntity gal) throws BusinessLogicException
       {
-        ArtistaEntity artistaEntity = findArtista(artistaId);
+        ArtistaEntity artistaEntity = getArtista(artistaId);
         GaleriaEntity galNueva = createGaleria(gal);
         List<ArtistaEntity> listaArtistas = galNueva.getArtistas();
         listaArtistas.add(artistaEntity);
@@ -269,6 +216,5 @@ public class ArtistaLogic
       {
           return null;
       }
-      
-    
+     
 }

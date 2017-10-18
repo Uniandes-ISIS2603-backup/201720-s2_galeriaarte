@@ -7,7 +7,8 @@ delete from PagoEntity;
 ALTER TABLE PagoEntity ALTER COLUMN id RESTART WITH 1;
 delete from ArtistaEntity;
 ALTER TABLE ArtistaEntity ALTER COLUMN id RESTART WITH 1;
-
+delete from CatalogoEntity
+ALTER TABLE CatalogoEntity ALTER COLUMN id RESTART WITH 1;
 delete from ObraEntity;
 ALTER TABLE ObraEntity ALTER COLUMN id RESTART WITH 1;
 delete from HojaVidaEntity;
@@ -18,6 +19,8 @@ delete from BlogEntity;
 ALTER TABLE BlogEntity ALTER COLUMN id RESTART WITH 1;
 delete from ComentarioEntity;
 ALTER TABLE ComentarioEntity ALTER COLUMN id RESTART WITH 1;
+delete from GaleriaEntity;
+ALTER TABLE GaleriaEntity ALTER COLUMN id RESTART WITH 1;
 
 insert into CompraEntity (id, valor, fecha) values (1, 20, '01/02/2001');
 insert into CompraEntity (id, valor, fecha) values (2, 30, '08/06/2009');
@@ -32,6 +35,12 @@ insert into ArtistaEntity (id, name) values (2, 'Pablo');
 insert into ArtistaEntity (id, name) values (3, 'Pepe');
 insert into ArtistaEntity (id, name) values (4, 'Juan');
 insert into ArtistaEntity (id, name) values (5, 'Carlos');
+
+insert into GaleriaEntity (id, nombre, direccion, telefono) values (0, 'GaleriaKADDA','Cra. 1 #18a-12, BogotÃ¡',3394949);
+
+insert into CatalogoEntity (id,categoria) values (5, 'contemporÃ¡neo');
+insert into CatalogoEntity (id,categoria) values (6, 'greco-romano');
+insert into CatalogoEntity (id,categoria) values (7, 'vanguardia');
 
 insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (1, 5, 'Las meninas', 'Pintura', 20000, 1);
 insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (2, 4, 'La últimma', 'Pintura', 30000,2);

@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Blog",
-		"_postman_id": "f759610a-f121-df47-6652-620c426fbec6",
+		"_postman_id": "3351f8a9-c446-434a-de27-6b3e6890d37a",
 		"description": "Tests del recuro Blog",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -21,16 +21,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/blogs",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta todos los blogs de la Galeria de Arte"
 			},
 			"response": []
 		},
 		{
-			"name": "Consulta blog en especifico (Prueba negativa)",
+			"name": "Consulta de todos los blogs (Prueba negativa)",
 			"event": [
 				{
 					"listen": "test",
@@ -43,10 +46,13 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/10/blogs",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -65,10 +71,38 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/5",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/blogs/1",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Consulta un blog existente en la Galeria de Arte."
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta blog especifico (Prueba negativa)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"getBlog\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/blogs/2",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Consulta un blog existente en la Galeria de Arte."
 			},
 			"response": []
@@ -81,13 +115,13 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"postBlog\"]=responseCode.code==412;"
+							"tests[\"postBlog\"]=responseCode.code==500;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/blogs",
 				"method": "POST",
 				"header": [
 					{
@@ -118,7 +152,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/1/blogs",
 				"method": "POST",
 				"header": [
 					{
@@ -129,7 +163,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\": 6,\n\"contenido\": \"Contenido8\"\n}"
+					"raw": "{\"id\": 10,\n\"contenido\": \"Contenido10\",\n\"name\":\"Blog10\"\n}"
 				},
 				"description": "Agrega un blog nuevo y el sistema le permite hacerlo"
 			},
@@ -149,7 +183,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/1",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/2/blogs/2",
 				"method": "PUT",
 				"header": [
 					{
@@ -160,7 +194,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":1,\n\"contenido\":\"Contenido1Nuevo\"}"
+					"raw": "{\n        \"contenido\": \"ContenidoNuevo2\",\n        \"id\": 2,\n        \"name\": \"Como aprender a pintar\"\n    }"
 				},
 				"description": "Actuliza el contenido del blog de un blog en particular y este es actualizado con exito"
 			},
@@ -174,13 +208,13 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"putBlog\"]=responseCode.code==404;"
+							"tests[\"putBlog\"]=responseCode.code==405;"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/11",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/2/blogs",
 				"method": "PUT",
 				"header": [
 					{
@@ -191,7 +225,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":11,\n\"contenido\":\"Contenido11\"}"
+					"raw": "{\n    \"contenido\": \"Contenido11\",\n    \"id\": 11,\n    \"name\": \"Aprendiendo analizar el arte\"\n}"
 				},
 				"description": "Trata de actualizar la información de un blog no existenete y el sistema le notifica que dicho blog no existe"
 			},
@@ -211,10 +245,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/10",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/4/blogs/1",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Elimina un blog que no esta en el sitema y este le retorna un mensjae que el blog no existe"
 			},
 			"response": []
@@ -233,10 +276,19 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/galeriaarte-web/api/blogs/4",
+				"url": "http://localhost:8080/galeriaarte-web/api/artistas/5/blogs/5",
 				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Elimina un blog del sistema "
 			},
 			"response": []

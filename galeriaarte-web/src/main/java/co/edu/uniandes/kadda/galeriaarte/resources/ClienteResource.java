@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+import co.edu.uniandes.kadda.galeriaarte.dtos.ClienteDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.ClienteDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ClienteLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
@@ -118,6 +119,20 @@ public class ClienteResource {
             list.add(new ClienteDetailDTO(entity));
         }
         return list;
+    }
+    
+    public ArrayList<ClienteEntity> listDTO2Entity(List<ClienteDTO> dtoList)
+    {
+        ArrayList<ClienteEntity> lista = new ArrayList<ClienteEntity>();
+        for(ClienteDTO dto : dtoList)
+        {
+            ClienteEntity e = new ClienteEntity();
+            e.setId(dto.getId());
+            e.setName(dto.getName());
+            
+            lista.add(e);
+        }
+       return lista;
     }
 
     @Path("{clienteId: \\d+}/comentarios")

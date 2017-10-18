@@ -14,76 +14,67 @@ import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 public class BlogDTO {
     
     private Long id;
-    
+    private String name;
     private String contenido;
     
     /**
      * Constructor por defecto
      */
-    public BlogDTO(){
-        
+    public BlogDTO() {
     }
-    
-    /**
-     * Crea un objeto BlogDTO a partir de un objeto BlogEntity.
-     *
-     * @param entity Entidad BlogEntity desde la cual se va a crear el nuevo
-     * objeto.
-     * 
-     */
+
     public BlogDTO(BlogEntity entity) {
-            this.id = entity.getId();
-            this.contenido = entity.getContenido();
+
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.contenido = entity.getContenido();
     }
-    
-    /**
-     * Convierte un objeto BlogDTO a BlogEntity.
-     *
-     * @return Nueva objeto BlogEntity.
-     * 
-     */
+
     public BlogEntity toEntity() {
         BlogEntity entity = new BlogEntity();
         entity.setId(this.id);
+        entity.setName(this.name);
         entity.setContenido(this.contenido);
         return entity;
     }
-    
+
     /**
-     * Obtiene el atributo id.
-     *
-     * @return atributo id.
-     * 
+     * @return the id
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Establece el valor del atributo id.
-     *
-     * @param id nuevo valor del atributo
-     * 
+     * @param id the id to set
      */
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     /**
-     * Obtiene el atributo contenido.
-     *
-     * @return atributo contenido.
-     * 
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the contenido
      */
     public String getContenido() {
         return contenido;
     }
 
     /**
-     * Establece el valor del atributo contenido.
-     *
-     * @param contenido nuevo valor del atributo
-     * 
+     * @param contenido the contenido to set
      */
     public void setContenido(String contenido) {
         this.contenido = contenido;

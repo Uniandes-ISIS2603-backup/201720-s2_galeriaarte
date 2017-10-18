@@ -27,77 +27,58 @@ public class ArtistaDetailDTO extends ArtistaDTO
         super();
     }
     
-    public ArtistaDetailDTO(ArtistaEntity entity)
-    {
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity
+     */
+    public ArtistaDetailDTO(ArtistaEntity entity) {
         super(entity);
-        if (entity != null) {
-            obras = new ArrayList<>();
-            for (ObraEntity entityBooks : entity.getObras()) {
-                obras.add(new ObraDTO(entityBooks));
-            }
-        }
-        
-       if (entity != null) {
-           if (entity.getGaleria() != null) {
-            this.galeria = new GaleriaDTO(entity.getGaleria());
-        }
-       }
-           if (entity != null) {
-         if (entity.getHojaVida() != null) {
+        if (entity.getHojaVida()!= null) {
             this.hoja = new HojaVidaDTO(entity.getHojaVida());
+        } else {
+            entity.setHojaVida(null);
         }
-           }
-       
-        
-            
-            if (entity != null) {
+        if (entity.getBlogs() != null) {
             blogs = new ArrayList<>();
-            for (BlogEntity entityBlogs: entity.getBlogs()) {
-                blogs.add(new BlogDTO(entityBlogs));
+            for (BlogEntity entityBlog : entity.getBlogs()) {
+                blogs.add(new BlogDTO(entityBlog));
             }
         }
-            
-           
-            
-            
-           
-            
-            
-            
-            
+        if (entity.getObras() != null) {
+            obras = new ArrayList<>();
+            for (ObraEntity entityObra : entity.getObras()) {
+                obras.add(new ObraDTO(entityObra));
+            }
 
         }
-    
+    }
+   
     @Override
-    
     public ArtistaEntity toEntity() {
-        ArtistaEntity artistaE = super.toEntity();
-        if (getObras() != null) {
+        ArtistaEntity artistaE=  super.toEntity();
+        if (this.getHoja()!= null) {
+            artistaE.setHojaVida(this.getHoja().toEntity());
+        }
+        if (getBlogs() != null) {
+            List<BlogEntity> blogsEntity = new ArrayList<>();
+            for (BlogDTO dtoReview : getBlogs()) {
+                blogsEntity.add(dtoReview.toEntity());
+            }
+            artistaE.setBlogs(blogsEntity);
+        }
+        
+        if (obras != null) {
             List<ObraEntity> obrasEntity = new ArrayList<>();
-            for (ObraDTO dtoBook : getObras()) {
-                obrasEntity.add(dtoBook.toEntity());
+            for (ObraDTO dtoAuthor : obras) {
+                obrasEntity.add(dtoAuthor.toEntity());
             }
             artistaE.setObras(obrasEntity);
         }
-        if (getBlogs()!= null) {
-            List<BlogEntity> blogEntity = new ArrayList<>();
-            for (BlogDTO dtoBlog : getBlogs()) {
-                blogEntity.add(dtoBlog.toEntity());
-            }
-            artistaE.setBlogs(blogEntity);
-        }
-        
-        if (this.getGaleria() != null) {
-            artistaE.setGaleria(this.getGaleria().toEntity());
-        }
-        
-        if (this.getHoja() != null) {
-            artistaE.setHojaVida(this.getHoja().toEntity());
-        }
-        
         
         return artistaE;
     }
+
 
     /**
      * @return the obras
@@ -112,21 +93,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
     public void setObras(List<ObraDTO> obras) {
         this.obras = obras;
     }
-
-    /**
-     * @return the galeria
-     */
-    public GaleriaDTO getGaleria() {
-        return galeria;
-    }
-
-    /**
-     * @param galeria the galeria to set
-     */
-    public void setGaleria(GaleriaDTO galeria) {
-        this.galeria = galeria;
-    }
-
+    
     /**
      * @return the blogs
      */

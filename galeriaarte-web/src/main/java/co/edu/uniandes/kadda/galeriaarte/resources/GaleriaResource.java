@@ -23,14 +23,18 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+
+
+import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.CatalogoLogic;
+import co.edu.uniandes.kadda.galeriaarte.ejb.ClienteLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
-import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
@@ -49,8 +53,8 @@ import javax.ws.rs.WebApplicationException;
  * Clase que implementa el recurso REST correspondiente a "Galerias".
  *
  * Note que la aplicación (definida en RestConfig.java) define la ruta "/api" y
- * este recurso tiene la ruta "Galerias". Al ejecutar la aplicación, el
- * recurso será accesibe a través de la ruta "/api/Galerias"
+ * este recurso tiene la ruta "Galerias". Al ejecutar la aplicación, el recurso
+ * será accesibe a través de la ruta "/api/Galerias"
  *
  * @author ISIS2603
  *
@@ -63,16 +67,30 @@ public class GaleriaResource {
 
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+
+    @Inject
+    CatalogoLogic catalogoLogic;
     
-         
+    @Inject
+    ArtistaLogic artistaLogic;
+    
+    @Inject
+    ClienteLogic clienteLogic;
+    
+    private GaleriaDTO galeriaDTO;
+    private GaleriaDetailDTO galeriaDetailDTO;
+    
+    
+    
+    
+ 
 
     private static final Logger LOGGER = Logger.getLogger(GaleriaResource.class.getName());
 
     /**
      * POST http://localhost:8080/galeriadearte-web/api/galerias
      *
-     * @param Galeria correponde a la representación java del objeto json
-     * enviado en el llamado.
+     * @param galeria
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
      * "GaleriaDetailDTO", "id": 1, atributo1 : "valor" }
@@ -100,26 +118,40 @@ public class GaleriaResource {
         return listEntity2DetailDTO(galeriaLogic.getGalerias());
     }
 
-   
     /**
-     * PUT http://localhost:8080/galeriadearte-web/api/galerias/1 Ejemplo
-     * json { "id": 1, "atirbuto1": "Valor nuevo" }
+     * PUT http://localhost:8080/galeriadearte-web/api/galerias/1 Ejemplo json {
+     * "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Galeria a actualizar.
-     * @param galeriadearte corresponde  al objeto con los cambios que se van a
+     * @param galeriadearte corresponde al objeto con los cambios que se van a
      * realizar.
      * @return La Galeria actualizada.
      * @throws BusinessLogicException
      *
-     * En caso de no existir el id de la Galeria a actualizar se retorna un
-     * 404 con el mensaje.
+     * En caso de no existir el id de la Galeria a actualizar se retorna un 404
+     * con el mensaje.
      */
     @PUT
     @Path("{id: \\d+}")
-    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
+
+        GaleriaEntity entity = galeriaDTO.toEntity();
+        entity.setId(id);
+        GaleriaEntity vieja = galeriaLogic.getGaleria();
+        if(vieja == null)
+        {
+            throw new WebApplicationException("La galería no existe", 404);
+        }
+        else
+        {
+            entity.setArtistas(vieja.getArtistas());
+            entity.setCatalogos(vieja.getCatalogos());
+            entity.setClientes(vieja.getClientes());
+        }
+        
+        return new GaleriaDetailDTO(galeriaLogic.updateGaleria(entity));
     }
+
 
     /**
      * DELETE http://localhost:8080/galeriadearte-web/api/galerias/{id}
@@ -127,15 +159,21 @@ public class GaleriaResource {
      * @param id corresponde a la Galeria a borrar.
      * @throws BusinessLogicException
      *
-     * En caso de no existir el id de la Galeria a actualizar se retorna un
-     * 404 con el mensaje.
-     *
+     * En caso de no existir el id de la Galeria a actualizar se retorna un 404
+     * con el mensaje.
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteGaleria(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+    public void deleteGaleria(@PathParam("id") Long id) throws BusinessLogicException
+    {
+       GaleriaEntity entity = galeriaLogic.getGaleria();
+       if(entity == null)
+       {
+           throw new WebApplicationException("La galería no existe", 404);
+       }
+       galeriaLogic.deleteGaleria(id);
     }
+    
 
     /**
      *
@@ -144,8 +182,8 @@ public class GaleriaResource {
      * Este método convierte una lista de objetos GaleriaEntity a una lista de
      * objetos GaleriaDetailDTO (json)
      *
-     * @param entityList corresponde a la lista de Galerias de tipo Entity
-     * que vamos a convertir a DTO.
+     * @param entityList corresponde a la lista de Galerias de tipo Entity que
+     * vamos a convertir a DTO.
      * @return la lista de Galerias en forma DTO (json)
      */
     private List<GaleriaDetailDTO> listEntity2DetailDTO(List<GaleriaEntity> entityList) {
@@ -155,7 +193,10 @@ public class GaleriaResource {
         }
         return list;
     }
-    
+
    
+    
+
+    
 
 }
