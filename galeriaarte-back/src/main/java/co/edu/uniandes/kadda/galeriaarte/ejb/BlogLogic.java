@@ -10,7 +10,6 @@ import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.BlogPersistence;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -35,6 +34,7 @@ public class BlogLogic {
      *
      * @param artistaid id del Artista el cual es padre de los Blogs.
      * @return Colección de objetos de BlogEntity.
+     * @throws co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
      */
     public List<BlogEntity> getBlogs(Long artistaid) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todos los blogs");
