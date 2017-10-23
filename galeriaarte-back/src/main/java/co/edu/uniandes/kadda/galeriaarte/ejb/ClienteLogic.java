@@ -295,8 +295,9 @@ public class ClienteLogic {
     public void removeComentario(Long clienteId, Long comentarioId) {
         ClienteEntity clienteEntity = getCliente(clienteId);
         ComentarioEntity comentario = comentarioLogic.getComentario(comentarioId);
-        comentario.setClienteComentario(null);
         clienteEntity.getComentarios().remove(comentario);
+        comentario.setClienteComentario(null);
+        comentarioLogic.deleteComentario(comentarioId);
     }
 
     public void removeObra(Long clienteId, Long obraId) {
