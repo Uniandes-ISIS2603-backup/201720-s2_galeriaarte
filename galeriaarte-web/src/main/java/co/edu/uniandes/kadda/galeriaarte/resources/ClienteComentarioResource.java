@@ -119,7 +119,7 @@ public class ClienteComentarioResource {
     @DELETE
     @Path("{comentarioId: \\d+}")
     public void removeComentario(@PathParam("clienteId") Long clienteId, @PathParam("comentarioId") Long comentarioId) {
-        clienteLogic.removeComentario(comentarioId, clienteId);
+        clienteLogic.removeComentario( clienteId , comentarioId);
     }
 
 }

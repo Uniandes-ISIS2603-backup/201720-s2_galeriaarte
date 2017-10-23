@@ -100,7 +100,7 @@ public class ClienteObraResource {
     @DELETE
     @Path("{obraId: \\d+}")
     public void removeObra(@PathParam("clienteId") Long clienteId, @PathParam("obraId") Long obraId) {
-        clienteLogic.removeObra(obraId, clienteId);
+        clienteLogic.removeObra( clienteId, obraId);
     }
 
 }
