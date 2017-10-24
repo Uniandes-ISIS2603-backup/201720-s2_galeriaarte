@@ -6,14 +6,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Fecha</th> 
-                    <th>Valor</th>               
+                    <th>Total</th> 
+                    <th>Impuesto</th>               
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="compra in comprasRecords"> 
-                    <td id="{{$index}}-fecha">{{compra.fecha}}</td>   
-                    <td id="{{$index}}-valor">{{compra.valor}}</td>   
+                <tr ng-repeat="pago in pagosRecords"> 
+                    <td id="{{$index}}-total">{{pago.total}}</td>   
+                    <td id="{{$index}}-impuesto">{{pago.impuesto}}</td>   
                 </tr>
             </tbody>
         </table>
