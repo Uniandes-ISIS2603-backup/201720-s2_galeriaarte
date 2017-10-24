@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Eliminar galería</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="col-md-6 well">
+
+    <form novalidate name="form" id="galeria-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <button type = "button" ui-sref = 'eliminarGaleria'>Eliminar galería</button>
+        <p><br></p>
+        
+        <button type = "button" ui-sref = 'volver'>Volver</button>
+        
+    </form>
+</div>
+    </body>
+</html>
