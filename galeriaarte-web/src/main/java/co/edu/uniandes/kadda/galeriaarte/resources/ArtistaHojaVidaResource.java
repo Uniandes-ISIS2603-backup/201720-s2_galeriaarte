@@ -5,15 +5,13 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
 import co.edu.uniandes.kadda.galeriaarte.ejb.HojaVidaLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -69,10 +67,10 @@ public class ArtistaHojaVidaResource
     
     
      @POST   
-    public HojaVidaDetailDTO addHoja(@PathParam("id") Long artistaId, HojaVidaDetailDTO dto) throws BusinessLogicException 
+    public HojaVidaDTO addHoja(@PathParam("id") Long artistaId, HojaVidaDTO dto) throws BusinessLogicException 
     {
         HojaVidaEntity hoja = dto.toEntity();
-         return new HojaVidaDetailDTO(artistaLogic.addHoja(artistaId, hoja));
+         return new HojaVidaDTO(artistaLogic.addHoja(artistaId, hoja));
         
     }
     

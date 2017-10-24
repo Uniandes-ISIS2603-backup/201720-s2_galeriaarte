@@ -23,6 +23,7 @@ public class ArtistaDTO
      */
     public ArtistaDTO() {
     }
+    
 
     public ArtistaDTO(ArtistaEntity artistaE) {
         if (artistaE != null) {

@@ -1,15 +1,21 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" 
+       close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">  
     <div class="col-md-4">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>                      
+                    <th>Name</th> 
+                    <th>TipoTarjeta</th> 
+                    <th>NumTarjeta</th>              
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="cliente in clientesRecords">
-                    <td id="{{$index}}-name">{{editorial.name}}</td>                                  
+                <tr ng-repeat="cliente in clientesRecords"> 
+                    <td id="{{$index}}-name">{{cliente.name}}</td>   
+                    <td id="{{$index}}-tipoTarjeta">{{cliente.tipoTarjeta}}</td>   
+                    <td id="{{$index}}-numTarjeta">{{cliente.numTarjeta}}</td>
                 </tr>
             </tbody>
         </table>

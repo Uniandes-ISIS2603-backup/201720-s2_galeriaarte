@@ -24,8 +24,16 @@ public class HojaVidaDTO
      public HojaVidaDTO()
     {
         
+        
+        
     }
+     
+     
+     
     
+     
+     
+     
     public HojaVidaDTO(HojaVidaEntity hoja)
     {
         

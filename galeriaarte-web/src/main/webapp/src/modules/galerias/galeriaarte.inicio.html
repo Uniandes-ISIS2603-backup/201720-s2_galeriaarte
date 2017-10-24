@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <div class="col-md-6 well">
+
+    <form novalidate name="form" id="galeria-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+        <div ng-messages="form.$error">
+            
+        </div>
+
+        <div> Galeria de arte KADDA</div>
+      
+      <p> <br> </p>
+       
+       <fieldset><label> Dirección: Cra 1 #18a-12 Bogotá</label>
+        
+        <div> Teléfono: +57 1 3394949</div></fieldset> 
+        
+        <button type = "button" ui-sref = 'clientesList'>Clientes</button>
+        <button type = "button" ui-sref = 'artistasList'>Artistas</button>
+        <button type = "button" ui-sref = 'catalogoList'>Catalogo</button>
+        <button type = "button" ui-sref = 'configuracion'>Configuración</button>
+        
+        
+    </form>
+</div>
+    </body>
+</html>

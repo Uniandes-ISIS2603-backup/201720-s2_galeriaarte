@@ -27,6 +27,8 @@ public class ArtistaDetailDTO extends ArtistaDTO
         super();
     }
     
+    
+    
     /**
      * Constructor para transformar un Entity a un DTO
      *
