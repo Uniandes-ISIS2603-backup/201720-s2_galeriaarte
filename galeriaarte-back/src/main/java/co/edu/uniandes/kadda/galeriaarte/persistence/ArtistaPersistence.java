@@ -21,6 +21,7 @@ import javax.persistence.Query;
  * @author jd.carrillor
  */
 @Stateless
+
 public class ArtistaPersistence {
    
     private static final Logger LOGGER = Logger.getLogger(ArtistaPersistence.class.getName());
@@ -38,6 +39,8 @@ public class ArtistaPersistence {
         Query q = em.createQuery("select u from ArtistaEntity u");
         return q.getResultList();
     }
+    
+    
 
     public ArtistaEntity create(ArtistaEntity entity) {
         LOGGER.info("Creando un artista nuevo");

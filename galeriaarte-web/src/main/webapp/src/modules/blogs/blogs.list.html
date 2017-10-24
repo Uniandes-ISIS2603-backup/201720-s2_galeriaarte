@@ -1,0 +1,23 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th> 
+                    <th>Nombre</th>
+                    <th>Contenido</th>
+                    <th>ID Artista</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="blog in blogsRecords">
+                    <td id="{{$index}}-id">{{blog.id}}</td>
+                    <td id="{{$index}}-nombre">{{blog.name}}</td>
+                    <td id="{{$index}}-contenido">{{blog.contenido}}</td>
+                    <td id="{{$index}}-artista_id">{{blog.artista_id}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

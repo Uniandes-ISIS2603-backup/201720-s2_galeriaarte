@@ -55,6 +55,8 @@ public class BlogResource {
         }
         return new BlogDTO(entity);
     }
+    
+    
 
     @POST
     public BlogDTO createBlog(@PathParam("idArtista") Long idArtista, BlogDTO blog) throws BusinessLogicException {

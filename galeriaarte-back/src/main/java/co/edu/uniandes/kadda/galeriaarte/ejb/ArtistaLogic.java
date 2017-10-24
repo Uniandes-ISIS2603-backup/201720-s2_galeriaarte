@@ -54,6 +54,7 @@ private BlogPersistence blogPersistence;
         LOGGER.info("Termina proceso de creación de artista");
         return entity;
     }
+     
 
     public List<ArtistaEntity> getArtistas() {
         LOGGER.info("Inicia proceso de consultar todos los artistas");
@@ -175,7 +176,6 @@ private BlogPersistence blogPersistence;
         ArtistaEntity artista = getArtista(artistaId);
         HojaVidaEntity hojaNueva= createHojaVida(hoja);
         hojaNueva.setArtista(artista);
-        artista.setHojaVida(hojaNueva);
         return hojaNueva;
       }
       

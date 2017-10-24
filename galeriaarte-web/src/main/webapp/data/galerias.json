@@ -1,0 +1,16 @@
+[{
+    "id":1,
+    "nombre":"GaleriaA",
+    "direccion":"Calle 3 Cra 14",
+    "telefono":"098298329"
+},{
+    "id":2,
+    "nombre":"GaleriaB",
+    "direccion":"Calle 117 Cra 1",
+    "telefono":"098720369"
+},{
+    "id":3,
+    "nombre":"GaleriaC",
+    "direccion":"Calle 29 Cra 76",
+    "telefono":"09379843"
+}]

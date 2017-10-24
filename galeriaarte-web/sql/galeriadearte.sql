@@ -7,7 +7,7 @@ delete from PagoEntity;
 ALTER TABLE PagoEntity ALTER COLUMN id RESTART WITH 1;
 delete from ArtistaEntity;
 ALTER TABLE ArtistaEntity ALTER COLUMN id RESTART WITH 1;
-delete from CatalogoEntity
+delete from CatalogoEntity;
 ALTER TABLE CatalogoEntity ALTER COLUMN id RESTART WITH 1;
 delete from ObraEntity;
 ALTER TABLE ObraEntity ALTER COLUMN id RESTART WITH 1;
@@ -22,62 +22,65 @@ ALTER TABLE ComentarioEntity ALTER COLUMN id RESTART WITH 1;
 delete from GaleriaEntity;
 ALTER TABLE GaleriaEntity ALTER COLUMN id RESTART WITH 1;
 
-insert into CompraEntity (id, valor, fecha) values (1, 20, '01/02/2001');
-insert into CompraEntity (id, valor, fecha) values (2, 30, '08/06/2009');
-insert into CompraEntity (id, valor, fecha) values (3, 40, '07/09/2007');
+insert into CompraEntity (valor, fecha) values ( 20, '01/02/2001');
+insert into CompraEntity (valor, fecha) values ( 30, '08/06/2009');
+insert into CompraEntity (valor, fecha) values ( 40, '07/09/2007');
  
-insert into PagoEntity (id, total, impuesto) values (25, 20, 6);
-insert into PagoEntity (id, total, impuesto) values (26, 30, 7);
-insert into PagoEntity (id, total, impuesto) values (27, 40, 8);
+insert into PagoEntity ( total, impuesto) values ( 20, 6);
+insert into PagoEntity ( total, impuesto) values ( 30, 7);
+insert into PagoEntity ( total, impuesto) values ( 40, 8);
 
-insert into ArtistaEntity (id, name) values (1, 'Pedro');
-insert into ArtistaEntity (id, name) values (2, 'Pablo');
-insert into ArtistaEntity (id, name) values (3, 'Pepe');
-insert into ArtistaEntity (id, name) values (4, 'Juan');
-insert into ArtistaEntity (id, name) values (5, 'Carlos');
+insert into ArtistaEntity ( name) values ( 'Pedro');
+insert into ArtistaEntity ( name) values ( 'Pablo');
+insert into ArtistaEntity ( name) values ( 'Pepe');
+insert into ArtistaEntity ( name) values ( 'Juan');
+insert into ArtistaEntity ( name) values ( 'Carlos');
 
-insert into GaleriaEntity (id, nombre, direccion, telefono) values (0, 'GaleriaKADDA','Cra. 1 #18a-12, BogotÃ¡',3394949);
+insert into GaleriaEntity ( nombre, direccion, telefono) values ( 'GaleriaKADDA','Cra. 1 #18a-12, BogotÃ¡',3394949);
 
 insert into CatalogoEntity (id,categoria) values (5, 'contemporÃ¡neo');
 insert into CatalogoEntity (id,categoria) values (6, 'greco-romano');
 insert into CatalogoEntity (id,categoria) values (7, 'vanguardia');
 
-insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (1, 5, 'Las meninas', 'Pintura', 20000, 1);
-insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (2, 4, 'La últimma', 'Pintura', 30000,2);
-insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (3, 3, 'La noche estrellada', 'Pintura', 40000,3);
-insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (4, 2, 'El nacimiento de Venus', 'Pintura', 50000,4);
-insert into ObraEntity (id, cantidad, name, tipo, valor, artista_id) values (5, 1, 'La creación de Adán', 'Pintura', 60000,5);
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id) values ( 5, 'Las meninas', 'Pintura', 20000,1);
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id) values ( 4, 'La últimma', 'Pintura', 30000,2);
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id) values ( 3, 'La noche estrellada', 'Pintura', 40000,3);
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id) values ( 2, 'El nacimiento de Venus', 'Pintura', 50000,4);
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id) values ( 1, 'La creación de Adán', 'Pintura', 60000,5);
 
-insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (1, 'Universidad de los Andes', 'Colombiano', 'Kelvin', 'Recibí el premio Mejor Artista 2010');
-insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (2, 'Universidad del Rosario', 'Venezolano', 'Juan Daniel', 'Recibí el premio Mejor Artista 2011');
-insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (3, 'Universidad Nacional', 'Argentino', 'Daniel', 'Recibí el premio Mejor Artista 2012');
-insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (4, 'Universidad de los Andes', 'Colombiana', 'Maria Alejandra', 'Recibí el premio Mejor Artista 2013');
-insert into HojaVidaEntity (id, almamater, nacionalidad, name, trayectoria) values (5, 'Universidad Distrital', 'Chileno', 'Andrés', 'Recibí el premio Mejor Artista 2014');
-
-insert into MarcoEntity (id, alto, ancho, material, name, valor) values (1, 10, 5, 'Madera','Marco Chileno', 50000);
-insert into MarcoEntity (id, alto, ancho, material, name, valor) values (2, 15, 10, 'Metal','Marco Italiano', 55000);
-insert into MarcoEntity (id, alto, ancho, material, name, valor) values (3, 20, 15, 'Madera','Marco Francés', 75000);
-insert into MarcoEntity (id, alto, ancho, material, name, valor) values (4, 25, 20, 'Metal','Marco Chileno', 95000);
-insert into MarcoEntity (id, alto, ancho, material, name, valor ) values (5, 30, 25, 'Madera','Marco Italiano', 500000);
-
-insert into BlogEntity (id, contenido, name, artista_id ) values (1,'Contenido1', 'Como entender el arte abstracta',1);
-insert into BlogEntity (id, contenido, name, artista_id ) values (2,'Contenido2', 'Como aprender a pintar',2);
-insert into BlogEntity (id, contenido, name, artista_id ) values (3,'Contenido3', 'Aprendiendo analizar el arte',3);
-insert into BlogEntity (id, contenido, name, artista_id ) values (4,'Contenido4', 'El arte de las esculturas',4);
-insert into BlogEntity (id, contenido, name, artista_id ) values (5,'Contenido5', 'Las esculturas vs las obras de arte',5);
+insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad de los Andes', 'Colombiano', 'Kelvin', 'Recibí el premio Mejor Artista 2010',2);
+insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad del Rosario', 'Venezolano', 'Juan Daniel', 'Recibí el premio Mejor Artista 2011',3);
+insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad Nacional', 'Argentino', 'Daniel', 'Recibí el premio Mejor Artista 2012',4);
+insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad de los Andes', 'Colombiana', 'Maria Alejandra', 'Recibí el premio Mejor Artista 2013',5);
+insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad Distrital', 'Chileno', 'Andrés', 'Recibí el premio Mejor Artista 2014',1);
 
 
-insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (1, 'Kelvin', 10, 'Visa');
-insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (2, 'Andrés', 11, 'Master Card');
-insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (3, 'Juan', 12, 'Visa');
-insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (4, 'Daniel', 13, 'Master Card');
-insert into ClienteEntity (id, name, numTarjeta, tipoTarjeta) values (5, 'Maria', 14, 'Visa');
+insert into MarcoEntity ( alto, ancho, material, name, valor) values ( 10, 5, 'Madera','Marco Chileno', 50000);
+insert into MarcoEntity ( alto, ancho, material, name, valor) values ( 15, 10, 'Metal','Marco Italiano', 55000);
+insert into MarcoEntity ( alto, ancho, material, name, valor) values ( 20, 15, 'Madera','Marco Francés', 75000);
+insert into MarcoEntity ( alto, ancho, material, name, valor) values ( 25, 20, 'Metal','Marco Chileno', 95000);
+insert into MarcoEntity ( alto, ancho, material, name, valor ) values ( 30, 25, 'Madera','Marco Italiano', 500000);
 
-insert into ComentarioEntity (id, name) values (1, 'Comentario1');
-insert into ComentarioEntity (id, name, obra_id) values (2, 'Comentario2',2);
-insert into ComentarioEntity (id, name, obra_id) values (3, 'Comentario3',3);
-insert into ComentarioEntity (id, name, obra_id) values (4, 'Comentario4',4);
-insert into ComentarioEntity (id, name, obra_id) values (5, 'Comentario5',5);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1', 'Como entender el arte abstracta',1);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido2', 'Como aprender a pintar',2);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido3', 'Aprendiendo analizar el arte',3);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido4', 'El arte de las esculturas',4);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido5', 'Las esculturas vs las obras de arte',5);
+
+
+insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Kelvin', 10, 'Visa');
+insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Andrés', 11, 'Master Card');
+insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Juan', 12, 'Visa');
+insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Daniel', 13, 'Master Card');
+insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Maria', 14, 'Visa');
+
+insert into ComentarioEntity ( name) values ( 'Comentario1');
+insert into ComentarioEntity ( name, obra_id) values ( 'Comentario2',2);
+insert into ComentarioEntity ( name, obra_id) values ( 'Comentario3',3);
+insert into ComentarioEntity ( name, obra_id) values ( 'Comentario4',4);
+insert into ComentarioEntity ( name, obra_id) values ( 'Comentario5',5);
+
+
 
 
 

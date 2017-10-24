@@ -1,0 +1,26 @@
+[{
+    "id":1,
+    "name":"Como entender el arte abstracta",
+    "contenido":"Contenido1",
+    "artista_id":1
+},{
+    "id":2,
+    "name":"Como aprender a pintar",
+    "contenido":"Contenido2",
+    "artista_id":2
+},{
+    "id":3,
+    "name":"Aprendiendo analizar el arte",
+    "contenido":"Contenido3",
+    "artista_id":3  
+},{
+    "id":4,
+    "name":"El arte de las esculturas",
+    "contenido":"Contenido4",
+    "artista_id":4 
+},{
+   "id":5,
+    "name":"Las esculturas vs las obras de arte",
+    "contenido":"Contenido5",
+    "artista_id":5
+}]

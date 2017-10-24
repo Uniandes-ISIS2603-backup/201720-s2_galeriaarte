@@ -1,3 +1,4 @@
+
 (function (ng) {
     var appModule = angular.module('mainApp');
 
@@ -39,3 +40,4 @@
             $httpProvider.interceptors.push('httpInterceptor');
         }]);
 })(window.angular);
+
