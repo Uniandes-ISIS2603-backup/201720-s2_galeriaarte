@@ -29,6 +29,7 @@ public class ClientePersistence {
         //LOGGER.info("Company creada");
         return entity;
     }
+    
 
     public ClienteEntity find(Long id) {
         //LOGGER.log(Level.INFO, "Consultando employee con id={0}", id);

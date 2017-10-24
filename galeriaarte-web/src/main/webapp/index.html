@@ -3,9 +3,38 @@
     <head>
         <title>Galeria - By Kadda</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+        <link rel="stylesheet" href="resources/css/styles.css" />
+        <!-- Artistas -->
+        <script src="src/modules/artistas/artistas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/artistas/artistas.ctrl.js" type="text/javascript"></script>
+        <!-- Authors -->
+        <script src="src/modules/compras/compras.mod.js" type="text/javascript"></script>
+        <script src="src/modules/authors/compras.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/app.js" type="text/javascript"></script> 
+        <script src="src/http-interceptor.factory.js" type="text/javascript"></script> 
+        
+        
     </head>
     <body>
-        <h1>Galeria</h1>
-        <span>By Kadda</span>
+        <div class="container-fluid"> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li><a ui-sref="artistasList">Artistas</a></li>
+                    </ul>                   
+                </div>
+            </div>               
+            <div ui-view="mainView">
+            </div> 
+        </div>
     </body>
 </html>

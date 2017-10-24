@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
@@ -22,7 +23,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 
 
+
+
 @Entity
+
 public class ArtistaEntity extends BaseEntity implements Serializable
 {
     @PodamExclude
@@ -32,7 +36,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     @ManyToOne
     private GaleriaEntity galeria;
     @PodamExclude
-    @OneToOne(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "artista", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private HojaVidaEntity hojaVida;
     @PodamExclude
     @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)

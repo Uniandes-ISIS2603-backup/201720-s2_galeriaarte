@@ -27,6 +27,8 @@ public class HojaVidaEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToOne
     private ArtistaEntity artista;
+    
+    
 
     
     
