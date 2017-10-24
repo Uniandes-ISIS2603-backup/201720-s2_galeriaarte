@@ -1,0 +1,11 @@
+[{
+"id":"2",
+"name":"Paco",
+"tipoTarjeta":"Credito",
+"numTarjeta":4540
+    }, {
+"id":"1",
+"name":"Pepe",
+"tipoTarjeta":"Debito",
+"numTarjeta":8085
+}]

@@ -11,7 +11,6 @@ import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.PagoPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.CompraPersistence;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -35,7 +34,7 @@ public class PagoLogic {
      * Obtiene la lista de los registros de Pago que pertenecen a un compra.
      *
      * @return Colección de objetos de PagoEntity.
-     * @throws co.edu.uniandes.csw.comprastore.exceptions.BusinessLogicException
+     * @throws co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
      */
     public List<PagoEntity> getPagos() throws BusinessLogicException {
         LOGGER.info("Inicia proceso de consultar todos los pagos");

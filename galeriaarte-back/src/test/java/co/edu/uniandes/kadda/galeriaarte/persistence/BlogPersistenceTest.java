@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.persistence;
 
+import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,8 @@ public class BlogPersistenceTest {
     UserTransaction utx;
     
     private List<BlogEntity> data = new ArrayList<BlogEntity>();
+    
+    private List<ArtistaEntity> data2 = new ArrayList<ArtistaEntity>();
     
     @Deployment
     public static JavaArchive createDeployment() {
@@ -92,11 +95,17 @@ public class BlogPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        List<BlogEntity> b = new ArrayList<BlogEntity>();
         for (int i = 0; i < 3; i++) {
             BlogEntity entity = factory.manufacturePojo(BlogEntity.class);
-
+            ArtistaEntity entityC = factory.manufacturePojo(ArtistaEntity.class);
+            b.add(entity);
+            entity.setArtista(entityC);
+            entityC.setBlogs(b);
             em.persist(entity);
+            em.persist(entityC);
             data.add(entity);
+            data2.add(entityC);
         }
     }
     
@@ -119,19 +128,22 @@ public class BlogPersistenceTest {
     /**
      * Test of find method, of class BlogPersistence.
      */
-    /**
     @Test
     public void testFind() {
-        BlogEntity entity = data.get(0);
-        BlogEntity newEntity = persistence.find(entity.getId());
+        ArtistaEntity entity = data2.get(0);
+        List<BlogEntity> entity2 = entity.getBlogs();
+        int i = 0;
+        for(i = 0;i< entity2.size();i++)
+        {
+        BlogEntity newEntity = persistence.find(entity.getId(), entity2.get(0).getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getId(), newEntity.getId());
+        Assert.assertEquals(entity2.get(0).getId(), newEntity.getId());
+        }
     }
-    */
+    
     /**
      * Test of findAll method, of class BlogPersistence.
      */
-    /**
     @Test
     public void testFindAll() {
         List<BlogEntity> list = persistence.findAll();
@@ -146,7 +158,7 @@ public class BlogPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    */
+    
     /**
      * Test of update method, of class BlogPersistence.
      */

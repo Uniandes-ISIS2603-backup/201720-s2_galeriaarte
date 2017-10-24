@@ -1,0 +1,37 @@
+[{
+    "id":1,
+    "alto":1.0,
+    "ancho":0.5,
+    "material":"Madera",
+    "name":"Marco Chileno",
+    "valor":50000
+        
+},{
+    "id":2,
+    "alto":1.5,
+    "ancho":1.0,
+    "material":"Metal",
+    "name":"Marco Italiano",
+    "valor":55000
+},{
+    "id":3,
+    "alto":2.0,
+    "ancho":1.5,
+    "material":"Madera",
+    "name":"Marco Francés",
+    "valor":75000   
+},{
+    "id":4,
+    "alto":2.5,
+    "ancho":2.0,
+    "material":"Metal",
+    "name":"Marco Chileno",
+    "valor":95000 
+},{
+   "id":5,
+    "alto":3.0,
+    "ancho":2.5,
+    "material":"Madera",
+    "name":"Marco Italiano",
+    "valor":500000
+}]
