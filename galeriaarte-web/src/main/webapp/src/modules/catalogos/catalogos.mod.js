@@ -28,7 +28,8 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            })
+            
+        }]);
                     //.state('catalogosList', {
              //   url: '/list',
               //  parent: 'catalogos',
@@ -53,5 +54,5 @@
                   //      templateUrl: basePath + 'catalogos.detail.html',
                   //      controller: 'editorialCtrl',
                   //      controllerAs: 'ctrl'
-                 //   }}});}]);
+                 //   }}});
 })(window.angular);
