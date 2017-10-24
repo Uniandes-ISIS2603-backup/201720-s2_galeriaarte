@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
-    mod.constant("clienteContext", "api/clientes");
-    mod.controller('clienteCtrl', ['$scope', '$http', 'clienteContext',
-        function ($scope, $http, editorialContext) {
+    mod.constant("clientesContext", "api/clientes");
+    mod.controller("clienteCtrl", ['$scope', '$http', 'clientesContext',
+        function ($scope, $http, clienteContext) {
             $http.get('data/clientes.json').then(function (response) {
                 $scope.clientesRecords = response.data;
             });
