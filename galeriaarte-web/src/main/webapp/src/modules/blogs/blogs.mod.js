@@ -1,27 +1,76 @@
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("blogModule", ['ui.router']);
-
-    // Configuración de los estados del módulo
+    mod.constant("blogsContext", "api/blogs");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/blogs/';
-            // Mostrar la lista de blogs será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/blogsList");
-            // Definición del estado 'blogsList' donde se listan los blogs
-            $stateProvider.state('blogsList', {
-                // Url que aparecerá en el browser
-                url: '/blogs/list',
+
+            $stateProvider.state('blogs', {
+                url: '/blogs',
+                abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'blogs.list.html',
+                        templateUrl: basePath + 'blogs.html',
                         controller: 'blogCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('blogsList', {
+                url: '/list',
+                parent: 'blogs',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'blogs.list.html'
+                    }
+                }
+            }).state('blogDetail', {
+                url: '/{blogId:int}/detail',
+                parent: 'blogs',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'blogs.detail.html',
+                        controller: 'blogCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('blogsCreate', {
+                url: '/create',
+                parent: 'blogs',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/blogs.new.html',
+                        controller: 'blogNewCtrl'
+                    }
+                }
+            }).state('blogUpdate', {
+                url: '/update/{blogId:int}',
+                parent: 'blogs',
+                param: {
+                    blogId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/blogs.new.html',
+                        controller: 'blogUpdateCtrl'
+                    }
+                }
+            }).state('blogDelete', {
+                url: '/delete/{blogId:int}',
+                parent: 'blogs',
+                param: {
+                    blogId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/blog.delete.html',
+                        controller: 'blogDeleteCtrl'
+                    }
+                }
             });
-        }
-    ]);
+        }]);
 })(window.angular);
 
 
