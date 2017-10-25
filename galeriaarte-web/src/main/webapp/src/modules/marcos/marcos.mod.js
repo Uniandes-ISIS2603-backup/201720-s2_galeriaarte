@@ -6,13 +6,13 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/marcos/';
-            // Mostrar la lista de marcos será el estado por defecto del módulo
+            // Mostrar la lista de libros será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/marcosList");
-            // Definición del estado 'marcosList' donde se listan los marcos
+            // Definición del estado 'booksList' donde se listan los libros
             $stateProvider.state('marcosList', {
                 // Url que aparecerá en el browser
-                url: '/marcos/list',
-                views: {
+                url: '/marco/list',
+                 views: {
                     'mainView': {
                         templateUrl: basePath + 'marcos.list.html',
                         controller: 'marcoCtrl',
