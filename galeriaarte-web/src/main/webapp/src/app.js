@@ -6,6 +6,7 @@
         'ui.bootstrap',
         // Internal modules dependencies
         'clienteModule',
+        'comentarioModule',
         'marcoModule',
         'blogModule'
     ]);

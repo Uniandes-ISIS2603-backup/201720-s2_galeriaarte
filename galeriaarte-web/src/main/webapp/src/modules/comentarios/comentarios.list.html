@@ -6,16 +6,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th> 
-                    <th>TipoTarjeta</th> 
-                    <th>NumTarjeta</th>              
+                    <th>Id</th> 
+                    <th>Contenido</th>              
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="cliente in clientesRecords"> 
-                    <td id="{{$index}}-name">{{cliente.name}}</td>   
-                    <td id="{{$index}}-tipoTarjeta">{{cliente.tipoTarjeta}}</td>   
-                    <td id="{{$index}}-numTarjeta">{{cliente.numTarjeta}}</td>
+                <tr ng-repeat="comentario in comentarioRecords"> 
+                    <td id="{{$index}}-id">{{comentario.id}}</td>   
+                    <td id="{{$index}}-contenido">{{comentario.contenido}}</td>
                 </tr>
             </tbody>
         </table>
