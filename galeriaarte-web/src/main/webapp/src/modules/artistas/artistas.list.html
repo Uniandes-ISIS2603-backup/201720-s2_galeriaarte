@@ -5,15 +5,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>    
-                    <th>Birth Date</th>  
-
+                    <th>Id</th>    
+                    <th>Nombre</th>
+                   
+  
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="artista in artistaRecords">
-                    <td id="{{$index}}-name">{{artista.name}}</td>
-                    <td id="{{$index}}-birthDate">{{artista.birthDate| date:'yyyy-MM-dd'}}</td>                   
+                <tr ng-repeat="artistas in artistasRecords">
+                    <td id="{{$index}}-id">{{artistas.id}}</td>
+                    <td id="{{$index}}-name">{{artistas.name}}</td>
+                                     
                 </tr>
             </tbody>
         </table>

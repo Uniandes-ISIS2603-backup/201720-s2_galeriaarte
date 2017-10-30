@@ -7,7 +7,8 @@
         // Internal modules dependencies
         'clienteModule',
         'marcoModule',
-        'blogModule'
+        'blogModule',
+        'artistaModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
