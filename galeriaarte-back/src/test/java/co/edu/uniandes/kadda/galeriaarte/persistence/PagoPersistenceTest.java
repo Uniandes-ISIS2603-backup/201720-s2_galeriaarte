@@ -125,24 +125,6 @@ public class PagoPersistenceTest {
         Assert.assertEquals(entity2.getId(), newEntity.getId());
     }
 
-    /**
-     * Test of findAll method, of class PagoPersistence.
-     */
-    @Test
-    public void testFindAll() {
-        List<PagoEntity> list = persistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (PagoEntity ent : list) {
-            boolean found = false;
-            for (PagoEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-
-    }
 
     /**
      * Test of create method, of class PagoPersistence.
@@ -158,24 +140,6 @@ public class PagoPersistenceTest {
         PagoEntity entity = em.find(PagoEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
-    }
-
-    /**
-     * Test of update method, of class PagoPersistence.
-     */
-    @Test
-    public void testUpdate() {
-        PagoEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        persistence.update(newEntity);
-
-        PagoEntity resp = em.find(PagoEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 
     /**

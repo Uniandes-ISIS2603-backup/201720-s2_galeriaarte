@@ -28,21 +28,9 @@ public class PagoLogic {
     private PagoPersistence persistence;
 
     @Inject
-    private CompraPersistence compraPersistence;
+    private CompraLogic compraLogic;
 
-    /**
-     * Obtiene la lista de los registros de Pago que pertenecen a un compra.
-     *
-     * @return Colección de objetos de PagoEntity.
-     * @throws co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
-     */
-    public List<PagoEntity> getPagos() throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de consultar todos los pagos");
-        List<PagoEntity> pagos = persistence.findAll();
-        LOGGER.info("Termina proceso de consultar todos los pagos");
-        return pagos;
-    }
-
+    
     /**
      * Obtiene los datos de una instancia de Pago a partir de su ID.
      *
@@ -66,25 +54,11 @@ public class PagoLogic {
      */
     public PagoEntity createPago(Long compraid, PagoEntity entity) {
         LOGGER.info("Inicia proceso de crear Pago");
-        CompraEntity compra = compraPersistence.find(compraid);
+        CompraEntity compra = compraLogic.getCompra(compraid);
         entity.setCompra(compra);
         return persistence.create(entity);
     }
 
-    /**
-     * Actualiza la información de una instancia de Pago.
-     *
-     * @param entity Instancia de PagoEntity con los nuevos datos.
-     * @param compraid id del compra el cual sera padre del Pago actualizado.
-     * @return Instancia de PagoEntity con los datos actualizados.
-     * 
-     */
-    public PagoEntity updatePago(Long compraid, PagoEntity entity) {
-        LOGGER.info("Inicia proceso de actualizar Pago");
-        CompraEntity compra = compraPersistence.find(compraid);
-        entity.setCompra(compra);
-        return persistence.update(entity);
-    }
 
     /**
      * Elimina una instancia de Pago de la base de datos.

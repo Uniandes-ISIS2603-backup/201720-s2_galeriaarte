@@ -19,6 +19,16 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('clienteCreate', {
+                url: '/clientes/create',
+                views: {
+                    'mainView': {
+                        controller: 'clientesNewCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + '/clientes.create.html'
+                    }
+                }
+
             });
         }
     ]);

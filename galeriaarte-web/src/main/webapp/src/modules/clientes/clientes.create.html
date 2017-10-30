@@ -1,20 +1,32 @@
 <div class="col-md-6 well">
 
-    <form novalidate name="form" id="cliente-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+    <form novalidate name="form" id="cliente-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(clientesRecords.id)">
 
         <div ng-messages="form.$error">
             <div ng-message="required">Fill the required fields!</div>
         </div>
 
         <fieldset>
-            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id" />
+            <input id="id" class="form-control" type="hidden" ng-model="clientesRecords.id" />
             <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}">
                 <label for="name" class="col-md-2 control-label">Name</label>
                 <div class="col-md-10">
-                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                    <input id="name" name="name" class="form-control" type="text" ng-model="clientesRecords.name" ng-init="clientesRecords.name" required />
                 </div>
             </div>
-            <button type="button" ui-sref='citiesList'>Cancel</button>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.TipoTarjeta.$valid && form.TipoTarjeta.$dirty, 'has-error': form.TipoTarjeta.$invalid && (form.TipoTarjeta.$dirty || form.$submitted)}">
+                <label for="TipoTarjeta" class="col-md-2 control-label">TipoTarjeta</label>
+                <div class="col-md-10">
+                    <input id="TipoTarjeta" TipoTarjeta="TipoTarjeta" class="form-control" type="text" ng-model="clientesRecords.TipoTarjeta" ng-init="clientesRecords.TipoTarjeta" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.NumTarjeta.$valid && form.NumTarjeta.$dirty, 'has-error': form.NumTarjeta.$invalid && (form.NumTarjeta.$dirty || form.$submitted)}">
+                <label for="NumTarjeta" class="col-md-2 control-label">NumTarjeta</label>
+                <div class="col-md-10">
+                    <input id="NumTarjeta" NumTarjeta="NumTarjeta" class="form-control" type="text" ng-model="clientesRecords.NumTarjeta" ng-init="clientesRecords.NumTarjeta" required />
+                </div>
+            </div>
+            <button type="button" ui-sref='clientesList'>Cancel</button>
             <button type="submit">Save</button>
         </fieldset>
     </form>

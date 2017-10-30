@@ -9,4 +9,14 @@
             });
         }
     ]);
+//    mod.controller("clienteCtrl", ['$scope', '$http', 'clientesContext', function ($scope, $http, clientesContext) {
+//            
+//            // inicialmente el listado de ciudades está vacio
+//            $scope.records = {};
+//            // carga las ciudades
+//            $http.get(clientesContext).then(function (response) {
+//                $scope.records = response.data;
+//            });
+//}
+//]);
 })(angular);

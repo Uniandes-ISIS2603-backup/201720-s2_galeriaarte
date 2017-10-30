@@ -1,37 +1,42 @@
 [{
     "id":1,
+    "image":"https://www.moldurashergon.es/img/blog/molduras-etnicas-429-235.jpg",
     "alto":1.0,
     "ancho":0.5,
     "material":"Madera",
-    "name":"Marco Chileno",
+    "name":"Marco étnico",
     "valor":50000
         
 },{
     "id":2,
+    "image":"https://www.moldurashergon.es/img/blog/molduras-coloridas-520-748.jpg",
     "alto":1.5,
     "ancho":1.0,
-    "material":"Metal",
-    "name":"Marco Italiano",
+    "material":"Plastico",
+    "name":"Marco de colores brillantes",
     "valor":55000
 },{
     "id":3,
+    "image":"https://www.moldurashergon.es/img/blog/molduras-plata-025-900.jpg",    
     "alto":2.0,
     "ancho":1.5,
-    "material":"Madera",
-    "name":"Marco Francés",
+    "material":"Plata",
+    "name":"Marco de plata",
     "valor":75000   
 },{
     "id":4,
+    "image":"https://www.moldurashergon.es/img/blog/molduras-doradas-270-039.jpg",    
     "alto":2.5,
     "ancho":2.0,
-    "material":"Metal",
-    "name":"Marco Chileno",
-    "valor":95000 
+    "material":"Oro",
+    "name":"Marco de oro",
+    "valor":950000 
 },{
-   "id":5,
+    "id":5,
+    "image":"https://www.moldurashergon.es/img/blog/molduras-grabadas-635-U76.jpg",    
     "alto":3.0,
     "ancho":2.5,
-    "material":"Madera",
-    "name":"Marco Italiano",
-    "valor":500000
+    "material":"Yeso",
+    "name":"Marco grabado",
+    "valor":50000
 }]
