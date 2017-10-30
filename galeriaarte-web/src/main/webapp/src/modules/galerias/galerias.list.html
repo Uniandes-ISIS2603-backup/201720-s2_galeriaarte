@@ -4,21 +4,26 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <table>
+alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
             <thead>
-                <tr><th>Galeria</th></tr>
+                <tr>
+                    <th>ID</th> 
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Telefono</th>
+                </tr>
             </thead>
             <tbody>
-                <tr ng-repeat ="galeria in galeiasRecords">
-                    <td id =""
+                <tr ng-repeat="marco in marcosRecords">
+                    <td id="{{$index}}-id">{{galeria.id}}</td>
+                    <td id="{{$index}}-nombre">{{galeria.nombre}}</td>
+                    <td id="{{$index}}-direccion">{{galeria.direccion}}</td>
+                    <td id="{{$index}}-telefono">{{galeria.telefono}}</td>                       
                 </tr>
-        <div>TODO write content</div>
-    </body>
-</html>
+            </tbody>
+        </table>
+    </div>
+</div>

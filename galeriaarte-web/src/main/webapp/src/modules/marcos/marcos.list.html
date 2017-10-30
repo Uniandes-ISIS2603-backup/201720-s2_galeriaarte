@@ -1,27 +1,15 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th> 
-                    <th>Nombre</th>
-                    <th>Material</th>
-                    <th>Alto (m)</th>
-                    <th>Ancho (m)</th>
-                    <th>Precio (COP)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="marco in marcosRecords">
-                    <td id="{{$index}}-id">{{marco.id}}</td>
-                    <td id="{{$index}}-nombre">{{marco.name}}</td>
-                    <td id="{{$index}}-material">{{marco.material}}</td>
-                    <td id="{{$index}}-alto">{{marco.alto}}</td>
-                    <td id="{{$index}}-ancho">{{marco.ancho}}</td>
-                    <td id="{{$index}}-precio">{{marco.valor}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <!-- marcosRecords fue inicializada en el controlador del estado marcosList -->
+        <!-- Itera sobre cada uno de los marcos en la colección marcosRecords -->
+        <div class="col-sm-2 col-md-2" ng-repeat="marco in marcosRecords">
+             <!--Despliega la imagen  -->
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src='{{marco.image}}' alt="{{marco.name}}" />  
+                 <!-- Despliega en el caption de la imagen el nombre del marco -->
+                <div class="caption text-center"><a ui-sref="marcoDetail({marcoId: marco.id})">{{marco.name}}</a></div>
+            </div>
+        </div>
     </div>
 </div>
