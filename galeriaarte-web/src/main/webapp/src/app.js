@@ -9,8 +9,10 @@
         'comentarioModule',
         'marcoModule',
         'blogModule',
+        'artistaModule',
         'compraModule',
-        'pagoModule',
+        'pagoModule'
+
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

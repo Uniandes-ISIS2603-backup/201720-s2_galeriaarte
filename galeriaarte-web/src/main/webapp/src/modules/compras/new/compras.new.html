@@ -1,24 +1,24 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createBlog">Crear nuevo blog</label>
-                <label ng-if="edit" id="editBlog">Editar blog</label></div>
-           < <div class="panel-body">
-                <form ng-submit="createBlog()" name="blog">
+            <div class="panel-heading"><label ng-if="!edit" id="createCompra">Crear nueva compra</label>
+                <label ng-if="edit" id="editCompra">Editar compra</label></div>
+            <div class="panel-body">
+                <form ng-submit="createCompra()" name="blog">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="blogName" class="col-sm-2">Nombre:</label>
-                            <input id="blogName" required ng-model="blogName" class="col-sm-6"/>
+                            <label for="compraName" class="col-sm-2">Nombre:</label>
+                            <input id="compraName" required ng-model="compraName" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="blogContenido" class="col-sm-2">Contenido:</label>
-                            <textarea id="blogContenido" required ng-model="blogContenido" class="col-sm-6"></textarea>
+                            <label for="compraContenido" class="col-sm-2">Contenido:</label>
+                            <textarea id="compraContenido" required ng-model="compraContenido" class="col-sm-6"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!blog.$valid">
+                        <div class="form-group col-sm-4" ng-if="!compra.$valid">
 
                             <div class="alert alert-warning" >
                                 <strong>Warning!</strong><p>All inputs are required*</p>
@@ -27,8 +27,8 @@
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-show="blog.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="blogsList">Cancel</a>
+                            <input ng-show="compra.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="comprasList">Cancel</a>
                         </div>
                     </div>
                 </form>
