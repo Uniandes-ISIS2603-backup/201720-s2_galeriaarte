@@ -1,5 +1,6 @@
 (function (ng){
-    var mod = ng.module("compraModule", ['obraModule', 'ui.router']);
+    //var mod = ng.module("compraModule", ['obraModule', 'ui.router']);
+    var mod = ng.module("compraModule", ['compraModule', 'ui.router']);
     mod.constant("comprasContext", "compras");
     mod.constant("obrasContext", "api/obras");
     

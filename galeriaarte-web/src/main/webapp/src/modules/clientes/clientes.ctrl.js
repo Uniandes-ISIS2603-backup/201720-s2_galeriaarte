@@ -7,6 +7,13 @@
             $http.get(clientesContext).then(function (response) {
                 $scope.clientesRecords = response.data;
             });
+            
+            if ($state.params.id !== undefined) {
+                $http.get(clientesContext + '/' + $state.params.id).then(function (response) {
+                    $scope.booksRecords = response.data.books;
+                    $scope.currentCliente = response.data;
+                });
+            }
         }
     ]);
 //    mod.controller("clienteCtrl", ['$scope', '$http', 'clientesContext', function ($scope, $http, clientesContext) {
@@ -19,4 +26,4 @@
 //            });
 //}
 //]);
-})(angular);
+})(window.angular);
