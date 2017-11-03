@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.persistence;
 
-import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +44,11 @@ public class BlogPersistenceTest {
     
     private List<BlogEntity> data = new ArrayList<BlogEntity>();
     
-    private List<ArtistaEntity> data2 = new ArrayList<ArtistaEntity>();
-    
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(BlogEntity.class.getPackage())
-                .addPackage(BlogPersistence.class.getPackage())
+                .addPackage(MarcoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -95,17 +92,11 @@ public class BlogPersistenceTest {
     
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        List<BlogEntity> b = new ArrayList<BlogEntity>();
         for (int i = 0; i < 3; i++) {
             BlogEntity entity = factory.manufacturePojo(BlogEntity.class);
-            ArtistaEntity entityC = factory.manufacturePojo(ArtistaEntity.class);
-            b.add(entity);
-            entity.setArtista(entityC);
-            entityC.setBlogs(b);
+
             em.persist(entity);
-            em.persist(entityC);
             data.add(entity);
-            data2.add(entityC);
         }
     }
     
@@ -130,15 +121,10 @@ public class BlogPersistenceTest {
      */
     @Test
     public void testFind() {
-        ArtistaEntity entity = data2.get(0);
-        List<BlogEntity> entity2 = entity.getBlogs();
-        int i = 0;
-        for(i = 0;i< entity2.size();i++)
-        {
-        BlogEntity newEntity = persistence.find(entity.getId(), entity2.get(0).getId());
+        BlogEntity entity = data.get(0);
+        BlogEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity2.get(0).getId(), newEntity.getId());
-        }
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
     
     /**

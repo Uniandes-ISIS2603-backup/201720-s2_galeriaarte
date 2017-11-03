@@ -8,7 +8,7 @@
 
                     var idMarco = $state.params.marcoId;
 
-                    //Consulto el autor a editar.
+                    //Consulto el marco a editar.
                     $http.get(marcosContext + '/' + idMarco).then(function (response) {
                         var marco = response.data;
                         $scope.marcoName = marco.name;

@@ -14,14 +14,14 @@
                             <tr>
                                 <th>Nombre</th>    
                                 <th>Precio (COP)</th>  
-                                <th>Actions</th>  
+                                <th>Acciones</th>  
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="marco in marcosRecords">
                                 <td id="{{$index}}-nombre"><a ui-sref="marcoDetail({marcoId: marco.id})">{{marco.name}}</a></td>
                                 <td id="{{$index}}-precio">{{marco.valor}}</td>
-                                <td id="{{$index}}-actions">
+                                <td id="{{$index}}-acciones">
                                     <a class="btn btn-default btn-sm" ui-sref="marcoUpdate({marcoId: marco.id})"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a class="btn btn-danger btn-sm" ui-sref="marcoDelete({marcoId: marco.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
@@ -34,5 +34,4 @@
     </div>
 
 
-</div>
 </div>
