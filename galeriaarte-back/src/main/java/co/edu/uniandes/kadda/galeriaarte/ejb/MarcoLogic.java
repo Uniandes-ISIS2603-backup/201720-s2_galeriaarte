@@ -33,14 +33,8 @@ public class MarcoLogic {
      * @throws BusinessLogicException
      */
     public MarcoEntity createMarco(MarcoEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de un marco");
+        LOGGER.log(Level.INFO, "Inicia proceso de crear un autor ");
         
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe un Marco con el id \"" + entity.getId() + "\"");
-        }
-        // Invoca la persistencia para crear el blog
-
-        LOGGER.info("Termina proceso de creación del marco");
         return persistence.create(entity);
     }
     

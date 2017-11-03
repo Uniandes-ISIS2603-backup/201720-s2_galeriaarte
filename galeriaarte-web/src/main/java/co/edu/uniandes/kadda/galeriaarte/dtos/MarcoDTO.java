@@ -23,6 +23,10 @@ public class MarcoDTO {
     
     private double alto;
     
+    private String image;
+    
+    private String name;
+    
     /**
      * Constructor por defecto
      */
@@ -45,6 +49,8 @@ public class MarcoDTO {
             this.material = entity.getMaterial();
             this.ancho = entity.getAncho();
             this.alto = entity.getAlto();
+            this.image = entity.getImage();
+            this.name = entity.getName();
         }
     }
     
@@ -61,6 +67,8 @@ public class MarcoDTO {
         entity.setMaterial(this.material);
         entity.setAncho(this.ancho);
         entity.setAlto(this.alto);
+        entity.setImage(this.image);
+        entity.setName(this.name);
         return entity;
     }
     
@@ -162,5 +170,21 @@ public class MarcoDTO {
      */
     public void setAlto(double alto) {
         this.alto = alto;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+    
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
 }

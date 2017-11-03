@@ -25,6 +25,8 @@ public class MarcoEntity extends BaseEntity implements Serializable{
     
     private double alto;
     
+    private String image;
+    
     @PodamExclude
     @OneToOne
     private ObraEntity obra;
@@ -69,6 +71,12 @@ public class MarcoEntity extends BaseEntity implements Serializable{
         this.obra = obra;
     }
     
-    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
             
 }
