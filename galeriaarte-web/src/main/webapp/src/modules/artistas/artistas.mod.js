@@ -14,19 +14,71 @@
             // Mostrar la lista de autores será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/artistasList");
          // Definición del estado 'authorsList' donde se listan los autores
-          $stateProvider.state('artistasList', {
-                // Url que aparecerá en el browser
-                url: '/artistas/list',
+          $stateProvider.state('artistas', {
+                url: '/artistas',
+                abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'artistas.list.html',
-                        controller: 'artistasCtrl',
+                        templateUrl: basePath + 'artistas.html',
+                        controller: 'artistaCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('artistasList', {
+                url: '/list',
+                parent: 'artistas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'artistas.list.html'
+                    }
+                }
+            }).state('artistaDetail', {
+                url: '/{artistaId:int}/detail',
+                parent: 'artistas',
+                param: {
+                    artistaId: null
+                },
+                views: {
+                  
+                    'detailView': {
+                        templateUrl: basePath + 'artistas.detail.html',
+                        controller: 'artistaCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('artistasCreate', {
+                url: '/create',
+                parent: 'artistas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/artistas.new.html',
+                        controller: 'artistaNewCtrl'
+                    }
+                }
+            }).state('artistaUpdate', {
+                url: '/update/{artistaId:int}',
+                parent: 'artistas',
+                param: {
+                    artistaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/artistas.new.html',
+                        controller: 'artistaUpdateCtrl'
+                    }
+                }
+            }).state('artistaDelete', {
+                url: '/delete/{artistaId:int}',
+                parent: 'artistas',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/artista.delete.html',
+                        controller: 'artistaDeleteCtrl'
+                    }
+                }
             });
-        }
-    ]);
-}) (window.angular);
-
-
+        }]);
+})(window.angular);

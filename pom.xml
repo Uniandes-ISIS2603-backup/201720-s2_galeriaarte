@@ -8,7 +8,10 @@
     <packaging>pom</packaging>
     <name>galeriaarte</name>
  
-    <modules></modules>
+    <modules>
+        <module>galeriaarte-back</module>
+        <module>galeriaarte-web</module>
+    </modules>
 	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

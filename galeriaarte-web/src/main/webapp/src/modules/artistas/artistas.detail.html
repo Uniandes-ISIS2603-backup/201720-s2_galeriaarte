@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-md-3">
             <div class="thumb">
-                <img class="img-responsive" ng-src="{{currentAuthor.image}}"/>
+                <img class="img-responsive" ng-src="{{currentArtista.name}}"/>
             </div>
 
         </div>
         <div class="col-md-3">
             <dl>     
-                <dt>{{currentAuthor.name}}</dt>
+                <dt>{{currentArtista.id}}</dt>
                 
                 <hr>
-                <dt>Birth Date</dt>
-                <dd>{{currentAuthor.birthDate| date:'yyyy-MM-dd'}}</dd>
+                <dt>Id</dt>
+                <dd>{{currentArtista.id}}</dd>
           
                 <hr>
-                <dt>Bio</dt>
-                <dd>{{currentAuthor.description}}</dd>
+                <dt>Nombre</dt>
+                <dd>{{currentArtista.name}}</dd>
 
             </dl>
         </div>

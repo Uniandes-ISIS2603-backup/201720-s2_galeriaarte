@@ -6,7 +6,7 @@
 (function (ng) {
     var mod = ng.module("artistaModule");
     mod.constant("artistasContext", "api/artistas");
-    mod.controller('artistasCtrl', ['$scope', '$http', 'artistasContext', '$state',
+    mod.controller('artistaCtrl', ['$scope', '$http', 'artistasContext', '$state',
         function ($scope, $http, artistasContext, $state) {
             $http.get(artistasContext).then(function (response) {
                 $scope.artistasRecords = response.data;
