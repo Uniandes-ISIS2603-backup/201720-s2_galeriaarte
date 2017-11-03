@@ -1,15 +1,37 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="row">
-        <!-- marcosRecords fue inicializada en el controlador del estado marcosList -->
-        <!-- Itera sobre cada uno de los marcos en la colección marcosRecords -->
-        <div class="col-sm-2 col-md-2" ng-repeat="marco in marcosRecords">
-             <!--Despliega la imagen  -->
-            <div class="thumbnail">
-                <img class="img-responsive" ng-src='{{marco.image}}' alt="{{marco.name}}" />  
-                 <!-- Despliega en el caption de la imagen el nombre del marco -->
-                <div class="caption text-center"><a ui-sref="marcoDetail({marcoId: marco.id})">{{marco.name}}</a></div>
+<div c<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Lista de marcos</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="marcosCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar un nuevo marco</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>    
+                                <th>Precio (COP)</th>  
+                                <th>Acciones</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="marco in marcosRecords">
+                                <td id="{{$index}}-nombre"><a ui-sref="marcoDetail({marcoId: marco.id})">{{marco.name}}</a></td>
+                                <td id="{{$index}}-precio">{{marco.valor}}</td>
+                                <td id="{{$index}}-acciones">
+                                    <a class="btn btn-default btn-sm" ui-sref="marcoUpdate({marcoId: marco.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="marcoDelete({marcoId: marco.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>

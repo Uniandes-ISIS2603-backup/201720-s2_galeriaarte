@@ -28,10 +28,6 @@ public class HojaVidaEntity extends BaseEntity implements Serializable
     @OneToOne
     private ArtistaEntity artista;
     
-    
-
-    
-    
     public HojaVidaEntity()
     {
         

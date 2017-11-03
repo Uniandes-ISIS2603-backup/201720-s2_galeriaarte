@@ -8,7 +8,7 @@
             $stateProvider.state('blogs', {
                 url: '/blogs',
                 abstract: true,
-                views: {
+                 views: {
                     'mainView': {
                         templateUrl: basePath + 'blogs.html',
                         controller: 'blogCtrl',
@@ -27,7 +27,7 @@
                 url: '/{blogId:int}/detail',
                 parent: 'blogs',
                 param: {
-                    authorId: null
+                    blogId: null
                 },
                 views: {
                     'detailView': {
@@ -35,7 +35,9 @@
                         controller: 'blogCtrl',
                         controllerAs: 'ctrl'
                     }
+
                 }
+
             }).state('blogsCreate', {
                 url: '/create',
                 parent: 'blogs',
@@ -61,7 +63,7 @@
                 url: '/delete/{blogId:int}',
                 parent: 'blogs',
                 param: {
-                    blogId: null
+                   blogId: null
                 },
                 views: {
                     'detailView': {
@@ -72,5 +74,3 @@
             });
         }]);
 })(window.angular);
-
-

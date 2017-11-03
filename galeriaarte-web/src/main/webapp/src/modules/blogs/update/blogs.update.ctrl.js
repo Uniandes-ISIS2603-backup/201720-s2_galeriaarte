@@ -8,12 +8,12 @@
 
                     var idBlog = $state.params.blogId;
 
-              
-                    //Consulto el autor a editar.
+                    //Consulto el blog a editar.
                     $http.get(blogsContext + '/' + idBlog).then(function (response) {
                         var blog = response.data;
                         $scope.blogName = blog.name;
                         $scope.blogContenido = blog.contenido;
+                        
                     });
 
                     //funciones para el drag and drop de HTML5 nativo
@@ -38,17 +38,14 @@
                     };
 
                     $scope.createBlog = function () {
-                        
                         $http.put(blogsContext + "/" + idBlog, {
                             name: $scope.blogName,
                             contenido: $scope.blogContenido
                         }).then(function (response) {
-                            
                             //Blog created successfully
                             $state.go('blogsList', {blogId: response.data.id}, {reload: true});
                         });
                     };
-                    
                 }
             ]);
         }

@@ -6,11 +6,13 @@
         'ui.bootstrap',
         // Internal modules dependencies
         'clienteModule',
+        'comentarioModule',
         'marcoModule',
         'blogModule',
         'artistaModule',
         'compraModule',
         'pagoModule'
+        ,'catalogoModule'
 
     ]);
     // Resuelve problemas de las promesas

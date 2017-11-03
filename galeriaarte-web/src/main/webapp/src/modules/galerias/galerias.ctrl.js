@@ -19,7 +19,7 @@
                     $scope.artistasRecords = response.data.artistas;
                     $scope.clientesRecords = response.data.artistas;
                     $scope.currentGaleria = response.data;
-                }));
+                });
             }
         }
     ]);

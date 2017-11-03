@@ -33,7 +33,7 @@ public class CompraObrasResource {
     
     @Inject
     private CompraLogic compraLogic;
-
+    
     /**
      * Convierte una lista de ObraEntity a una lista de ObraDetailDTO.
      *

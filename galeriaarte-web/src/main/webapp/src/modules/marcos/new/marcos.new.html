@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createMarco">Crear un nuevo Marco</label>
+                <label ng-if="edit" id="editMarco">Editar Marco</label></div>
+            <div class="panel-body">
+                <form ng-submit="createMarco()" name="marco">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoName" class="col-sm-2">Nombre:</label>
+                            <input id="marcoName" required ng-model="marcoName" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoMaterial" class="col-sm-2">Material:</label>
+                            <input id="marcoMaterial" required ng-model="marcoMaterial" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoAlto" class="col-sm-2">Alto (m):</label>
+                            <input id="marcoAlto" required ng-model="marcoAlto" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoAncho" class="col-sm-2">Ancho (m):</label>
+                            <input id="marcoAncho" required ng-model="marcoAncho" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoImage" class="col-sm-2">Imagen:</label>
+                            <input id="marcoImage" required ng-model="marcoImage" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="marcoValor" class="col-sm-2">Precio (COP):</label>
+                            <input id="marcoValor" required ng-model="marcoValor" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!marco.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>¡Advertencia!</strong><p>Todos los campos son requeridos*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="marco.$valid" type="submit" value="Guardar" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="marcosList">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+

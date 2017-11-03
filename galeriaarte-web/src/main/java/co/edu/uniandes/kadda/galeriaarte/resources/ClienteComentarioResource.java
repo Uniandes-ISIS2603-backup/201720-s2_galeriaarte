@@ -121,5 +121,4 @@ public class ClienteComentarioResource {
     public void removeComentario(@PathParam("clienteId") Long clienteId, @PathParam("comentarioId") Long comentarioId) {
         clienteLogic.removeComentario( clienteId , comentarioId);
     }
-
 }

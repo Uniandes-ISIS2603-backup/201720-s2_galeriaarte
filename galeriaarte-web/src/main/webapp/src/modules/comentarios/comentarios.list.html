@@ -1,0 +1,21 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" 
+       close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">  
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th> 
+                    <th>Contenido</th>              
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="comentario in comentarioRecords"> 
+                    <td id="{{$index}}-id">{{comentario.id}}</td>   
+                    <td id="{{$index}}-contenido">{{comentario.contenido}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

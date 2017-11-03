@@ -8,6 +8,10 @@
     <packaging>pom</packaging>
     <name>galeriaarte</name>
  
+<<<<<<< HEAD
+=======
+    <!--<modules></modules>-->
+>>>>>>> 6f03192ae53aec96b81a46edb14f3655f3057ac3
     <modules>
         <module>galeriaarte-back</module>
         <module>galeriaarte-web</module>
