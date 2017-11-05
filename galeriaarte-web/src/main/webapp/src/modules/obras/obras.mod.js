@@ -6,77 +6,77 @@
  */
 
 (function (ng) {
-    var mod = ng.module("artistaModule", ['ui.router']);
+    var mod = ng.module("obraModule", ['ui.router']);
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
-            var basePath = 'src/modules/artistas/';
+            var basePath = 'src/modules/obras/';
             // Mostrar la lista de autores será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/artistasList");
+            $urlRouterProvider.otherwise("/obrasList");
          // Definición del estado 'authorsList' donde se listan los autores
-          $stateProvider.state('artistas', {
-                url: '/artistas',
+          $stateProvider.state('obras', {
+                url: '/obras',
                 abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'artistas.html',
-                        controller: 'artistaCtrl',
+                        templateUrl: basePath + 'obras.html',
+                        controller: 'obraCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('artistasList', {
+            }).state('obrasList', {
                 url: '/list',
-                parent: 'artistas',
+                parent: 'obras',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'artistas.list.html'
+                        templateUrl: basePath + 'obras.list.html'
                     }
                 }
-            }).state('artistaDetail', {
-                url: '/{artistaId:int}/detail',
-                parent: 'artistas',
+            }).state('obraDetail', {
+                url: '/{obraId:int}/detail',
+                parent: 'obras',
                 param: {
-                    artistaId: null
+                    obraId: null
                 },
                 views: {
                   
                     'detailView': {
-                        templateUrl: basePath + 'artistas.detail.html',
-                        controller: 'artistaCtrl',
+                        templateUrl: basePath + 'obras.detail.html',
+                        controller: 'obraCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('artistasCreate', {
+            }).state('obrasCreate', {
                 url: '/create',
-                parent: 'artistas',
+                parent: 'obras',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/artistas.new.html',
-                        controller: 'artistaNewCtrl'
+                        templateUrl: basePath + '/new/obras.new.html',
+                        controller: 'obraNewCtrl'
                     }
                 }
-            }).state('artistaUpdate', {
-                url: '/update/{artistaId:int}',
-                parent: 'artistas',
+            }).state('obraUpdate', {
+                url: '/update/{obraId:int}',
+                parent: 'obras',
                 param: {
-                    artistaId: null
+                    obraId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/artistas.new.html',
-                        controller: 'artistaUpdateCtrl'
+                        templateUrl: basePath + '/new/obras.new.html',
+                        controller: 'obraUpdateCtrl'
                     }
                 }
-            }).state('artistaDelete', {
-                url: '/delete/{artistaId:int}',
-                parent: 'artistas',
+            }).state('obraDelete', {
+                url: '/delete/{obraId:int}',
+                parent: 'obras',
                 param: {
-                    authorId: null
+                    obraId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/delete/artista.delete.html',
-                        controller: 'artistaDeleteCtrl'
+                        templateUrl: basePath + '/delete/obra.delete.html',
+                        controller: 'obraDeleteCtrl'
                     }
                 }
             });

@@ -71,7 +71,7 @@
                 url: '/delete/{artistaId:int}',
                 parent: 'artistas',
                 param: {
-                    authorId: null
+                    artistaId: null
                 },
                 views: {
                     'detailView': {

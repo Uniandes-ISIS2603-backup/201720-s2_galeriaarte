@@ -5,16 +5,17 @@
                 <label ng-if="edit" id="editArtista">Editar Artista</label></div>
             <div class="panel-body">
                 <form ng-submit="createArtista()" name="artista">
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="artistaId" class="col-sm-2">Id:</label>
-                            <input id="artistaId" required ng-model="artistaId" class="col-sm-6"/>
-                        </div>
-                    </div>
+             
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="artistaName" class="col-sm-2">Nombre:</label>
                             <input id="artistaName"  required ng-model="artistaName" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="artistaImagen" class="col-sm-2">Imagen:</label>
+                            <input id="artistaImagen" required ng-model="artistaImagen" class="col-sm-6"/>
                         </div>
                     </div>                    
                     

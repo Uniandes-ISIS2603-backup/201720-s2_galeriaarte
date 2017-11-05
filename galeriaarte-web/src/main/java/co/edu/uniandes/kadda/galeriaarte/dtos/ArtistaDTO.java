@@ -17,6 +17,7 @@ public class ArtistaDTO
 {
     private Long id;
     private String name;
+    private String imagen;
     
      /**
      * Constructor por defecto
@@ -24,11 +25,14 @@ public class ArtistaDTO
     public ArtistaDTO() {
     }
     
+    
+    
 
     public ArtistaDTO(ArtistaEntity artistaE) {
         if (artistaE != null) {
             this.id = artistaE.getId();
-            this.name = artistaE.getName(); 
+            this.name = artistaE.getName();
+            this.imagen = artistaE.getImagen();
         }
     }
 
@@ -37,6 +41,7 @@ public class ArtistaDTO
         ArtistaEntity ArtistaE = new ArtistaEntity();
         ArtistaE.setId(this.id);
         ArtistaE.setName(this.name);
+        ArtistaE.setImagen(this.imagen);
     
         return ArtistaE;
     }
@@ -67,6 +72,20 @@ public class ArtistaDTO
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
 }

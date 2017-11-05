@@ -12,6 +12,8 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 /**
  *
  * @author ks.estupinan

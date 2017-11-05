@@ -25,7 +25,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ObraEntity extends BaseEntity implements Serializable
 {
 
-        
+    private String imagen;
+    
     private String tipo;
     
     private int cantidad;
@@ -176,6 +177,20 @@ public class ObraEntity extends BaseEntity implements Serializable
      */
     public void setMarco(MarcoEntity marco) {
         this.marco = marco;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
    

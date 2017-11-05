@@ -7,9 +7,10 @@
             $scope.createArtista = function () {
                 $http.post(artistasContext, {
                     id: $scope.artistaId,
-                    name: $scope.authorName
+                    name: $scope.artistaName,
+                    imagen: $scope.artistaImagen
                 }).then(function (response) {
-                    //Author created successfully
+                    //Artista created successfully
                     $state.go('artistasList', {artistaId: response.data.id}, {reload: true});
                 });
             };

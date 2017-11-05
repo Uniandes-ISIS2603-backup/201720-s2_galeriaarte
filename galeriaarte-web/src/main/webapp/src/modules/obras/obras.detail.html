@@ -2,22 +2,38 @@
     <div class="panel-body">
     <div class="row">
         <div class="col-md-3">
+            
             <div class="thumb">
-                <img class="img-responsive" ng-src="{{currentArtista.name}}"/>
+               
+                <img class="img-responsive" ng-src="{{currentObra.imagen}}"/>
             </div>
 
         </div>
         <div class="col-md-3">
             <dl>     
-                <dt>{{currentArtista.id}}</dt>
+           
                 
                 <hr>
                 <dt>Id</dt>
-                <dd>{{currentArtista.id}}</dd>
+                <dd>{{currentObra.id}}</dd>
           
                 <hr>
                 <dt>Nombre</dt>
-                <dd>{{currentArtista.name}}</dd>
+                <dd>{{currentObra.name}}</dd>
+                
+                   <hr>
+                <dt>Tipo</dt>
+                <dd>{{currentObra.tipo}}</dd>
+                
+                   <hr>
+                <dt>Cantidad</dt>
+                <dd>{{currentObra.cantidad}}</dd>
+                
+                   <hr>
+                <dt>Valor</dt>
+                <dd>{{currentObra.valor}}</dd>
+                
+                
 
             </dl>
         </div>

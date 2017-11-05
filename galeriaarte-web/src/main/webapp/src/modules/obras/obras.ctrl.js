@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("artistaModule");
-    mod.constant("artistasContext", "api/artistas");
-    mod.controller('artistaCtrl', ['$scope', '$http', 'artistasContext', '$state',
-        function ($scope, $http, artistasContext, $state) {
-            $http.get(artistasContext).then(function (response) {
-                $scope.artistasRecords = response.data;
+    var mod = ng.module("obraModule");
+    mod.constant("obrasContext", "api/obras");
+    mod.controller('obraCtrl', ['$scope', '$http', 'obrasContext', '$state',
+        function ($scope, $http, obrasContext, $state) {
+            $http.get(obrasContext).then(function (response) {
+                $scope.obrasRecords = response.data;
             });
             
-           if ($state.params.artistaId !== undefined) {
-                $http.get(artistasContext + '/' + $state.params.artistaId).then(function (response) {
+           if ($state.params.obraId !== undefined) {
+                $http.get(obrasContext + '/' + $state.params.obraId).then(function (response) {
             
-                    $scope.currentArtista = response.data;
+                    $scope.currentObra = response.data;
                 });
             } 
         }

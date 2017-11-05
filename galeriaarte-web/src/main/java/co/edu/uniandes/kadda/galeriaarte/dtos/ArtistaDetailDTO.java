@@ -62,7 +62,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
         if (this.getHoja()!= null) {
             artistaE.setHojaVida(this.getHoja().toEntity());
         }
-        if (getBlogs() != null) {
+        if (this.getBlogs() != null) {
             List<BlogEntity> blogsEntity = new ArrayList<>();
             for (BlogDTO dtoReview : getBlogs()) {
                 blogsEntity.add(dtoReview.toEntity());

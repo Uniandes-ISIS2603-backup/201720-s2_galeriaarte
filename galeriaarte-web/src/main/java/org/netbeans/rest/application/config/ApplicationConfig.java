@@ -29,9 +29,6 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.BusinessLogicExceptionMapper.class);
-        resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.UnsupportedOperationExceptionMapper.class);
-        resources.add(co.edu.uniandes.kadda.galeriaarte.mappers.WebApplicationExceptionMapper.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaHojaVidaResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaObraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ArtistaResource.class);

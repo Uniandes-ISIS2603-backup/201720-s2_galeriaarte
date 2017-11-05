@@ -29,6 +29,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 public class ArtistaEntity extends BaseEntity implements Serializable
 {
+    private String imagen;
     @PodamExclude
     @OneToMany(mappedBy = "artista")
     private List<ObraEntity> obras = new ArrayList<ObraEntity>();
@@ -96,6 +97,20 @@ public class ArtistaEntity extends BaseEntity implements Serializable
      */
     public void setBlogs(List<BlogEntity> blogs) {
         this.blogs = blogs;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
   
 }

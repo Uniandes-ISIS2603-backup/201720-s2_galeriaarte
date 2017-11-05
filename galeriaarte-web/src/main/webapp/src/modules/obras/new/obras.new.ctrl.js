@@ -1,16 +1,20 @@
 (function (ng) {
-    var mod = ng.module("artistaModule");
-    mod.constant("artistasContext", "api/artistas");
-    mod.controller('artistaNewCtrl', ['$scope', '$http', 'artistasContext', '$state', '$rootScope',
-        function ($scope, $http, artistasContext, $state, $rootScope) {
+    var mod = ng.module("obraModule");
+    mod.constant("obrasContext", "api/obras");
+    mod.controller('obraNewCtrl', ['$scope', '$http', 'obrasContext', '$state', '$rootScope',
+        function ($scope, $http, obrasContext, $state, $rootScope) {
             $rootScope.edit = false;
-            $scope.createArtista = function () {
-                $http.post(artistasContext, {
-                    id: $scope.artistaId,
-                    name: $scope.authorName
+            $scope.createObra = function () {
+                $http.post(obrasContext, {
+                    id: $scope.obraId,
+                    name: $scope.obraName,
+                    tipo: $scope.obraTipo,
+                    cantidad: $scope.obraCantidad,
+                    valor: $scope.obraValor,
+                    imagen: $scope.obraImagen
                 }).then(function (response) {
-                    //Author created successfully
-                    $state.go('artistasList', {artistaId: response.data.id}, {reload: true});
+                    //Obra created successfully
+                    $state.go('obrasList', {obraId: response.data.id}, {reload: true});
                 });
             };
         }

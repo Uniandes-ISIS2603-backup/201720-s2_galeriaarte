@@ -12,7 +12,8 @@
         'artistaModule',
         'compraModule',
         'pagoModule'
-        ,'catalogoModule'
+        ,'catalogoModule',
+        ,'obraModule'
 
     ]);
     // Resuelve problemas de las promesas

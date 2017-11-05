@@ -16,13 +16,15 @@ public class ObraDTO
  
     private Long id;
     
-    private String nombre;
+    private String name;
     
     private String tipo;
     
     private int cantidad;
     
     private double valor;
+    
+    private String imagen;
     
     
     public ObraDTO()
@@ -34,10 +36,11 @@ public class ObraDTO
     {
         if(obra!=null){
         this.id = obra.getId();
-        this.nombre = obra.getName();
+        this.name = obra.getName();
         this.tipo  =  obra.getTipo();
         this.cantidad = obra.getCantidad();
         this.valor =  obra.getValor();
+        this.imagen = obra.getImagen();
         
         
         }
@@ -46,11 +49,12 @@ public class ObraDTO
     
      public ObraEntity toEntity() {
         ObraEntity entity = new ObraEntity();
-        entity.setId(this.getId());
-        entity.setName(this.getNombre());
-        entity.setTipo(this.getTipo());
-        entity.setCantidad(this.getCantidad());
-        entity.setValor(this.getValor());
+        entity.setId(this.id);
+        entity.setName(this.name);
+        entity.setTipo(this.tipo);
+        entity.setCantidad(this.cantidad);
+        entity.setValor(this.valor);
+        entity.setImagen(this.imagen);
         
         
         
@@ -74,15 +78,15 @@ public class ObraDTO
     /**
      * @return the nombre
      */
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String nombre) {
+        this.name = nombre;
     }
 
     /**
@@ -125,6 +129,20 @@ public class ObraDTO
      */
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     
