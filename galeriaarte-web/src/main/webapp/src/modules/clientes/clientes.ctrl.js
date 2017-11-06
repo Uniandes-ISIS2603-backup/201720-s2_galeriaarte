@@ -8,22 +8,12 @@
                 $scope.clientesRecords = response.data;
             });
             
-            if ($state.params.id !== undefined) {
-                $http.get(clientesContext + '/' + $state.params.id).then(function (response) {
-                    $scope.booksRecords = response.data.books;
+            if ($state.params.clienteId !== undefined) {
+                $http.get(clientesContext + '/' + $state.params.clienteId).then(function (response) {
+                    $scope.comentariosRecords = response.data.comentarios;
                     $scope.currentCliente = response.data;
                 });
             }
         }
     ]);
-//    mod.controller("clienteCtrl", ['$scope', '$http', 'clientesContext', function ($scope, $http, clientesContext) {
-//            
-//            // inicialmente el listado de ciudades está vacio
-//            $scope.records = {};
-//            // carga las ciudades
-//            $http.get(clientesContext).then(function (response) {
-//                $scope.records = response.data;
-//            });
-//}
-//]);
 })(window.angular);

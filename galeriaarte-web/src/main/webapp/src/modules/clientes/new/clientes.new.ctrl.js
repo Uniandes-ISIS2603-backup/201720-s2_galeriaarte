@@ -1,17 +1,18 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
     mod.constant("clientesContext", "api/cliente");
-    mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', 'booksContext', '$rootScope',
-        function ($scope, $http, clientesContext, $state, booksContext, $rootScope) {
+    mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', 'comentariosContext', '$rootScope',
+        function ($scope, $http, clientesContext, $state, comentariosContext, $rootScope) {
             $rootScope.edit = false;
             $scope.createCliente = function () {
                 $http.post(clientesContext, {
-                    name: $scope.name,
-                    tipoTarjeta: $scope.tipoTarjeta,
-                    numTarjeta: $scope.numTarjeta
+                    id: 0,
+                    name: $scope.clienteName,
+                    tipoTarjeta: $scope.clienteTipoTarjeta,
+                    numTarjeta: $scope.clienteNumeroTarjeta
                 }).then(function (response) {
                     //Author created successfully
-                    $state.go('clientesList', {id: response.data.id}, {reload: true});
+                    $state.go('clientesList', {clienteId: response.data.id}, {reload: true});
                 });
             };
         }

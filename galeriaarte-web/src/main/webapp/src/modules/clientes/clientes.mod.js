@@ -1,15 +1,12 @@
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("clienteModule", ['ui.router']);
     mod.constant("clientesContext", "api/cliente");
-    // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/clientes/';
-            // Mostrar la lista de editoriales será el estado por defecto del módulo
+            var basePathComentarios = 'src/modules/comentarios/';         
             $urlRouterProvider.otherwise("/clientesList");
-            // Definición del estado 'editorialsList' donde se listan los editoriales
+            
             $stateProvider.state('clientes', {
                 url: '/clientes',
                 abstract: true,
@@ -21,28 +18,65 @@
                     }
                 }
             }).state('clientesList', {
-                // Url que aparecerá en el browser
                 url: '/list',
                 parent: 'clientes',
                 views: {
-//                    'mainView': {
                     'listView': {
-                        templateUrl: basePath + 'clientes.list.html',
-//                        controller: 'clienteCtrl',
-//                        controllerAs: 'ctrl'
+                        templateUrl: basePath + 'clientes.list.html'
+                    }
+                }
+            }).state('clienteDetail', {
+                url: '/{clienteId:int}/detail',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'listView': {
+                        templateUrl: basePathComentarios + 'comentarios.list.html',
+                        controller: 'clienteCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                    'detailView': {
+                        templateUrl : basePath + 'clientes.detail.html',
+                        controller: 'clienteCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             }).state('clienteCreate', {
                 url: '/create',
                 parent: 'clientes',
                 views: {
-                    'mainView': {
-                        templateUrl: '/new/clientes.new.html',
+                    'detailView': {
+                        templateUrl: basePath + 'new/clientes.new.html',
                         controller: 'clienteNewCtrl'
                     }
                 }
-
+            }).state('clienteUpdate', {
+                url: '/update/{clienteId:int}',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'new/clientes.new.html',
+                        controller: 'clienteUpdateCtrl'
+                    }
+                }
+            }).state('clienteDelete', {
+                url: '/delete/{clienteId:int}',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'delete/clientes.delete.html',
+                        controller: 'clienteDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
-        }
-    ]);
+        }]);
 })(window.angular);

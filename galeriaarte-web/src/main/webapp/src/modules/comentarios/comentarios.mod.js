@@ -1,15 +1,12 @@
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("comentarioModule", ['ui.router']);
     mod.constant("comentarioContext", "api/comentarios");
-    // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/comentarios/';
-            // Mostrar la lista de editoriales será el estado por defecto del módulo
+            var basePathClientes = 'src/modules/clientes/';
             $urlRouterProvider.otherwise("/comentariosList");
-            // Definición del estado 'editorialsList' donde se listan los editoriales
+            
             $stateProvider.state('comentarios', {
                 url: '/comentarios',
                 abstract: true,
@@ -21,23 +18,24 @@
                     }
                 }
             }).state('comentariosList', {
-                // Url que aparecerá en el browser
                 url: '/list',
                 parent: 'comentarios',
                 views: {
-//                    'mainView': {
                     'listView': {
                         templateUrl: basePath + 'comentarios.list.html'
                     }
                 }
             }).state('comentarioDetail', {
-                url: '/{id:int}/detail',
+                url: '/{comentarioId:int}/detail',
                 parent: 'comentarios',
                 param: {
-                    id: null
+                    comentarioId: null
                 },
                 views: {
                     'listView': {
+//                        templateUrl: basePathClientes + 'clientes.list.html',
+//                        controller: 'comentarioCtrl',
+//                        controllerAs: 'ctrl'
                         templateUrl: basePath + 'comentarios.list.html'
                     },
                     'detailView': {
@@ -45,10 +43,41 @@
                         controller: 'comentarioCtrl',
                         controllerAs: 'ctrl'
                     }
-
                 }
-
+            }).state('comentarioCreate', {
+                url: '/create',
+                parent: 'comentarios',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'new/comentarios.new.html',
+                        controller: 'comentarioNewCtrl'
+                    }
+                }
+            }).state('comentarioUpdate', {
+                url: '/update/{comentarioId:int}',
+                parent: 'comentarios',
+                param: {
+                    comentarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'new/comentarios.new.html',
+                        controller: 'comentarioUpdateCtrl'
+                    }
+                }
+            }).state('comentarioDelete', {
+                url: '/delete/{comentarioId:int}',
+                parent: 'comentarios',
+                param: {
+                    comentarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'delete/comentarios.delete.html',
+                        controller: 'comentarioDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
-        }
-    ]);
+        }]);
 })(window.angular);

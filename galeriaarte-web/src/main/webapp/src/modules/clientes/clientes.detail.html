@@ -1,9 +1,17 @@
 <div class="panel panel-default"> 
     <div class="panel-body">
     <div class="row">
+<!--        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentCliente.image}}"/>
+            </div>
+
+        </div>-->
         <div class="col-md-3">
-            <dl>     
-                <dt>{{currentCliente.name}}</dt>
+            <dl>                     
+                <hr>
+                <dt>Nombre</dt>
+                <dd>{{currentCliente.name}}</dd>
                 
                 <hr>
                 <dt>Tipo de tarjeta</dt>
@@ -13,9 +21,9 @@
                 <dt>Numero de tarjeta</dt>
                 <dd>{{currentCliente.numTarjeta}}</dd>
 
-            </dl>
+             </dl>
         </div>
     </div>
-        </div>
+    </div>
 </div>
 
