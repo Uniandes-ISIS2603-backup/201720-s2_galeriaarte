@@ -7,6 +7,7 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.MarcoEntity;
 
+
 /**
  *
  * @author af.leon
