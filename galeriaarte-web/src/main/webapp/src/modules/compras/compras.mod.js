@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (function (ng) {
     var mod = ng.module("compraModule", ['ui.router']);
     mod.constant("comprasContext", "api/compras");
@@ -81,7 +80,6 @@
             });
         }]);
 })(window.angular);
-=======
 (function (ng){
     //var mod = ng.module("compraModule", ['obraModule', 'ui.router']);
     var mod = ng.module("compraModule", ['compraModule', 'ui.router']);
@@ -116,7 +114,6 @@
     }])
 })(window.angular);
 
->>>>>>> origin/master
 
 
 

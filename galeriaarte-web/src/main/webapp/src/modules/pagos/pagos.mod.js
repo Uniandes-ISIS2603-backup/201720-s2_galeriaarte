@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (function (ng) {
     var mod = ng.module("pagoModule", ['ui.router']);
     mod.constant("pagoContext", "api/pagos");
@@ -71,8 +70,6 @@
             });
         }]);
 })(window.angular);
-=======
-
 (function (ng){
     var mod = ng.module("pagoModule", ['ui.router']);
     
@@ -95,5 +92,3 @@
     }])
 })(window.angular);
 
-
->>>>>>> origin/master
