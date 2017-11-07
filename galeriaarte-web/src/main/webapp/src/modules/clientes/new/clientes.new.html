@@ -7,41 +7,41 @@
                 <form ng-submit="createCliente()" name="cliente">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="name" class="col-sm-2">Nombre:</label>
-                            <input id="name" required ng-model="name" class="col-sm-6"/>
+                            <label for="clienteName" class="col-sm-2">Name:</label>
+                            <input id="clienteName" required ng-model="clienteName" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="tipoTarjeta" class="col-sm-2">Tipo de tarjeta:</label>
-                            <input id="tipoTarjeta" required ng-model="tipoTarjeta" class="col-sm-6"/>
+                            <label for="clienteTipoTarjeta" class="col-sm-2">TipoTarjeta:</label>
+                            <input id="clienteTipoTarjeta" required ng-model="clienteTipoTarjeta" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="numTarjeta" class="col-sm-2">Numero de tarjeta:</label>
-                            <input id="numTarjeta" required ng-model="numTarjeta" class="col-sm-6"/>
+                            <label for="clienteNumeroTarjeta" class="col-sm-2">NumeroTarjeta:</label>
+                            <input id="clienteNumeroTarjeta" required ng-model="clienteNumeroTarjeta" class="col-sm-6"/>
                         </div>
                     </div>
-                    <div ng-if="edit" class="panel-group" id="losClientes">
+                    <div ng-if="edit" class="panel-group" id="theComentarios">
                         <div class="panel panel-info">
-                            <div class="panel-heading">Associated clientes</div>
+                            <div class="panel-heading">Associated comentarios</div>
                             <div class="panel-body">
-                                <div id="div2" ondrop="angular.element(document.getElementById('losClientes')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('losClientes')).scope().allowDrop(event)">
+                                <div id="div2" ondrop="angular.element(document.getElementById('theComentarios')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theComentarios')).scope().allowDrop(event)">
                                     <label></label>
-                                    <div ng-show="edit" ng-repeat="book in allBooksAuthor">
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theBooks')).scope().drag(event)" id="{{book.id}}">{{book.name}}</p>                                 
+                                    <div ng-show="edit" ng-repeat="comentario in allComentariosCliente">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theComentarios')).scope().drag(event)" id="{{comentario.id}}">{{comentario.contenido}}</p>                                 
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-success">
-                            <div class="panel-heading">All books</div>
+                            <div class="panel-heading">All comentarios</div>
                             <div class="panel-body">
-                                <div id="div1" ondrop="angular.element(document.getElementById('theBooks')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theBooks')).scope().allowDrop(event)">
+                                <div id="div1" ondrop="angular.element(document.getElementById('theComentarios')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theComentarios')).scope().allowDrop(event)">
                                     <label></label>
-                                    <div ng-repeat="book in allBooksShow">
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theBooks')).scope().drag(event)" id="{{book.id}}">{{book.name}}</p>                
+                                    <div ng-repeat="comentario in allComentariosShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theComentarios')).scope().drag(event)" id="{{comentario.id}}">{{comentario.contenido}}</p>                
                                     </div>
                                 </div>
                             </div>

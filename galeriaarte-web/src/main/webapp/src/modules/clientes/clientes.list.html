@@ -1,23 +1,40 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" 
-       close="closeAlert()">{{alert.msg}} </alert>
-<div id="alertPanel" style="text-align: center"></div>
-<div class="container-fluid">  
-    <div class="col-md-4">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th> 
-                    <th>TipoTarjeta</th> 
-                    <th>NumTarjeta</th>              
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="cliente in clientesRecords"> 
-                    <td id="{{$index}}-name">{{cliente.name}}</td>   
-                    <td id="{{$index}}-tipoTarjeta">{{cliente.tipoTarjeta}}</td>   
-                    <td id="{{$index}}-numTarjeta">{{cliente.numTarjeta}}</td>
-                </tr>
-            </tbody>
-        </table> 
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Clientes list</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <!--<th>Id</th>-->
+                                <th>Name</th> 
+                                <th>TipoTarjeta</th> 
+                                <th>NumTarjeta</th>    
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat= "cliente in clientesRecords"> 
+                                <!--<td id="{{$index}}-id"><a ui-sref="clienteDetail({clienteId: cliente.id})">{{cliente.id}}</a></td>--> 
+                                <td id="{{$index}}-name"><a ui-sref="clienteDetail({clienteId: cliente.id})">{{cliente.name}}</a></td>   
+                                <!--<td id="{{$index}}-name">{{cliente.name}}</td>-->   
+                                <td id="{{$index}}-tipoTarjeta">{{cliente.tipoTarjeta}}</td>   
+                                <td id="{{$index}}-numTarjeta">{{cliente.numTarjeta}}</td>
+                                <td id="{{$index}}-actions">
+                                    <a class="btn btn-default btn-sm" ui-sref="clienteUpdate({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteId: cliente.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                         </tbody>
+                    </table>
+                </div>
+                </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createComentario">Create new Comentario</label>
+                <label ng-if="edit" id="editComentario">Edit Comentario</label></div>
+            <div class="panel-body">
+                <form ng-submit="createComentario()" name="comentario">
+<!--                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="comentarioId" class="col-sm-2">Id:</label>
+                            <input id="comentarioId" required ng-model="comentarioId" class="col-sm-6"/>
+                        </div>
+                    </div>-->
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="comentarioContenido" class="col-sm-2">Contenido:</label>
+                            <input id="comentarioContenido" required ng-model="comentarioContenido" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="comentarioClienteId" class="col-sm-2">Id cliente:</label>
+                            <input id="comentarioClienteId" required ng-model="comentarioClienteId" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div ng-if="edit" class="panel-group" id="theClientes">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated clientes</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('theClientes')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theClientes')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="cliente in allClientesComentario">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theClientes')).scope().drag(event)" id="{{cliente.id}}">{{cliente.name}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All clientes</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('theClientes')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theClientes')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="cliente in allClientesShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theClientes')).scope().drag(event)" id="{{cliente.id}}">{{cliente.name}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!comentario.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="comentario.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="comentariosList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
