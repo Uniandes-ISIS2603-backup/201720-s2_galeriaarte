@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createPago">Pagar</label>
+            <div class="panel-body">
+                <form ng-submit="createPago()" name="pago">
+<!--                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="pagoId" class="col-sm-2">Id:</label>
+                            <input id="pagoId" required ng-model="pagoId" class="col-sm-6"/>
+                        </div>
+                    </div>-->
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="pagoTotal" class="col-sm-2">Total:</label>
+                            <input id="pagoTotal" required ng-model="pagoTotal" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="pagoImpuesto" class="col-sm-2">Impuesto:</label>
+                            <input id="pagoImpuesto" required ng-model="pagoImpuesto" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for=pagoCompraId" class="col-sm-2">Id compra:</label>
+                            <input id="pagoCompraId" required ng-model="pagoCompraId" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All compras</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('theCompras')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theCompras')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="compra in allComprasShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCompras')).scope().drag(event)" id="{{compra.id}}"></p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!pago.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="pago.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="pagosList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

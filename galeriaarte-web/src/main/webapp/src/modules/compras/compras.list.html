@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Compras list</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <a class="btn btn-info" ui-sref="compraCreate"><span class="glyphicon glyphicon-plus-sign"></span> Comprar</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <!--<th>Id</th>-->
+                                <th>Valor</th> 
+                                <th>Fecha</th>    
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat= "compra in comprasRecords"> 
+                                <!--<td id="{{$index}}-id"><a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a></td>--> 
+                                <td id="{{$index}}-valor"><a ui-sref="compraDetail({compraId: compra.id})">{{compra.valor}}</a></td>   
+                                   
+                                <td id="{{$index}}-fecha">{{compra.fecha| date:'yyyy-MM-dd'}}</td>
+                                <td id="{{$index}}-actions">
+                                    <a class="btn btn-default btn-sm" ui-sref="compraUpdate({compraId: compra.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="compraDelete({compraId: compra.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                         </tbody>
+                    </table>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+=======
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" 
        close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
@@ -19,3 +59,4 @@
         </table>
     </div>
 </div>
+>>>>>>> origin/master

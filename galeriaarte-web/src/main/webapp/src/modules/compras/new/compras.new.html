@@ -1,6 +1,48 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
+<<<<<<< HEAD
+            <div class="panel-heading"><label ng-if="!edit" id="createCompra">Comprar</label>
+                <label ng-if="edit" id="editCliente">Edit Compra</label></div>
+            <div class="panel-body">
+                <form ng-submit="createCompra()" name="compra">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="compraValor" class="col-sm-2">Valor:</label>
+                            <input id="compraValor" required ng-model="compraValor" class="col-sm-6"/>
+                        </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="compraFecha" class="col-sm-2">Fecha:</label>
+                            <input type="date" id="compraFecha" placeholder="DD/MM/YYYY" required ng-model="compraFecha" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div ng-if="edit" class="panel-group" id="thePagos">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated pagos</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('thePagos')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('thePagos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="pago in allPagosCompra"
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.total}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All pagos</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('thePagos')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('thePagos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="pago in allPagosShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.valor}}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+=======
             <div class="panel-heading"><label ng-if="!edit" id="createCompra">Crear nueva compra</label>
                 <label ng-if="edit" id="editCompra">Editar compra</label></div>
             <div class="panel-body">
@@ -17,6 +59,7 @@
                             <textarea id="compraContenido" required ng-model="compraContenido" class="col-sm-6"></textarea>
                         </div>
                     </div>
+>>>>>>> origin/master
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!compra.$valid">
 

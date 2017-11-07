@@ -1,0 +1,27 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <dl>     
+                <hr>
+                <dt>Id</dt>
+                <dd>{{currentPago.id}}</dd>
+                
+                <hr>
+                <dt>Total</dt>
+                <dd>{{currentPago.total}}</dd>
+                
+                 <hr>
+                <dt>Impuesto</dt>
+                <dd>{{currentPago.impuesto}}</dd>
+                
+                <hr>
+                <dt>Id Compra</dt>
+                <a ui-sref="compraDetail({compraId: currentPago.compra.id})">{{currentPago.compra.id}}</a>
+
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
+
