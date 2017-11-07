@@ -17,6 +17,7 @@
                         $scope.obraCantidad = obra.cantidad;
                         $scope.obraValor = obra.valor;
                         $scope.obraImagen = obra.imagen;
+                         $scope.obraArtista = obra.artista;
                         
       
                     });
@@ -49,7 +50,8 @@
                             tipo: $scope.obraTipo,
                            cantidad: $scope.obraCantidad,
                            valor: $scope.obraValor,
-                           imagen: $scope.obraImagen
+                           imagen: $scope.obraImagen,
+                           artista:$scope.obraArtista
                         }).then(function (response) {
                             //Obra created successfully
                             $state.go('obrasList', {obraId: response.data.id}, {reload: true});

@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author jd.carrillor
  */
-@Path("hojaVida")
+@Path("hojasVida")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless

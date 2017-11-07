@@ -20,7 +20,19 @@
                 <hr>
                 <dt>Nombre</dt>
                 <dd>{{currentArtista.name}}</dd>
-
+                
+                
+                <hr>
+                <dt>Obras</dt>
+                <ul ng-repeat="obra in currentArtista.obras">
+               <a ui-sref="obraDetail({obraId: obra.id})">{{obra.name}}</a>
+                </ul>
+                
+                 <hr>
+                <dt>Hoja de vida</dt>
+                
+                  
+                   <td id="{{$index}}-hojaVida"><a ui-sref="hojaVidaDetail({hojaVidaId: currentArtista.hoja.id})">{{currentArtista.hoja.id}}</a></td>
             </dl>
         </div>
     </div>

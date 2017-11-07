@@ -34,9 +34,9 @@ public class HojaVidaLogic
     public HojaVidaEntity createHojaVida(HojaVidaEntity entity) throws BusinessLogicException 
     {
         // Verifica la regla de negocio que dice que no puede haber dos Estudiantees con el mismo nombre
-        if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una Hoja de vida con el id \"" + entity.getId() + "\"");
-        }
+        
+        
+        
         // Invoca la persistencia para crear la Estudiante
         persistence.create(entity);
         return entity;

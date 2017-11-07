@@ -14,6 +14,7 @@
                         $scope.artistaId = artista.id;
                         $scope.artistaName = artista.name;
                         $scope.artistaImagen = artista.imagen;
+                        $scope.artistaHojaVida = artista.hoja;
                         
       
                     });
@@ -43,7 +44,8 @@
                         $http.put(artistasContext + "/" + idArtista, {
                             id: $scope.artistaId,
                             name: $scope.artistaName,
-                           imagen: $scope.artistaImagen
+                           imagen: $scope.artistaImagen,
+                           hoja: $scope.artistaHojaVida
                         }).then(function (response) {
                             //Marco created successfully
                             $state.go('artistasList', {artistaId: response.data.id}, {reload: true});

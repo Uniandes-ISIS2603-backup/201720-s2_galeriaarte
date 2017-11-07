@@ -13,7 +13,9 @@
         'compraModule',
         'pagoModule'
         ,'catalogoModule',
-        ,'obraModule'
+        ,'obraModule',
+        'hojaVidaModule'
+        
 
     ]);
     // Resuelve problemas de las promesas

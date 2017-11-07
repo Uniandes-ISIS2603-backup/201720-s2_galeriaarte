@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createHojaVida">Crear una nueva Hoja de vida</label>
+                <label ng-if="edit" id="editHojaVida">Editar una Hoja de vida</label></div>
+            <div class="panel-body">
+                <form ng-submit="createHojaVida()" name="hojaVida">
+             
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="hojaVidaTrayectoria" class="col-sm-3">Trayectoria:</label>
+                            <input id="hojaVidaTrayectoria"  required ng-model="hojaVidaTrayectoria" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="hojaVidaAlmaMater" class="col-sm-3">AlmaMater:</label>
+                            <input id="hojaVidaAlmaMater"  required ng-model="hojaVidaAlmaMater" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="hojaVidaNacionalidad" class="col-sm-3">Nacionalidad:</label> 
+                            <input id="hojaVidaNacionalidad"  required ng-model="hojaVidaNacionalidad" class="col-sm-6 "/>
+                        </div>
+                    </div>
+                                       
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!hojaVida.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="hojaVida.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="hojasVidaList">Cancelado</a>
+                        </div>
+                    </div>
+                 
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

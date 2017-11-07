@@ -23,7 +23,7 @@ public class HojaVidaDetailDTO extends HojaVidaDTO
         super();
     }
     
-    
+
     public HojaVidaDetailDTO(HojaVidaEntity entity)
     {
         

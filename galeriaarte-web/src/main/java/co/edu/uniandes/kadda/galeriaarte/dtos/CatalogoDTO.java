@@ -15,6 +15,7 @@ import java.util.List;
 public class CatalogoDTO 
 {
     
+    
     private Long id;
     private String categoria;
     
