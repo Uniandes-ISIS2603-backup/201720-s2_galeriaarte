@@ -91,7 +91,9 @@ public class ComentarioResource {
         if (entity == null) {
             throw new WebApplicationException("El recurso /Comentarios/" + id + " no existe.", 404);
         }
-        return new ComentarioDetailDTO(ComentarioLogic.updateComentario(id, comentario.toEntity()));
+        ComentarioEntity com = comentario.toEntity();
+        com.setClienteComentario(entity.getClienteComentario());
+        return new ComentarioDetailDTO(ComentarioLogic.updateComentario(id, com));
     }
 
     @DELETE
