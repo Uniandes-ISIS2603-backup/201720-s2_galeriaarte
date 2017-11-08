@@ -1,24 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 (function (ng) {
     var mod = ng.module("catalogoModule");
-    mod.constant("catalogoContext", "api/catalogos");
-    mod.controller('catalogoCtrl', ['$scope', '$http', 'catalogoContext', '$state',
-        function ($scope, $http, catalogoContext, $state) {
-            $http.get(catalogoContext).then(function (response) {
+    mod.constant("catalogosContext", "api/catalogos");
+    mod.controller('catalogoCtrl', ['$scope', '$http', 'catalogosContext', '$state',
+        function ($scope, $http, catalogosContext, $state) {
+            $http.get(catalogosContext).then(function (response) {
                 $scope.catalogosRecords = response.data;
             });
 
-         //   if ($state.params.catalogosId !== undefined) {
-         //       $http.get(catalogoContext + '/' + $state.params.catalogosId).then(function (response) {
-         //           $scope.obrasRecords = response.data.obras;
-         //           $scope.currentCatalogo = response.data;
-         //       });
-         //   }
+            if (($state.params.catalogoId !== undefined) && ($state.params.catalogoId !== null)) {
+                $http.get(catalogosContext + '/' + $state.params.catalogoId).then(function (response) {
+                    $scope.currentCatalogo = response.data;
+                });
+            }
         }
     ]);
 }
 )(window.angular);
+

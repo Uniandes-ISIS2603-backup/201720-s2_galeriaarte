@@ -1,30 +1,76 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("catalogoModule", ['ui.router']);
-
-    // Configuración de los estados del módulo
+    mod.constant("catalogosContext", "api/catalogos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/catalogos/';
-            // Mostrar la lista de blogs será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/catalogosList");
-            // Definición del estado 'blogsList' donde se listan los blogs
-            $stateProvider.state('catalogosList', {
-                // Url que aparecerá en el browser
-                url: '/catalogos/list',
-                views: {
+
+            $stateProvider.state('catalogos', {
+                url: '/catalogos',
+                abstract: true,
+                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'catalogos.list.html',
+                        templateUrl: basePath + 'catalogos.html',
                         controller: 'catalogoCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('catalogosList', {
+                url: '/list',
+                parent: 'catalogos',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'catalogos.list.html'
+                    }
+                }
+            }).state('catalogoDetail', {
+                url: '/{catalogoId:int}/detail',
+                parent: 'catalogos',
+                param: {
+                    catalogoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'catalogos.detail.html',
+                        controller: 'catalogoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+
+                }
+
+            }).state('catalogosCreate', {
+                url: '/create',
+                parent: 'catalogos',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/catalogos.new.html',
+                        controller: 'catalogoNewCtrl'
+                    }
+                }
+            }).state('catalogoUpdate', {
+                url: '/update/{catalogoId:int}',
+                parent: 'catalogos',
+                param: {
+                    catalogoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/catalogos.new.html',
+                        controller: 'catalogoUpdateCtrl'
+                    }
+                }
+            }).state('catalogoDelete', {
+                url: '/delete/{catalogoId:int}',
+                parent: 'catalogos',
+                param: {
+                   catalogoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/catalogo.delete.html',
+                        controller: 'catalogoDeleteCtrl'
+                    }
+                }
             });
-        }
-    ]);
+        }]);
 })(window.angular);
