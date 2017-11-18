@@ -13,31 +13,27 @@ import java.util.Date;
  * @author ma.abril
  */
 public class CompraDTO {
-    
+
     private Long id;
     private double valor;
     private Date fecha;
-    
-    public CompraDTO()
-    {
-        
+
+    public CompraDTO() {
+        //Constructor por defecto 
     }
-    
-    public CompraDTO(CompraEntity compraE)
-    {
-        if(compraE != null){
+
+    public CompraDTO(CompraEntity compraE) {
+        if (compraE != null) {
             this.id = compraE.getId();
             this.valor = compraE.getValor();
             this.fecha = compraE.getFecha();
         }
     }
-    
-    
-    public Long getId()
-    {
+
+    public Long getId() {
         return id;
     }
-    
+
     /**
      * Establece el valor del atributo id.
      *
@@ -47,9 +43,9 @@ public class CompraDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    
-     /**
-     * @return el valor 
+
+    /**
+     * @return el valor
      */
     public double getValor() {
         return valor;
@@ -75,16 +71,13 @@ public class CompraDTO {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
 
-    public CompraEntity toEntity()
-    {
+    public CompraEntity toEntity() {
         CompraEntity compraE = new CompraEntity();
         compraE.setId(this.id);
         compraE.setValor(this.valor);
         compraE.setFecha(this.fecha);
         return compraE;
     }
-    
-    
+
 }

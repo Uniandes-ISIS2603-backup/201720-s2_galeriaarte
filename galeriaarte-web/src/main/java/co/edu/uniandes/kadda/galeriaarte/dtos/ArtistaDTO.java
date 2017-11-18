@@ -7,29 +7,22 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 
-
-
-
-
-
 /**
  *
  * @author jd.carrillor
  */
-public class ArtistaDTO 
-{
+public class ArtistaDTO {
+
     private Long id;
     private String name;
     private String imagen;
-    
-     /**
+
+    /**
      * Constructor por defecto
      */
     public ArtistaDTO() {
+        //Constructor por defecto
     }
-    
-    
-    
 
     public ArtistaDTO(ArtistaEntity artistaE) {
         if (artistaE != null) {
@@ -45,11 +38,11 @@ public class ArtistaDTO
         ArtistaE.setId(this.id);
         ArtistaE.setName(this.name);
         ArtistaE.setImagen(this.imagen);
-    
+
         return ArtistaE;
     }
-    
-        public Long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -90,5 +83,5 @@ public class ArtistaDTO
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
+
 }

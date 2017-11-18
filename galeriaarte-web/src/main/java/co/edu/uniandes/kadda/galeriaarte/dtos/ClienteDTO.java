@@ -19,15 +19,16 @@ public class ClienteDTO {
     private int numTarjeta;
 
     public ClienteDTO() {
+        //Constructor por defecto
 
     }
 
     public ClienteDTO(ClienteEntity entidad) {
-        if(entidad != null){
-        this.id = entidad.getId();
-        this.name = entidad.getName();
-        this.tipoTarjeta = entidad.getTipoTarjeta();
-        this.numTarjeta = entidad.getNumTarjeta();
+        if (entidad != null) {
+            this.id = entidad.getId();
+            this.name = entidad.getName();
+            this.tipoTarjeta = entidad.getTipoTarjeta();
+            this.numTarjeta = entidad.getNumTarjeta();
         }
     }
 

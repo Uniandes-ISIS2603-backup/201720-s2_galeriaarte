@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,43 +11,37 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
  *
  * @author jd.carrillor
  */
-public class ObraDTO
-{
- 
+public class ObraDTO {
+
     private Long id;
-    
+
     private String name;
-    
+
     private String tipo;
-    
+
     private int cantidad;
-    
+
     private double valor;
-    
+
     private String imagen;
-    
-    
-    public ObraDTO()
-    {
-        
+
+    public ObraDTO() {
+        //Constructor por defecto 
     }
-    
-    public ObraDTO(ObraEntity obra)
-    {
-        if(obra!=null){
-        this.id = obra.getId();
-        this.name = obra.getName();
-        this.tipo  =  obra.getTipo();
-        this.cantidad = obra.getCantidad();
-        this.valor =  obra.getValor();
-        this.imagen = obra.getImagen();
-        
-        
+
+    public ObraDTO(ObraEntity obra) {
+        if (obra != null) {
+            this.id = obra.getId();
+            this.name = obra.getName();
+            this.tipo = obra.getTipo();
+            this.cantidad = obra.getCantidad();
+            this.valor = obra.getValor();
+            this.imagen = obra.getImagen();
+
         }
     }
-    
-    
-     public ObraEntity toEntity() {
+
+    public ObraEntity toEntity() {
         ObraEntity entity = new ObraEntity();
         entity.setId(this.id);
         entity.setName(this.name);
@@ -55,9 +49,7 @@ public class ObraDTO
         entity.setCantidad(this.cantidad);
         entity.setValor(this.valor);
         entity.setImagen(this.imagen);
-        
-        
-        
+
         return entity;
     }
 
@@ -145,6 +137,4 @@ public class ObraDTO
         this.imagen = imagen;
     }
 
-    
-    
 }

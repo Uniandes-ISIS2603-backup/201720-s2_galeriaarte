@@ -11,16 +11,15 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
  *
  * @author ks.estupinan
  */
-public class ComentarioDTO 
-{
+public class ComentarioDTO {
+
     private Long id;
     private String contenido;
 
-    public ComentarioDTO()
-    {
-        
+    public ComentarioDTO() {
+        //Constructor por defecto
     }
-    
+
     public ComentarioDTO(ComentarioEntity entidad) {
         this.id = entidad.getId();
         this.contenido = entidad.getName();
@@ -41,7 +40,7 @@ public class ComentarioDTO
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
-    
+
     public ComentarioEntity toEntity() {
         ComentarioEntity entity = new ComentarioEntity();
         entity.setId(this.id);

@@ -12,31 +12,28 @@ import java.util.List;
  *
  * @author Daniel Perilla
  */
-public class CatalogoDTO 
-{
-    
-    
+public class CatalogoDTO {
+
     private Long id;
     private String categoria;
-    
+
     /**
      * Relación con las obras
      */
-    
     private List<ObraDTO> obras;
-   
+
     /**
      * Constructor por defecto
      */
-    public CatalogoDTO(){
+    public CatalogoDTO() {
+        //Constructor por defecto
     }
-    
-     public CatalogoDTO(CatalogoEntity catalogo)
-    {
-        
+
+    public CatalogoDTO(CatalogoEntity catalogo) {
+
         this.id = catalogo.getId();
         this.categoria = catalogo.getCategoria();
-        
+
     }
 
     /**
@@ -66,33 +63,28 @@ public class CatalogoDTO
     public void setCategoria(String pCategoria) {
         this.categoria = pCategoria;
     }
-    
+
     /**
-     * 
+     *
      * @return las obras relacionadas con el catálogo
      */
-    
-    public List<ObraDTO> getObras()
-    {
+    public List<ObraDTO> getObras() {
         return obras;
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
-    
-    public void setObras(List<ObraDTO> pObras)
-    {
+    public void setObras(List<ObraDTO> pObras) {
         this.obras = pObras;
     }
-    
-    public CatalogoEntity toEntity()
-    {
+
+    public CatalogoEntity toEntity() {
         CatalogoEntity catalogo = new CatalogoEntity();
         catalogo.setId(this.id);
         catalogo.setCategoria(this.categoria);
         return catalogo;
     }
-    
+
 }

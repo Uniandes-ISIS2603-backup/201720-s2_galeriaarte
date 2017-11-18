@@ -12,39 +12,34 @@ import co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity;
  * @author ma.abril
  */
 public class PagoDTO {
-    
+
     private Long id;
-    
+
     private double total;
-    
+
     private double impuesto;
 
-     public PagoDTO()
-    {
-        
+    public PagoDTO() {
+        //Constructor por defecto
     }
-    
-    public PagoDTO(PagoEntity pagoE)
-    {
-        if(pagoE != null)
-        {
+
+    public PagoDTO(PagoEntity pagoE) {
+        if (pagoE != null) {
             this.id = pagoE.getId();
             this.total = pagoE.getTotal();
             this.impuesto = pagoE.getImpuesto();
         }
     }
-    
-    public PagoEntity toEntity()
-    {
+
+    public PagoEntity toEntity() {
         PagoEntity pagoE = new PagoEntity();
         pagoE.setId(this.id);
         pagoE.setTotal(this.total);
         pagoE.setImpuesto(this.impuesto);
-        
+
         return pagoE;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -68,7 +63,5 @@ public class PagoDTO {
     public void setImpuesto(double impuesto) {
         this.impuesto = impuesto;
     }
-    
-    
-    
+
 }

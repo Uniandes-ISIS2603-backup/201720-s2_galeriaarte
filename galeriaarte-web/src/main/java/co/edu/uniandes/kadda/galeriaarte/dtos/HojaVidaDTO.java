@@ -11,52 +11,39 @@ import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
  *
  * @author jd.carrillor
  */
-public class HojaVidaDTO
-{
+public class HojaVidaDTO {
+
     private Long id;
-    
+
     private String trayectoria;
-    
+
     private String almaMater;
-    
+
     private String nacionalidad;
-    
-     public HojaVidaDTO()
-    {
-        
-        
-        
+
+    public HojaVidaDTO() {
+
+        //Constructor por defecto   
     }
-     
-     
-     
-    
-     
-     
-     
-    public HojaVidaDTO(HojaVidaEntity hoja)
-    {
-        
-       
-        if(hoja!=null){ 
-        this.id = hoja.getId();
-        this.trayectoria = hoja.getTrayectoria();
-        this.almaMater  =  hoja.getAlmaMater();
-        this.nacionalidad = hoja.getNacionalidad();
+
+    public HojaVidaDTO(HojaVidaEntity hoja) {
+
+        if (hoja != null) {
+            this.id = hoja.getId();
+            this.trayectoria = hoja.getTrayectoria();
+            this.almaMater = hoja.getAlmaMater();
+            this.nacionalidad = hoja.getNacionalidad();
         }
-        
+
     }
-    
-    
-     public HojaVidaEntity toEntity() {
+
+    public HojaVidaEntity toEntity() {
         HojaVidaEntity entity = new HojaVidaEntity();
         entity.setId(this.getId());
         entity.setTrayectoria(this.getTrayectoria());
         entity.setAlmaMater(this.getAlmaMater());
         entity.setNacionalidad(this.getNacionalidad());
-        
-        
-        
+
         return entity;
     }
 
@@ -115,10 +102,5 @@ public class HojaVidaDTO
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-     
-     
-    
-    
-    
-    
+
 }

@@ -12,15 +12,16 @@ import co.edu.uniandes.kadda.galeriaarte.entities.BlogEntity;
  * @author af.leon
  */
 public class BlogDTO {
-    
+
     private Long id;
     private String name;
     private String contenido;
-    
+
     /**
      * Constructor por defecto
      */
     public BlogDTO() {
+        //Constructor por defecto
     }
 
     public BlogDTO(BlogEntity entity) {
@@ -79,5 +80,5 @@ public class BlogDTO {
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
-    
+
 }
