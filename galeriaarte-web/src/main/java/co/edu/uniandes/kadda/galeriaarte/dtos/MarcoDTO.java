@@ -31,15 +31,13 @@ public class MarcoDTO {
      * Constructor por defecto
      */
     public MarcoDTO(){
-        
+        //Constructor por defecto
     }
     
     /**
      * Crea un objeto MarcoDTO a partir de un objeto MarcoEntity.
-     *
      * @param entity Entidad MarcoEntity desde la cual se va a crear el nuevo
      * objeto.
-     * 
      */
     public MarcoDTO(MarcoEntity entity) 
     {
@@ -56,9 +54,7 @@ public class MarcoDTO {
     
     /**
      * Convierte un objeto MarcoDTO a MarcoEntity.
-     *
      * @return Nueva objeto MarcoEntity.
-     * 
      */
     public MarcoEntity toEntity() {
         MarcoEntity entity = new MarcoEntity();
@@ -74,9 +70,7 @@ public class MarcoDTO {
     
     /**
      * Obtiene el atributo id.
-     *
      * @return atributo id.
-     * 
      */
     public Long getId() {
         return id;
@@ -84,9 +78,7 @@ public class MarcoDTO {
 
     /**
      * Establece el valor del atributo id.
-     *
      * @param id nuevo valor del atributo
-     * 
      */
     public void setId(Long id) {
         this.id = id;
@@ -94,9 +86,7 @@ public class MarcoDTO {
     
     /**
      * Obtiene el atributo valor.
-     *
      * @return atributo valor.
-     * 
      */
     public double getValor() {
         return valor;
@@ -104,9 +94,7 @@ public class MarcoDTO {
 
     /**
      * Establece el valor del atributo valor.
-     *
      * @param valor nuevo valor del atributo
-     * 
      */
     public void setValor(double valor) {
         this.valor = valor;
@@ -114,9 +102,7 @@ public class MarcoDTO {
     
     /**
      * Obtiene el atributo material.
-     *
      * @return atributo material.
-     * 
      */
     public String getMaterial() {
         return material;
@@ -124,9 +110,7 @@ public class MarcoDTO {
 
     /**
      * Establece el valor del atributo material.
-     *
      * @param material nuevo valor del atributo
-     * 
      */
     public void setMaterial(String material) {
         this.material = material;
@@ -134,9 +118,7 @@ public class MarcoDTO {
     
     /**
      * Obtiene el atributo ancho.
-     *
      * @return atributo ancho.
-     * 
      */
     public double getAncho() {
         return ancho;
@@ -144,9 +126,7 @@ public class MarcoDTO {
 
     /**
      * Establece el valor del atributo ancho.
-     *
      * @param ancho nuevo valor del atributo
-     * 
      */
     public void setAncho(double ancho) {
         this.ancho = ancho;
@@ -154,9 +134,7 @@ public class MarcoDTO {
     
     /**
      * Obtiene el atributo alto.
-     *
      * @return atributo alto.
-     * 
      */
     public double getAlto() {
         return alto;
@@ -164,9 +142,7 @@ public class MarcoDTO {
 
     /**
      * Establece el valor del atributo alto.
-     *
      * @param alto nuevo valor del atributo
-     * 
      */
     public void setAlto(double alto) {
         this.alto = alto;
