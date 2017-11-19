@@ -15,20 +15,16 @@ import java.util.List;
  *
  * @author jd.carrillor
  */
-public class ArtistaDetailDTO extends ArtistaDTO
-{
+public class ArtistaDetailDTO extends ArtistaDTO {
+
     private List<ObraDTO> obras;
-    private GaleriaDTO galeria;
     private List<BlogDTO> blogs;
     private HojaVidaDTO hoja;
- 
-    public ArtistaDetailDTO()
-    {
+
+    public ArtistaDetailDTO() {
         super();
     }
-    
-    
-    
+
     /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -36,7 +32,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
      */
     public ArtistaDetailDTO(ArtistaEntity entity) {
         super(entity);
-        if (entity.getHojaVida()!= null) {
+        if (entity.getHojaVida() != null) {
             this.hoja = new HojaVidaDTO(entity.getHojaVida());
         } else {
             entity.setHojaVida(null);
@@ -55,11 +51,11 @@ public class ArtistaDetailDTO extends ArtistaDTO
 
         }
     }
-   
+
     @Override
     public ArtistaEntity toEntity() {
-        ArtistaEntity artistaE=  super.toEntity();
-        if (this.getHoja()!= null) {
+        ArtistaEntity artistaE = super.toEntity();
+        if (this.getHoja() != null) {
             artistaE.setHojaVida(this.getHoja().toEntity());
         }
         if (this.getBlogs() != null) {
@@ -69,7 +65,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
             }
             artistaE.setBlogs(blogsEntity);
         }
-        
+
         if (obras != null) {
             List<ObraEntity> obrasEntity = new ArrayList<>();
             for (ObraDTO dtoAuthor : obras) {
@@ -77,10 +73,9 @@ public class ArtistaDetailDTO extends ArtistaDTO
             }
             artistaE.setObras(obrasEntity);
         }
-        
+
         return artistaE;
     }
-
 
     /**
      * @return the obras
@@ -95,7 +90,7 @@ public class ArtistaDetailDTO extends ArtistaDTO
     public void setObras(List<ObraDTO> obras) {
         this.obras = obras;
     }
-    
+
     /**
      * @return the blogs
      */

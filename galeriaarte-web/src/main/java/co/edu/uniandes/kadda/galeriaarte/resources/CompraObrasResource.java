@@ -30,18 +30,18 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CompraObrasResource {
-    
+
     @Inject
     private CompraLogic compraLogic;
-    
+
     /**
      * Convierte una lista de ObraEntity a una lista de ObraDetailDTO.
      *
      * @param entityList Lista de ObraEntity a convertir.
      * @return Lista de ObraDetailDTO convertida.
-     * 
+     *
      */
-    private List<ObraDetailDTO> ObrasListEntity2DTO(List<ObraEntity> entityList) {
+    private List<ObraDetailDTO> obrasListEntity2DTO(List<ObraEntity> entityList) {
         List<ObraDetailDTO> list = new ArrayList<>();
         for (ObraEntity entity : entityList) {
             list.add(new ObraDetailDTO(entity));
@@ -54,9 +54,9 @@ public class CompraObrasResource {
      *
      * @param dtos Lista de ObraDetailDTO a convertir.
      * @return Lista de ObraEntity convertida.
-     * 
+     *
      */
-    private List<ObraEntity> ObrasListDTO2Entity(List<ObraDetailDTO> dtos) {
+    private List<ObraEntity> obrasListDTO2Entity(List<ObraDetailDTO> dtos) {
         List<ObraEntity> list = new ArrayList<>();
         for (ObraDetailDTO dto : dtos) {
             list.add(dto.toEntity());
@@ -71,11 +71,11 @@ public class CompraObrasResource {
      * @param comprasId Identificador de la instancia de Compra
      * @return Colección de instancias de ObraDetailDTO asociadas a la instancia
      * de Compra
-     * 
+     *
      */
     @GET
     public List<ObraDetailDTO> listObras(@PathParam("comprasId") Long comprasId) {
-        return ObrasListEntity2DTO(compraLogic.listObras(comprasId));
+        return obrasListEntity2DTO(compraLogic.listObras(comprasId));
     }
 
     /**
@@ -85,7 +85,7 @@ public class CompraObrasResource {
      * @param obrasId Identificador de la instancia de Obra
      * @return
      * @throws co.edu.uniandes.csw.Obrastore.exceptions.BusinessLogicException
-     * 
+     *
      */
     @GET
     @Path("{obrasId: \\d+}")
@@ -99,12 +99,12 @@ public class CompraObrasResource {
      * @param comprasId Identificador de la instancia de Compra
      * @param obrasId Identificador de la instancia de Obra
      * @return Instancia de ObraDetailDTO que fue asociada a Compra
-     * 
+     *
      */
     @POST
     @Path("{obrasId: \\d+}")
     public ObraDetailDTO addObras(@PathParam("comprasId") Long comprasId, @PathParam("obrasId") Long obrasId) {
-        return new ObraDetailDTO(compraLogic.addObra(obrasId,comprasId));
+        return new ObraDetailDTO(compraLogic.addObra(obrasId, comprasId));
     }
 
     /**
@@ -114,11 +114,11 @@ public class CompraObrasResource {
      * @param obras Colección de instancias de ObraDTO a asociar a instancia de
      * Compra
      * @return Nueva colección de ObraDTO asociada a la instancia de Compra
-     * 
+     *
      */
     @PUT
     public List<ObraDetailDTO> replaceObras(@PathParam("comprasId") Long comprasId, List<ObraDetailDTO> obras) {
-        return ObrasListEntity2DTO(compraLogic.replaceObras(comprasId, ObrasListDTO2Entity(obras)));
+        return obrasListEntity2DTO(compraLogic.replaceObras(comprasId, obrasListDTO2Entity(obras)));
     }
 
     /**
@@ -126,12 +126,12 @@ public class CompraObrasResource {
      *
      * @param comprasId Identificador de la instancia de Compra
      * @param obrasId Identificador de la instancia de Obra
-     * 
+     *
      */
     @DELETE
     @Path("{obrasId: \\d+}")
     public void removeObras(@PathParam("comprasId") Long comprasId, @PathParam("obrasId") Long obrasId) {
-        compraLogic.removeObra(obrasId,comprasId);
+        compraLogic.removeObra(obrasId, comprasId);
     }
-    
+
 }

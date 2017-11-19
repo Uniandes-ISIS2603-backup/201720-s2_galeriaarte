@@ -37,28 +37,27 @@ import javax.ws.rs.WebApplicationException;
 public class ComentarioResource {
 
     @Inject
-    ComentarioLogic ComentarioLogic;
+    ComentarioLogic comentarioLogic;
 
     /**
-     * 
-     * @return
-     * @throws BusinessLogicException 
+     *
+     * @return @throws BusinessLogicException
      */
     @GET
     public List<ComentarioDetailDTO> getComentarios() throws BusinessLogicException {
-        return listComentarioEntity2DetailDTO(ComentarioLogic.getComentarios());
+        return listComentarioEntity2DetailDTO(comentarioLogic.getComentarios());
     }
 
     /**
-     * 
+     *
      * @param id
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{id: \\d+}")
     public ComentarioDetailDTO getComentario(@PathParam("id") Long id) throws BusinessLogicException {
-        ComentarioEntity entity = ComentarioLogic.getComentario(id);
+        ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /comentarios/" + id + " no existe.", 404);
         }
@@ -66,44 +65,44 @@ public class ComentarioResource {
     }
 
     /**
-     * 
+     *
      * @param comentario
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @POST
     public ComentarioDetailDTO createComentario(ComentarioDetailDTO comentario) throws BusinessLogicException {
-        return new ComentarioDetailDTO(ComentarioLogic.createComentario(comentario.toEntity()));
+        return new ComentarioDetailDTO(comentarioLogic.createComentario(comentario.toEntity()));
     }
 
     /**
-     * 
+     *
      * @param id
      * @param comentario
      * @return
-     * @throws BusinessLogicException 
+     * @throws BusinessLogicException
      */
     @PUT
     @Path("{id: \\d+}")
     public ComentarioDetailDTO updateBook(@PathParam("id") Long id, ComentarioDetailDTO comentario) throws BusinessLogicException {
         comentario.setId(id);
-        ComentarioEntity entity = ComentarioLogic.getComentario(id);
+        ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Comentarios/" + id + " no existe.", 404);
         }
         ComentarioEntity com = comentario.toEntity();
         com.setClienteComentario(entity.getClienteComentario());
-        return new ComentarioDetailDTO(ComentarioLogic.updateComentario(id, com));
+        return new ComentarioDetailDTO(comentarioLogic.updateComentario(id, com));
     }
 
     @DELETE
     @Path("{comentariosId: \\d+}")
     public void deleteComentario(@PathParam("comentariosId") Long id) throws BusinessLogicException {
-        ComentarioEntity entity = ComentarioLogic.getComentario(id);
+        ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Comentarios/" + id + " no existe.", 404);
         }
-        ComentarioLogic.deleteComentario(id);
+        comentarioLogic.deleteComentario(id);
     }
 
     private List<ComentarioDetailDTO> listComentarioEntity2DetailDTO(List<ComentarioEntity> entityList) {

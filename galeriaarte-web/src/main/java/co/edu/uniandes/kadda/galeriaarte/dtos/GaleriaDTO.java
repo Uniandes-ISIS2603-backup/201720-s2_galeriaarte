@@ -23,37 +23,29 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.dtos;
 
-import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
-import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
-import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.OneToMany;
 
 /**
- * GaleriaDTO Objeto de transferencia de datos de Galerias. Los DTO
- * contienen las represnetaciones de los JSON que se transfieren entre el
- * cliente y el servidor.
+ * GaleriaDTO Objeto de transferencia de datos de Galerias. Los DTO contienen
+ * las represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
  *
  * @author ISIS2603
  */
-public class GaleriaDTO 
-{
-    
-   private Long id;
-   private String nombre;
-   private String direccion;
-   private int telefono;
-   
-   private ArrayList<ArtistaDTO> artistas;
-   
-   
-   private ArrayList<CatalogoDTO> catalogos;
-   
-   
-   private ArrayList<ClienteDTO> clientes;
-   
+public class GaleriaDTO {
+
+    private Long id;
+    private String nombre;
+    private String direccion;
+    private int telefono;
+
+    private ArrayList<ArtistaDTO> artistas;
+
+    private ArrayList<CatalogoDTO> catalogos;
+
+    private ArrayList<ClienteDTO> clientes;
+
     /**
      * Constructor por defecto
      */
@@ -66,16 +58,17 @@ public class GaleriaDTO
      *
      * @param galeria: Es la entidad que se va a convertir a DTO
      */
-    public GaleriaDTO(GaleriaEntity galeria){
-        if(galeria != null){
-        this.id = galeria.getId();
-        this.nombre = galeria.getNombre();
-        this.direccion = galeria.getDireccion();
-        this.telefono = galeria.getTelefono();
+    public GaleriaDTO(GaleriaEntity galeria) {
+        if (galeria != null) {
+            this.id = galeria.getId();
+            this.nombre = galeria.getNombre();
+            this.direccion = galeria.getDireccion();
+            this.telefono = galeria.getTelefono();
         }
     }
 
-     /** Convertir DTO a Entity
+    /**
+     * Convertir DTO a Entity
      *
      * @return Un Entity con los valores del DTO
      */
@@ -87,44 +80,40 @@ public class GaleriaDTO
         entity.setTelefono(this.telefono);
         return entity;
     }
-    
-   
-   public Long getId()
-   {
-       return id;
-   }
+
+    public Long getId() {
+        return id;
+    }
 
     /**
      * @param pId
      */
-   
-   public void setId(Long pId)
-   {
-       this.id = pId;
-   }
-   public String getNombre()
-   {
-       return nombre;
-   }
-   public void setNombre(String pNombre)
-   {
-       this.nombre = pNombre;
-   }
-   public String getDireccion()
-   {
-       return direccion;
-   }
-   public void setDireccion(String pDireccion)
-   {
-       this.direccion = pDireccion;
-   }
-   public int getTelefono()
-   {
-       return telefono;
-   }
-   public void setTelefono(int pTelefono)
-   {
-       this.telefono = pTelefono;
-   }
-   
+    public void setId(Long pId) {
+        this.id = pId;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String pNombre) {
+        this.nombre = pNombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String pDireccion) {
+        this.direccion = pDireccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int pTelefono) {
+        this.telefono = pTelefono;
+    }
+
 }

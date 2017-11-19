@@ -23,8 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
-
-
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
@@ -70,22 +68,14 @@ public class GaleriaResource {
 
     @Inject
     CatalogoLogic catalogoLogic;
-    
+
     @Inject
     ArtistaLogic artistaLogic;
-    
+
     @Inject
     ClienteLogic clienteLogic;
-    
-    private GaleriaDTO galeriaDTO;
-    private GaleriaDetailDTO galeriaDetailDTO;
-    
-    
-    
-    
- 
 
-    private static final Logger LOGGER = Logger.getLogger(GaleriaResource.class.getName());
+    private GaleriaDTO galeriaDTO;
 
     /**
      * POST http://localhost:8080/galeriadearte-web/api/galerias
@@ -138,20 +128,16 @@ public class GaleriaResource {
         GaleriaEntity entity = galeriaDTO.toEntity();
         entity.setId(id);
         GaleriaEntity vieja = galeriaLogic.getGaleria();
-        if(vieja == null)
-        {
+        if (vieja == null) {
             throw new WebApplicationException("La galería no existe", 404);
-        }
-        else
-        {
+        } else {
             entity.setArtistas(vieja.getArtistas());
             entity.setCatalogos(vieja.getCatalogos());
             entity.setClientes(vieja.getClientes());
         }
-        
+
         return new GaleriaDetailDTO(galeriaLogic.updateGaleria(entity));
     }
-
 
     /**
      * DELETE http://localhost:8080/galeriadearte-web/api/galerias/{id}
@@ -164,16 +150,13 @@ public class GaleriaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteGaleria(@PathParam("id") Long id) throws BusinessLogicException
-    {
-       GaleriaEntity entity = galeriaLogic.getGaleria();
-       if(entity == null)
-       {
-           throw new WebApplicationException("La galería no existe", 404);
-       }
-       galeriaLogic.deleteGaleria(id);
+    public void deleteGaleria(@PathParam("id") Long id) throws BusinessLogicException {
+        GaleriaEntity entity = galeriaLogic.getGaleria();
+        if (entity == null) {
+            throw new WebApplicationException("La galería no existe", 404);
+        }
+        galeriaLogic.deleteGaleria(id);
     }
-    
 
     /**
      *
@@ -193,10 +176,5 @@ public class GaleriaResource {
         }
         return list;
     }
-
-   
-    
-
-    
 
 }

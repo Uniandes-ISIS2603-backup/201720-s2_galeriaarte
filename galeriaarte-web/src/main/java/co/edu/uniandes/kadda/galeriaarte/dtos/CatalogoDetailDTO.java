@@ -1,4 +1,4 @@
-   /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,13 +8,12 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Daniel Perilla
  */
-public class CatalogoDetailDTO extends CatalogoDTO{
+public class CatalogoDetailDTO extends CatalogoDTO {
 
     // relación  cero o muchos reviews 
     private ArrayList<ObraDTO> obras = new ArrayList<>();
@@ -23,9 +22,10 @@ public class CatalogoDetailDTO extends CatalogoDTO{
         super();
     }
 
-    /** 
+    /**
      * Constructor para transformar un Entity a un DTO
-     * @param entity 
+     *
+     * @param entity
      */
     public CatalogoDetailDTO(CatalogoEntity entity) {
         super(entity);
@@ -36,16 +36,17 @@ public class CatalogoDetailDTO extends CatalogoDTO{
             }
         }
     }
-    
 
-    public CatalogoEntity toEntity()
-    {
+    /**
+     *
+     * @return
+     */
+    @Override
+    public CatalogoEntity toEntity() {
         CatalogoEntity catalogo = super.toEntity();
-        if(obras != null)
-        {
+        if (obras != null) {
             ArrayList<ObraEntity> obrasEntity = new ArrayList<>();
-            for(ObraDTO dtoObra : obras)
-            {
+            for (ObraDTO dtoObra : obras) {
                 obrasEntity.add(dtoObra.toEntity());
             }
             catalogo.setObras(obrasEntity);
@@ -66,5 +67,5 @@ public class CatalogoDetailDTO extends CatalogoDTO{
     public void setObras(ArrayList<ObraDTO> pObras) {
         this.obras = pObras;
     }
-    
+
 }

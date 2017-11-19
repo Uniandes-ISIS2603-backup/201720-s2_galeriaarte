@@ -34,12 +34,12 @@ public class ArtistaDTO {
 
     public ArtistaEntity toEntity() {
 
-        ArtistaEntity ArtistaE = new ArtistaEntity();
-        ArtistaE.setId(this.id);
-        ArtistaE.setName(this.name);
-        ArtistaE.setImagen(this.imagen);
+        ArtistaEntity artistaE = new ArtistaEntity();
+        artistaE.setId(this.id);
+        artistaE.setName(this.name);
+        artistaE.setImagen(this.imagen);
 
-        return ArtistaE;
+        return artistaE;
     }
 
     public Long getId() {

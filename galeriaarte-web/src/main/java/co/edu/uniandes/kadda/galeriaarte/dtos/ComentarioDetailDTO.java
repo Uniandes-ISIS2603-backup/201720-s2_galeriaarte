@@ -23,14 +23,6 @@ public class ComentarioDetailDTO extends ComentarioDTO {
         super();
     }
 
-    public ObraDTO getObra() {
-        return obra;
-    }
-
-    public void setObra(ObraDTO obra) {
-        this.obra = obra;
-    }
-
     /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -48,6 +40,14 @@ public class ComentarioDetailDTO extends ComentarioDTO {
         } else {
             entity.setObra(null);
         }
+    }
+
+    public ObraDTO getObra() {
+        return obra;
+    }
+
+    public void setObra(ObraDTO obra) {
+        this.obra = obra;
     }
 
     @Override
