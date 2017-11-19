@@ -15,20 +15,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import uk.co.jemos.podam.common.PodamExclude;
+
 /**
  *
  * @author jd.carrillor
  */
 
-
-
-
-
-
 @Entity
+public class ArtistaEntity extends BaseEntity implements Serializable {
 
-public class ArtistaEntity extends BaseEntity implements Serializable
-{
     private String imagen;
     @PodamExclude
     @OneToMany(mappedBy = "artista")
@@ -112,5 +107,5 @@ public class ArtistaEntity extends BaseEntity implements Serializable
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-  
+
 }

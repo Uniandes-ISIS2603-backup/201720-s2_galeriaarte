@@ -30,104 +30,92 @@ import javax.ws.rs.core.MediaType;
  * @author jd.carrillor
  */
 @Path("obras/{id: \\d+}/comentarios")
- @RequestScoped
- @Produces(MediaType.APPLICATION_JSON)
+@RequestScoped
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ObraComentarioResource 
-{
- @Inject
-ObraLogic obraLogic;
- 
- @Inject
-ComentarioLogic cometarioLogic;
- 
- @GET 
-    public  List<ComentarioDetailDTO> getObras (@PathParam("id") Long obraId) throws BusinessLogicException
-    {
-          if (obraLogic.findObra(obraId)!=null) 
-        {
-            ObraEntity ent = obraLogic.findObra(obraId);
-            if (ent == null) throw new BusinessLogicException("No existe el proveedor con id " + obraId);
-        List<ComentarioDetailDTO> list = new ArrayList();
-        for (ComentarioEntity coment : obraLogic.listComentarios(obraId))
-            list.add(new ComentarioDetailDTO(coment));
-        return list;
-        }
-          else
-          {
-              throw new BusinessLogicException("error");
-          }
-        
-        
-    }
-    
+public class ObraComentarioResource {
+
+    @Inject
+    ObraLogic obraLogic;
+
+    @Inject
+    ComentarioLogic cometarioLogic;
+
     @GET
-    @Path(("/{idComentario:\\d+}"))
-    public ComentarioDetailDTO getComentario( @PathParam("id") Long artistaId, @PathParam("idComentario") Long idComentario) throws BusinessLogicException
-    {
+    public List<ComentarioDetailDTO> getObras(@PathParam("id") Long obraId) throws BusinessLogicException {
+        if (obraLogic.findObra(obraId) != null) {
+            ObraEntity ent = obraLogic.findObra(obraId);
+            if (ent == null) {
+                throw new BusinessLogicException("No existe el proveedor con id " + obraId);
+            }
+            List<ComentarioDetailDTO> list = new ArrayList();
+            for (ComentarioEntity coment : obraLogic.listComentarios(obraId)) {
+                list.add(new ComentarioDetailDTO(coment));
+            }
+            return list;
+        } else {
+            throw new BusinessLogicException("error");
+        }
+
+    }
+
+    @GET
+    @Path("/{idComentario:\\d+}")
+    public ComentarioDetailDTO getComentario(@PathParam("id") Long artistaId, @PathParam("idComentario") Long idComentario) throws BusinessLogicException {
         ObraEntity ent = obraLogic.findObra(artistaId);
-        if (ent == null) throw new BusinessLogicException("No existe el proveedor con id " + artistaId);
+        if (ent == null) {
+            throw new BusinessLogicException("No existe el proveedor con id " + artistaId);
+        }
         ComentarioDetailDTO comentarioDetail = null;
-        for (ComentarioEntity comentario : ent.getComentarios())
-            if (comentario.getId().equals(idComentario)) comentarioDetail = (new ComentarioDetailDTO(comentario));
-        if (comentarioDetail == null) throw new BusinessLogicException("No existe la obra con id " + idComentario + " del proveedor con id " + artistaId);
-        return comentarioDetail;
-    }
-    
-    
-     @POST   
-    public ComentarioDetailDTO addComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto) throws BusinessLogicException 
-    {
-        ComentarioEntity comentario = dto.toEntity();
-         return new ComentarioDetailDTO(obraLogic.addComentario(obraId, comentario));
-        
-    }
-    
-     @PUT
-    @Path(("/{idComentario:\\d+}"))
-    public ComentarioDetailDTO replaceComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto, @PathParam(("idComentario"))Long idComentario) throws BusinessLogicException
-    {
-        
-        ObraEntity obra = obraLogic.findObra(obraId);
-        List<ComentarioEntity> comen = obra.getComentarios();
-        for(int i =0; i<comen.size();i++)
-        {
-            ComentarioEntity actual = comen.get(i);
-            if (actual.getId().equals(idComentario))
-            {
-             ComentarioEntity mod = dto.toEntity();
-             mod.setId(idComentario);
-             mod.setObra(obra);
-             return new ComentarioDetailDTO(cometarioLogic.updateComentario(mod));
+        for (ComentarioEntity comentario : ent.getComentarios()) {
+            if (comentario.getId().equals(idComentario)) {
+                comentarioDetail = (new ComentarioDetailDTO(comentario));
             }
         }
-            
-      return null;
-    
-    } 
-    
-  
-    
-    
-    
-    
-    
-    
-    @DELETE
-    @Path(("/{idComentario:\\d+}"))
-    public void removeComentario(@PathParam("id") Long obraId, @PathParam(("idComentario"))Long idComentario) throws BusinessLogicException
-    {
+        if (comentarioDetail == null) {
+            throw new BusinessLogicException("No existe la obra con id " + idComentario + " del proveedor con id " + artistaId);
+        }
+        return comentarioDetail;
+    }
+
+    @POST
+    public ComentarioDetailDTO addComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto) throws BusinessLogicException {
+        ComentarioEntity comentario = dto.toEntity();
+        return new ComentarioDetailDTO(obraLogic.addComentario(obraId, comentario));
+
+    }
+
+    @PUT
+    @Path("/{idComentario:\\d+}")
+    public ComentarioDetailDTO replaceComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto, @PathParam(("idComentario")) Long idComentario) throws BusinessLogicException {
+
         ObraEntity obra = obraLogic.findObra(obraId);
-        List<ComentarioEntity> comen =obra.getComentarios();
-        for(int i =0;i<comen.size();i++)
-        {
+        List<ComentarioEntity> comen = obra.getComentarios();
+        for (int i = 0; i < comen.size(); i++) {
+            ComentarioEntity actual = comen.get(i);
+            if (actual.getId().equals(idComentario)) {
+                ComentarioEntity mod = dto.toEntity();
+                mod.setId(idComentario);
+                mod.setObra(obra);
+                return new ComentarioDetailDTO(cometarioLogic.updateComentario(mod));
+            }
+        }
+
+        return null;
+
+    }
+
+    @DELETE
+    @Path("/{idComentario:\\d+}")
+    public void removeComentario(@PathParam("id") Long obraId, @PathParam(("idComentario")) Long idComentario) throws BusinessLogicException {
+        ObraEntity obra = obraLogic.findObra(obraId);
+        List<ComentarioEntity> comen = obra.getComentarios();
+        for (int i = 0; i < comen.size(); i++) {
             ComentarioEntity comenActual = comen.get(i);
-            if(comenActual.getId().equals(idComentario))
-            {
+            if (comenActual.getId().equals(idComentario)) {
                 cometarioLogic.deleteComentario(idComentario);
             }
         }
     }
- 
- 
+
 }

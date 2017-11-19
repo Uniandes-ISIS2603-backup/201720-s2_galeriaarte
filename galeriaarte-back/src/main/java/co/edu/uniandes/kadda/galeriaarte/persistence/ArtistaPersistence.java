@@ -9,12 +9,10 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 
 /**
  *
@@ -23,9 +21,9 @@ import javax.persistence.Query;
 @Stateless
 
 public class ArtistaPersistence {
-   
+
     private static final Logger LOGGER = Logger.getLogger(ArtistaPersistence.class.getName());
-    
+
     @PersistenceContext(unitName = "galeriadeartePU")
     protected EntityManager em;
 
@@ -39,8 +37,6 @@ public class ArtistaPersistence {
         Query q = em.createQuery("select u from ArtistaEntity u");
         return q.getResultList();
     }
-    
-    
 
     public ArtistaEntity create(ArtistaEntity entity) {
         LOGGER.info("Creando un artista nuevo");
@@ -59,5 +55,5 @@ public class ArtistaPersistence {
         ArtistaEntity entity = em.find(ArtistaEntity.class, id);
         em.remove(entity);
     }
-    
+
 }

@@ -14,24 +14,23 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author jd.carrillor
  */
-
 @Entity
-public class HojaVidaEntity extends BaseEntity implements Serializable
-{
+public class HojaVidaEntity extends BaseEntity implements Serializable {
+
     private String trayectoria;
-    
+
     private String almaMater;
-    
+
     private String nacionalidad;
-    
+
     @PodamExclude
     @OneToOne
     private ArtistaEntity artista;
-    
-    public HojaVidaEntity()
-    {
-        
+
+    public HojaVidaEntity() {
+        //Constructor por defecto
     }
+
     /**
      * @return the trayectoria
      */
@@ -87,7 +86,5 @@ public class HojaVidaEntity extends BaseEntity implements Serializable
     public void setArtista(ArtistaEntity artista) {
         this.artista = artista;
     }
-    
-    
-    
+
 }

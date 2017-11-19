@@ -11,13 +11,17 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
  *
  * @author ks.estupinan
  */
-public class ComentarioDetailDTO extends ComentarioDTO
-{
-        /*
+public class ComentarioDetailDTO extends ComentarioDTO {
+
+    /*
     * Relación a una editorial
      */
     private ClienteDTO cliente;
     private ObraDTO obra;
+
+    public ComentarioDetailDTO() {
+        super();
+    }
 
     public ObraDTO getObra() {
         return obra;
@@ -27,10 +31,6 @@ public class ComentarioDetailDTO extends ComentarioDTO
         this.obra = obra;
     }
 
-    public ComentarioDetailDTO() {
-        super();
-    }
-
     /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -38,16 +38,16 @@ public class ComentarioDetailDTO extends ComentarioDTO
      */
     public ComentarioDetailDTO(ComentarioEntity entity) {
         super(entity);
-        if (entity.getClienteComentario()!= null) {
+        if (entity.getClienteComentario() != null) {
             this.cliente = new ClienteDTO(entity.getClienteComentario());
         } else {
             entity.setClienteComentario(null);
-        } 
-        if (entity.getObra()!= null) {
+        }
+        if (entity.getObra() != null) {
             this.obra = new ObraDTO(entity.getObra());
         } else {
             entity.setObra(null);
-        } 
+        }
     }
 
     @Override
@@ -61,7 +61,7 @@ public class ComentarioDetailDTO extends ComentarioDTO
         }
         return entity;
     }
-    
+
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }

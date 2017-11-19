@@ -7,7 +7,6 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,14 +30,6 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private GaleriaEntity clienteGaleria;
 
-    public GaleriaEntity getClienteGaleria() {
-        return clienteGaleria;
-    }
-
-    public void setClienteGaleria(GaleriaEntity clienteGaleria) {
-        this.clienteGaleria = clienteGaleria;
-    }
-
     @PodamExclude
     @OneToMany(mappedBy = "clienteComentario")
     private List<ComentarioEntity> comentarios;
@@ -46,6 +37,14 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<ObraEntity> obra;
+
+    public GaleriaEntity getClienteGaleria() {
+        return clienteGaleria;
+    }
+
+    public void setClienteGaleria(GaleriaEntity clienteGaleria) {
+        this.clienteGaleria = clienteGaleria;
+    }
 
     public List<CompraEntity> getCompra() {
         return compra;
