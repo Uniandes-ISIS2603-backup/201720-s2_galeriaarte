@@ -5,7 +5,7 @@ delete from CompraEntity;
 ALTER TABLE CompraEntity ALTER COLUMN id RESTART WITH 1;
 delete from PagoEntity;
 ALTER TABLE PagoEntity ALTER COLUMN id RESTART WITH 1;
-    delete from ArtistaEntity;
+delete from ArtistaEntity;
 ALTER TABLE ArtistaEntity ALTER COLUMN id RESTART WITH 1;
 delete from CatalogoEntity;
 ALTER TABLE CatalogoEntity ALTER COLUMN id RESTART WITH 1;

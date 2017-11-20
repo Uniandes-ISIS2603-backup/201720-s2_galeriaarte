@@ -87,6 +87,7 @@ public class CatalogoObraResource
      * Remplaza las instancias de Obra asociadas a una instancia de Catalogo
      *
      * @param catalogoId Identificador de la instancia de Catalogo
+     * @param obras
      * @param List<ObraDTO> Colección de instancias de ObraDTO a asociar a instancia
      * de Catalogo
      * @return Nueva colección de ObraDTO asociada a la instancia de Catalogo
