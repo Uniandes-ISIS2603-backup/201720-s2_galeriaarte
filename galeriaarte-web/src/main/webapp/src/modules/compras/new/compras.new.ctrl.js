@@ -6,9 +6,10 @@
         function ($scope, $http, comprasContext, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createCompra = function () {
+                console.log($scope.valor);
                 $http.post(comprasContext, {
-                    name: $scope.compraName,
-                    contenido: $scope.compraContenido
+                    valor: $scope.valor,
+                    fecha: $scope.fecha
                 }).then(function (response) {
                     //Blog created successfully
                     $state.go('comprasList', {compraId: response.data.id}, {reload: true});

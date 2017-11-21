@@ -8,7 +8,8 @@
 //                $http.post(pagosContext, {
                 $http.post('api/compra/' + $scope.pagoCompraId + '/pago', {
                     id: 0,
-                    contenido: $scope.pagoContenido
+                    total: $scope.pagoTotal,
+                    impuesto: $scope.pagoImpuesto
                 }).then(function (response) {
                     
                     $state.go('pagosList', {pagoId: response.data.id}, {reload: true});

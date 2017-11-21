@@ -2,6 +2,7 @@
     <div class="panel-group">
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createPago">Pagar</label>
+                <label ng-if="edit" id="editComentario">Edit Comentario</label></div>
             <div class="panel-body">
                 <form ng-submit="createPago()" name="pago">
 <!--                    <div class="form-group row">
@@ -24,18 +25,29 @@
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for=pagoCompraId" class="col-sm-2">Id compra:</label>
+                            <label for="pagoCompraId" class="col-sm-2">Id compra:</label>
                             <input id="pagoCompraId" required ng-model="pagoCompraId" class="col-sm-6"/>
                         </div>
                     </div>
-                    
-                        <div class="panel panel-success">
-                            <div class="panel-heading">All compras</div>
+                    <div ng-if="edit" class="panel-group" id="theClientes">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated compras</div>
                             <div class="panel-body">
-                                <div id="div1" ondrop="angular.element(document.getElementById('theCompras')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theCompras')).scope().allowDrop(event)">
+                                <div id="div2" ondrop="angular.element(document.getElementById('theCompras')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('theCompras')).scope().allowDrop(event)">
                                     <label></label>
-                                    <div ng-repeat="compra in allComprasShow">
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCompras')).scope().drag(event)" id="{{compra.id}}"></p>                
+                                    <div ng-show="edit" ng-repeat="cliente in allComprasPago">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theCompras')).scope().drag(event)" id="{{compra.id}}"></p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All clientes</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('theClientes')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('theClientes')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="cliente in allClientesShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('theClientes')).scope().drag(event)" id="{{cliente.id}}">{{cliente.name}}</p>                
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +68,7 @@
                             <a class="btn btn-info" ui-sref="pagosList">Cancel</a>
                         </div>
                     </div>
-                </form>
+</form>
 
             </div>
         </div>

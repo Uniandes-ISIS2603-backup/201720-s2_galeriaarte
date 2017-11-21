@@ -3,8 +3,8 @@
     mod.constant("pagosContext", "pagos");
     mod.constant("comprasContext", "api/compras")
     mod.controller('pagoCtrl', ['$scope', '$http','comprasContext','state', 'pagosContext',
-        function ($scope, $http, comprasContext, $state, pagosContext) {
-            $http.get(comprasContext + '/' + $state.params.compraId + '/' + pagosContext).then(function (response) {
+        function ($scope, $http, pagosContext) {
+            $http.get(pagosContext).then(function (response) {
                 $scope.pagosRecords = response.data;
             });
             

@@ -18,8 +18,8 @@
                     //Consulto el autor a editar.
                     $http.get(comprasContext + '/' + idCompra).then(function (response) {
                         var compra = response.data;
-                        $scope.compraValor = compra.valor;
-                        $scope.compraFecha = compra.fecha;
+                        $scope.valor = compra.valor;
+                        $scope.fecha = compra.fecha;
                         $scope.allPagosCompra = compra.pagos;
                         $scope.mergePagos($scope.allPagosCompra);
                     });
@@ -93,8 +93,8 @@
                         $scope.newPagos();
                         $http.put(comprasContext + "/" + idCompra, {
 //                            id: 0,
-                            valor: $scope.compraValor,
-                            fecha: $scope.compraFecha
+                            valor: $scope.valor,
+                            fecha: $scope.fecha
                         }).then(function (response) {
 //                            if (idsComentario.length > 0) {
 //                                $http.put(clientesContext + "/" + response.data.id + "/comentarios", $scope.allComentariosCliente).then(function (response) {
