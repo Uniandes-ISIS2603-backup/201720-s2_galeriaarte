@@ -42,6 +42,7 @@ public class ArtistaResource
     
     @Inject
     ArtistaLogic artistaLogic;
+    
 
     @POST
     public ArtistaDetailDTO createArtista(ArtistaDetailDTO artista) throws BusinessLogicException {        
