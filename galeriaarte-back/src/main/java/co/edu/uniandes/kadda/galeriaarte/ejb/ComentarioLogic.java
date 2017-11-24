@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
@@ -21,11 +16,20 @@ public class ComentarioLogic {
     @Inject
     private ComentarioPersistence persistence;
 
+    /**
+     *
+     * @return ComentarioEntity
+     */
     public List<ComentarioEntity> getComentarios() {
         List<ComentarioEntity> comentarios = persistence.findAll();
         return comentarios;
     }
 
+    /**
+     *
+     * @param id
+     * @return ComentarioEntity
+     */
     public ComentarioEntity getComentario(Long id) {
         ComentarioEntity comentario = persistence.find(id);
         if (comentario == null) {
@@ -33,47 +37,62 @@ public class ComentarioLogic {
         return comentario;
     }
 
+    /**
+     *
+     * @param entity
+     * @return ComentarioEntity
+     * @throws BusinessLogicException
+     */
     public ComentarioEntity createComentario(ComentarioEntity entity) throws BusinessLogicException {
         persistence.create(entity);
         return entity;
     }
 
+    /**
+     *
+     * @param id
+     * @param entity
+     * @return ComentarioEntity
+     * @throws BusinessLogicException
+     */
     public ComentarioEntity updateComentario(Long id, ComentarioEntity entity) throws BusinessLogicException {
         ComentarioEntity newEntity = persistence.update(entity);
         return newEntity;
     }
-    
-     public ComentarioEntity updateComentario(ComentarioEntity entity) throws BusinessLogicException {
+
+    /**
+     *
+     * @param entity
+     * @return ComentarioEntity
+     * @throws BusinessLogicException
+     */
+    public ComentarioEntity updateComentario(ComentarioEntity entity) throws BusinessLogicException {
         ComentarioEntity newEntity = persistence.update(entity);
         return newEntity;
     }
-     
-     
 
+    /**
+     *
+     * @param id
+     */
     public void deleteComentario(Long id) {
         persistence.delete(id);
     }
 
     /**
-     * Obtiene una colección de instancias de AuthorEntity asociadas a una
-     * instancia de Book
      *
-     * @param bookId Identificador de la instancia de Book
-     * @return Colección de instancias de AuthorEntity asociadas a la instancia
-     * de Book
-     *
+     * @param comentarioId
+     * @return
      */
     public ClienteEntity getCliente(Long comentarioId) {
         return getComentario(comentarioId).getClienteComentario();
     }
-    
+
     /**
-     * Asocia un Author existente a un Book
      *
-     * @param bookId Identificador de la instancia de Book
-     * @param authorsId Identificador de la instancia de Author
-     * @return Instancia de AuthorEntity que fue asociada a Book
-     *
+     * @param comentarioId
+     * @param clienteId
+     * @return ClienteEntity
      */
     public ClienteEntity addCliente(Long comentarioId, Long clienteId) {
         ComentarioEntity comentarioEntity = getComentario(comentarioId);
@@ -84,13 +103,10 @@ public class ComentarioLogic {
     }
 
     /**
-     * Remplaza las instancias de Author asociadas a una instancia de Book
      *
-     * @param bookId Identificador de la instancia de Book
-     * @param list Colección de instancias de AuthorEntity a asociar a instancia
-     * de Book
-     * @return Nueva colección de AuthorEntity asociada a la instancia de Book
-     *
+     * @param comentarioId
+     * @param entidad
+     * @return ClienteEntity
      */
     public ClienteEntity replaceCliente(Long comentarioId, ClienteEntity entidad) {
         ComentarioEntity comentarioEntity = getComentario(comentarioId);
@@ -99,11 +115,9 @@ public class ComentarioLogic {
     }
 
     /**
-     * Desasocia un Author existente de un Book existente
      *
-     * @param bookId Identificador de la instancia de Book
-     * @param authorsId Identificador de la instancia de Author
-     *
+     * @param comentarioId
+     * @param clienteId
      */
     public void removeCliente(Long comentarioId, Long clienteId) {
         ComentarioEntity entity = getComentario(comentarioId);
@@ -111,6 +125,4 @@ public class ComentarioLogic {
         clienteEntity.setId(clienteId);
         entity.setClienteComentario(null);
     }
-
-    
 }

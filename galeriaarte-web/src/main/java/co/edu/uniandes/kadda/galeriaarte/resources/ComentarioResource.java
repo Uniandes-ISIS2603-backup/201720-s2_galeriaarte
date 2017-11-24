@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ComentarioDetailDTO;
@@ -40,8 +35,8 @@ public class ComentarioResource {
     ComentarioLogic comentarioLogic;
 
     /**
-     *
-     * @return @throws BusinessLogicException
+     * @return ComentarioDetailDTO
+     * @throws BusinessLogicException
      */
     @GET
     public List<ComentarioDetailDTO> getComentarios() throws BusinessLogicException {
@@ -49,9 +44,8 @@ public class ComentarioResource {
     }
 
     /**
-     *
      * @param id
-     * @return
+     * @return ComentarioDetailDTO
      * @throws BusinessLogicException
      */
     @GET
@@ -65,9 +59,8 @@ public class ComentarioResource {
     }
 
     /**
-     *
      * @param comentario
-     * @return
+     * @return ComentarioDetailDTO
      * @throws BusinessLogicException
      */
     @POST
@@ -76,10 +69,9 @@ public class ComentarioResource {
     }
 
     /**
-     *
      * @param id
      * @param comentario
-     * @return
+     * @return ComentarioDetailDTO
      * @throws BusinessLogicException
      */
     @PUT
@@ -95,6 +87,10 @@ public class ComentarioResource {
         return new ComentarioDetailDTO(comentarioLogic.updateComentario(id, com));
     }
 
+    /**
+     * @param id
+     * @throws BusinessLogicException
+     */
     @DELETE
     @Path("{comentariosId: \\d+}")
     public void deleteComentario(@PathParam("comentariosId") Long id) throws BusinessLogicException {
@@ -105,6 +101,10 @@ public class ComentarioResource {
         comentarioLogic.deleteComentario(id);
     }
 
+    /**
+     * @param entityList
+     * @return ComentarioDetailDTO
+     */
     private List<ComentarioDetailDTO> listComentarioEntity2DetailDTO(List<ComentarioEntity> entityList) {
         List<ComentarioDetailDTO> list = new ArrayList<>();
         for (ComentarioEntity entity : entityList) {
@@ -112,5 +112,4 @@ public class ComentarioResource {
         }
         return list;
     }
-
 }

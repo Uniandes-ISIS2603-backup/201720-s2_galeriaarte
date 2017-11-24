@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ObraDetailDTO;
@@ -33,13 +28,9 @@ public class ClienteObraResource {
     @Inject
     private ClienteLogic clienteLogic;
 
-    @Inject
-    private ObraLogic obraLogic;
-
     /**
-     *
      * @param entityList
-     * @return
+     * @return ObraDetailDTO
      */
     private List<ObraDetailDTO> obrasListEntity2DTO(List<ObraEntity> entityList) {
         List<ObraDetailDTO> list = new ArrayList<>();
@@ -50,9 +41,8 @@ public class ClienteObraResource {
     }
 
     /**
-     *
      * @param dtos
-     * @return
+     * @return ObraEntity
      */
     private List<ObraEntity> obrasListDTO2Entity(List<ObraDetailDTO> dtos) {
         List<ObraEntity> list = new ArrayList<>();
@@ -63,9 +53,8 @@ public class ClienteObraResource {
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return ObraDetailDTO
      */
     @GET
     public List<ObraDetailDTO> listObras(@PathParam("clienteId") Long clienteId) {
@@ -73,10 +62,9 @@ public class ClienteObraResource {
     }
 
     /**
-     *
      * @param clienteId
      * @param obraId
-     * @return
+     * @return ObraDetailDTO
      * @throws BusinessLogicException
      */
     @GET
@@ -85,6 +73,11 @@ public class ClienteObraResource {
         return new ObraDetailDTO(clienteLogic.getObra(clienteId, obraId));
     }
 
+    /**
+     * @param clienteId
+     * @param obraId
+     * @return ObraDetailDTO
+     */
     @POST
     @Path("{obraId: \\d+}")
     public ObraDetailDTO addObra(@PathParam("clienteId") Long clienteId, @PathParam("obraId") Long obraId) {
@@ -92,14 +85,12 @@ public class ClienteObraResource {
     }
 
     /**
-     * 
      * @param clienteId
-     * @param obraId 
+     * @param obraId
      */
     @DELETE
     @Path("{obraId: \\d+}")
     public void removeObra(@PathParam("clienteId") Long clienteId, @PathParam("obraId") Long obraId) {
-        clienteLogic.removeObra( clienteId, obraId);
+        clienteLogic.removeObra(clienteId, obraId);
     }
-
 }

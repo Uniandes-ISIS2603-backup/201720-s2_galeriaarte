@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
@@ -38,62 +33,107 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<ObraEntity> obra;
 
+    /**
+     * @return GaleriaEntity
+     */
     public GaleriaEntity getClienteGaleria() {
         return clienteGaleria;
     }
 
+    /**
+     * @param clienteGaleria
+     */
     public void setClienteGaleria(GaleriaEntity clienteGaleria) {
         this.clienteGaleria = clienteGaleria;
     }
 
+    /**
+     * @return CompraEntity
+     */
     public List<CompraEntity> getCompra() {
         return compra;
     }
 
+    /**
+     * @param compra
+     */
     public void setCompra(List<CompraEntity> compra) {
         this.compra = compra;
     }
 
+    /**
+     * @return ObraEntity
+     */
     public List<ObraEntity> getObra() {
         return obra;
     }
 
+    /**
+     * @param obra
+     */
     public void setObra(List<ObraEntity> obra) {
         this.obra = obra;
     }
 
+    /**
+     * @return ComentarioEntity
+     */
     public List<ComentarioEntity> getComentarios() {
         return comentarios;
     }
 
+    /**
+     * @param comentarios
+     */
     public void setComentarios(List<ComentarioEntity> comentarios) {
         this.comentarios = comentarios;
     }
 
+    /**
+     * @param comentario
+     */
     public void setComentario(ComentarioEntity comentario) {
         this.comentarios.add(comentario);
     }
 
+    /**
+     * @param obra
+     */
     public void setObra(ObraEntity obra) {
         this.obra.add(obra);
     }
 
+    /**
+     * @param compra
+     */
     public void setCompra(CompraEntity compra) {
         this.compra.add(compra);
     }
 
+    /**
+     * @return String
+     */
     public String getTipoTarjeta() {
         return tipoTarjeta;
     }
 
+    /**
+     * @param nTipoTarjeta
+     */
     public void setTipoTarjeta(String nTipoTarjeta) {
         this.tipoTarjeta = nTipoTarjeta;
     }
 
+    /**
+     * @return Integer
+     */
     public int getNumTarjeta() {
         return numTarjeta;
     }
 
+    /**
+     * @param nNumTarjeta
+     */
     public void setNumtarjeta(int nNumTarjeta) {
         this.numTarjeta = nNumTarjeta;
     }

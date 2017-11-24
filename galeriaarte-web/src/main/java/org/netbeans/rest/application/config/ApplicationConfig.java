@@ -38,7 +38,6 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.BlogResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.CatalogoObraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.CatalogoResource.class);
-        resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ClienteComentarioResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ClienteCompraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ClienteObraResource.class);
         resources.add(co.edu.uniandes.kadda.galeriaarte.resources.ClienteResource.class);
