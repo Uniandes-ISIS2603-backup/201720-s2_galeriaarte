@@ -43,6 +43,7 @@ public class ArtistaResource
     @Inject
     ArtistaLogic artistaLogic;
     
+    
 
     @POST
     public ArtistaDetailDTO createArtista(ArtistaDetailDTO artista) throws BusinessLogicException {        
@@ -86,6 +87,9 @@ public class ArtistaResource
         }
         artistaLogic.deleteArtista(id);
     }
+    
+    
+    
     
     @Path("{idArtista: \\d+}/blogs")
     public Class<BlogResource> getBlogResource(@PathParam("idArtista") Long artistasId) {

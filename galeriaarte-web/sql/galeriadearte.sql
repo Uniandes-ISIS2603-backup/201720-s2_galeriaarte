@@ -1,4 +1,4 @@
-
+    
 delete from ClienteEntity;
 ALTER TABLE ClienteEntity ALTER COLUMN id RESTART WITH 1;
 delete from CompraEntity;
