@@ -17,6 +17,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['admin', 'cliente']
+                }
             }).state('clientesList', {
                 url: '/list',
                 parent: 'clientes',
@@ -51,6 +56,10 @@
                         templateUrl: basePath + 'new/clientes.new.html',
                         controller: 'clienteNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             }).state('clienteUpdate', {
                 url: '/update/{clienteId:int}',
@@ -63,6 +72,10 @@
                         templateUrl: basePath + 'new/clientes.new.html',
                         controller: 'clienteUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin', 'cliente']
                 }
             }).state('clienteDelete', {
                 url: '/delete/{clienteId:int}',
@@ -76,6 +89,10 @@
                         controller: 'clienteDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             });
         }]);
