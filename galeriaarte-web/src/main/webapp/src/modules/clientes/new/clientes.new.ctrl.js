@@ -4,6 +4,7 @@
     mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', '$rootScope',
         function ($scope, $http, clientesContext, $state, $rootScope) {
             $rootScope.edit = false;
+            
             $scope.createCliente = function () {
                 $http.post(clientesContext, {
                     id: 0,
