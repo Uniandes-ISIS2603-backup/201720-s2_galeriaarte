@@ -8,7 +8,7 @@
             $stateProvider.state('marcos', {
                 url: '/marcos',
                 abstract: true,
-                 views: {
+                views: {
                     'mainView': {
                         templateUrl: basePath + 'marcos.html',
                         controller: 'marcoCtrl',
@@ -30,14 +30,15 @@
                     marcoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'marcos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'marcos.detail.html',
                         controller: 'marcoCtrl',
                         controllerAs: 'ctrl'
                     }
-
                 }
-
             }).state('marcosCreate', {
                 url: '/create',
                 parent: 'marcos',
@@ -63,7 +64,7 @@
                 url: '/delete/{marcoId:int}',
                 parent: 'marcos',
                 param: {
-                   marcoId: null
+                    marcoId: null
                 },
                 views: {
                     'detailView': {
