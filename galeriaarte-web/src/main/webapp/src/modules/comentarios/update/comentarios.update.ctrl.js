@@ -45,8 +45,8 @@
 
                             var filteredClientes = $scope.Allclientes.filter(function (Allclientes) {
                                 return $scope.clientesComentario.filter(function (clientesComentario) {
-                                    return clientesComentario.id == Allclientes.id;
-                                }).length == 0
+                                    return clientesComentario.id === Allclientes.id;
+                                }).length === 0;
                             });
 
                             $scope.allClientesShow = filteredClientes;

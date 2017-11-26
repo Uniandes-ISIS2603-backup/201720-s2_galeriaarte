@@ -14,6 +14,7 @@ public class ClienteDTO {
     private int numTarjeta;
 
     public ClienteDTO() {
+        //COnstructor de Cliente
     }
 
     public ClienteDTO(ClienteEntity entidad) {

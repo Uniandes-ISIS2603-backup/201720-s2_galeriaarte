@@ -45,19 +45,6 @@ public class ClienteCompraResource {
 
     /**
      *
-     * @param dtos
-     * @return
-     */
-    private List<CompraEntity> compraListDTO2Entity(List<CompraDetailDTO> dtos) {
-        List<CompraEntity> list = new ArrayList<>();
-        for (CompraDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
-        }
-        return list;
-    }
-
-    /**
-     *
      * @param clienteId
      * @return
      */

@@ -53,10 +53,7 @@ public class ClienteLogic {
      * @return ClienteEntity
      */
     public ClienteEntity getCliente(Long id) {
-        ClienteEntity cliente = persistence.find(id);
-        if (cliente == null) {
-        }
-        return cliente;
+        return persistence.find(id);
     }
 
     /**
@@ -251,7 +248,6 @@ public class ClienteLogic {
     public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) throws BusinessLogicException {
         ComentarioEntity actual = null;
         if (entidad != null && getComentario(clienteId, entidad.getId()) != null) {
-            ClienteEntity cliente = getCliente(clienteId);
             List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
 
             Iterator<ComentarioEntity> it = comentarioList.iterator();
