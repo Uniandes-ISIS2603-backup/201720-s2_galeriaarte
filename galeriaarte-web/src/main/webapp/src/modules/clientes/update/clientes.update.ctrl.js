@@ -46,8 +46,8 @@
 
                             var filteredComentarios = $scope.Allcomentarios.filter(function (Allcomentarios) {
                                 return $scope.comentariosCliente.filter(function (comentariosCliente) {
-                                    return comentariosCliente.id == Allcomentarios.id;
-                                }).length == 0
+                                    return comentariosCliente.id === Allcomentarios.id;
+                                }).length === 0;
                             });
 
                             $scope.allComentariosShow = filteredComentarios;

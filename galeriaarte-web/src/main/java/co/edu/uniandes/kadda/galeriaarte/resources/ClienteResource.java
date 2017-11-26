@@ -32,7 +32,9 @@ public class ClienteResource {
 
     @Inject
     private ClienteLogic clienteLogic;
-
+    
+    String Error = "El Cliente no existe";
+    
     /**
      *
      * @return ClienteDetailDTO
@@ -54,7 +56,7 @@ public class ClienteResource {
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
-            throw new WebApplicationException("El Cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         return new ClienteDetailDTO(entity);
     }
@@ -84,7 +86,7 @@ public class ClienteResource {
         entity.setId(id);
         ClienteEntity oldEntity = clienteLogic.getCliente(id);
         if (oldEntity == null) {
-            throw new WebApplicationException("El Cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         entity.setComentarios(oldEntity.getComentarios());
         return new ClienteDetailDTO(clienteLogic.updateCliente(entity));
@@ -99,7 +101,7 @@ public class ClienteResource {
     public void deleteCliente(@PathParam("id") Long id) {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
-            throw new WebApplicationException("El Cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         clienteLogic.deleteCliente(id);
     }
@@ -122,8 +124,8 @@ public class ClienteResource {
      * @param dtoList
      * @return ClienteEntity
      */
-    public ArrayList<ClienteEntity> listDTO2Entity(List<ClienteDTO> dtoList) {
-        ArrayList<ClienteEntity> lista = new ArrayList<ClienteEntity>();
+    public List<ClienteEntity> listDTO2Entity(List<ClienteDTO> dtoList) {
+        ArrayList<ClienteEntity> lista = new ArrayList<>();
         for (ClienteDTO dto : dtoList) {
             ClienteEntity e = new ClienteEntity();
             e.setId(dto.getId());
@@ -143,7 +145,7 @@ public class ClienteResource {
     public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException("El cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         return ClienteComentarioResource.class;
     }
@@ -157,7 +159,7 @@ public class ClienteResource {
     public Class<ClienteObraResource> getClienteObraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException("El cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         return ClienteObraResource.class;
     }
@@ -171,7 +173,7 @@ public class ClienteResource {
     public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException("El cliente no existe", 404);
+            throw new WebApplicationException(Error, 404);
         }
         return ClienteCompraResource.class;
     }

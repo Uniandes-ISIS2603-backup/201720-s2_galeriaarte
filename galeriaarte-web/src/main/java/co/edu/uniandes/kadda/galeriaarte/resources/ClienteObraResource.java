@@ -2,7 +2,6 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ObraDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ClienteLogic;
-import co.edu.uniandes.kadda.galeriaarte.ejb.ObraLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import java.util.List;
@@ -36,18 +35,6 @@ public class ClienteObraResource {
         List<ObraDetailDTO> list = new ArrayList<>();
         for (ObraEntity entity : entityList) {
             list.add(new ObraDetailDTO(entity));
-        }
-        return list;
-    }
-
-    /**
-     * @param dtos
-     * @return ObraEntity
-     */
-    private List<ObraEntity> obrasListDTO2Entity(List<ObraDetailDTO> dtos) {
-        List<ObraEntity> list = new ArrayList<>();
-        for (ObraDetailDTO dto : dtos) {
-            list.add(dto.toEntity());
         }
         return list;
     }
