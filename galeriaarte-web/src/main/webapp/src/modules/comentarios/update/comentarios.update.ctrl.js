@@ -28,6 +28,7 @@
                      */
                     $scope.mergeClientes = function (clientes) {
                         for (var item in clientes) {
+                            if(clientes.hasOwnProperty(item))
                             idCliente.push("" + clientes[item].id);
                         }
                         $scope.getClientes(clientes);
@@ -92,6 +93,7 @@
                     $scope.newClientes = function () {
                         $scope.allClientesComentario = [];
                         for (var ite in idCliente) {
+                            if(idCliente.hasOwnProperty(ite))
                             for (var all in $scope.Allclientes) {
                                 if ($scope.Allclientes[all].id === parseInt(idCliente[ite])) {
                                     $scope.allClientesComentaio.push($scope.Allclientes[all]);

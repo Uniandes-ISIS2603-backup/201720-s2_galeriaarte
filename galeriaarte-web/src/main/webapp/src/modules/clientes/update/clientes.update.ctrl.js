@@ -29,6 +29,7 @@
                      */
                     $scope.mergeComentarios = function (comentarios) {
                         for (var item in comentarios) {
+                            if(comentarios.hasOwnProperty(item))
                             idsComentario.push("" + comentarios[item].id);
                         }
                         $scope.getComentarios(comentarios);
@@ -94,6 +95,7 @@
                     $scope.newComentarios = function () {
                         $scope.allComentariosCliente = [];
                         for (var ite in idsComentario) {
+                            if(idsComentario.hasOwnProperty(ite))
                             for (var all in $scope.Allcomentarios) {
                                 if ($scope.Allcomentarios[all].id === parseInt(idsComentario[ite])) {
                                     $scope.allComentariosCliente.push($scope.Allcomentarios[all]);
