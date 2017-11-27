@@ -54,12 +54,16 @@ insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista
 insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad de los Andes', 'Colombiana', 'Maria Alejandra', 'Recibí el premio Mejor Artista 2013',5);
 insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad Distrital', 'Chileno', 'Andrés', 'Recibí el premio Mejor Artista 2014',1);
 
-
-insert into MarcoEntity ( alto, ancho, material, name, valor,image) values ( 1, 1.5, 'Madera','Marco de madera', 80000,'http://img.aws.ehowcdn.com/intl-620/ds-photo/110/42/fotolia_973974_XS.jpg');
-insert into MarcoEntity ( alto, ancho, material, name, valor,image) values ( 0.5, 0.6, 'Oro','Marco de oro', 150000,'https://static.vix.com/es/sites/default/files/styles/large/public/imj/hogartotal/M/Marcos-para-cuadros-3.jpg?itok=OPXFS6kq');
-insert into MarcoEntity ( alto, ancho, material, name, valor,image) values ( 2, 2.5, 'Plastico','Marco de colores', 35000,'https://www.moldurashergon.es/img/blog/molduras-coloridas-520-748.jpg');
-insert into MarcoEntity ( alto, ancho, material, name, valor,image) values ( 1.5, 1.5, 'Yeso','Marco grabado', 95000,'https://www.moldurashergon.es/img/blog/molduras-grabadas-635-U76.jpg');
-insert into MarcoEntity ( alto, ancho, material, name, valor,image) values ( 3, 2.5, 'Metal','Marco de metal', 95000,'https://www.moldurashergon.es/img/blog/molduras-plata-025-900.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 1, 'Metal', 'Marco sencillo', 45000, 'https://www.moldurashergon.es/img/blog/molduras-planas-335-r67.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 2, 2, 'Yeso', 'Marco grabado', 90000, 'https://www.moldurashergon.es/img/blog/molduras-grabadas-635-U76.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 1.5, 'Oro', 'Marco europeo', 350000, 'https://www.moldurashergon.es/img/blog/molduras-doradas-270-039.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 0.5, 0.5, 'Metal', 'Marco de plata', 100000, 'https://www.moldurashergon.es/img/blog/molduras-plata-025-900.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 2, 'Yeso', 'Marco de yeso', 50000, 'https://www.moldurashergon.es/img/blog/molduras-blancas-659-238.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 0.75, 0.75, 'Madera', 'Marco antiguo', 250000, 'https://www.moldurashergon.es/img/blog/molduras-rusticas-693-A91.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1.5, 2, 'Marmol', 'Marco vintage', 75000, 'https://www.moldurashergon.es/img/blog/molduras-decapadas-534235.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 3.5, 2.5, 'Madera', 'Marco de madera clara', 125000, 'https://www.moldurashergon.es/img/blog/molduras-de-madera-clara.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 1.5, 'Plastico', 'Marco de plastico', 25000, 'https://www.moldurashergon.es/img/blog/molduras-coloridas-520-748.jpg');
+insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 2.5, 2.5, 'Madera', 'Marco étnico', 85000, 'https://www.moldurashergon.es/img/blog/molduras-etnicas-429-235.jpg');
 
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1', 'Como entender el arte abstracta',1);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido2', 'Como aprender a pintar',2);

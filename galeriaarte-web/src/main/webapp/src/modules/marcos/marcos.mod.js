@@ -15,6 +15,12 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador']
+                }
+                
             }).state('marcosList', {
                 url: '/list',
                 parent: 'marcos',
@@ -31,7 +37,7 @@
                 },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'marcos.list.html'
+                        templateUrl: basePath + 'marcos.detailList.html'
                     },
                     'detailView': {
                         templateUrl: basePath + 'marcos.detail.html',
@@ -47,6 +53,10 @@
                         templateUrl: basePath + '/new/marcos.new.html',
                         controller: 'marcoNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             }).state('marcoUpdate', {
                 url: '/update/{marcoId:int}',
@@ -59,6 +69,10 @@
                         templateUrl: basePath + '/new/marcos.new.html',
                         controller: 'marcoUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             }).state('marcoDelete', {
                 url: '/delete/{marcoId:int}',
@@ -71,6 +85,10 @@
                         templateUrl: basePath + '/delete/marco.delete.html',
                         controller: 'marcoDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             });
         }]);
