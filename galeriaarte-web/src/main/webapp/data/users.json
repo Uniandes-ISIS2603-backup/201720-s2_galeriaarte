@@ -1,0 +1,49 @@
+[
+    {
+        "id": 1,
+        "user": "ks.estupinan",
+        "name": "Kelvin",
+        "password": "kelvin123",
+        "rol": "cliente"
+    }
+    ,
+    {
+        "id": 2,
+        "user": "af.leon",
+        "name": "Andres",
+        "password": "andres123",
+        "rol": "cliente"
+    }
+    ,
+    {
+        "id": 3,
+        "user": "jd.carrillor",
+        "name": "DanilB",
+        "password": "daniel123",
+        "rol": "cliente"
+    }
+    ,
+    {
+        "id": 4,
+        "user": "d.perilla11",
+        "name": "DanielP",
+        "password": "daniel123",
+        "rol": "cliente"
+    }
+    ,
+    {
+        "id": 5,
+        "user": "ma.abril",
+        "name": "Alejandra",
+        "password": "alejandra123",
+        "rol": "cliente"
+    }
+    ,
+    {
+        "id": 6,
+        "user": "rubby",
+        "name": "Rubby",
+        "password": "rubby123",
+        "rol": "admin"
+    }
+]

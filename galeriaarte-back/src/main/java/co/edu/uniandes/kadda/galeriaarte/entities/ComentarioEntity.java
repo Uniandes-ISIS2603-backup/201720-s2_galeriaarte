@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.entities;
 
 import java.io.Serializable;
@@ -25,20 +20,31 @@ public class ComentarioEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private ObraEntity obra;
 
+    /**
+     * @return ClienteEntity
+     */
     public ClienteEntity getClienteComentario() {
         return clienteComentario;
     }
 
+    /**
+     * @param clienteComentario
+     */
     public void setClienteComentario(ClienteEntity clienteComentario) {
         this.clienteComentario = clienteComentario;
     }
 
+    /**
+     * @return ObraEntity
+     */
     public ObraEntity getObra() {
         return obra;
     }
 
+    /**
+     * @param obra
+     */
     public void setObra(ObraEntity obra) {
         this.obra = obra;
     }
-
 }

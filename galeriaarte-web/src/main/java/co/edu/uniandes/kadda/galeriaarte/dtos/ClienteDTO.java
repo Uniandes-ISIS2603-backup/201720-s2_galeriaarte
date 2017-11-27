@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
@@ -19,8 +14,6 @@ public class ClienteDTO {
     private int numTarjeta;
 
     public ClienteDTO() {
-        //Constructor por defecto
-
     }
 
     public ClienteDTO(ClienteEntity entidad) {

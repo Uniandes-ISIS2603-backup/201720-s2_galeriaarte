@@ -3,19 +3,16 @@
             var mod = ng.module("clienteModule");
             mod.constant("clientesContext", "api/cliente");
             mod.constant("comentariosContext", "api/comentarios");
-            mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clientesContext', '$state', 'comentariosContext', '$rootScope', '$filter',
-                function ($scope, $http, clientesContext, $state, comentariosContext, $rootScope, $filter) {
+            mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clientesContext', '$state', 'comentariosContext', '$rootScope',
+                function ($scope, $http, clientesContext, $state, comentariosContext, $rootScope) {
                     $rootScope.edit = true;
 
                     var idCliente = $state.params.clienteId;
 
-                    // Este arreglo guardara los ids de los books asociados y por asociar al autor.
                     var idsComentario = [];
 
-                    // Este arreglo mostrará los books una vez esten filtrados visualmente por lo que el autor ya tiene asociado.
                     $scope.allComentariosShow = [];
 
-                    //Consulto el autor a editar.
                     $http.get(clientesContext + '/' + idCliente).then(function (response) {
                         var cliente = response.data;
                         $scope.clienteName = cliente.name;
@@ -25,9 +22,9 @@
                         $scope.mergeComentarios($scope.allComentariosCliente);
                     });
 
-                    /*
-                     * Esta función añade los ids de los books que ya tiene el autor asociado.
-                     * @param {type} books: Son los books que ya tiene asociado el autor.
+                    /**
+                     * 
+                     * @param {type} comentarios
                      * @returns {undefined}
                      */
                     $scope.mergeComentarios = function (comentarios) {
@@ -37,9 +34,9 @@
                         $scope.getComentarios(comentarios);
                     };
 
-                    /*
-                     * Esta función recibe como param los books que tiene el autor para hacer un filtro visual con todos los books que existen.
-                     * @param {type} books
+                    /**
+                     * 
+                     * @param {type} comentarios
                      * @returns {undefined}
                      */
                     $scope.getComentarios = function (comentarios) {
@@ -57,9 +54,7 @@
 
                         });
                     };
-
-
-                    //funciones para el drag and drop de HTML5 nativo
+                                      
                     $scope.allowDrop = function (ev) {
                         ev.preventDefault();
                     };
@@ -72,7 +67,6 @@
                         ev.preventDefault();
                         var data = ev.dataTransfer.getData("text");
                         ev.target.appendChild(document.getElementById(data));
-                        //Cuando un book se añade al autor, se almacena su id en el array idsBook
                         idsComentario.push("" + data);
                     };
 
@@ -80,7 +74,6 @@
                         ev.preventDefault();
                         var data = ev.dataTransfer.getData("text");
                         ev.target.appendChild(document.getElementById(data));
-                        //Para remover el book que no se va asociar, por eso se usa el splice que quita el id del book en el array idsBook
                         var index = idsComentario.indexOf(data);
                         if (index > -1) {
                             idsComentario.splice(index, 1);
@@ -88,21 +81,12 @@
                     };
 
                     $scope.createCliente = function () {
-                        /*Se llama a la función newBooks() para buscar cada uno de los ids de los books
-                         en el array que tiene todos los books y así saber como queda la lista final de los books asociados al autor.
-                         */
                         $scope.newComentarios();
                         $http.put(clientesContext + "/" + idCliente, {
-//                            id: 0,
                             name: $scope.clienteName,
                             tipoTarjeta: $scope.clienteTipoTarjeta,
                             numTarjeta: $scope.clienteNumeroTarjeta
                         }).then(function (response) {
-//                            if (idsComentario.length > 0) {
-//                                $http.put(clientesContext + "/" + response.data.id + "/comentarios", $scope.allComentariosCliente).then(function (response) {
-//                                });
-//                            }
-                            //Author created successfully
                             $state.go('clientesList', {clienteId: response.data.id}, {reload: true});
                         });
                     };

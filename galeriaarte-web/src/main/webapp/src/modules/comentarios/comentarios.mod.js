@@ -4,7 +4,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/comentarios/';
-            var basePathClientes = 'src/modules/clientes/';
+//            var basePathClientes = 'src/modules/clientes/';
             $urlRouterProvider.otherwise("/comentariosList");
             
             $stateProvider.state('comentarios', {

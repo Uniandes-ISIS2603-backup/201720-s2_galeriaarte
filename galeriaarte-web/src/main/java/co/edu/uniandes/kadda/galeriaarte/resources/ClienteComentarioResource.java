@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ComentarioDetailDTO;
@@ -102,23 +97,23 @@ public class ClienteComentarioResource {
     /**
      *
      * @param clienteId
-     * @param comentarios
+     * @param comentario
      * @return
+     * @throws BusinessLogicException
      */
     @PUT
     public ComentarioDetailDTO replaceComentarios(@PathParam("clienteId") Long clienteId, ComentarioDetailDTO comentario) throws BusinessLogicException {
-
         return new ComentarioDetailDTO(comentarioLogic.updateComentario(clienteId, clienteLogic.replaceComentario(clienteId, comentario.toEntity())));
     }
 
     /**
-     * 
+     *
      * @param clienteId
-     * @param comentarioId 
+     * @param comentarioId
      */
     @DELETE
     @Path("{comentarioId: \\d+}")
     public void removeComentario(@PathParam("clienteId") Long clienteId, @PathParam("comentarioId") Long comentarioId) {
-        clienteLogic.removeComentario( clienteId , comentarioId);
+        clienteLogic.removeComentario(clienteId, comentarioId);
     }
 }

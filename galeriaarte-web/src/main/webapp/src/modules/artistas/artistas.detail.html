@@ -24,8 +24,11 @@
                 
                 <hr>
                 <dt>Obras</dt>
+   
                 <ul ng-repeat="obra in currentArtista.obras">
+                <dd>    
                <a ui-sref="obraDetail({obraId: obra.id})">{{obra.name}}</a>
+                </dd>
                 </ul>
                 
                  <hr>

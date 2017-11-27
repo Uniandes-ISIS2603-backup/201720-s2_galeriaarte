@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
@@ -34,12 +29,10 @@ public class ClienteLogic {
 
     @Inject
     private CompraLogic compraLogic;
-    
 
     /**
-     *
      * @param entity
-     * @return
+     * @return ClienteEntity
      */
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
         if (persistence.find(entity.getId()) != null) {
@@ -49,17 +42,15 @@ public class ClienteLogic {
     }
 
     /**
-     *
-     * @return
+     * @return ClienteEntity
      */
     public List<ClienteEntity> getClientes() {
         return persistence.findAll();
     }
 
     /**
-     *
      * @param id
-     * @return
+     * @return ClienteEntity
      */
     public ClienteEntity getCliente(Long id) {
         ClienteEntity cliente = persistence.find(id);
@@ -69,16 +60,14 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param entity
-     * @return
+     * @return ClienteEntity
      */
     public ClienteEntity updateCliente(ClienteEntity entity) {
         return persistence.update(entity);
     }
 
     /**
-     *
      * @param id
      */
     public void deleteCliente(Long id) {
@@ -86,37 +75,33 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return ComentarioEntity
      */
     public List<ComentarioEntity> listComentarios(Long clienteId) {
         return getCliente(clienteId).getComentarios();
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return ObraEntity
      */
     public List<ObraEntity> listObras(Long clienteId) {
         return getCliente(clienteId).getObra();
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return CompraEntity
      */
     public List<CompraEntity> listCompras(Long clienteId) {
         return getCliente(clienteId).getCompra();
     }
 
     /**
-     *
      * @param clienteId
      * @param comentarioId
-     * @return
+     * @return ComentarioEntity
      */
     public ComentarioEntity addComentario(Long clienteId, Long comentarioId) {
         ClienteEntity entity = getCliente(clienteId);
@@ -127,10 +112,9 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param clienteId
      * @param obraId
-     * @return
+     * @return ObraEntity
      */
     public ObraEntity addObra(Long clienteId, Long obraId) {
         ClienteEntity entity = getCliente(clienteId);
@@ -141,10 +125,9 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param clienteId
      * @param compraId
-     * @return
+     * @return CompraEntity
      */
     public CompraEntity addCompra(Long clienteId, Long compraId) {
         ClienteEntity entity = getCliente(clienteId);
@@ -155,37 +138,34 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return ComentarioEntity
      */
     public List<ComentarioEntity> getComentarios(Long clienteId) {
         return getCliente(clienteId).getComentarios();
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return ObraEntity
      */
     public List<ObraEntity> getObras(Long clienteId) {
         return getCliente(clienteId).getObra();
     }
 
     /**
-     *
      * @param clienteId
-     * @return
+     * @return CompraEntity
      */
     public List<CompraEntity> getCompras(Long clienteId) {
         return getCliente(clienteId).getCompra();
     }
 
     /**
-     *
      * @param clienteId
      * @param comentarioId
-     * @return
+     * @return ComentarioEntity
+     * @throws BusinessLogicException
      */
     public ComentarioEntity getComentario(Long clienteId, Long comentarioId) throws BusinessLogicException {
         List<ComentarioEntity> list = getCliente(clienteId).getComentarios();
@@ -201,7 +181,7 @@ public class ClienteLogic {
      *
      * @param clienteId
      * @param obraId
-     * @return
+     * @return ObraEntity
      * @throws BusinessLogicException
      */
     public ObraEntity getObra(Long clienteId, Long obraId) throws BusinessLogicException {
@@ -214,6 +194,12 @@ public class ClienteLogic {
         throw new BusinessLogicException("La obra no está asociado al cliente");
     }
 
+    /**
+     * @param clienteId
+     * @param compraId
+     * @return CompraEntity
+     * @throws BusinessLogicException
+     */
     public CompraEntity getCompra(Long clienteId, Long compraId) throws BusinessLogicException {
         List<CompraEntity> list = getCliente(clienteId).getCompra();
         CompraEntity compraEntity = compraLogic.getCompra(compraId);
@@ -224,19 +210,24 @@ public class ClienteLogic {
         throw new BusinessLogicException("La compra no está asociado al cliente");
     }
 
+    /**
+     * @return CompraLogic
+     */
     public CompraLogic getCompraLogic() {
         return compraLogic;
     }
 
+    /**
+     * @param compraLogic
+     */
     public void setCompraLogic(CompraLogic compraLogic) {
         this.compraLogic = compraLogic;
     }
 
     /**
-     *
      * @param clienteId
      * @param list
-     * @return
+     * @return ComentarioEntity
      */
     public List<ComentarioEntity> replaceComentarios(Long clienteId, List<ComentarioEntity> list) {
         ClienteEntity cliente = getCliente(clienteId);
@@ -251,28 +242,34 @@ public class ClienteLogic {
         return list;
     }
 
+    /**
+     * @param clienteId
+     * @param entidad
+     * @return ComentarioEntity
+     * @throws BusinessLogicException
+     */
     public ComentarioEntity replaceComentario(Long clienteId, ComentarioEntity entidad) throws BusinessLogicException {
         ComentarioEntity actual = null;
-        if(entidad != null && getComentario(clienteId, entidad.getId())!= null ){
-        ClienteEntity cliente = getCliente(clienteId);
-        List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
+        if (entidad != null && getComentario(clienteId, entidad.getId()) != null) {
+            ClienteEntity cliente = getCliente(clienteId);
+            List<ComentarioEntity> comentarioList = comentarioLogic.getComentarios();
 
-        Iterator<ComentarioEntity> it = comentarioList.iterator();
-        while (it.hasNext()) {
-            actual = it.next();
-            if (actual.getId().equals(entidad.getId())) {
-                actual.setName(entidad.getName());
-                break;
+            Iterator<ComentarioEntity> it = comentarioList.iterator();
+            while (it.hasNext()) {
+                actual = it.next();
+                if (actual.getId().equals(entidad.getId())) {
+                    actual.setName(entidad.getName());
+                    break;
+                }
             }
-        }}
+        }
         return actual;
     }
 
     /**
-     *
      * @param clienteId
      * @param list
-     * @return
+     * @return ObraEntity
      */
     public List<ObraEntity> replaceObras(Long clienteId, List<ObraEntity> list) {
         ClienteEntity cliente = getCliente(clienteId);
@@ -288,7 +285,6 @@ public class ClienteLogic {
     }
 
     /**
-     *
      * @param clienteId
      * @param comentarioId
      */
@@ -300,6 +296,10 @@ public class ClienteLogic {
         comentarioLogic.deleteComentario(comentarioId);
     }
 
+    /**
+     * @param clienteId
+     * @param obraId
+     */
     public void removeObra(Long clienteId, Long obraId) {
         ClienteEntity clienteEntity = getCliente(clienteId);
         ObraEntity obra = obraLogic.findObra(obraId);

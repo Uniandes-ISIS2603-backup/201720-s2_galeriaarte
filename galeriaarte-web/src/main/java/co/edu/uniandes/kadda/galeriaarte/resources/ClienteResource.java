@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
 import co.edu.uniandes.kadda.galeriaarte.dtos.ClienteDTO;
@@ -39,10 +34,9 @@ public class ClienteResource {
     private ClienteLogic clienteLogic;
 
     /**
-     * Obtiene la lista de los registros de Author
      *
-     * @return Colección de objetos de AuthorDetailDTO
-     *
+     * @return ClienteDetailDTO
+     * @throws BusinessLogicException
      */
     @GET
     public List<ClienteDetailDTO> getClientes() throws BusinessLogicException {
@@ -50,11 +44,10 @@ public class ClienteResource {
     }
 
     /**
-     * Obtiene los datos de una instancia de Author a partir de su ID
      *
-     * @param id Identificador de la instancia a consultar
-     * @return Instancia de AuthorDetailDTO con los datos del Author consultado
-     *
+     * @param id
+     * @return ClienteDetailDTO
+     * @throws BusinessLogicException
      */
     @GET
     @Path("{id: \\d+}")
@@ -69,7 +62,8 @@ public class ClienteResource {
     /**
      *
      * @param dto
-     * @return
+     * @return ClienteDetailDTO
+     * @throws BusinessLogicException
      */
     @POST
     public ClienteDetailDTO createCliente(ClienteDetailDTO dto) throws BusinessLogicException {
@@ -77,12 +71,11 @@ public class ClienteResource {
     }
 
     /**
-     * Actualiza la información de una instancia de Author
      *
-     * @param id Identificador de la instancia de Author a modificar
-     * @param dto Instancia de AuthorDetailDTO con los nuevos datos
-     * @return Instancia de AuthorDetailDTO con los datos actualizados
-     *
+     * @param id
+     * @param dto
+     * @return ClienteDetailDTO
+     * @throws BusinessLogicException
      */
     @PUT
     @Path("{id: \\d+}")
@@ -98,10 +91,8 @@ public class ClienteResource {
     }
 
     /**
-     * Elimina una instancia de Author de la base de datos
      *
-     * @param id Identificador de la instancia a eliminar
-     *
+     * @param id
      */
     @DELETE
     @Path("{id: \\d+}")
@@ -113,6 +104,11 @@ public class ClienteResource {
         clienteLogic.deleteCliente(id);
     }
 
+    /**
+     *
+     * @param entityList
+     * @return ClienteDetailDTO
+     */
     private List<ClienteDetailDTO> listEntity2DTO(List<ClienteEntity> entityList) {
         List<ClienteDetailDTO> list = new ArrayList<>();
         for (ClienteEntity entity : entityList) {
@@ -120,21 +116,29 @@ public class ClienteResource {
         }
         return list;
     }
-    
-    public ArrayList<ClienteEntity> listDTO2Entity(List<ClienteDTO> dtoList)
-    {
+
+    /**
+     *
+     * @param dtoList
+     * @return ClienteEntity
+     */
+    public ArrayList<ClienteEntity> listDTO2Entity(List<ClienteDTO> dtoList) {
         ArrayList<ClienteEntity> lista = new ArrayList<ClienteEntity>();
-        for(ClienteDTO dto : dtoList)
-        {
+        for (ClienteDTO dto : dtoList) {
             ClienteEntity e = new ClienteEntity();
             e.setId(dto.getId());
             e.setName(dto.getName());
-            
+
             lista.add(e);
         }
-       return lista;
+        return lista;
     }
 
+    /**
+     *
+     * @param clienteId
+     * @return ClienteComentarioResource
+     */
     @Path("{clienteId: \\d+}/comentarios")
     public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
@@ -144,6 +148,11 @@ public class ClienteResource {
         return ClienteComentarioResource.class;
     }
 
+    /**
+     *
+     * @param clienteId
+     * @return ClienteObraResource
+     */
     @Path("{clienteId: \\d+}/obras")
     public Class<ClienteObraResource> getClienteObraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
@@ -153,6 +162,11 @@ public class ClienteResource {
         return ClienteObraResource.class;
     }
 
+    /**
+     *
+     * @param clienteId
+     * @return ClienteCompraResource
+     */
     @Path("{clienteId: \\d+}/compras")
     public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
