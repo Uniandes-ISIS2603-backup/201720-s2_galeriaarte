@@ -12,6 +12,7 @@ public class ComentarioDTO {
     private String contenido;
 
     public ComentarioDTO() {
+        //COnstructor de Comentario
     }
 
     public ComentarioDTO(ComentarioEntity entidad) {

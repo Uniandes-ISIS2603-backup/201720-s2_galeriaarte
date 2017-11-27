@@ -21,8 +21,7 @@ public class ComentarioLogic {
      * @return ComentarioEntity
      */
     public List<ComentarioEntity> getComentarios() {
-        List<ComentarioEntity> comentarios = persistence.findAll();
-        return comentarios;
+        return persistence.findAll();
     }
 
     /**
@@ -31,10 +30,7 @@ public class ComentarioLogic {
      * @return ComentarioEntity
      */
     public ComentarioEntity getComentario(Long id) {
-        ComentarioEntity comentario = persistence.find(id);
-        if (comentario == null) {
-        }
-        return comentario;
+        return persistence.find(id);
     }
 
     /**
@@ -44,20 +40,7 @@ public class ComentarioLogic {
      * @throws BusinessLogicException
      */
     public ComentarioEntity createComentario(ComentarioEntity entity) throws BusinessLogicException {
-        persistence.create(entity);
-        return entity;
-    }
-
-    /**
-     *
-     * @param id
-     * @param entity
-     * @return ComentarioEntity
-     * @throws BusinessLogicException
-     */
-    public ComentarioEntity updateComentario(Long id, ComentarioEntity entity) throws BusinessLogicException {
-        ComentarioEntity newEntity = persistence.update(entity);
-        return newEntity;
+        return persistence.create(entity);
     }
 
     /**
@@ -67,8 +50,7 @@ public class ComentarioLogic {
      * @throws BusinessLogicException
      */
     public ComentarioEntity updateComentario(ComentarioEntity entity) throws BusinessLogicException {
-        ComentarioEntity newEntity = persistence.update(entity);
-        return newEntity;
+        return persistence.update(entity);
     }
 
     /**

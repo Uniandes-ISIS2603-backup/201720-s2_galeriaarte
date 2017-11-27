@@ -28,6 +28,7 @@
                      */
                     $scope.mergeClientes = function (clientes) {
                         for (var item in clientes) {
+                            if(clientes.hasOwnProperty(item))
                             idCliente.push("" + clientes[item].id);
                         }
                         $scope.getClientes(clientes);
@@ -45,8 +46,8 @@
 
                             var filteredClientes = $scope.Allclientes.filter(function (Allclientes) {
                                 return $scope.clientesComentario.filter(function (clientesComentario) {
-                                    return clientesComentario.id == Allclientes.id;
-                                }).length == 0
+                                    return clientesComentario.id === Allclientes.id;
+                                }).length === 0;
                             });
 
                             $scope.allClientesShow = filteredClientes;
@@ -92,6 +93,7 @@
                     $scope.newClientes = function () {
                         $scope.allClientesComentario = [];
                         for (var ite in idCliente) {
+                            if(idCliente.hasOwnProperty(ite))
                             for (var all in $scope.Allclientes) {
                                 if ($scope.Allclientes[all].id === parseInt(idCliente[ite])) {
                                     $scope.allClientesComentaio.push($scope.Allclientes[all]);

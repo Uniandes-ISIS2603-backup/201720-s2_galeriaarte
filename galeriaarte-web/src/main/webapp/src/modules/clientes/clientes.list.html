@@ -14,8 +14,7 @@
                             <tr>
                                 <th>Name</th> 
                                 <th>TipoTarjeta</th> 
-                                <th>NumTarjeta</th>    
-                                <th>Acciones</th>
+                                <th>NumTarjeta</th>
                                 <th ng-if="isAuthenticated() && hasPermissions()">Actions</th> 
                             </tr>
                         </thead>
@@ -24,7 +23,7 @@
                                 <td id="{{$index}}-name"><a ui-sref="clienteDetail({clienteId: cliente.id})">{{cliente.name}}</a></td>   
                                 <td id="{{$index}}-tipoTarjeta">{{cliente.tipoTarjeta}}</td>   
                                 <td id="{{$index}}-numTarjeta">{{cliente.numTarjeta}}</td>
-                                <td id="{{$index}}-actions">
+                                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">
                                     <a ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-edit" class="btn btn-default btn-sm" ui-sref="clienteUpdate({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a  ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-delete" class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteId: cliente.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>

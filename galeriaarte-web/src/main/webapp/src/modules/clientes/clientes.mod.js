@@ -20,7 +20,7 @@
                 ,
                 data: {
                     requireLogin: false,
-                    roles: ['admin', 'cliente']
+                    roles: ['administrador', 'cliente']
                 }
             }).state('clientesList', {
                 url: '/list',
@@ -59,7 +59,7 @@
                 },
                 data: {
                     requireLogin: true,
-                    roles: ['admin']
+                    roles: ['administrador']
                 }
             }).state('clienteUpdate', {
                 url: '/update/{clienteId:int}',
@@ -75,7 +75,7 @@
                 },
                 data: {
                     requireLogin: true,
-                    roles: ['admin', 'cliente']
+                    roles: ['administrador', 'cliente']
                 }
             }).state('clienteDelete', {
                 url: '/delete/{clienteId:int}',
@@ -92,7 +92,7 @@
                 },
                 data: {
                     requireLogin: true,
-                    roles: ['admin']
+                    roles: ['administrador']
                 }
             });
         }]);

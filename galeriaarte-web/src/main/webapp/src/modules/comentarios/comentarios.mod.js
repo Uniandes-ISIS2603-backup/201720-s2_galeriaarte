@@ -4,7 +4,6 @@
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/comentarios/';
-//            var basePathClientes = 'src/modules/clientes/';
             $urlRouterProvider.otherwise("/comentariosList");
             
             $stateProvider.state('comentarios', {
@@ -33,9 +32,6 @@
                 },
                 views: {
                     'listView': {
-//                        templateUrl: basePathClientes + 'clientes.list.html',
-//                        controller: 'comentarioCtrl',
-//                        controllerAs: 'ctrl'
                         templateUrl: basePath + 'comentarios.list.html'
                     },
                     'detailView': {

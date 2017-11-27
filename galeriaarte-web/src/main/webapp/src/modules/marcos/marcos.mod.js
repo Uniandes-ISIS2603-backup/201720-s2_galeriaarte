@@ -8,13 +8,19 @@
             $stateProvider.state('marcos', {
                 url: '/marcos',
                 abstract: true,
-                 views: {
+                views: {
                     'mainView': {
                         templateUrl: basePath + 'marcos.html',
                         controller: 'marcoCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador']
+                }
+                
             }).state('marcosList', {
                 url: '/list',
                 parent: 'marcos',
@@ -30,14 +36,15 @@
                     marcoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'marcos.detailList.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'marcos.detail.html',
                         controller: 'marcoCtrl',
                         controllerAs: 'ctrl'
                     }
-
                 }
-
             }).state('marcosCreate', {
                 url: '/create',
                 parent: 'marcos',
@@ -46,6 +53,10 @@
                         templateUrl: basePath + '/new/marcos.new.html',
                         controller: 'marcoNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             }).state('marcoUpdate', {
                 url: '/update/{marcoId:int}',
@@ -58,18 +69,26 @@
                         templateUrl: basePath + '/new/marcos.new.html',
                         controller: 'marcoUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             }).state('marcoDelete', {
                 url: '/delete/{marcoId:int}',
                 parent: 'marcos',
                 param: {
-                   marcoId: null
+                    marcoId: null
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/delete/marco.delete.html',
                         controller: 'marcoDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['administrador']
                 }
             });
         }]);

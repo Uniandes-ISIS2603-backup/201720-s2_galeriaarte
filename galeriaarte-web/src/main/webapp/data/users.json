@@ -1,49 +1,120 @@
 [
     {
         "id": 1,
-        "user": "ks.estupinan",
-        "name": "Kelvin",
+        "user": "adminKelvin",
+        "name": "Kelvin Estupiñan",
+        "password": "kelvin123",
+        "rol": "administrador"
+    }
+    ,
+    {
+        "id": 4,
+        "user": "adminAndres",
+        "name": "Andrés León",
+        "password": "andres123",
+        "rol": "administrador"
+    }
+    ,
+    {
+        "id": 7,
+        "user": "adminCarrillo",
+        "name": "Juan Daniel Carrillo",
+        "password": "daniel123",
+        "rol": "administrador"
+    }
+    ,
+    {
+        "id": 10,
+        "user": "adminPerilla",
+        "name": "Daniel Perrilla",
+        "password": "daniel123",
+        "rol": "administrador"
+    }
+    ,
+    {
+        "id": 13,
+        "user": "adminMaria",
+        "name": " María Alejandra",
+        "password": "alejandra123",
+        "rol": "administrador"
+    }
+    ,
+   {
+        "id": 2,
+        "user": "clienteKelvin",
+        "name": "Kelvin Estupiñan",
         "password": "kelvin123",
         "rol": "cliente"
     }
     ,
     {
-        "id": 2,
-        "user": "af.leon",
-        "name": "Andres",
+        "id": 5,
+        "user": "clienteAndres",
+        "name": "Andrés León",
         "password": "andres123",
         "rol": "cliente"
     }
     ,
     {
-        "id": 3,
-        "user": "jd.carrillor",
-        "name": "DanilB",
+        "id": 8,
+        "user": "clienteCarrillo",
+        "name": "Juan Daniel Carrillo",
         "password": "daniel123",
         "rol": "cliente"
     }
     ,
     {
-        "id": 4,
-        "user": "d.perilla11",
-        "name": "DanielP",
+        "id": 11,
+        "user": "clientePerilla",
+        "name": "Daniel Perrilla",
         "password": "daniel123",
         "rol": "cliente"
     }
     ,
     {
-        "id": 5,
-        "user": "ma.abril",
-        "name": "Alejandra",
+        "id": 14,
+        "user": "clienteMaria",
+        "name": " María Alejandra",
         "password": "alejandra123",
         "rol": "cliente"
+    }
+    ,{
+        "id": 3,
+        "user": "artistaKelvin",
+        "name": "Kelvin Estupiñan",
+        "password": "kelvin123",
+        "rol": "artista"
     }
     ,
     {
         "id": 6,
-        "user": "rubby",
-        "name": "Rubby",
-        "password": "rubby123",
-        "rol": "admin"
+        "user": "artistaAndres",
+        "name": "Andrés León",
+        "password": "andres123",
+        "rol": "artista"
+    }
+    ,
+    {
+        "id": 9,
+        "user": "artistaCarrillo",
+        "name": "Juan Daniel Carrillo",
+        "password": "daniel123",
+        "rol": "artista"
+    }
+    ,
+    {
+        "id": 12,
+        "user": "artistaPerilla",
+        "name": "Daniel Perrilla",
+        "password": "daniel123",
+        "rol": "artista"
+    }
+    ,
+    {
+        "id": 15,
+        "user": "artistaMaria",
+        "name": " María Alejandra",
+        "password": "alejandra123",
+        "rol": "artista"
     }
 ]
