@@ -25,6 +25,8 @@ package co.edu.uniandes.kadda.galeriaarte.resources;
 
 
 
+
+    
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
