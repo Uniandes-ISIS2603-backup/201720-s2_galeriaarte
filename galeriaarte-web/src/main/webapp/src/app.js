@@ -28,13 +28,13 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin
-                var roles = $state.current.data.roles
+                var requireLogin = $state.current.data.requireLogin;
+                var roles = $state.current.data.roles;
                
 
                 $rootScope.isAuthenticated = function () {
 
-                    if (sessionStorage.getItem("username") != null) {
+                    if (sessionStorage.getItem("username") !== null) {
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         return true;
                     } else {
@@ -43,13 +43,12 @@
                 };
                 
                 $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
+                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1) && (roles.indexOf(sessionStorage.getItem("rol")) < 1)) {
                         return true;
                     } else {
                         return false;
                     }
                 };
-
 
                 if (requireLogin && (sessionStorage.getItem("username") === null)) {
                     event.preventDefault();
