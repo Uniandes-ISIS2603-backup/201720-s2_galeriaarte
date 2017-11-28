@@ -47,6 +47,7 @@ insert into ObraEntity ( cantidad, name, tipo, valor, artista_id, imagen) values
 insert into ObraEntity ( cantidad, name, tipo, valor, artista_id, imagen) values ( 3, 'La noche estrellada', 'Pintura', 40000,3,'http://listas.eleconomista.es/system/lists/000/010/640/medium/listas-economista-van-portada.jpg?1467835341');
 insert into ObraEntity ( cantidad, name, tipo, valor, artista_id, imagen) values ( 2, 'El nacimiento de Venus', 'Pintura', 50000,4,'https://i0.wp.com/www.marisolroman.com/wp-content/uploads/2012/02/the-birth-of-venus-14851large-1.jpg?fit=750%2C500');
 insert into ObraEntity ( cantidad, name, tipo, valor, artista_id, imagen) values ( 1, 'La creación de Adán', 'Pintura', 60000,5,'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Creation_of_Adam.jpg/1200px-Creation_of_Adam.jpg');
+insert into ObraEntity ( cantidad, name, tipo, valor, artista_id, imagen) values ( 5, 'Las meninassss', 'Pintura', 20000,1,'https://content3.cdnprado.net/imagenes/Documentos/imgsem/68/6871/68718fb0-d062-4db4-bf25-7af5824eebac/d44c40de-9d5b-4280-a096-9f63b116dcec.jpg');
 
 insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad de los Andes', 'Colombiano', 'Kelvin', 'Recibí el premio Mejor Artista 2010',2);
 insert into HojaVidaEntity ( almamater, nacionalidad, name, trayectoria, artista_id) values ( 'Universidad del Rosario', 'Venezolano', 'Juan Daniel', 'Recibí el premio Mejor Artista 2011',3);
@@ -65,11 +66,12 @@ insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 3.
 insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 1.5, 'Plastico', 'Marco de plastico', 25000, 'https://www.moldurashergon.es/img/blog/molduras-coloridas-520-748.jpg');
 insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 2.5, 2.5, 'Madera', 'Marco étnico', 85000, 'https://www.moldurashergon.es/img/blog/molduras-etnicas-429-235.jpg');
 
-insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1', 'Como entender el arte abstracta',1);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'Como entender el arte abstracta',1);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido2', 'Como aprender a pintar',2);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido3', 'Aprendiendo analizar el arte',3);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido4', 'El arte de las esculturas',4);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido5', 'Las esculturas vs las obras de arte',5);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1', 'Como entender el arte abstracta',1);
 
 
 insert into ClienteEntity ( name, numTarjeta, tipoTarjeta) values ( 'Kelvin', 10, 'Visa');

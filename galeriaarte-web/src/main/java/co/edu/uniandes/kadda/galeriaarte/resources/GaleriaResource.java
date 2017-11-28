@@ -23,6 +23,8 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+
+
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
@@ -63,6 +65,8 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class GaleriaResource {
 
+    
+    
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
