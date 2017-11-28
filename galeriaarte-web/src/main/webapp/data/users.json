@@ -17,8 +17,8 @@
     ,
     {
         "id": 7,
-        "user": "adminCarrillo",
-        "name": "Juan Daniel Carrillo",
+        "user": "adminBrawn",
+        "name": "Juan Daniel Brawn",
         "password": "daniel123",
         "rol": "administrador"
     }
