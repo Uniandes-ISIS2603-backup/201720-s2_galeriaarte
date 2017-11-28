@@ -14,7 +14,7 @@
             
            if ($state.params.obraId !== undefined) {
                 $http.get(obrasContext + '/' + $state.params.obraId).then(function (response) {
-            
+                    $scope.comentariosRecords = response.data.comentarios;
                     $scope.currentObra = response.data;
                 });
             } 

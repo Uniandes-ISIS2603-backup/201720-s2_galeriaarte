@@ -47,4 +47,11 @@ public class ComentarioEntity extends BaseEntity implements Serializable {
     public void setObra(ObraEntity obra) {
         this.obra = obra;
     }
+    
+    @Override
+     public boolean equals(Object obj) {
+         if(obj instanceof ComentarioEntity)
+             return super.equals(obj);
+         return false;
+     }
 }

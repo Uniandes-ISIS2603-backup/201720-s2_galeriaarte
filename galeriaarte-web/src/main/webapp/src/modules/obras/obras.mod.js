@@ -24,6 +24,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('obrasList', {
                 url: '/list',
                 parent: 'obras',
@@ -44,6 +49,11 @@
                         templateUrl: basePath + 'obras.detail.html',
                         controller: 'obraCtrl',
                         controllerAs: 'ctrl'
+                    },
+                    'listView': {
+                        templateUrl: 'src/modules/comentarios/comentarios.list.html',
+                        controller: 'obraCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             }).state('obrasCreate', {
@@ -54,6 +64,11 @@
                         templateUrl: basePath + '/new/obras.new.html',
                         controller: 'obraNewCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('obraUpdate', {
                 url: '/update/{obraId:int}',
@@ -67,6 +82,11 @@
                         controller: 'obraUpdateCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('obraDelete', {
                 url: '/delete/{obraId:int}',
                 parent: 'obras',
@@ -79,9 +99,12 @@
                         controller: 'obraDeleteCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             });
 
         }]);
 })(window.angular);
-
- 

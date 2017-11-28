@@ -16,6 +16,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('comentariosList', {
                 url: '/list',
                 parent: 'comentarios',
@@ -49,6 +54,11 @@
                         controller: 'comentarioNewCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('comentarioUpdate', {
                 url: '/update/{comentarioId:int}',
                 parent: 'comentarios',
@@ -60,6 +70,11 @@
                         templateUrl: basePath + 'new/comentarios.new.html',
                         controller: 'comentarioUpdateCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('comentarioDelete', {
                 url: '/delete/{comentarioId:int}',
@@ -73,6 +88,11 @@
                         controller: 'comentarioDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             });
         }]);

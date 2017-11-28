@@ -137,4 +137,20 @@ public class ClienteEntity extends BaseEntity implements Serializable {
     public void setNumtarjeta(int nNumTarjeta) {
         this.numTarjeta = nNumTarjeta;
     }
+
+    @Override
+     public boolean equals(Object obj) {
+        if (obj instanceof  ClienteEntity)
+            return super.equals(obj);
+        return false;
+    } 
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + (this.tipoTarjeta != null ? this.tipoTarjeta.hashCode() : 0);
+        hash = 67 * hash + this.numTarjeta;
+        return hash;
+    }
+    
 }
