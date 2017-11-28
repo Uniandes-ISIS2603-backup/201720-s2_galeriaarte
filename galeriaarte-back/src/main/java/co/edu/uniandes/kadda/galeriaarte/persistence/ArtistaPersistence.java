@@ -6,6 +6,7 @@
 package co.edu.uniandes.kadda.galeriaarte.persistence;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +54,15 @@ public class ArtistaPersistence {
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando artista con id={0}", id);
         ArtistaEntity entity = em.find(ArtistaEntity.class, id);
+        List<ObraEntity> entityObra = entity.getObras();
+        for(int i=0; i<entityObra.size();i++)
+        {
+            ObraEntity obraActual = entityObra.get(i);
+            obraActual.setArtista(null);
+        }
         em.remove(entity);
     }
+    
+    
 
 }

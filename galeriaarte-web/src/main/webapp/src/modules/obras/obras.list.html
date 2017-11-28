@@ -1,41 +1,26 @@
 <div class="container-fluid">
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><label>Lista de Obras</label></div>
-            <div class="panel-body">
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="obrasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar una nueva Obra</a>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>    
-                                <th>Name</th>
-                                <th>Artista</th>
-                                <th>Actions</th>  
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="obra in obrasRecords">
-                                <td id="{{$index}}-id"><a ui-sref="obraDetail({obraId: obra.id})">{{obra.id}}</a></td>
-                                <td id="{{$index}}-name"><a ui-sref="obraDetail({obraId: obra.id})">{{obra.name}}</a></td>
-                                <td id="{{$index}}-artista">{{obra.artista.name}}</a></td>
-                        
-                    </p>
-                                <td id="{{$index}}-actions">
-                                    <a class="btn btn-default btn-sm" ui-sref="obraUpdate({obraId: obra.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a class="btn btn-danger btn-sm" ui-sref="obraDelete({obraId: obra.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <br>
+        <label style="font-size: 22px">&nbsp; &nbsp;&nbsp;&nbsp;Obras</label>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="obrasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar una nueva obra</a>
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-2 col-md-2" ng-repeat="obra in obrasRecords">
+            <div class="thumbnail">
+                <a ui-sref="obraDetail({obraId: obra.id})">                    
+                    <img class="img-responsive" ng-src='{{obra.imagen}}'style='width:160px;height:160px;' >                  
+                </a>
+                <div class="caption text-center">
+                    <p>{{obra.name}}</p>
+                    <p>{{obra.artista.name}}</p>
+                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="obraUpdate({obraId: obra.id})"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="obraDelete({obraId: obra.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
+

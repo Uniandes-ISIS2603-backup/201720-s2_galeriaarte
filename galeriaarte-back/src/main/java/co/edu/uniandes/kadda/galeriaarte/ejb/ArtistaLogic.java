@@ -75,6 +75,7 @@ private BlogPersistence blogPersistence;
     
    public void deleteArtista(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar artista con id={0}", id);
+        
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar artista con id={0}", id);
     }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
+
 import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDTO;
 import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;

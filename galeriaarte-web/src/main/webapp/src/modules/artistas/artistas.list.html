@@ -5,7 +5,7 @@
             <div class="panel-body">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="artistasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar un nuevo Artista</a>
+                        <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="artistasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar un nuevo Artista</a>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -14,16 +14,16 @@
                             <tr>
                                 <th>Id</th>    
                                 <th>Name</th>  
-                                <th>Actions</th>  
+                                <th ng-if="isAuthenticated() && hasPermissions()" >Actions</th>  
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="artista in artistasRecords">
                                 <td id="{{$index}}-id"><a ui-sref="artistaDetail({artistaId: artista.id})">{{artista.id}}</a></td>
                                 <td id="{{$index}}-name"><a ui-sref="artistaDetail({artistaId: artista.id})">{{artista.name}}</a></td>
-                                <td id="{{$index}}-actions">
-                                    <a class="btn btn-default btn-sm" ui-sref="artistaUpdate({artistaId: artista.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a class="btn btn-danger btn-sm" ui-sref="artistaDelete({artistaId: artista.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">
+                                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="artistaUpdate({artistaId: artista.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="artistaDelete({artistaId: artista.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                         </tbody>

@@ -39,7 +39,7 @@ public class ObraEntity extends BaseEntity implements Serializable
     @ManyToOne
     private CatalogoEntity catalogo;
     @PodamExclude
-    @OneToMany(mappedBy = "obra")
+    @OneToMany(mappedBy = "obra",  cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ComentarioEntity> comentarios = new ArrayList<ComentarioEntity>();
     @PodamExclude
     @ManyToOne

@@ -11,7 +11,7 @@
         'artistaModule',
         'compraModule',
         'pagoModule'
-        ,'catalogoModule',
+        ,'catalogoModule'
         ,'obraModule',
         'hojaVidaModule',
         'loginModule'

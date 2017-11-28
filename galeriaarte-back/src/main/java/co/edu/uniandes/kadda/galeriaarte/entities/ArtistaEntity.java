@@ -26,7 +26,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable {
 
     private String imagen;
     @PodamExclude
-    @OneToMany(mappedBy = "artista", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "artista")
     private List<ObraEntity> obras = new ArrayList<ObraEntity>();
     @PodamExclude
     @ManyToOne
