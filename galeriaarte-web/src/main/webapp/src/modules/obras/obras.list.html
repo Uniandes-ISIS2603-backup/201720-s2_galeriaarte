@@ -1,21 +1,21 @@
-<div class="container-fluid">
+<div class="container-fluid" >
     <div class="row">
         <br>
-        <h2 class="text-center">Obras</h2>
+        <h2 class="text-center" ><font style="align-content: center">Obras</font></h2>
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
                 <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="obrasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar una nueva obra</a>
             </div>
         </div>
         <br>
-        <div class="col-sm-2 col-md-2" ng-repeat="obra in obrasRecords">
-            <div class="thumbnail">
+        <div class="col-sm-2 col-md-2" ng-repeat="obra in obrasRecords" style="background-color: transparent" >
+            <div class="thumbnail"  >
                 <a ui-sref="obraDetail({obraId: obra.id})">                    
-                    <img class="img-responsive" ng-src='{{obra.imagen}}'style='width:160px;height:160px;' >                  
+                    <img class="img-responsive" ng-src='{{obra.imagen}}'alt="{{obra.name}}"  >                  
                 </a>
-                <div class="caption text-center">
-                    <p>{{obra.name}}</p>
-                    <p>{{obra.artista.name}}</p>
+                <div class="caption text-center" style="background-color: transparent">
+                    <b><font style="font-size: 23px">{{obra.name}}</font></b>
+                    <p><font style="font-size: 23px">{{obra.artista.name}}</font></p>
                     <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="obraUpdate({obraId: obra.id})"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                     <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="obraDelete({obraId: obra.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
                 </div>

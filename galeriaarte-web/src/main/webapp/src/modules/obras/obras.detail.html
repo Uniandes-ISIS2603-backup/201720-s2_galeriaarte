@@ -40,6 +40,79 @@
                   
                   <td id="{{$index}}-name"><a ui-sref="artistaDetail({artistaId: currentObra.artista.id})">{{currentObra.artista.name}}</a>
                   </td>
+
+                  
+                    <hr>
+        
+    
+                <form ng-submit="createCompra()" name="compra">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="valor" class="col-sm-2">Valor:</label>&nbsp;&nbsp;&nbsp;
+                            <label id="valor" required ng-model="valor" value="{{obra.id}}" class="col-sm-6"/> {{currentObra.valor}}</label>
+                        </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="fecha" class="col-sm-2">Fecha:</label>
+                            <input type="date" id="fecha" placeholder="DD/MM/YYYY" required ng-model="fecha" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div ng-if="edit" class="panel-group" id="thePagos">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated pagos</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('thePagos')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('thePagos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="pago in allPagosCompra"
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.total}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All pagos</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('thePagos')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('thePagos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="pago in allPagosShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.valor}}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <div class="panel-heading"><label ng-if="!edit" id="createCompra">Crear nueva compra</label>
+                <label ng-if="edit" id="editCompra">Editar compra</label></div>
+            <div class="panel-body">
+                <form ng-submit="createCompra()" name="blog">
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!compra.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="compra.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="comprasList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+  
+
+                  
+               
+                        
+                   
+                
+
+
                    
                   <hr>   
                <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -48,6 +121,7 @@
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                         <a class="btn btn-info" ng-click="AddFavorito({obraId: currentObra.id})"><span class="glyphicon glyphicon-star-empty"></span> Favoritos </a>
                 </div>
+
             </dl>
         </div>
     </div>

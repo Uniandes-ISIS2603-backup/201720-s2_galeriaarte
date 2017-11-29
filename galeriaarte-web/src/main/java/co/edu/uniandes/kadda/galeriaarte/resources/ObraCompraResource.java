@@ -72,6 +72,8 @@ CompraLogic compraLogic;
     }
     
     
+    
+    
     @PUT
     
     public CompraDetailDTO replaceCompra(@PathParam("id") Long obraId, CompraDetailDTO dto) throws BusinessLogicException
