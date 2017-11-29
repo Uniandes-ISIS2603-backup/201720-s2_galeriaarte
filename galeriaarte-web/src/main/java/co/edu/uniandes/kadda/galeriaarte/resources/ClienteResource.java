@@ -33,7 +33,7 @@ public class ClienteResource {
     @Inject
     private ClienteLogic clienteLogic;
     
-    String Error = "El Cliente no existe";
+    String error = "El Cliente no existe";
     
     /**
      *
@@ -56,7 +56,7 @@ public class ClienteResource {
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         return new ClienteDetailDTO(entity);
     }
@@ -86,7 +86,7 @@ public class ClienteResource {
         entity.setId(id);
         ClienteEntity oldEntity = clienteLogic.getCliente(id);
         if (oldEntity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         entity.setComentarios(oldEntity.getComentarios());
         return new ClienteDetailDTO(clienteLogic.updateCliente(entity));
@@ -101,7 +101,7 @@ public class ClienteResource {
     public void deleteCliente(@PathParam("id") Long id) {
         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         clienteLogic.deleteCliente(id);
     }
@@ -145,7 +145,7 @@ public class ClienteResource {
     public Class<ClienteComentarioResource> getClienteComentarioResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         return ClienteComentarioResource.class;
     }
@@ -159,7 +159,7 @@ public class ClienteResource {
     public Class<ClienteObraResource> getClienteObraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         return ClienteObraResource.class;
     }
@@ -173,7 +173,7 @@ public class ClienteResource {
     public Class<ClienteCompraResource> getClienteCompraResource(@PathParam("clienteId") Long clienteId) {
         ClienteEntity entity = clienteLogic.getCliente(clienteId);
         if (entity == null) {
-            throw new WebApplicationException(Error, 404);
+            throw new WebApplicationException(error, 404);
         }
         return ClienteCompraResource.class;
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
+
 import co.edu.uniandes.kadda.galeriaarte.dtos.HojaVidaDetailDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.HojaVidaLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
@@ -17,7 +18,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 
-
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 
@@ -25,8 +25,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-
-
 
 /**
  *
@@ -36,12 +34,11 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
-public class HojaVidaResource 
-{
- @Inject
+public class HojaVidaResource {
+
+    @Inject
     HojaVidaLogic hojaVidaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-  
     @POST
     public HojaVidaDetailDTO createHojaVida(HojaVidaDetailDTO hojaVida) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
@@ -52,44 +49,36 @@ public class HojaVidaResource
         return new HojaVidaDetailDTO(nuevaObra);
     }
 
-    
-   @GET
+    @GET
     public List<HojaVidaDetailDTO> getHojasVida() throws BusinessLogicException {
         return listEntity2DetailDTO(hojaVidaLogic.getHojasVida());
     }
 
-    
     @GET
     @Path("{id: \\d+}")
-    public HojaVidaDetailDTO getHojaVida(@PathParam("id") Long id) throws WebApplicationException
-    {
-        if (hojaVidaLogic.findHoja(id)!=null) 
-        {
-            HojaVidaDetailDTO c = new HojaVidaDetailDTO(hojaVidaLogic.findHoja(id));
-            return c;
-        }
-        else {
+    public HojaVidaDetailDTO getHojaVida(@PathParam("id") Long id){
+        if (hojaVidaLogic.findHoja(id) != null) {
+           return new HojaVidaDetailDTO(hojaVidaLogic.findHoja(id));
+        } else {
             throw new WebApplicationException("Error3");
         }
-        
+
     }
-    
-   
+
     @PUT
     @Path("{id: \\d+}")
-    public HojaVidaDetailDTO updateHojaVida(@PathParam("id") Long id, HojaVidaDetailDTO hoja) throws BusinessLogicException, UnsupportedOperationException {
-         
-        
-       HojaVidaEntity entity = hoja.toEntity();
+    public HojaVidaDetailDTO updateHojaVida(@PathParam("id") Long id, HojaVidaDetailDTO hoja) throws BusinessLogicException {
+
+        HojaVidaEntity entity = hoja.toEntity();
         entity.setId(id);
-        
+
         HojaVidaEntity oldEntity = hojaVidaLogic.findHoja(id);
         if (oldEntity == null) {
             throw new WebApplicationException("El author no existe", 404);
         }
-       
+
         return new HojaVidaDetailDTO(hojaVidaLogic.update(entity));
-      
+
     }
 
     /**
@@ -104,25 +93,21 @@ public class HojaVidaResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteHojaVida(@PathParam("id") Long id) throws BusinessLogicException 
-    {
-        if (hojaVidaLogic.findHoja(id)!=null)
-        {
-          hojaVidaLogic.delete(id);
-        }
-        
-        else{
+    public void deleteHojaVida(@PathParam("id") Long id) throws BusinessLogicException {
+        if (hojaVidaLogic.findHoja(id) != null) {
+            hojaVidaLogic.delete(id);
+        } else {
             throw new WebApplicationException("Este servicio no está implementado");
         }
-         
+
     }
 
     /**
      *
      * lista de entidades a DTO.
      *
-     * Este método convierte una lista de objetos EstudianteEntity a una lista de
-     * objetos EstudianteDetailDTO (json)
+     * Este método convierte una lista de objetos EstudianteEntity a una lista
+     * de objetos EstudianteDetailDTO (json)
      *
      * @param entityList corresponde a la lista de Estudiantees de tipo Entity
      * que vamos a convertir a DTO.
@@ -135,7 +120,5 @@ public class HojaVidaResource
         }
         return list;
     }
-    
-    
-    
+
 }

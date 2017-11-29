@@ -34,7 +34,7 @@ public class ComentarioResource {
     @Inject
     ComentarioLogic comentarioLogic;
 
-    String Error = " no existe.";
+    String error = " no existe.";
     
     /**
      * @return ComentarioDetailDTO
@@ -55,7 +55,7 @@ public class ComentarioResource {
     public ComentarioDetailDTO getComentario(@PathParam("id") Long id) throws BusinessLogicException {
         ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /comentarios/" + id + Error, 404);
+            throw new WebApplicationException("El recurso /comentarios/" + id + error, 404);
         }
         return new ComentarioDetailDTO(entity);
     }
@@ -82,7 +82,7 @@ public class ComentarioResource {
         comentario.setId(id);
         ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Comentarios/" + id + Error, 404);
+            throw new WebApplicationException("El recurso /Comentarios/" + id + error, 404);
         }
         ComentarioEntity com = comentario.toEntity();
         com.setClienteComentario(entity.getClienteComentario());
@@ -98,7 +98,7 @@ public class ComentarioResource {
     public void deleteComentario(@PathParam("comentariosId") Long id) throws BusinessLogicException {
         ComentarioEntity entity = comentarioLogic.getComentario(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Comentarios/" + id + Error, 404);
+            throw new WebApplicationException("El recurso /Comentarios/" + id + error, 404);
         }
         comentarioLogic.deleteComentario(id);
     }

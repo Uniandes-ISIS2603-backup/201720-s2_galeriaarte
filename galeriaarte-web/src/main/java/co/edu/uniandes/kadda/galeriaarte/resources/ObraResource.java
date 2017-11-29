@@ -18,7 +18,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 
-
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 
@@ -26,7 +25,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-
 
 /**
  *
@@ -36,12 +34,11 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
-public class ObraResource
-{
+public class ObraResource {
+
     @Inject
     ObraLogic obraLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-  
     @POST
     public ObraDetailDTO createObra(ObraDetailDTO obra) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
@@ -52,43 +49,34 @@ public class ObraResource
         return new ObraDetailDTO(nuevaObra);
     }
 
-
-    
-   @GET
+    @GET
     public List<ObraDetailDTO> getObras() throws BusinessLogicException {
         return listEntity2DetailDTO(obraLogic.getObras());
     }
 
-    
     @GET
     @Path("{id: \\d+}")
-    public ObraDetailDTO getObra(@PathParam("id") Long id) throws WebApplicationException
-    {
-        if (obraLogic.findObra(id)!=null) 
-        {
-            ObraDetailDTO c = new ObraDetailDTO(obraLogic.findObra(id));
-            return c;
-        }
-        else {
+    public ObraDetailDTO getObra(@PathParam("id") Long id) {
+        if (obraLogic.findObra(id) != null) {
+            return new ObraDetailDTO(obraLogic.findObra(id));
+        } else {
             throw new WebApplicationException("Error3");
         }
-        
+
     }
-    
-   
+
     @PUT
     @Path("{id: \\d+}")
-    public ObraDetailDTO updateObra(@PathParam("id") Long id, ObraDetailDTO obra) throws BusinessLogicException, UnsupportedOperationException {
-         
-        
-      ObraEntity entity = obra.toEntity();
+    public ObraDetailDTO updateObra(@PathParam("id") Long id, ObraDetailDTO obra) throws BusinessLogicException {
+
+        ObraEntity entity = obra.toEntity();
         entity.setId(id);
-        
+
         ObraEntity oldEntity = obraLogic.findObra(id);
         if (oldEntity == null) {
             throw new WebApplicationException("El author no existe", 404);
         }
-       
+
         return new ObraDetailDTO(obraLogic.update(entity));
     }
 
@@ -104,25 +92,21 @@ public class ObraResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteObra(@PathParam("id") Long id) throws BusinessLogicException 
-    {
-        if (obraLogic.findObra(id)!=null)
-        {
-          obraLogic.delete(id);
-        }
-        
-        else{
+    public void deleteObra(@PathParam("id") Long id) throws BusinessLogicException {
+        if (obraLogic.findObra(id) != null) {
+            obraLogic.delete(id);
+        } else {
             throw new WebApplicationException("Este servicio no está implementado");
         }
-         
+
     }
 
     /**
      *
      * lista de entidades a DTO.
      *
-     * Este método convierte una lista de objetos EstudianteEntity a una lista de
-     * objetos EstudianteDetailDTO (json)
+     * Este método convierte una lista de objetos EstudianteEntity a una lista
+     * de objetos EstudianteDetailDTO (json)
      *
      * @param entityList corresponde a la lista de Estudiantees de tipo Entity
      * que vamos a convertir a DTO.
@@ -135,5 +119,5 @@ public class ObraResource
         }
         return list;
     }
-    
+
 }
