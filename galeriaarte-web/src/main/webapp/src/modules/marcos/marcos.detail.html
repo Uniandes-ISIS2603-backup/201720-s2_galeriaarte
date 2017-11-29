@@ -4,8 +4,11 @@
             <div class="col-md-3">
                 <div class="thumb">
                     <img class="img-responsive" ng-src="{{currentMarco.image}}"/>
+                    <br>
+                    <input type="button" value="Anterior" ui-sref="marcoDetail({marcoId: currentMarco.id-1})" class="btn btn-info btn-lg">&nbsp;&nbsp;
+                    <input type="button" value="Regresar" ui-sref="marcosList" class="btn btn-info btn-lg">&nbsp;&nbsp;
+                    <input type="button" value="Siguiente" ui-sref="marcoDetail({marcoId: currentMarco.id+1})" class="btn btn-info btn-lg">
                 </div>
-
             </div>
             <div class="col-md-3">
                 <dl>     
@@ -22,7 +25,6 @@
                     <hr>
                     <dt>Precio (COP)</dt>
                     <dd>{{currentMarco.valor}}</dd>
-                    
                 </dl>
             </div>
         </div>

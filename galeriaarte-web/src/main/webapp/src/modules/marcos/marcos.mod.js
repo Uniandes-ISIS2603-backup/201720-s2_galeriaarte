@@ -36,9 +36,6 @@
                     marcoId: null
                 },
                 views: {
-                    'listView': {
-                        templateUrl: basePath + 'marcos.detailList.html'
-                    },
                     'detailView': {
                         templateUrl: basePath + 'marcos.detail.html',
                         controller: 'marcoCtrl',
