@@ -6,9 +6,12 @@
             $rootScope.edit = false;
             $scope.createCatalogo = function () {
                 $http.post(catalogosContext, {
-                    categoria: $scope.categoriaCatalogo
+                    id: $scope.idCatalogo,
+                    categoria: $scope.categoriaCatalogo,
+                    descripcion: $scope.descipcionCatalogo,
+                    imagen: $scope.imagenCatalogo
                 }).then(function (response) {
-                    //Blog created successfully
+                    //Catalogo created successfully
                     $state.go('catalogosList', {catalogoId: response.data.id}, {reload: true});
                 });
             };

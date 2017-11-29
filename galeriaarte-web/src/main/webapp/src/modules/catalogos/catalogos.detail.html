@@ -1,13 +1,67 @@
-<div class="panel panel-default"> 
-    <div class="panel-body">
+<div class="panel "  > 
+    <div class="panel-body" >
+    <div class="row">
+        <div class="col-md-3" >
+            
+            <div  >
+               
+                <img ng-src="{{currentCatalogo.imagen}}"  class="img-responsive" style="border-color: red ; border-radius: 44px;border-width: 14px " ></img>
+            </div>
+
+</div>
+        
+        
+  <div class="vr">&nbsp;</div>
+     
+        <div class="col-md-3">
+            <dl>     
+           
+                
+                <hr>
+                <dt>Id</dt>
+                <dd>{{currentCatalogo.id}}</dd>
+          
+                <hr>
+                <dt>Categoría</dt>
+                <dd>{{currentCatalogo.categoría}}</dd>
+                
+              
+                 <hr>
+                <dt>Descripción</dt>
+                <dd>{{currentCatalogo.descripcion}}</dd>
+                  
+ 
+            </dl>
+            
+
+        </div>
+          
         <div class="row">
-  
-            <div class="col-md-3">
-                <dl>     
-                    <dt>{{currentCatalogo.categoria}}</dt>
-                    <hr>
-                </dl>
+        <br>
+        <label style="font-size: 22px">&nbsp; &nbsp;&nbsp;&nbsp;Obras</label>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" >
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="obrasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar una nueva obra</a>
             </div>
         </div>
+        <br>
+        <div class="col-sm-2 col-md-2" ng-repeat="obra in currentCatalogo.obras" >
+            <div class="thumbnail" >
+                <a ui-sref="obraDetail({obraId: obra.id})">                    
+                    <img class="img-responsive" ng-src='{{obra.imagen}}'style='width:160px;height:160px;' >                  
+                </a>
+                <div class="caption text-center">
+                    <p>{{obra.name}}</p>
+                    
+                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="obraUpdate({obraId: obra.id})"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="obraDelete({obraId: obra.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                </div>
+            </div>
+        </div>
+         <div class="col-sm-2" >
+             
+              </div>
     </div>
+        </div>
 </div>
+

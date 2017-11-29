@@ -7,7 +7,9 @@ package co.edu.uniandes.kadda.galeriaarte.ejb;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity;
+import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.PagoPersistence;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -39,6 +41,18 @@ public class PagoLogic {
     public PagoEntity getPago(Long compraid, Long pagoid) {
         return persistence.find(compraid, pagoid);
     }
+    
+    public List<PagoEntity> getPagos() {
+        LOGGER.info("Inicia proceso de consultar todos los pagos");
+        List<PagoEntity> pagos = persistence.findAll();
+        LOGGER.info("Termina proceso de consultar todos los pagos");
+        return pagos;
+    }
+    
+    public PagoEntity updatePago(PagoEntity entity) throws BusinessLogicException {
+        return persistence.update(entity);
+    }
+    
 
     /**
      * Se encarga de crear un Pago en la base de datos.

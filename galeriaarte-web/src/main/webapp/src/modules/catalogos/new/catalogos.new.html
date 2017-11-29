@@ -1,34 +1,71 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <div class="container-fluid">
-    <div class="panel-group">
+    <div ng-if="isAuthenticated() && hasPermissions()" class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label ng-if="!edit" id="createBlog">Crear nuevo catálogo</label>
-                <label ng-if="edit" id="editCatalogo">Editar catalogo</label></div>
-           < <div class="panel-body">
-                <form ng-submit="createCatalogo()" categoria="catalogo">
+            <div class="panel-heading"><label ng-if="!edit" id="createCatalogo">Create new Catalogo</label>
+                <label ng-if="edit" id="editCatalogo">Edit Catalogo</label></div>
+            <div class="panel-body">
+                <form name="author">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="categoriaCatalogo" class="col-sm-2">Categoria:</label>
+                            <label for="idCatalogo" class="col-sm-2">ID:</label>
+                            <input id="idCatalogo" required ng-model="idCatalogo" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="categoriaCatalogo" class="col-sm-2">Categoría:</label>
                             <input id="categoriaCatalogo" required ng-model="categoriaCatalogo" class="col-sm-6"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-sm-4" ng-if="!catalogo.$valid">
+                        <div class="form-group col-md-6">
+                            <label for="descripcionCatalogo" class="col-sm-2">Descripción:</label>
+                            <textarea id="descripcionCatalogo" required ng-model="descripcionCatalogo" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="imagenCatalogo" class="col-sm-2">Imagen:</label>
+                            <input id="imagenCatalogo" required ng-model="imagenCatalogo" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div ng-if="edit" class="panel-group" id="lasObras">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Obras asociadas</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('lasObras')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('lasObras')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="obra in todasObrasCatalogo">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('lasObras')).scope().drag(event)" id="{{obra.id}}">{{obra.nombre}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">Todas las obras</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('lasObras')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('lasObras')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="obra in todasObrasMostrar">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('lasObras')).scope().drag(event)" id="{{obra.id}}">{{obra.nombre}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!author.$valid">
 
                             <div class="alert alert-warning" >
-                                <strong>Warning!</strong><p>All inputs are required*</p>
+                                <strong>Alerta!</strong><p>Todos los campos son necesarios*</p>
                             </div> 
                         </div> 
                     </div> 
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
-                            <input ng-show="catalogo.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="catalogosList">Cancel</a>
+                            <input ng-show="author.$valid" ng-click="createCatalogo()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="catalogosList">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -36,4 +73,17 @@ and open the template in the editor.
             </div>
         </div>
     </div>
+    <div class="center-block well text-center" ng-if="isAuthenticated() && !hasPermissions()">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <h1 class="float-left display-3 mr-4">403 Prohibido</h1>
+                    <h4 >No tiene permiso para realizar la acción.</h4>
+                    <p >Contactar al administrador para obtener permiso.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+

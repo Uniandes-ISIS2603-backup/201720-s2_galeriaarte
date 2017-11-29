@@ -15,6 +15,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['admin', 'assistant']
+                }
             }).state('catalogosList', {
                 url: '/list',
                 parent: 'catalogos',
@@ -24,10 +29,10 @@
                     }
                 }
             }).state('catalogoDetail', {
-                url: '/{catalogoId:int}/detail',
+                url: '/{idCatalogo:int}/detail',
                 parent: 'catalogos',
                 param: {
-                    catalogoId: null
+                    idCatalogo: null
                 },
                 views: {
                     'detailView': {
@@ -46,30 +51,42 @@
                         templateUrl: basePath + '/new/catalogos.new.html',
                         controller: 'catalogoNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             }).state('catalogoUpdate', {
-                url: '/update/{catalogoId:int}',
+                url: '/update/{idCatalogo:int}',
                 parent: 'catalogos',
                 param: {
-                    catalogoId: null
+                    idCatalogo: null
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/catalogos.new.html',
                         controller: 'catalogoUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin', 'assistant']
                 }
             }).state('catalogoDelete', {
-                url: '/delete/{catalogoId:int}',
+                url: '/delete/{idCatalogo:int}',
                 parent: 'catalogos',
                 param: {
-                   catalogoId: null
+                   idCatalogo: null
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/delete/catalogo.delete.html',
                         controller: 'catalogoDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             });
         }]);

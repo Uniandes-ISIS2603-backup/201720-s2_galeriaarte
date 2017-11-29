@@ -46,6 +46,16 @@ public class ObraLogic {
     @Inject
     private MarcoPersistence marcoPersistence;
 
+    
+    public ObraEntity getObra(Long id) {
+        ObraEntity obra = persistence.find(id);
+        if (obra == null) {
+          
+        }
+          return obra;
+    }
+    
+    
     /**
      *
      * @param entity

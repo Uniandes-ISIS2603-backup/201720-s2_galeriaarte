@@ -20,7 +20,7 @@
                 ,
                 data: {
                     requireLogin: false,
-                    roles: ['administrador', 'cliente']
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('clientesList', {
                 url: '/list',
@@ -72,10 +72,11 @@
                         templateUrl: basePath + 'new/clientes.new.html',
                         controller: 'clienteUpdateCtrl'
                     }
-                },
+                }
+                ,
                 data: {
-                    requireLogin: true,
-                    roles: ['administrador', 'cliente']
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('clienteDelete', {
                 url: '/delete/{clienteId:int}',

@@ -61,9 +61,9 @@
                   
                     'detailView': {
                         templateUrl: basePath + 'obras.detail.html',
-                        controller: 'obraCtrl',
-                        controllerAs: 'ctrl'
-                    },
+                        controller: 'obraCtrl'
+                    }
+                    ,
                     'listView': {
                         templateUrl: 'src/modules/comentarios/comentarios.list.html',
                         controller: 'obraCtrl',

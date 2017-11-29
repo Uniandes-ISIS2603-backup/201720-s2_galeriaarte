@@ -5,12 +5,14 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.ejb;
 
+
 import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import co.edu.uniandes.kadda.galeriaarte.persistence.HojaVidaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
 
 /**
  *
@@ -35,6 +37,17 @@ public class HojaVidaLogic {
         persistence.create(entity);
         return entity;
     }
+    
+    
+    
+    public HojaVidaEntity getHojaVida(Long id) {
+        HojaVidaEntity hojaVida = persistence.find(id);
+        if (hojaVida == null) {
+          
+        }
+          return hojaVida;
+    }
+    
 
     /**
      *
@@ -69,5 +82,7 @@ public class HojaVidaLogic {
         return persistence.update(entity);
 
     }
+    
+    
    
 }
