@@ -46,7 +46,7 @@
                         <a class="btn btn-info" ui-sref="compraCreate"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar </a>
                 </div>
                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="compraCreate"><span class="glyphicon glyphicon-star-empty"></span> Favoritos </a>
+                        <a class="btn btn-info" ng-click="AddFavorito({obraId: currentObra.id})"><span class="glyphicon glyphicon-star-empty"></span> Favoritos </a>
                 </div>
             </dl>
         </div>
