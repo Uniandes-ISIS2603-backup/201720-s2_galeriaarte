@@ -69,7 +69,7 @@ public class ArtistaObraResource {
         ObraDetailDTO fbDetail = null;
         for (ObraEntity fb : ent.getObras()) {
             if (fb.getId().equals(idFeedBack)) {
-                fbDetail = (new ObraDetailDTO(fb));
+                fbDetail = new ObraDetailDTO(fb);
             }
         }
         if (fbDetail == null) {
@@ -87,7 +87,7 @@ public class ArtistaObraResource {
 
     @PUT
     @Path("/{idObra:\\d+}")
-    public ObraDetailDTO replaceBooks(@PathParam("id") Long artistaId, ObraDetailDTO dto, @PathParam(("idObra")) Long idObra) throws BusinessLogicException {
+    public ObraDetailDTO replaceBooks(@PathParam("id") Long artistaId, ObraDetailDTO dto, @PathParam("idObra") Long idObra) throws BusinessLogicException {
 
         ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         List<ObraEntity> obras = artista.getObras();
@@ -107,7 +107,7 @@ public class ArtistaObraResource {
 
     @DELETE
     @Path("/{idObra:\\d+}")
-    public void removeObra(@PathParam("id") Long artistaId, @PathParam(("idObra")) Long idObra) throws BusinessLogicException {
+    public void removeObra(@PathParam("id") Long artistaId, @PathParam("idObra") Long idObra) throws BusinessLogicException {
         ArtistaEntity artista = artistaLogic.getArtista(artistaId);
         List<ObraEntity> obrasArtista = artista.getObras();
         for (int i = 0; i < obrasArtista.size(); i++) {

@@ -69,9 +69,7 @@ public class ObraLogic {
     public List<ObraEntity> getObras() {
 
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<ObraEntity> obras = persistence.findAll();
-
-        return obras;
+        return persistence.findAll();
     }
 
     public ObraEntity findObra(Long id) {
@@ -95,11 +93,10 @@ public class ObraLogic {
 
     }
 
-    public ArtistaEntity getAuthor(Long bookId, Long authorsId) {
+    public ArtistaEntity getAuthor(Long bookId) {
 
-        ArtistaEntity artista = findObra(bookId).getArtista();
+        return findObra(bookId).getArtista();
 
-        return artista;
     }
 
     public ArtistaEntity addArtista(Long obraId, ArtistaEntity artista) throws BusinessLogicException {
@@ -193,8 +190,7 @@ public class ObraLogic {
 
     public ArtistaEntity getArtista(Long obraId) {
 
-        ArtistaEntity artista = findObra(obraId).getArtista();
-        return artista;
+        return findObra(obraId).getArtista();
     }
 
     public List<ComentarioEntity> listComentarios(Long obraId) {

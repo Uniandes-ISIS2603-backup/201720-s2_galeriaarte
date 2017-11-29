@@ -64,22 +64,4 @@ public class HojaVidaPersistence
         return query.getResultList();
     }
 
-   
-    /*/
-    public HojaVidaEntity findByCodigo(String codigo) {
-        LOGGER.log(Level.INFO, "Consultando Estudiante por código ", codigo);
-
-        // Se crea un query para buscar Estudiantees con el codigo que recibe el método como argumento. ":codigo" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.codigo = :codigo", HojaVidaEntity.class);
-        // Se remplaza el placeholder ":codigo" con el valor del argumento 
-        query = query.setParameter("codigo", codigo);
-        // Se invoca el query se obtiene la lista resultado
-        List<HojaVidaEntity> sameCodigo = query.getResultList();
-        if (sameCodigo.isEmpty()) {
-            return null;
-        } else {
-            return sameCodigo.get(0);
-        }
-    }
-/*/
 }
