@@ -8,6 +8,7 @@ package co.edu.uniandes.kadda.galeriaarte.dtos;
 import co.edu.uniandes.kadda.galeriaarte.entities.CatalogoEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class CatalogoDetailDTO extends CatalogoDTO {
 
     // relación  cero o muchos reviews 
-    private ArrayList<ObraDTO> obras = new ArrayList<>();
+    private List<ObraDTO> obras = new ArrayList<>();
 
     public CatalogoDetailDTO() {
         super();
@@ -57,14 +58,16 @@ public class CatalogoDetailDTO extends CatalogoDTO {
     /**
      * @return obras
      */
-    public ArrayList<ObraDTO> getObras() {
+    @Override
+    public List<ObraDTO> getObras() {
         return obras;
     }
 
     /**
-     * @param obras to set
+     * @param pObras
      */
-    public void setObras(ArrayList<ObraDTO> pObras) {
+    @Override
+    public void setObras(List<ObraDTO> pObras) {
         this.obras = pObras;
     }
 

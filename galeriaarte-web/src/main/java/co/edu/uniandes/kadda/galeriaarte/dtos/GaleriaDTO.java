@@ -40,16 +40,11 @@ public class GaleriaDTO {
     private String direccion;
     private int telefono;
 
-    private ArrayList<ArtistaDTO> artistas;
-
-    private ArrayList<CatalogoDTO> catalogos;
-
-    private ArrayList<ClienteDTO> clientes;
-
     /**
      * Constructor por defecto
      */
     public GaleriaDTO() {
+        //Constructor por defecto
     }
 
     /**
