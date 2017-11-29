@@ -69,5 +69,13 @@ public class HojaVidaLogic {
         return persistence.update(entity);
 
     }
+    
+    public HojaVidaEntity getHojaVida(Long id) {
+        HojaVidaEntity hojaVida = persistence.find(id);
+        if (hojaVida == null) {
+          
+        }
+          return hojaVida;
+    }
    
 }
