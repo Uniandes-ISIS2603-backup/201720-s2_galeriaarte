@@ -1,10 +1,9 @@
 (function (ng) {
     var mod = ng.module("pagoModule", ['ui.router']);
-    mod.constant("pagoContext", "api/pagos");
+    mod.constant("pagosContext", "api/pago");
     mod.config(['$stateProvider', '$urlRouterProvider', 
         function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/pagos/';
-            var basePathCompras = 'src/modules/compras/';
             $urlRouterProvider.otherwise("/pagosList");
             
             $stateProvider.state('pagos', {
@@ -16,6 +15,11 @@
                         controller: 'pagoCtrl',
                         controllerAs: 'ctrl'
                     }
+                }
+                ,
+                data:{
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente', 'artista']
                 }
             }).state('pagosList', {
                 url: '/list',
@@ -33,9 +37,6 @@
                 },
                 views: {
                     'listView': {
-//                        templateUrl: basePathCompras + 'compras.list.html',
-//                        controller: 'pagoCtrl',
-//                        controllerAs: 'ctrl'
                         templateUrl: basePath + 'pagos.list.html'
                     },
                     'detailView': {
@@ -53,6 +54,11 @@
                         controller: 'pagoNewCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             
             }).state('pagoDelete', {
                 url: '/delete/{pagoId:int}',
@@ -66,6 +72,11 @@
                         controller: 'pagoDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             });
         }]);

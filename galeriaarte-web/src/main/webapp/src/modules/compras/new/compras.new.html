@@ -3,7 +3,7 @@
     <div class="panel-group">
         <div class="panel panel-primary">
 
-            <div class="panel-heading"><label ng-if="!edit" id="createCompra" >Comprar</label>
+            <div class="panel-heading"><label ng-if="!edit" id="createCompra" >Pagar</label>
                 <label ng-if="edit" id="editCliente">Edit Compra</label></div>
             <div class="panel-body">
                 <form ng-submit="createCompra()" name="compra">
@@ -25,7 +25,7 @@
                                 <div id="div2" ondrop="angular.element(document.getElementById('thePagos')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('thePagos')).scope().allowDrop(event)">
                                     <label></label>
                                     <div ng-show="edit" ng-repeat="pago in allPagosCompra"
-                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.total}}</p>                                 
+                                         <p draggable="true" ondragstart="angular.element(document.getElementById('thePagos')).scope().drag(event)" id="{{pago.id}}">{{pago.total}}</p>                                 
                                     </div>
                                 </div>
                             </div>

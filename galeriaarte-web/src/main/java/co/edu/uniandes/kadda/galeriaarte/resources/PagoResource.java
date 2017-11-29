@@ -9,6 +9,9 @@ import co.edu.uniandes.kadda.galeriaarte.dtos.PagoDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.PagoLogic;
 import co.edu.uniandes.kadda.galeriaarte.entities.PagoEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -26,8 +29,10 @@ import javax.ws.rs.core.MediaType;
  *
  * @author ma.abril
  */
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("pago")
+@Produces("application/json")
+@Consumes("application/json")
+@RequestScoped
 public class PagoResource {
     
     
@@ -36,7 +41,21 @@ public class PagoResource {
     PagoLogic pagoLogic;
 
    
+@GET
+    public List<PagoDTO> getpagos() throws BusinessLogicException {
+        return listPagoEntity2DetailDTO(pagoLogic.getPagos());
+    }
+    
+     private List<PagoDTO> listPagoEntity2DetailDTO(List<PagoEntity> entityList) {
+        List<PagoDTO> list = new ArrayList<>();
+        for (PagoEntity entity : entityList) {
+            list.add(new PagoDTO(entity));
+        }
+        return list;
+    }
+    
 
+    
     @GET
     @Path("{id: \\d+}")
     public PagoDTO getPago(@PathParam("idCompra") Long idCompra, @PathParam("id") Long id) throws BusinessLogicException {

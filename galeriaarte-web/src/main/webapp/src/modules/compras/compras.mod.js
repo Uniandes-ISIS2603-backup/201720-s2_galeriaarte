@@ -17,6 +17,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('comprasList', {
                 url: '/list',
                 parent: 'compras',
@@ -52,6 +57,11 @@
                         controller: 'compraNewCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('compraUpdate', {
                 url: '/update/{compraId:int}',
                 parent: 'compras',
@@ -63,6 +73,11 @@
                         templateUrl: basePath + 'new/compras.new.html',
                         controller: 'compraUpdateCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('compraDelete', {
                 url: '/delete/{compraId:int}',
@@ -76,6 +91,11 @@
                         controller: 'compraDeleteCtrl',
                         controllerAs: 'compraDeleteCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             });
         }]);
