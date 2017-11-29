@@ -13,7 +13,11 @@
                         templateUrl: basePath + 'blogs.html',
                         controller: 'blogCtrl',
                         controllerAs: 'ctrl'
-                    }
+                    },
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador']
+                }
                 }
             }).state('blogsList', {
                 url: '/list',
@@ -46,6 +50,10 @@
                         templateUrl: basePath + '/new/blogs.new.html',
                         controller: 'blogNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['artista']
                 }
             }).state('blogUpdate', {
                 url: '/update/{blogId:int}',
@@ -57,7 +65,11 @@
                     'detailView': {
                         templateUrl: basePath + '/new/blogs.new.html',
                         controller: 'blogUpdateCtrl'
-                    }
+                    },
+                data: {
+                    requireLogin: true,
+                    roles: ['artista']
+                }
                 }
             }).state('blogDelete', {
                 url: '/delete/{blogId:int}',
@@ -69,7 +81,11 @@
                     'detailView': {
                         templateUrl: basePath + '/delete/blog.delete.html',
                         controller: 'blogDeleteCtrl'
-                    }
+                    },
+                data: {
+                    requireLogin: true,
+                    roles: ['artista']
+                }
                 }
             });
         }]);
