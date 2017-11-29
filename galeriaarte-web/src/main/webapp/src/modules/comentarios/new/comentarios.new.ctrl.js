@@ -5,7 +5,7 @@
         function ($scope, $http, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createComentario = function () {
-                $http.post('api/cliente/' + $scope.comentarioClienteId + '/comentarios', {
+                $http.post('api/cliente/' + $rootScope.currentId + '/comentarios', {
                     id: 0,
                     contenido: $scope.comentarioContenido
                 }).then(function (response) {

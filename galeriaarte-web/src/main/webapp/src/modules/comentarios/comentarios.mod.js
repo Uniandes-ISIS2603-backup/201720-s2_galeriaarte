@@ -49,7 +49,7 @@
                 url: '/create',
                 parent: 'comentarios',
                 views: {
-                    'detailView': {
+                    'listView': {
                         templateUrl: basePath + 'new/comentarios.new.html',
                         controller: 'comentarioNewCtrl'
                     }

@@ -104,6 +104,28 @@
                     requireLogin: false,
                     roles: ['administrador', 'cliente','artista']
                 }
+            }).state('comentarioCreateObra', {
+                url: '/{obraId:int}/create',
+                parent: 'obras',
+                param: {
+                    obraId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'obras.detail.html',
+                        controller: 'obraCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                    'listView': {
+                        templateUrl: 'src/modules/comentarios/new/comentarios.new.html',
+                        controller: 'comentarioNewCtrl'
+                    }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             });
 
         }]);

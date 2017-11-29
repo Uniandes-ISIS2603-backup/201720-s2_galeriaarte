@@ -36,6 +36,7 @@
 
                     if (sessionStorage.getItem("username") !== null) {
                         $rootScope.currentUser = sessionStorage.getItem("name");
+                        $rootScope.currentId = sessionStorage.getItem("idUsuario");
                         return true;
                     } else {
                         return false;

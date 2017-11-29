@@ -26,8 +26,10 @@
                     sessionStorage.token = $scope.user.token;
                     sessionStorage.setItem("username", $scope.user.user);
                     sessionStorage.setItem("name", $scope.user.name);
+                    sessionStorage.setItem("idUsuario", $scope.user.id);
                     sessionStorage.setItem("rol", $scope.user.rol);
                     $rootScope.currentUser = $scope.user.name; 
+                    $rootScope.currentId = $scope.user.id; 
                 }
             };
         }
