@@ -3,7 +3,7 @@
             var mod = ng.module("catalogoModule");
             mod.constant("catalogosContext", "api/catalogos");
             mod.controller('catalogoUpdateCtrl', ['$scope', '$http', 'catalogosContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, catalogosContext, $state, $rootScope, $filter) {
+                function ($scope, $http, catalogosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var Catalogoid = $state.params.idCatalogo;

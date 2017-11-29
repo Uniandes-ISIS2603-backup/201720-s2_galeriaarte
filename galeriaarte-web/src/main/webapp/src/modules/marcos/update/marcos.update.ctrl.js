@@ -3,7 +3,7 @@
             var mod = ng.module("marcoModule");
             mod.constant("marcosContext", "api/marcos");
             mod.controller('marcoUpdateCtrl', ['$scope', '$http', 'marcosContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, marcosContext, $state, $rootScope, $filter) {
+                function ($scope, $http, marcosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idMarco = $state.params.marcoId;

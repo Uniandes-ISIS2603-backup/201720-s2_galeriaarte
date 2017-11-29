@@ -36,6 +36,9 @@ public class CompraResource {
     
     @Inject
     CompraLogic compraLogic;
+    
+    String error = " no existe.";
+    String recurso = "El recurso /compras/";
 
     @GET
     public List<CompraDetailDTO> getCompras() throws BusinessLogicException {
@@ -47,7 +50,7 @@ public class CompraResource {
     public CompraDetailDTO getCompra(@PathParam("id") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
+            throw new WebApplicationException(recurso + id + error, 404);
         }
         return new CompraDetailDTO(entity);
     }
@@ -78,7 +81,7 @@ public class CompraResource {
         entity.setId(id);
         CompraEntity oldCompra = compraLogic.getCompra(id);
         if (oldCompra == null) {
-            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
+            throw new WebApplicationException(recurso + id + error, 404);
         }
         entity.setPago(oldCompra.getPago());
         return new CompraDetailDTO(compraLogic.updateCompra(entity));
@@ -89,7 +92,7 @@ public class CompraResource {
     public void deleteCompra(@PathParam("comprasId") Long id) throws BusinessLogicException {
         CompraEntity entity = compraLogic.getCompra(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
+            throw new WebApplicationException(recurso + id + error, 404);
         }
         compraLogic.deleteCompra(id);
     }
@@ -98,7 +101,7 @@ public class CompraResource {
     public Class<CompraObrasResource> getCompraObrasResource(@PathParam("comprasId") Long comprasId) {
         CompraEntity entity = compraLogic.getCompra(comprasId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compras/" + comprasId + " no existe.", 404);
+            throw new WebApplicationException(recurso + comprasId + error, 404);
         }
         return CompraObrasResource.class;
     }
@@ -107,7 +110,7 @@ public class CompraResource {
     public Class<PagoResource> getPagoResource(@PathParam("idCompra") Long comprasId) {
         CompraEntity entity = compraLogic.getCompra(comprasId);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compras/" + comprasId + "/pago no existe.", 404);
+            throw new WebApplicationException(recurso + comprasId + "/pago no existe.", 404);
         }
         return PagoResource.class;
     }

@@ -39,6 +39,8 @@ public class CatalogoResource {
     @Inject
     CatalogoLogic catalogoLogic;
     
+    String error = "El catalogo no existe";
+    
     @GET
     public List<CatalogoDetailDTO> getCatalogos() throws BusinessLogicException
     {
@@ -52,7 +54,7 @@ public class CatalogoResource {
         CatalogoEntity entity = catalogoLogic.getCatalogo(id);
         if(entity == null)
         {
-            throw new WebApplicationException("El catalogo no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         return new CatalogoDetailDTO(entity);
     }
@@ -70,7 +72,7 @@ public class CatalogoResource {
         CatalogoEntity entity = catalogoLogic.getCatalogo(id);
         if(entity == null)
         {
-            throw new WebApplicationException("El catalogo no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         return new CatalogoDetailDTO(catalogoLogic.updateCatalogo(id, catalogo.toEntity()));
     }
@@ -83,7 +85,7 @@ public class CatalogoResource {
         CatalogoEntity entity = catalogoLogic.getCatalogo(id);
         if(entity == null)
         {
-            throw new WebApplicationException("El catalogo no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         catalogoLogic.deleteCatalogo(id);
     }
@@ -97,7 +99,7 @@ public class CatalogoResource {
         return list;
     }
     
-    public ArrayList<CatalogoEntity> listDTO2Entity(List<CatalogoDTO> dtoList)
+    public List<CatalogoEntity> listDTO2Entity(List<CatalogoDTO> dtoList)
     {
         ArrayList<CatalogoEntity> lista = new ArrayList<CatalogoEntity>();
         for(CatalogoDTO dto : dtoList)

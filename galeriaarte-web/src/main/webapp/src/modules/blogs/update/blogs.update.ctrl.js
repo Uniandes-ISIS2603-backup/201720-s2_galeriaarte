@@ -3,7 +3,7 @@
             var mod = ng.module("blogModule");
             mod.constant("blogsContext", "api/blogs");
             mod.controller('blogUpdateCtrl', ['$scope', '$http', 'blogsContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, blogsContext, $state, $rootScope, $filter) {
+                function ($scope, $http, blogsContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idBlog = $state.params.blogId;

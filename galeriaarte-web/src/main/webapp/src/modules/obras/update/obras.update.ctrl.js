@@ -3,7 +3,7 @@
             var mod = ng.module("obraModule");
             mod.constant("obrasContext", "api/obras");
             mod.controller('obraUpdateCtrl', ['$scope', '$http', 'obrasContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, obrasContext, $state, $rootScope, $filter) {
+                function ($scope, $http, obrasContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idObra = $state.params.obraId;

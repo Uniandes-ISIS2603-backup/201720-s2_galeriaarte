@@ -3,7 +3,7 @@
             var mod = ng.module("artistaModule");
             mod.constant("artistasContext", "api/artistas");
             mod.controller('artistaUpdateCtrl', ['$scope', '$http', 'artistasContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, artistasContext, $state, $rootScope, $filter) {
+                function ($scope, $http, artistasContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idArtista = $state.params.artistaId;

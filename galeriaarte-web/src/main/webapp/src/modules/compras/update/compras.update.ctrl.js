@@ -96,10 +96,6 @@
                             valor: $scope.valor,
                             fecha: $scope.fecha
                         }).then(function (response) {
-//                            if (idsComentario.length > 0) {
-//                                $http.put(clientesContext + "/" + response.data.id + "/comentarios", $scope.allComentariosCliente).then(function (response) {
-//                                });
-//                            }
                             //Author created successfully
                             $state.go('comprasList', {compraId: response.data.id}, {reload: true});
                         });

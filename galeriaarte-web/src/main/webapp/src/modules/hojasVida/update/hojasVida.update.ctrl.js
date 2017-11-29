@@ -3,7 +3,7 @@
             var mod = ng.module("hojaVidaModule");
             mod.constant("hojasVidaContext", "api/hojasVida");
             mod.controller('hojaVidaUpdateCtrl', ['$scope', '$http', 'hojasVidaContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, hojasVidaContext, $state, $rootScope, $filter) {
+                function ($scope, $http, hojasVidaContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idHojaVida = $state.params.hojaVidaId;
