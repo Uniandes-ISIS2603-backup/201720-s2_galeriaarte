@@ -108,25 +108,6 @@ public class PagoLogicTest {
     }
 
     /**
-     * Prueba para crear un Artista
-     *
-     *
-     * @throws
-     * co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException
-     */
-    @Test
-    public void createPagoTest() throws BusinessLogicException {
-        PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
-        PagoEntity result = pagoLogic.createPago(newEntity.getCompra().getId(), newEntity);
-        Assert.assertNotNull(result);
-        PagoEntity entity = em.find(PagoEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getTotal(), entity.getTotal());
-        Assert.assertEquals(newEntity.getImpuesto(), entity.getImpuesto());
-        
-    }
-
-    /**
      * Prueba para consultar la lista de Artistas
      *
      *
@@ -145,38 +126,7 @@ public class PagoLogicTest {
             Assert.assertTrue(found);
         }
     }
-
-    /**
-     * Prueba para consultar un Artista
-     *
-     *
-     */
-    @Test
-    public void getPagoTest() {
-        PagoEntity entity = data.get(0);
-        PagoEntity resultEntity = pagoLogic.getPago(entity.getCompra().getId(), entity.getId());
-        Assert.assertNotNull(resultEntity);
-        
-        Assert.assertEquals(entity.getId(), resultEntity.getId());
-        Assert.assertEquals(entity.getTotal(), resultEntity.getTotal());
-        Assert.assertEquals(entity.getImpuesto(), resultEntity.getImpuesto());
-        
-       
-    }
-
-    /**
-     * Prueba para eliminar un Artista
-     *
-     *
-     */
-    @Test
-    public void deletePagoTest() {
-        PagoEntity entity = data.get(0);
-        pagoLogic.deletePago(entity.getCompra().getId(), entity.getId());
-        PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-
+    
     /**
      * Prueba para actualizar un Artista
      *
@@ -196,9 +146,6 @@ public class PagoLogicTest {
         PagoEntity resp = em.find(PagoEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getTotal(), resp.getTotal());
-        Assert.assertEquals(pojoEntity.getImpuesto(), resp.getImpuesto());
-       
 
     }
 }

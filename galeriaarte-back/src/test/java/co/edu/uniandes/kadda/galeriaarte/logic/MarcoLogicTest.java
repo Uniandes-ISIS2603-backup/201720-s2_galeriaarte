@@ -119,10 +119,7 @@ public class MarcoLogicTest {
         Assert.assertNotNull(result);
         MarcoEntity entity = em.find(MarcoEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getValor(), entity.getValor());
         Assert.assertEquals(newEntity.getMaterial(), entity.getMaterial());
-        Assert.assertEquals(newEntity.getAncho(), entity.getAncho());
-        Assert.assertEquals(newEntity.getAlto(), entity.getAlto());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         
     }
@@ -158,10 +155,7 @@ public class MarcoLogicTest {
         MarcoEntity resultEntity = marcoLogic.getMarco(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
-        Assert.assertEquals(entity.getValor(), resultEntity.getValor());
         Assert.assertEquals(entity.getMaterial(), resultEntity.getMaterial());
-        Assert.assertEquals(entity.getAncho(), resultEntity.getAncho());
-        Assert.assertEquals(entity.getAlto(), resultEntity.getAlto());
         Assert.assertEquals(entity.getImage(), resultEntity.getImage());
 
     }
@@ -198,10 +192,7 @@ public class MarcoLogicTest {
         MarcoEntity resp = em.find(MarcoEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getValor(), resp.getValor());
         Assert.assertEquals(pojoEntity.getMaterial(), resp.getMaterial());
-        Assert.assertEquals(pojoEntity.getAncho(), resp.getAncho());
-        Assert.assertEquals(pojoEntity.getAlto(), resp.getAlto());
         Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
         
 

@@ -5,12 +5,9 @@
  */
 package co.edu.uniandes.kadda.galeriaarte.logic;
 
-import co.edu.uniandes.kadda.galeriaarte.ejb.ArtistaLogic;
 import co.edu.uniandes.kadda.galeriaarte.ejb.ObraLogic;
-import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
-import co.edu.uniandes.kadda.galeriaarte.persistence.ArtistaPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ObraPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +121,6 @@ public class ObraLogicTest {
         Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
         Assert.assertEquals(newEntity.getCantidad(), entity.getCantidad());
-        Assert.assertEquals(newEntity.getValor(), entity.getValor());
     }
 
     /**
@@ -161,7 +157,6 @@ public class ObraLogicTest {
         Assert.assertEquals(entity.getImagen(), resultEntity.getImagen());
         Assert.assertEquals(entity.getTipo(), resultEntity.getTipo());
         Assert.assertEquals(entity.getCantidad(), resultEntity.getCantidad());
-        Assert.assertEquals(entity.getValor(), resultEntity.getValor());
         
     }
 
@@ -200,7 +195,6 @@ public class ObraLogicTest {
         Assert.assertEquals(pojoEntity.getImagen(), resp.getImagen());
         Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
         Assert.assertEquals(pojoEntity.getCantidad(), resp.getCantidad());
-        Assert.assertEquals(pojoEntity.getValor(), resp.getValor());
         
     }
 }
