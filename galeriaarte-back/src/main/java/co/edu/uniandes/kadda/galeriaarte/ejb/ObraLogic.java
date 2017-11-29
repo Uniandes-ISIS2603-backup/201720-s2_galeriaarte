@@ -9,6 +9,7 @@ import co.edu.uniandes.kadda.galeriaarte.entities.ArtistaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ClienteEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ComentarioEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.CompraEntity;
+import co.edu.uniandes.kadda.galeriaarte.entities.HojaVidaEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.MarcoEntity;
 import co.edu.uniandes.kadda.galeriaarte.entities.ObraEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
@@ -46,6 +47,16 @@ public class ObraLogic {
     @Inject
     private MarcoPersistence marcoPersistence;
 
+    
+    public ObraEntity getObra(Long id) {
+        ObraEntity obra = persistence.find(id);
+        if (obra == null) {
+          
+        }
+          return obra;
+    }
+    
+    
     /**
      *
      * @param entity

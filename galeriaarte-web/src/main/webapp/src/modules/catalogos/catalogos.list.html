@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="panel-group">
         <div class="panel panel-primary">
-            <div class="panel-heading"><label>Lista de Catálogos</label></div>
+            <div class="panel-heading"><label>Lista de Catalo</label></div>
             <div class="panel-body">
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a class="btn btn-info" ui-sref="catalogosCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar un nuevo Catálogo</a>
+                        <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-info" ui-sref="artistasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar un nuevo Artista</a>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -13,17 +13,18 @@
                         <thead>
                             <tr>
                                 <th>Id</th>    
-                                <th>Categoría</th>  
-                                <th>Acciones</th>  
+                                <th>Name</th>  
+                                <th ng-if="isAuthenticated() && hasPermissions()" >Actions</th>  
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="catalogo in catalogosRecords">
                                 <td id="{{$index}}-id"><a ui-sref="catalogoDetail({catalogoId: catalogo.id})">{{catalogo.id}}</a></td>
                                 <td id="{{$index}}-categoria"><a ui-sref="catalogoDetail({catalogoId: catalogo.id})">{{catalogo.categoria}}</a></td>
-                                <td id="{{$index}}-acciones">
-                                    <a class="btn btn-default btn-sm" ui-sref="catalogoUpdate({catalogoId: catalogo.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a class="btn btn-danger btn-sm" ui-sref="catalogoDelete({catalogoId: catalogo.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                <td id="{{$index}}-descripcion"><a ui-sref="catalogoDetail({catalogoId: catalogo.id})">{{catalogo.descripcion}}</a></td>
+                                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">
+                                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="artistaUpdate({artistaId: artista.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="artistaDelete({artistaId: artista.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
                         </tbody>

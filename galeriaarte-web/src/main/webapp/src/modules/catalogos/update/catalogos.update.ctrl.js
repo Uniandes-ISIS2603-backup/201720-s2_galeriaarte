@@ -6,12 +6,15 @@
                 function ($scope, $http, catalogosContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;
 
-                    var idCatalogo = $state.params.catalogoId;
+                    var Catalogoid = $state.params.idCatalogo;
 
                     //Consulto el catálogo a editar
-                    $http.get(catalogosContext + '/' + idCatalogo).then(function (response) {
+                    $http.get(catalogosContext + '/' + Catalogoid).then(function (response) {
                         var catalogo = response.data;
+                        $scope.idCatalogo = catalogo.id;
                         $scope.categoriaCatalogo = catalogo.categoria;
+                        $scope.imagenCatalogo = catalogo.imagen;
+                        $scope.descripcionCatalogo = catalogo.descripcion;
                         
                         
                     });
@@ -38,10 +41,13 @@
                     };
 
                     $scope.createCatalogo = function () {
-                        $http.put(catalogosContext + "/" + idCatalogo, {
+                        $http.put(catalogosContext + "/" + Catalogoid, {
+                            id: $scope.idCatalogo,
                             categoria: $scope.categoriaCatalogo,
+                            imagen: $scope.imagenCatalogo,
+                            descripcion: $scope.descripcionCatalogo
                         }).then(function (response) {
-                            //Blog created successfully
+                            //Catalogo created successfully
                             $state.go('catalogosList', {catalogoId: response.data.id}, {reload: true});
                         });
                     };

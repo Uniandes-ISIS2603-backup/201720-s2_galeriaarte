@@ -62,4 +62,21 @@ public class PagoPersistence {
         PagoEntity entity = em.find(PagoEntity.class, id);
         em.remove(entity);
     }
+    
+    /**
+     * Actualiza un marco.
+     *
+     * @param entity: el marco que viene con los nuevos cambios. Por ejemplo
+     * el codigo pudo cambiar. En ese caso, se haria uso del método update.
+     * @return un marco con los cambios aplicados.
+     */
+    public PagoEntity update(PagoEntity entity) {
+        LOGGER.log(Level.INFO, "Actualizando Pago con id={0}", entity.getId());
+        /* Note que hacemos uso de un método propio del EntityManager llamado merge() que recibe como argumento
+        la Galeria con los cambios, esto es similar a 
+        "UPDATE table_codigo SET column1 = value1, column2 = value2, ... WHERE condition;" en SQL.
+         */
+        return em.merge(entity);
+    }
+    
 }
