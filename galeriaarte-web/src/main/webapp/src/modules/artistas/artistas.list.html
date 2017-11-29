@@ -12,15 +12,15 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>    
-                                <th>Name</th>  
+                                <th>Nombre</th>    
+                                <th></th>  
                                 <th ng-if="isAuthenticated() && hasPermissions()" >Actions</th>  
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="artista in artistasRecords">
-                                <td id="{{$index}}-id"><a ui-sref="artistaDetail({artistaId: artista.id})">{{artista.id}}</a></td>
-                                <td id="{{$index}}-name"><a ui-sref="artistaDetail({artistaId: artista.id})">{{artista.name}}</a></td>
+                                <td id="{{$index}}-id">{{artista.name}}</td>
+                                <td id="{{$index}}-name"><a ui-sref="artistaDetail({artistaId: artista.id})" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>&nbsp;Ver artista</a></td>
                                 <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-actions">
                                     <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-default btn-sm" ui-sref="artistaUpdate({artistaId: artista.id})"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a ng-if="isAuthenticated() && hasPermissions()" class="btn btn-danger btn-sm" ui-sref="artistaDelete({artistaId: artista.id})"><span class="glyphicon glyphicon-trash"></span></a>
