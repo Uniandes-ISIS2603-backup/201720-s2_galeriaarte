@@ -107,11 +107,11 @@
                 <a class="navbar-brand" href="#"><b  style="font-size: 22px; color: black">Galería de Arte Kadda</b></a>
             </div>
             <ul ng-if="!isAuthenticated()" class="nav navbar-nav navbar-right">
-                <li><a ui-sref="login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                <li><a ui-sref="login"><font style="font-size: 20px"><span class="glyphicon glyphicon-user"></span>&nbsp; Login</font></a></li>
             </ul>
             <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
-                <li class="nameUser">Hola, {{currentUser}}</li>
-                <li><a ui-sref="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li class="nameUser"><font color="black" style="font-size: 20px">Hola, {{currentUser}} </font></li>
+                <li><a ui-sref="logout"><font style="font-size: 20px"><span class="glyphicon glyphicon-log-in"></span>&nbsp; Logout</font></a></li>
             </ul>
         </div>
 
@@ -130,10 +130,9 @@
                     <li style="background-color: white"><a ui-sref="marcosList"><span class="glyphicon glyphicon-blackboard" style="color: black"></span> <font color="black" style="font-size: 20px"> Marcos</font> </a></li>
                     <li style="background-color: white"><a ui-sref="comprasList"><span class="glyphicon glyphicon-shopping-cart" style="color: black"></span><font color="black" style="font-size: 20px"> Compras</font>  </a></li>
                     <li style="background-color: white"><a ui-sref="pagosList"><span class="glyphicon glyphicon-list-alt" style="color: black"></span><font color="black" style="font-size: 20px"> Pagos</font>  </a></li>
-                    <li style="background-color: white"><a ui-sref="clientesList">Clientes</a></li>
-                    <li style="background-color: white"><a ui-sref="comentariosList">Comentarios</a></li>
-                    <li style="background-color: white"><a ui-sref="blogsList">Blogs</a></li>
-                    <li style="background-color: white"><a ui-sref="hojasVidaList">Hojas de vida</a></li>
+                    <li  style="background-color: white"ng-show="isAuthenticated() && hasPermissions()" style="background-color: white"><a ui-sref="clientesList" ng-show="isAuthenticated() && hasPermissions()"> <span class="glyphicon glyphicon-user" style="color: black"></span> <font color="black" style="font-size: 20px">Clientes</font></a></li>
+                    <li  style="background-color: white"ng-show="isAuthenticated() && hasPermissions()" style="background-color: white"><a ui-sref="comentariosList" ng-show="isAuthenticated() && hasPermissions()"> <span class="glyphicon glyphicon-comment" style="color: black"></span> <font color="black" style="font-size: 20px"> Comentarios</font></a></li>
+                    <li style="background-color: white"><a ui-sref="blogsList"><span class="glyphicon glyphicon-file" style="color: black"><font color="black" style="font-size: 20px">Blogs</font></a></li>
                 </ul>
 
             </div>
