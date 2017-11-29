@@ -11,6 +11,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/obras/';
+            var basePathCompra = 'src/modules/compras/';
             // Mostrar la lista de autores será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/obrasList");
          // Definición del estado 'authorsList' donde se listan los autores
@@ -35,6 +36,19 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'obras.list.html'
+                    }
+                }
+            }).state('compraObra', {
+                url: '/{obraId:int}/compra',
+                parent: 'obras',
+                param: {
+                    obraId: null
+                },
+                views: {
+                  
+                 'detailView': {
+                        templateUrl: basePathCompra + 'new/compras.new.html',
+                        controller: 'compraNewCtrl'
                     }
                 }
             }).state('obraDetail', {

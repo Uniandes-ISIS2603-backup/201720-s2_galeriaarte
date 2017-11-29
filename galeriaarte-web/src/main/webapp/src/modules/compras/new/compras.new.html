@@ -1,15 +1,16 @@
-<div class="container-fluid">
+
+   
     <div class="panel-group">
         <div class="panel panel-primary">
 
-            <div class="panel-heading"><label ng-if="!edit" id="createCompra">Comprar</label>
+            <div class="panel-heading"><label ng-if="!edit" id="createCompra" >Comprar</label>
                 <label ng-if="edit" id="editCliente">Edit Compra</label></div>
             <div class="panel-body">
                 <form ng-submit="createCompra()" name="compra">
                     <div class="form-group row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" >
                             <label for="valor" class="col-sm-2">Valor:</label>
-                            <input type="text" style="" id="valor" required ng-model="valor" class="col-sm-6" >
+                            <input type="text"  id="valor"  class="col-sm-6" value="{{currentObra.valor}}" disabled >
                         </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
@@ -43,7 +44,7 @@
                     </div>
                 </form>
 
-            <div class="panel-heading"><label ng-if="!edit" id="createCompra">Crear nueva compra</label>
+                <div class="panel-heading"><button class="btn btn-success" ng-if="!edit" id="createCompra" onClick="history.go(0)" VALUE="Refresh">Calcular valor total</button>
                 <label ng-if="edit" id="editCompra">Editar compra</label></div>
             <div class="panel-body">
                 <form ng-submit="createCompra()" name="blog">

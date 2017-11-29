@@ -6,14 +6,19 @@
             $rootScope.edit = false;
             $scope.createComentario = function () {
                 
-                $http.get('api/obras/' + $state.params.obraId).then(function (responseO) {
-                $http.get('api/cliente/' + $rootScope.currentId).then(function (response) {                
-                $http.post('api/comentarios', {
+                $http.get('api/obras/' + $state.params.obraId).then(function (responseO) 
+                {
+                $http.get('api/cliente/' + $rootScope.currentId).then(function (response)
+                {                
+                $http.post('api/comentarios', 
+                {
                     id: 0,
                     contenido: $scope.comentarioContenido,
                     cliente: response.data,
                     obra: responseO.data
-                }).then(function (response) {
+                })
+                .then(function (response) 
+               {
                     $state.go('comentariosList', {comentarioId: response.data.id}, {reload: true});
                 });});});
             };

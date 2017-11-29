@@ -24,6 +24,10 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('artistasList', {
                 url: '/list',
                 parent: 'artistas',
@@ -55,6 +59,11 @@
                         controller: 'artistaNewCtrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
             }).state('artistaUpdate', {
                 url: '/update/{artistaId:int}',
                 parent: 'artistas',
@@ -66,6 +75,11 @@
                         templateUrl: basePath + '/new/artistas.new.html',
                         controller: 'artistaUpdateCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
                 }
             }).state('artistaDelete', {
                 url: '/delete/{artistaId:int}',
@@ -79,6 +93,12 @@
                         controller: 'artistaDeleteCtrl'
                     }
                 }
+                 ,
+                data: {
+                    requireLogin: false,
+                    roles: ['administrador', 'cliente','artista']
+                }
+
             });
 
         }]);

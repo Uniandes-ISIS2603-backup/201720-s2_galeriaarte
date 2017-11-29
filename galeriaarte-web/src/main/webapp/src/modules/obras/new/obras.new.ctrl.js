@@ -17,6 +17,7 @@
                     $state.go('obrasList', {obraId: response.data.id}, {reload: true});
                 });
             };
+            
         }
     ]);
 }
