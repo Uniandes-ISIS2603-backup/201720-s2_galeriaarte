@@ -11,12 +11,6 @@
                             <input id="comentarioContenido" required ng-model="comentarioContenido" class="col-sm-6"/>
                         </div>
                     </div>
-<!--                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="comentarioClienteId" class="col-sm-2">Id cliente:</label>
-                            <input id="comentarioClienteId" required ng-model="comentarioClienteId" class="col-sm-6"/>
-                        </div>
-                    </div>-->
                     <div ng-if="edit" class="panel-group" id="theClientes">
                         <div class="panel panel-info">
                             <div class="panel-heading">Associated clientes</div>
@@ -53,7 +47,7 @@
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
                             <input ng-show="comentario.$valid" type="submit" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="comentariosList">Cancel</a>
+                            <a class="btn btn-info" ui-sref="obraDetail">Cancel</a>
                         </div>
                     </div>
                 </form>
