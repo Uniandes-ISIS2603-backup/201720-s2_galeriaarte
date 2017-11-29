@@ -23,10 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.kadda.galeriaarte.resources;
 
-
-
-
-    
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDTO;
 import co.edu.uniandes.kadda.galeriaarte.ejb.GaleriaLogic;
 import co.edu.uniandes.kadda.galeriaarte.dtos.GaleriaDetailDTO;
@@ -37,7 +33,6 @@ import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
 import co.edu.uniandes.kadda.galeriaarte.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 import javax.inject.Inject;
@@ -67,8 +62,6 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class GaleriaResource {
 
-    
-    
     @Inject
     GaleriaLogic galeriaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
@@ -119,8 +112,6 @@ public class GaleriaResource {
      * "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Galeria a actualizar.
-     * @param galeriadearte corresponde al objeto con los cambios que se van a
-     * realizar.
      * @return La Galeria actualizada.
      * @throws BusinessLogicException
      *
@@ -129,7 +120,7 @@ public class GaleriaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id, GaleriaDetailDTO galeriadearte) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
+    public GaleriaDetailDTO updateGaleria(@PathParam("id") Long id) throws BusinessLogicException{
 
         GaleriaEntity entity = galeriaDTO.toEntity();
         entity.setId(id);

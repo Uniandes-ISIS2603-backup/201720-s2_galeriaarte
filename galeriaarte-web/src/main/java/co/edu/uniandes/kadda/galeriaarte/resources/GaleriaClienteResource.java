@@ -37,28 +37,8 @@ public class GaleriaClienteResource {
     @Inject
     private ClienteLogic clienteLogic;
 
-    /**
-     *
-     * lista de entidades a DTO.
-     *
-     * Este método convierte una lista de objetos GaleriaEntity a una lista de
-     * objetos GaleriaDetailDTO (json)
-     *
-     * @param entityList corresponde a la lista de Galerias de tipo Entity que
-     * vamos a convertir a DTO.
-     * @return la lista de Galerias en forma DTO (json)
-     */
-    private List<GaleriaDetailDTO> listGaleriaEntity2DetailDTO(List<GaleriaEntity> entityList) {
-        List<GaleriaDetailDTO> list = new ArrayList<>();
-        for (GaleriaEntity entity : entityList) {
-            list.add(new GaleriaDetailDTO(entity));
-        }
-        return list;
-    }
-
     private GaleriaDetailDTO galeriaEntity2DetailDTO(GaleriaEntity galeriaEntity) {
-        GaleriaDetailDTO resp = new GaleriaDetailDTO(galeriaEntity);
-        return resp;
+        return new GaleriaDetailDTO(galeriaEntity);
     }
 
     /**
