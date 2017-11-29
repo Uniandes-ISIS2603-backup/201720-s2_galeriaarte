@@ -6,7 +6,12 @@
             <div class="thumb">
                
                 <img class="img-responsive" ng-src="{{currentObra.imagen}}"/>
+                
+                <div class="row">
+                    <input type="button" value="Anterior" ui-sref="obraDetail({obraId: currentObra.id-1})"  style="padding: 4px 4px" class="btn btn-info btn-lg">
+                </div>
             </div>
+            
 
         </div>
         <div class="col-md-3">
