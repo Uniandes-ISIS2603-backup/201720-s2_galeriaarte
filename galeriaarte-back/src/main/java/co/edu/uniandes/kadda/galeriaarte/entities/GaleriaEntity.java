@@ -25,7 +25,7 @@ package co.edu.uniandes.kadda.galeriaarte.entities;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -43,13 +43,13 @@ public class GaleriaEntity extends BaseEntity implements Serializable
    
    @PodamExclude
    @OneToMany(mappedBy = "galeria")
-   private ArrayList<ArtistaEntity> artistas;
+   private List<ArtistaEntity> artistas;
    @PodamExclude
    @OneToMany(mappedBy = "galeria")
-   private ArrayList<CatalogoEntity> catalogos;
+   private List<CatalogoEntity> catalogos;
    @PodamExclude
    @OneToMany(mappedBy = "clienteGaleria")
-   private ArrayList<ClienteEntity> clientes;
+   private List<ClienteEntity> clientes;
 
    public String getNombre()
    {
@@ -75,27 +75,27 @@ public class GaleriaEntity extends BaseEntity implements Serializable
    {
        this.telefono = pTelefono;
    }
-   public ArrayList<ArtistaEntity> getArtistas()
+   public List<ArtistaEntity> getArtistas()
    {
        return artistas;
    }
-   public void setArtistas(ArrayList<ArtistaEntity> pArtistas)
+   public void setArtistas(List<ArtistaEntity> pArtistas)
    {
        this.artistas = pArtistas;
    }
-   public ArrayList<CatalogoEntity> getCatalogos()
+   public List<CatalogoEntity> getCatalogos()
    {
        return catalogos;
    }
-   public void setCatalogos(ArrayList<CatalogoEntity> pCatalogos)
+   public void setCatalogos(List<CatalogoEntity> pCatalogos)
    {
        this.catalogos = pCatalogos;
    }
-   public ArrayList<ClienteEntity> getClientes()
+   public List<ClienteEntity> getClientes()
    {
        return clientes;
    }
-   public void setClientes(ArrayList<ClienteEntity> pClientes)
+   public void setClientes(List<ClienteEntity> pClientes)
    {
        this.clientes = pClientes;
    }

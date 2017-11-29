@@ -74,7 +74,7 @@ public class GaleriaArtistaResource
      * Obtiene una colección de instancias de CatalogoDetailDTO asociadas a una
      * instancia de Catalogo
      *
-     * @param catalogoId Identificador de la instancia de Catalogo
+     * @param galeriaId
      * @return Colección de instancias de CatalogoDetailDTO asociadas a la
      * instancia de Galeria
      * 
@@ -89,7 +89,6 @@ public class GaleriaArtistaResource
      * Asocia una Galeria existente a una Catalogo
      *
      * @param artistaId
-     * @param catalogoId Identificador de la instancia de catálogo
      * @param galeriaId Identificador de la instancia de galería
      * @return Instancia de galeriaDetailDTO que fue asociada a artista
      * 
@@ -104,16 +103,14 @@ public class GaleriaArtistaResource
     /**
      * Remplaza las instancias de Artistas asociadas a una instancia de Galeria
      *
-     * @param galeriaId Identificador de la instancia de Galeria
-     * @param List<ArtistaDTO> Colección de instancias de ArtistaDTO a asociar a instancia
-     * de Galeria
+     * @param artistas
      * @return Nueva colección de ArtistaDTO asociada a la instancia de Galeria
      * 
      */
    
    @PUT
-   public List<ArtistaDetailDTO> replaceArtistas(@PathParam("galeriaId") Long galeriaId, List<ArtistaDTO> artistas) 
+   public List<ArtistaDetailDTO> replaceArtistas(List<ArtistaDTO> artistas) 
    {
-       return artistaListEntity2DTO(galeriaLogic.replaceArtistas(galeriaId, artistaListDTO2Entity(artistas)));
+       return artistaListEntity2DTO(galeriaLogic.replaceArtistas(artistaListDTO2Entity(artistas)));
    }   
 }

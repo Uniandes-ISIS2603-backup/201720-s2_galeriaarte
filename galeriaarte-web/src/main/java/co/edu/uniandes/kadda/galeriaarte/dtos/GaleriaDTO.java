@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
-import java.util.ArrayList;
 
 /**
  * GaleriaDTO Objeto de transferencia de datos de Galerias. Los DTO contienen
@@ -40,16 +39,11 @@ public class GaleriaDTO {
     private String direccion;
     private int telefono;
 
-    private ArrayList<ArtistaDTO> artistas;
-
-    private ArrayList<CatalogoDTO> catalogos;
-
-    private ArrayList<ClienteDTO> clientes;
-
     /**
      * Constructor por defecto
      */
     public GaleriaDTO() {
+        //Constructor por defecto
     }
 
     /**

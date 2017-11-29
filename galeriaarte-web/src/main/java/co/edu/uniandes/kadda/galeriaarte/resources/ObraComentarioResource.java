@@ -69,7 +69,7 @@ public class ObraComentarioResource {
         ComentarioDetailDTO comentarioDetail = null;
         for (ComentarioEntity comentario : ent.getComentarios()) {
             if (comentario.getId().equals(idComentario)) {
-                comentarioDetail = (new ComentarioDetailDTO(comentario));
+                comentarioDetail = new ComentarioDetailDTO(comentario);
             }
         }
         if (comentarioDetail == null) {
@@ -87,7 +87,7 @@ public class ObraComentarioResource {
 
     @PUT
     @Path("/{idComentario:\\d+}")
-    public ComentarioDetailDTO replaceComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto, @PathParam(("idComentario")) Long idComentario) throws BusinessLogicException {
+    public ComentarioDetailDTO replaceComentario(@PathParam("id") Long obraId, ComentarioDetailDTO dto, @PathParam("idComentario") Long idComentario) throws BusinessLogicException {
 
         ObraEntity obra = obraLogic.findObra(obraId);
         List<ComentarioEntity> comen = obra.getComentarios();
@@ -107,7 +107,7 @@ public class ObraComentarioResource {
 
     @DELETE
     @Path("/{idComentario:\\d+}")
-    public void removeComentario(@PathParam("id") Long obraId, @PathParam(("idComentario")) Long idComentario) throws BusinessLogicException {
+    public void removeComentario(@PathParam("id") Long obraId, @PathParam("idComentario") Long idComentario) throws BusinessLogicException {
         ObraEntity obra = obraLogic.findObra(obraId);
         List<ComentarioEntity> comen = obra.getComentarios();
         for (int i = 0; i < comen.size(); i++) {

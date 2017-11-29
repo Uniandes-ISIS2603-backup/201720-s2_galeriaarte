@@ -16,16 +16,7 @@ import java.util.List;
 //@Stateless
 public class ArtistaObraLogic {
 
-    /*/
-    @Inject
-
-    private ArtistaPersistence persistence;
-    
-    /*/
     public ArtistaEntity findArtista(Long id) {
-        /*/
-        ArtistaEntity artistas = persistence.find(id);
-/*/
         return null;
     }
 

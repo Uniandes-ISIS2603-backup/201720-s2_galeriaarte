@@ -22,6 +22,8 @@ ALTER TABLE ComentarioEntity ALTER COLUMN id RESTART WITH 1;
 delete from GaleriaEntity;
 ALTER TABLE GaleriaEntity ALTER COLUMN id RESTART WITH 1;
 
+
+
 insert into CompraEntity (valor, fecha) values ( 20, '01/02/2001');
 insert into CompraEntity (valor, fecha) values ( 30, '08/06/2009');
 insert into CompraEntity (valor, fecha) values ( 40, '07/09/2007');
@@ -66,7 +68,7 @@ insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 3.
 insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 1, 1.5, 'Plastico', 'Marco de plastico', 25000, 'https://www.moldurashergon.es/img/blog/molduras-coloridas-520-748.jpg');
 insert into MarcoEntity ( alto, ancho, material, name, valor, image) values ( 2.5, 2.5, 'Madera', 'Marco étnico', 85000, 'https://www.moldurashergon.es/img/blog/molduras-etnicas-429-235.jpg');
 
-insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'Como entender el arte abstracta',1);
+insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido1', 'Como entender el arte abstracta',1);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido2', 'Como aprender a pintar',2);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido3', 'Aprendiendo analizar el arte',3);
 insert into BlogEntity ( contenido, name, artista_id ) values ('Contenido4', 'El arte de las esculturas',4);
