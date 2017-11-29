@@ -68,7 +68,7 @@ public class ClienteObraResource {
     @POST
     @Path("{obraId: \\d+}")
     public ObraDetailDTO addObra(@PathParam("clienteId") Long clienteId, @PathParam("obraId") Long obraId) {
-        return new ObraDetailDTO(clienteLogic.addObra(obraId, clienteId));
+        return new ObraDetailDTO(clienteLogic.addObra(clienteId, obraId));
     }
 
     /**

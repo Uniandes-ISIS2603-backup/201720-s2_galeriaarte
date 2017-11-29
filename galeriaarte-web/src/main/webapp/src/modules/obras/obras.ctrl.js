@@ -6,8 +6,8 @@
 (function (ng) {
     var mod = ng.module("obraModule");
     mod.constant("obrasContext", "api/obras");
-    mod.controller('obraCtrl', ['$scope', '$http', 'obrasContext', '$state',
-        function ($scope, $http, obrasContext, $state) {
+    mod.controller('obraCtrl', ['$scope', '$http', 'obrasContext', '$state', '$rootScope',
+        function ($scope, $http, obrasContext, $state, $rootScope) {
             $http.get(obrasContext).then(function (response) {
                 $scope.obrasRecords = response.data;
             });
@@ -18,6 +18,10 @@
                     $scope.currentObra = response.data;
                 });
             } 
+            $scope.AddFavorito = function () {
+                $http.post('api/cliente/' + $rootScope.currentId +'/obras/' + $state.params.obraId,{});
+                alert("Hola Mundo Estes es el id: "+ $state.params.obraId);
+            };
         }
         
     ]);

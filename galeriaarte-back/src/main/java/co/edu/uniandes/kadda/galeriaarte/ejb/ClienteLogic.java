@@ -116,7 +116,6 @@ public class ClienteLogic {
     public ObraEntity addObra(Long clienteId, Long obraId) {
         ClienteEntity entity = getCliente(clienteId);
         ObraEntity obra = obraLogic.findObra(obraId);
-        obra.setCliente(entity);
         entity.setObra(obra);
         return obraLogic.findObra(obraId);
     }
@@ -299,7 +298,6 @@ public class ClienteLogic {
     public void removeObra(Long clienteId, Long obraId) {
         ClienteEntity clienteEntity = getCliente(clienteId);
         ObraEntity obra = obraLogic.findObra(obraId);
-        obra.setCliente(null);
         clienteEntity.getObra().remove(obra);
     }
 }
