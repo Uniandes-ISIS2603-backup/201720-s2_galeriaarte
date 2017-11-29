@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.kadda.galeriaarte.dtos;
 
 import co.edu.uniandes.kadda.galeriaarte.entities.GaleriaEntity;
-import java.util.ArrayList;
 
 /**
  * GaleriaDTO Objeto de transferencia de datos de Galerias. Los DTO contienen

@@ -129,7 +129,7 @@ public class GaleriaDetailDTO extends GaleriaDTO {
         return artistas;
     }
 
-    public void setArtistas(ArrayList<ArtistaDTO> pArtistas) {
+    public void setArtistas(List<ArtistaDTO> pArtistas) {
         this.artistas = pArtistas;
     }
 }
