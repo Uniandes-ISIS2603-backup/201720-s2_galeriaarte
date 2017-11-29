@@ -63,22 +63,5 @@ public class ObraPersistence
         
         return query.getResultList();
     }
-
-    /*/
-    public ArtistaEntity findByCodigo(String codigo) {
-        
-
-        
-        TypedQuery query = em.createQuery("Select e From ArtistaEntity e where e.codigo = :codigo", ArtistaEntity.class);
-        
-        query = query.setParameter("codigo", codigo);
-        
-        List<ArtistaEntity> sameCodigo = query.getResultList();
-        if (sameCodigo.isEmpty()) {
-            return null;
-        } else {
-            return sameCodigo.get(0);
-        }
-    }
-/*/ 
+    
 }

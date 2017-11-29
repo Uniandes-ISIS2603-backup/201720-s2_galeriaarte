@@ -33,7 +33,7 @@ import co.edu.uniandes.kadda.galeriaarte.persistence.CatalogoPersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.ClientePersistence;
 import co.edu.uniandes.kadda.galeriaarte.persistence.GaleriaPersistence;
 import java.util.ArrayList;
-import java.util.List;  
+import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -45,18 +45,18 @@ import javax.inject.Inject;
 @Stateless
 public class GaleriaLogic {
 
-   private static final Logger LOGGER = Logger.getLogger(GaleriaLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(GaleriaLogic.class.getName());
 
     @Inject
     private GaleriaPersistence persistence; // Variable para acceder a la persistencia de la aplicaciÃ³n. Es una inyecciÃ³n de dependencias.
 
     @Inject
-    private CatalogoPersistence persistenceCat; //Variable para acceder a la persistencia del catÃƒÂ¡logo;
-    
+    private CatalogoPersistence persistenceCat; //Variable para acceder a la persistencia del catÃƒÂ¡logo.
+
     @Inject
     private ClientePersistence persistenceCli;
-    
-    @Inject 
+
+    @Inject
     private ArtistaPersistence persistenceArt;
 
     /**
@@ -73,22 +73,20 @@ public class GaleriaLogic {
         return entity;
     }
 
-    public GaleriaEntity getGaleria()
-    {
+    public GaleriaEntity getGaleria() {
         LOGGER.info("Inicia procesod de consultar Galeria");
         GaleriaEntity galeria = null;
         List<GaleriaEntity> galerias = persistence.findAll();
-        for (int i = 0; i < galerias.size(); i++)
-        {
-            if(galerias.get(i) != null)
-            {
+        for (int i = 0; i < galerias.size(); i++) {
+            if (galerias.get(i) != null) {
                 galeria = galerias.get(i);
             }
         }
         return galeria;
     }
+
     /**
-     * 
+     *
      * Obtener todas las Galerias existentes en la base de datos.
      *
      * @return una lista de Galerias.
@@ -101,48 +99,37 @@ public class GaleriaLogic {
         return galerias;
     }
 
-    public GaleriaEntity updateGaleria(GaleriaEntity entity)
-    {      
-           return persistence.update(entity);
+    public GaleriaEntity updateGaleria(GaleriaEntity entity) {
+        return persistence.update(entity);
     }
-    
 
-    
-    
-     public void deleteGaleria(Long id)
-    {
-       persistence.delete(id);
+    public void deleteGaleria(Long id) {
+        persistence.delete(id);
     }
-     
-     public List<ClienteEntity> getClientes() 
-    {
+
+    public List<ClienteEntity> getClientes() {
         LOGGER.info("Inicia proceso de consultar todos los clientes");
         List<ClienteEntity> clientes = persistenceCli.findAll();
         LOGGER.info("Termina proceso de consultar todos los clientes");
         return clientes;
     }
-    
-    
-    
-    public List<ArtistaEntity> getArtistas()
-    {
+
+    public List<ArtistaEntity> getArtistas() {
         LOGGER.info("Inicia proceso de consultar todos los artistas");
         List<ArtistaEntity> artistas = persistenceArt.findAll();
         LOGGER.info("Termina proceso de consultar todos los artistas");
         return artistas;
     }
-    
-    public List<CatalogoEntity> getCatalogos()
-    {
+
+    public List<CatalogoEntity> getCatalogos() {
         LOGGER.info("Inicia proceso de consultar todos los catÃ¡logos");
         List<CatalogoEntity> catalogos = persistenceCat.findAll();
         LOGGER.info("Termina proceso de consultar todos los artistas");
         return catalogos;
     }
-    
+
     //No solo agrega una galeria al cliente sino que además agrega un cliente a una galeria.
-    public void addGaleriaACliente(long idCliente)
-    {
+    public void addGaleriaACliente(long idCliente) {
         LOGGER.info("Inicia proceso de agregar la galería al cliente");
         ClienteEntity cliente = persistenceCli.find(idCliente);
         GaleriaEntity galeria = getGaleria();
@@ -150,58 +137,49 @@ public class GaleriaLogic {
         clientes.add(cliente);
         cliente.setClienteGaleria(galeria);
     }
-    
-    public List<ArtistaEntity> replaceArtistas(long idGaleria, List<ArtistaEntity> artistas)
-    {
+
+    public List<ArtistaEntity> replaceArtistas(List<ArtistaEntity> artistas) {
         LOGGER.info("Inicia proceso de cambiar los artistas a la galeria");
         GaleriaEntity galeria = getGaleria();
-        for (int i = 0; i < galeria.getArtistas().size(); i++)
-        {
+        for (int i = 0; i < galeria.getArtistas().size(); i++) {
             galeria.getArtistas().get(i).setGaleria(null);
         }
-        
+
         ArrayList<ArtistaEntity> nuevosAr = new ArrayList<ArtistaEntity>(artistas);
         galeria.setArtistas(
-              nuevosAr);
-        for (int i = 0; i < artistas.size(); i++) 
-        {
+                nuevosAr);
+        for (int i = 0; i < artistas.size(); i++) {
             artistas.get(i).setGaleria(galeria);
         }
         return artistas;
     }
-    
-    public List<ClienteEntity> replaceClientes(long idGaleria, List<ClienteEntity> clientes)
-    {
+
+    public List<ClienteEntity> replaceClientes(List<ClienteEntity> clientes) {
         LOGGER.info("Inicia proceso de cambiar los clientes a la galeria");
         GaleriaEntity galeria = getGaleria();
-        for (int i = 0; i < galeria.getClientes().size(); i++)
-        {
+        for (int i = 0; i < galeria.getClientes().size(); i++) {
             galeria.getClientes().get(i).setClienteGaleria(null);
         }
-        
+
         ArrayList<ClienteEntity> nuevosCli = new ArrayList<ClienteEntity>(clientes);
         galeria.setClientes(
-              nuevosCli);
-        for (int i = 0; i < clientes.size(); i++) 
-        {
+                nuevosCli);
+        for (int i = 0; i < clientes.size(); i++) {
             clientes.get(i).setClienteGaleria(galeria);
         }
         return clientes;
     }
-    
-     public List<CatalogoEntity> replaceCatalogos(long idGaleria, List<CatalogoEntity> catalogos)
-    {
+
+    public List<CatalogoEntity> replaceCatalogos(List<CatalogoEntity> catalogos) {
         LOGGER.info("Inicia proceso de cambiar los catalogos a la galeria");
         GaleriaEntity galeria = getGaleria();
-        for (int i = 0; i < galeria.getCatalogos().size(); i++)
-        {
+        for (int i = 0; i < galeria.getCatalogos().size(); i++) {
             galeria.getCatalogos().get(i).setGaleria(null);
         }
-        
+
         ArrayList<CatalogoEntity> nuevosCat = new ArrayList<CatalogoEntity>(catalogos);
         galeria.setCatalogos(nuevosCat);
-        for (int i = 0; i < catalogos.size(); i++) 
-        {
+        for (int i = 0; i < catalogos.size(); i++) {
             catalogos.get(i).setGaleria(galeria);
         }
         return catalogos;

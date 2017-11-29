@@ -22,16 +22,16 @@ import javax.inject.Inject;
  */
 @Stateless
 public class CompraLogic {
-    
+
     private static final Logger LOGGER = Logger.getLogger(CompraLogic.class.getName());
 
     @Inject
     private CompraPersistence persistence;
-    
+
     @Inject
     private ObraPersistence obraPersistence;
-    
-  public List<CompraEntity> getCompras() {
+
+    public List<CompraEntity> getCompras() {
         LOGGER.info("Inicia proceso de consultar todas las compras");
         List<CompraEntity> compras = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las compras");
@@ -51,30 +51,27 @@ public class CompraLogic {
     public CompraEntity createCompra(CompraEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de compra");
         // Verifica la regla de negocio que dice que no puede haber dos editoriales con el mismo nombre
-        if (entity.getId()!=null){
+        if (entity.getId() != null) {
             if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una compra con el id \"" + entity.getId() + "\"");
-        }
+                throw new BusinessLogicException("Ya existe una compra con el id \"" + entity.getId() + "\"");
+            }
         }
         // Invoca la persistencia para crear la editorial
 
         LOGGER.info("Termina proceso de creación de compra");
         return persistence.create(entity);
     }
+
     /**
      * Actualiza la información de una instancia de Pago.
      *
      * @param entity Instancia de PagoEntity con los nuevos datos.
-     * @param id id del Compra el cual sera padre del Pago actualizado.
      * @return Instancia de PagoEntity con los datos actualizados.
-     * 
+     *
      */
-   public CompraEntity updateCompra(CompraEntity entity) {                                                                                         
-      //  LOGGER.log(Level.INFO, "Inicia proceso de actualizar compra con id={0}", id);
+    public CompraEntity updateCompra(CompraEntity entity) {
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
-        CompraEntity newEntity = persistence.update(entity);
-       // LOGGER.log(Level.INFO, "Termina proceso de actualizar compra con id={0}", entity.getId());
-        return newEntity;
+        return persistence.update(entity);
     }
 
     public void deleteCompra(Long id) {
@@ -82,15 +79,14 @@ public class CompraLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar compra con id={0}", id);
     }
-    
 
-         /**
-         * Agregar un Obra a la Compra
-         *
-         * @param obraId del Obra a asociar
-         * @param compraId
-         * @return
-         */
+    /**
+     * Agregar un Obra a la Compra
+     *
+     * @param obraId del Obra a asociar
+     * @param compraId
+     * @return
+     */
     public ObraEntity addObra(Long obraId, Long compraId) {
         CompraEntity compraEntity = getCompra(compraId);
         ObraEntity obraEntity = obraPersistence.find(obraId);
