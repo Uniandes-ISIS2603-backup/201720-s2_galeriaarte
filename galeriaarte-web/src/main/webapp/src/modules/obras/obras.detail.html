@@ -6,14 +6,20 @@
             <div class="thumb">
                
                 <img class="img-responsive" ng-src="{{currentObra.imagen}}"/>
-                
+                <br>
+                <br>
+           
                 <div class="row">
-                    <input type="button" value="Anterior" ui-sref="obraDetail({obraId: currentObra.id-1})"  style="padding: 4px 4px" class="btn btn-info btn-lg">
+                       &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Anterior" ui-sref="obraDetail({obraId: currentObra.id-1})"  style="padding: 4px 4px" class="btn btn-info btn-lg">  &nbsp;&nbsp;
+                    <input type="button" value="Siguiente" ui-sref="obraDetail({obraId: currentObra.id+1})" class="btn btn-info btn-lg" style="padding: 4px 4px">
                 </div>
             </div>
-            
-
+            <br>
+            <br>
+           
+ &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;;&nbsp;&nbsp;<input type="button" value="Volver" ui-sref="obrasList" class="btn btn-info btn-lg" style="padding: 4px 4px">
         </div>
+        
         <div class="col-md-3">
             <dl>     
            
